@@ -17,3 +17,4 @@
 
 Route::get('dashboard', 'DashboardController@showDashboard');
 
+Route::get('suscriptores', 'SubscribersController@showSubscribers');
