@@ -29,33 +29,34 @@
 
                     </div>
                 </li>
+                <li>
+                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Boletines Informativos </span></a>
+                </li>
                 <li class="active">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Parametrización</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="index-2.html">Dashboard v.1</a></li>
-                        <li class="active"><a href="dashboard_2.html">Dashboard v.2</a></li>
+                        <li><a href="index-2.html">Tipos de suscripción </a></li>
+                        <li class="active"><a href="dashboard_2.html">Artículos / Suscripción </a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Suscriptores</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="graph_flot.html">Flot Charts</a></li>
-                        <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                        <li><a href="graph_flot.html">Consultar Pagos</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-desktop"></i>
-                        <span class="nav-label">App Views</span>
-                        <!--<span class="float-right label label-primary">SPECIAL</span></a>-->
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="profile_2.html">Profile v.2</a></li>
-                        <li><a href="contacts_2.html">Contacts v.2</a></li>
+                        <li><a href="contacts.html">Conversión de Cuentas</a></li>
+                        <li><a href="profile.html">Creación de Cuentas</a></li>
+                        <li><a href="profile_2.html">Canales de Pago</a></li>
+                        <li><a href="contacts_2.html">Pagos Recibidos</a></li>
+                        <li><a href="contacts_2.html">Cuentas por Vencerse</a></li>
+                        <li><a href="contacts_2.html">Visitas por suscripción </a></li>
                     </ul>
                 </li>
             </ul>
