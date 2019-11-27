@@ -1,4 +1,7 @@
 @extends('layout/template')
 @section('contentapp')
-    <h1>Dashboard</h1>
+
+    <div class="ibox-content">
+        <img src="img/macpecri_dash.png" style="width:100%; height:auto;">
+    </div>
 @endsection

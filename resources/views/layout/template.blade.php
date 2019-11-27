@@ -30,33 +30,38 @@
                     </div>
                 </li>
                 <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Dashboard</span></a>
+                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Boletines Informativos </span></a>
+                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Boletines Informativos </span></a>
                 </li>
                 <li class="active">
-                    <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Parametrización</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Parametrización</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="index-2.html">Tipos de suscripción </a></li>
-                        <li class="active"><a href="dashboard_2.html">Artículos / Suscripción </a></li>
+                        <li>
+                          <a href="#">Tipos de suscripción </a>
+                        </li>
+                        <li class="active">
+                          <a href="#">Artículos / Suscripción </a>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Suscriptores</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="graph_flot.html">Consultar Pagos</a></li>
+                        <li><a href="#">Consultar Pagos</a></li>
+                        <li><a href="#">Consultar Suscriptores</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="contacts.html">Conversión de Cuentas</a></li>
-                        <li><a href="profile.html">Creación de Cuentas</a></li>
-                        <li><a href="profile_2.html">Canales de Pago</a></li>
-                        <li><a href="contacts_2.html">Pagos Recibidos</a></li>
-                        <li><a href="contacts_2.html">Cuentas por Vencerse</a></li>
-                        <li><a href="contacts_2.html">Visitas por suscripción </a></li>
+                        <li><a href="#">Conversión de Cuentas</a></li>
+                        <li><a href="#">Creación de Cuentas</a></li>
+                        <li><a href="#">Canales de Pago</a></li>
+                        <li><a href="#">Pagos Recibidos</a></li>
+                        <li><a href="#">Cuentas por Vencerse</a></li>
+                        <li><a href="#">Visitas por suscripción </a></li>
                     </ul>
                 </li>
             </ul>
@@ -70,18 +75,13 @@
         <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="http://webapplayers.com/inspinia_admin-v2.8/search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                     <span class="m-r-sm text-muted welcome-message">Bienveido Edgar Landaeta</span>
                 </li>
                 <li>
-                    <a href="login.html">
+                    <a href="#">
                         <i class="fa fa-sign-out"></i> Cerrar Sesion
                     </a>
                 </li>
