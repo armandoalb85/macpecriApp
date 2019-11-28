@@ -50,7 +50,7 @@
                     <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Suscriptores</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="#">Consultar Pagos</a></li>
-                        <li><a href="#">Consultar Suscriptores</a></li>
+                        <li><a href="{{ url('/suscriptores/') }}">Consultar Suscriptores</a></li>
                     </ul>
                 </li>
                 <li>
