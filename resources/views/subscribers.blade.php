@@ -17,17 +17,14 @@
               </li>
           </ol>
       </div>
-      <div class="col-lg-2">
-
-      </div>
   </div>
 <!-- Guia -->
 
-<!-- table-->
-<div class="row">
+<!-- table--><br>
+<div class="row white-bg" >
     <div class="col-lg-12">
       <div class="ibox ">
-          <div class="ibox-title">
+          <div  class="ibox-title">
               <h5>Listado de Suscriptores</h5>
           </div>
           <div class="ibox-content">
