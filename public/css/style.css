@@ -4871,13 +4871,15 @@ code {
 .ibox:before {
   display: table;
 }
+
+/* edg-modifcado ibox-title */
 .ibox-title {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background-color: #ffffff;
-  border-color: #e7eaec;
+  border-color: #ffffff;
   border-image: none;
   border-style: solid solid none;
   border-width: 2px 0 0;
