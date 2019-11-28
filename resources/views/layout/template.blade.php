@@ -30,13 +30,13 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Dashboard</span></a>
+                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Boletines Informativos </span></a>
+                    <a href="#"><i class="glyphicon glyphicon-envelope"></i> <span class="nav-label">Boletines Informativos </span></a>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Parametrización</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">Parametrización</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                           <a href="#">Tipos de suscripción </a>
@@ -47,14 +47,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Suscriptores</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Suscriptores</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="#">Consultar Pagos</a></li>
                         <li><a href="#">Consultar Suscriptores</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="#">Conversión de Cuentas</a></li>
                         <li><a href="#">Creación de Cuentas</a></li>
