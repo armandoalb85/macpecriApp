@@ -11,14 +11,15 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Route::get('dashboard', 'DashboardController@showDashboard');
-
-Route::get('suscriptores', 'SubscribersController@showSubscribers');
-
+//session routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('auth/login');
+});
+
+//dashboard route
+Route::get('dashboard', 'DashboardController@showDashboard');
+
+//parameterization routes
+Route::get('suscriptores', 'SubscribersController@showSubscribers');
