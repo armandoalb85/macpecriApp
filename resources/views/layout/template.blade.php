@@ -81,9 +81,13 @@
                     <span class="m-r-sm text-muted welcome-message">Bienveido Edgar Landaeta</span>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-sign-out"></i> Cerrar Sesion
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out"></i> Cerrar Sesión
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </li>
             </ul>
 
@@ -176,7 +180,6 @@
         });
 
     </script>
-
 
 </body>
 
