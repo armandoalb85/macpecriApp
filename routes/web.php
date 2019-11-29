@@ -18,3 +18,7 @@
 Route::get('dashboard', 'DashboardController@showDashboard');
 
 Route::get('suscriptores', 'SubscribersController@showSubscribers');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
