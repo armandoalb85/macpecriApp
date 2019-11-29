@@ -22,23 +22,7 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-
-            <!--<h1 class="logo-name">IN+</h1>-->
-            <img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;">
-
-            </div>
-            <!--<form class="m-t" role="form" action="http://webapplayers.com/inspinia_admin-v2.8/index.html">
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-success block full-width m-b">Aceptar</button>
-
-                <a href="#"><small>¿Olvidaste tu Contraseña?</small></a>
-            </form>-->
+            <div><img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;"></div>
             @yield('logincontent')
         </div>
     </div>
