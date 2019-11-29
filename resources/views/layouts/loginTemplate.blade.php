@@ -25,7 +25,7 @@
             <div>
 
             <!--<h1 class="logo-name">IN+</h1>-->
-            <img src="img/Logo_B.png" style="width: 80%; height: 90%;">
+            <img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;">
 
             </div>
             <!--<form class="m-t" role="form" action="http://webapplayers.com/inspinia_admin-v2.8/index.html">

@@ -9559,3 +9559,14 @@ body.md-skin {
 .ibox-title .float-right {
   margin-right: -75px;
 }
+
+/*---------- new style -------------*/
+
+.logo-imgEdg {
+  color: #e6e6e6;
+  font-size: 180px;
+  font-weight: 800;
+  letter-spacing: -10px;
+  margin-bottom: 0;
+  margin-top: 25%;
+}
