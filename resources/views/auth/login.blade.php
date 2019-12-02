@@ -4,10 +4,10 @@
 
 <form class="m-t" role="form" method="POST" action="{{ route('login') }}">
   {{ csrf_field() }}
-  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="email" autofocus>
-    @if ($errors->has('email'))
-      <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+  <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+    <input id="email"  class="form-control" name="username" value="{{ old('name') }}" placeholder="username" autofocus>
+    @if ($errors->has('name'))
+      <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
     @endif
   </div>
   <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
