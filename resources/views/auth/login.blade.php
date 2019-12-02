@@ -18,7 +18,7 @@
   </div>
       <button type="submit" class="btn btn-primary block full-width m-b">Aceptar </button>
       <!-- <a class="btn btn-link" href="{{ route('password.request') }}">¿Olvidast tu contraseña?</a>-->
-      <a href="#"><small>¿Olvidaste tu Contraseña?</small></a>
+      <!--<a href="#"><small>¿Olvidaste tu Contraseña?</small></a>-->
 </form>
 
 @endsection
