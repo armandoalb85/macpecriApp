@@ -15,7 +15,12 @@
 Auth::routes();
 
 Route::get('/', function () {
-    return view('auth/login');
+
+    if (Auth::check()){
+      return view('dashboard');
+    }else{
+      return view('auth/login');
+    }
 });
 
 //dashboard route
