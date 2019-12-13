@@ -23,6 +23,10 @@ Route::get('/', function () {
     }
 });
 
+Route:: get('password_modify', function(){
+  return view('editpassword');
+});
+
 //dashboard route
 Route::get('dashboard', 'DashboardController@showDashboard');
 
