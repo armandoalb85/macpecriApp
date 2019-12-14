@@ -23,9 +23,11 @@ Route::get('/', function () {
     }
 });
 
+// Routes for users system
 Route:: get('password_modify', function(){
   return view('editpassword');
 });
+Route::post('user/updatepassword', 'UsersController@updatePassword');
 
 //dashboard route
 Route::get('dashboard', 'DashboardController@showDashboard');
