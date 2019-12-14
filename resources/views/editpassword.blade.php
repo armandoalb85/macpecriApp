@@ -27,23 +27,24 @@
             <h5>Modificar Password</h5>
           </div>
           <div class="ibox-content">
-            <form>
+            <form method="post" action="{{url('user/updatepassword')}}" >
+              {{csrf_field()}}
               <div class="form-group row">
                 <label class="col-lg-5 col-form-label">Password Actual</label>
                 <div class="col-lg-7">
-                  <input type="password" placeholder="******" class="form-control">
+                  <input type="password" name="actualPassword" placeholder="******" class="form-control">
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-lg-5 col-form-label">Nuevo Password</label>
                 <div class="col-lg-7">
-                  <input type="password" placeholder="******" class="form-control">
+                  <input type="password" name = "newPassword" placeholder="******" class="form-control">
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-lg-5 col-form-label">Confirmar Password</label>
                 <div class="col-lg-7">
-                  <input type="password" placeholder="******" class="form-control">
+                  <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control">
                 </div>
               </div>
               <div class="form-group row">
