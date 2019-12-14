@@ -9,18 +9,23 @@ use app\User;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /*
+    This method show a password modify view
+    */
     public function editPassword(){
       return view(editPassword);
     }
 
+    /*
+    This method modify a password user
+    */
     public function updatePassword(Request $request){
-
-        echo $request->actualPassword. "<br>";
-        echo $request->newPassword. "<br>";
-        echo $request->passwordConfirmation. "<br>";
-        echo Auth::user()->password. "<br>";
-        echo Auth::user()->email. "<br>";
-        echo "<br>";
 
         $user = new User;
         $user->where('email', '=', Auth::user()->email)
