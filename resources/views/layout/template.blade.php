@@ -30,7 +30,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema Administrativo</span></a>
+                    <a href="{{ url('/dashboard/') }}"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema Administrativo</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span class="nav-label">Mi Cuenta</span> <span class="fa arrow"></span></a>
@@ -47,7 +47,7 @@
                     <a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">Configuración</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                          <a href="#">Tipos de suscripción </a>
+                          <a href="{{ url('suscripciones') }}">Tipos de suscripción </a>
                         </li>
                         <li class="active">
                           <a href="#">Artículos / Suscripción </a>

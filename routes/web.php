@@ -34,3 +34,6 @@ Route::get('dashboard', 'DashboardController@showDashboard');
 
 //parameterization routes
 Route::get('suscriptores', 'SubscribersController@showSubscribers');
+
+//Routes Configuration
+Route::get('suscripciones','SubscriptionTypesController@indexSubscriptionType');
