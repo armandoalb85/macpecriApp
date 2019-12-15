@@ -67,8 +67,10 @@ class NewslettersController extends Controller
     /*
     This method allow destroy a newsletter
     */
-    public function destroyNewsletters(){
+    public function destroyNewsletters($id){
 
+      Newsletter::find($id)->delete();
+      return redirect('boletines');
     }
 
     /**

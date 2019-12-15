@@ -67,7 +67,7 @@
                         <a href="#" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
+                        <a href="{{action('NewslettersController@destroyNewsletters', $newsletter->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
                           <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
                         </a>
                       </div>
