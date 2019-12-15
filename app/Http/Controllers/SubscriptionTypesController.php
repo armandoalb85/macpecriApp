@@ -49,6 +49,7 @@ class SubscriptionTypesController extends Controller
       $SubscriptionType->cost = $request->cost;
       $SubscriptionType->limit = $request->limit;
       $SubscriptionType->status = $request->status;
+      //$SubscriptionType->daysforpaying = null;
       $SubscriptionType->save();
 
       return redirect('suscripciones');
@@ -76,6 +77,7 @@ class SubscriptionTypesController extends Controller
       $subscription->cost = $request->cost;
       $subscription->limit = $request->limit;
       $subscription->status = $request->status;
+      //$SubscriptionType->daysforpaying = null;
       $subscription->update();
 
       return redirect('suscripciones');

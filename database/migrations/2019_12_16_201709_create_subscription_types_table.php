@@ -16,10 +16,11 @@ class CreateSubscriptionTypesTable extends Migration
         Schema::create('subscription_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable(true);;
+            $table->string('description')->nullable(true);
             $table->float('cost');
             $table->integer('limit');
             $table->string('status');
+            $table->integer('daysforpaying')->nullable(true);
             $table->timestamps();
         });
     }

@@ -16,7 +16,8 @@ class SubscriptionTypeSeeder extends Seeder
             'description' => 'Subscripcion con lectura de articulos limitados.',
             'cost' => 0,
             'limit' => 10,
-            'status' => 'Activo'
+            'status' => 'Activo',
+            'daysforpaying' => 0
         ]);
 
         DB::table('subscription_types')->insert([
@@ -24,7 +25,8 @@ class SubscriptionTypeSeeder extends Seeder
             'description' => 'Subscripcion con lectura ilimitada.',
             'cost' => 1,
             'limit' => 999999,
-            'status' => 'Activo'
+            'status' => 'Activo',
+            'daysforpaying' => 5
         ]);
     }
 }

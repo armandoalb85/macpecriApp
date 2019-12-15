@@ -16,7 +16,7 @@ class CreatePaymentAccountStatementsTable extends Migration
         Schema::create('payment_account_statements', function (Blueprint $table) {
             $table->increments('id');
             $table->date('startdate');
-            $table->date('closedate');
+            $table->date('closedate')->nullable(true);
             $table->string('status');
             $table->float('amount');
             $table->timestamps();
