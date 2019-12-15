@@ -108,7 +108,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Bienveido</span>
+                    <span class="m-r-sm text-muted welcome-message">Bienvenido</span>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
