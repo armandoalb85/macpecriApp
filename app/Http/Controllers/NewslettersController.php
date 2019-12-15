@@ -20,8 +20,8 @@ class NewslettersController extends Controller
     /*
     This method show a newsletter in specific
     */
-    public function showNewsletters(){
-
+    public function showNewsletter(){
+      
     }
 
     /*

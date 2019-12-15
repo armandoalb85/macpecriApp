@@ -51,8 +51,5 @@ Route::get('boletines','NewslettersController@indexNewsletters');
 Route::get('boletines/nuevo','NewslettersController@newNewsletters');
 Route::post('boletines/nuevo','NewslettersController@saveNewsletters');
 
-Route::get('boletines/detalle/{id}','NewslettersController@showNewsletters');
-Route::get('boletines/edicion/{id}','NewslettersController@editNewsletters');
-Route::post('boletines/edicion/{id}','NewslettersController@updateNewsletters');
 
 Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
