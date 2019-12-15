@@ -24,7 +24,14 @@
     <div class="col-lg-12">
       <div class="ibox ">
           <div  class="ibox-title">
-              <h5>Listado de Tipo de Suscripciones</h5>
+            <div class="row">
+              <div class="col-10">
+                <h5>Listado de Tipo de Suscripciones</h5>
+              </div>
+              <div class="col-2">
+                <a href="#" class="btn btn-sm btn-primary float-right"><i class="glyphicon glyphicon-plus"></i>Nuevo Tipo</a>
+              </div>
+            </div>
           </div>
           <div class="ibox-content">
 
