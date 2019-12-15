@@ -9,4 +9,9 @@ class SubscriptionTypesController extends Controller
     public function indexSubscriptionType(){
       return view('subscriptiontype');
     }
+
+    public function newSubscriptionType(){
+      return view('createsubscriptiontype');
+    }
+
 }
