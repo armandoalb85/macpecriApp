@@ -1,4 +1,4 @@
-@extends('layout/templatetest')
+@extends('layout/template')
 @section('contentapp')
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -32,7 +32,7 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Titulo</label>
               <div class="col-lg-9">
-                <input type="text" name="title" class="form-control"  value="{{ $newsletter->description }}" disabled>
+                <input type="text" name="title" class="form-control"  value="{{ $newsletter->name }}" disabled>
               </div>
             </div>
             <div class="form-group row">
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Fecha de Acción</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
+              <div class="form-group col-lg-9">
                 <div class="input-group date">
                     <input type="text" class="form-control" name="startdate" value="{{ $newsletter->stardate }}" disabled>
                 </div>
@@ -54,7 +54,7 @@
 
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Fecha de Cierre</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
+              <div class="form-group col-lg-9">
                 <div class="input-group date">
                     @if ( $newsletter->closedate != null )
                       <input type="text" class="form-control" name="closedate" value="{{ $newsletter->closedate }}" disabled>
