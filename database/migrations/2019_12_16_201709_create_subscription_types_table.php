@@ -17,10 +17,10 @@ class CreateSubscriptionTypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable(true);
-            $table->float('cost');
+            $table->float('cost')->default(0);;
             $table->integer('limit');
             $table->string('status');
-            $table->integer('daysforpaying')->nullable(true);
+            $table->integer('daysforpaying')->default(0);
             $table->timestamps();
         });
     }

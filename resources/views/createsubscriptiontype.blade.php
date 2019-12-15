@@ -23,7 +23,7 @@
 <!--form -->
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
           <h5>Nuevo Tipo de Suscripción</h5>
@@ -68,6 +68,12 @@
               <label class="col-lg-3 col-form-label">Costo</label>
               <div class="col-lg-9">
                 <input type="number" name = "cost" placeholder="0" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">Días para Pagar</label>
+              <div class="col-lg-9">
+                <input type="number" name = "daysforpaying" placeholder="0" class="form-control">
               </div>
             </div>
             <div class="form-group row">

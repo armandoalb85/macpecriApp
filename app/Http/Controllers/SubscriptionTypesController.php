@@ -17,7 +17,7 @@ class SubscriptionTypesController extends Controller
     *This method show a index page with subscription type in a data table
     */
     public function indexSubscriptionType(){
-      $sucriptions=SubscriptionType::orderBy('id','DESC')->paginate(3);
+      $sucriptions=SubscriptionType::orderBy('id','DESC')->paginate(10);
       return view('subscriptiontype',compact('sucriptions'));
     }
 
@@ -46,10 +46,10 @@ class SubscriptionTypesController extends Controller
       $SubscriptionType = new SubscriptionType();
       $SubscriptionType->name = $request->tipo;
       $SubscriptionType->description = $request->description;
-      $SubscriptionType->cost = $request->cost;
+      $SubscriptionType->cost = ($this->columnValidator($SubscriptionType->cost)) ? $SubscriptionType->cost : 0;
       $SubscriptionType->limit = $request->limit;
       $SubscriptionType->status = $request->status;
-      //$SubscriptionType->daysforpaying = null;
+      $SubscriptionType->cost = ($this->columnValidator($SubscriptionType->daysforpaying)) ? $SubscriptionType->daysforpaying : 0;
       $SubscriptionType->save();
 
       return redirect('suscripciones');
@@ -74,10 +74,10 @@ class SubscriptionTypesController extends Controller
       $subscription = SubscriptionType::find($id);
       $subscription ->name = $request->tipo;
       $subscription->description = $request->description;
-      $subscription->cost = $request->cost;
+      $subscription->cost = ($this->columnValidator($subscription->cost)) ? $subscription->cost : 0;
       $subscription->limit = $request->limit;
       $subscription->status = $request->status;
-      //$SubscriptionType->daysforpaying = null;
+      $subscription->cost = ($this->columnValidator($subscription->daysforpaying)) ? $subscription->daysforpaying : 0;
       $subscription->update();
 
       return redirect('suscripciones');
@@ -106,7 +106,20 @@ class SubscriptionTypesController extends Controller
       ]);
 
       return $data;
+    }
 
+    /*
+    *This method validate if column is empty
+    */
+    private function columnValidator($column){
+
+      $value = false;
+
+      if ($column != '' or $column != null){
+        $value =true;
+      }
+
+      return $value;
     }
 
 }
