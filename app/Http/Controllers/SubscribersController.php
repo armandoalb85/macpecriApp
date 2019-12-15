@@ -15,8 +15,23 @@ class SubscribersController extends Controller
     /*
     This method show a subscribers dashboard
     */
-    public function showSubscribers(){
+    public function indexSubscribers(){
 
       return view ('subscribers');
     }
+
+    /*
+    This method show a dashboard for check payments by subscribers
+    */
+    public function checkPaymentsBySubscribers(){
+      return view ('paymentsbysubscribers');
+    }
+
+    /*
+    This method show a dashboard for check subscribers with depts
+    */
+    public function checkSubscribersWithDebts(){
+      return view ('subscriberswithdepts');
+    }
+
 }
