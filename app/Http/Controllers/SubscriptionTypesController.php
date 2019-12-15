@@ -7,6 +7,12 @@ use App\SubscriptionType;
 
 class SubscriptionTypesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
     *This method show a index page with subscription type in a data table
     */

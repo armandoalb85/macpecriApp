@@ -8,6 +8,10 @@ use DateTime;
 
 class NewslettersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /*
     This method show a newsletter dashboard
@@ -21,7 +25,7 @@ class NewslettersController extends Controller
     This method show a newsletter in specific
     */
     public function showNewsletter(){
-      
+
     }
 
     /*
@@ -53,7 +57,7 @@ class NewslettersController extends Controller
     /*
     This method show a page for edit newsletter in specific
     */
-    public function editNewsletters(){
+    public function editNewsletter(){
 
     }
 
