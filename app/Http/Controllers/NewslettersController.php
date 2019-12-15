@@ -24,8 +24,9 @@ class NewslettersController extends Controller
     /*
     This method show a newsletter in specific
     */
-    public function showNewsletter(){
-
+    public function showNewsletter($id){
+      $newsletter = Newsletter::find($id);
+       return  view('shownewsletter',compact('newsletter'));
     }
 
     /*
