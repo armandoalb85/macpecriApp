@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Newsletter extends Model
 {
 
+  protected $fillable = ['name', 'description', 'startdate','closedate'];
+
   /**
   *This method define an asociation many to many between Newsletter with Subscriber
   */

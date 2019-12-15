@@ -27,14 +27,14 @@
           <h5>Nuevo Boletin Informativo</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="#" >
+          <form method="post" action="{{ url('boletines/nuevo') }}" >
             {{csrf_field()}}
-            <div class="form-group row {{ $errors->has('tipo') ? ' has-error' : '' }}">
+            <div class="form-group row {{ $errors->has('title') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Titulo</label>
               <div class="col-lg-9">
-                <input type="text" name="titulo" placeholder="nombre del boletin" class="form-control">
-                @if ($errors->has('tipo'))
-                  <p>{{ $errors->first('tipo') }}</p>
+                <input type="text" name="title" placeholder="nombre del boletin" class="form-control">
+                @if ($errors->has('title'))
+                  <p>{{ $errors->first('title') }}</p>
                 @endif
               </div>
             </div>
@@ -44,13 +44,16 @@
                 <textarea name="description" rows="5" cols="100" class="form-control">Descripción de tipo de suscripción</textarea>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Fecha</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" value="03/04/2014">
+                    <input type="text" class="form-control" name="startdate">
+                    @if ($errors->has('startdate'))
+                      <p>{{ $errors->first('startdate') }}</p>
+                    @endif
                 </div>
               </div>
             </div>

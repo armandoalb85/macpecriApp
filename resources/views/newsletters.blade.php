@@ -44,6 +44,7 @@
                   <th>Boletin</th>
                   <th>Apertura</th>
                   <th>Cierre</th>
+                  <th>Acciones</th>
               </tr>
               </thead>
               <tbody>
@@ -51,8 +52,12 @@
                   @foreach($newsletters as $newsletter)
                   <tr>
                     <td>{{$newsletter->name}}</td>
-                    <td>{{$newsletter->startdate}}</td>
-                    <td>{{$newsletter->closedate}}</td>
+                    <td>{{$newsletter->stardate}}</td>
+                    @if($newsletter->closedate != null)
+                      <td>{{$newsletter->closedate}}</td>
+                    @else
+                      <td>Sin definir</td>
+                    @endif
                     <td>
                       <center>
                       <div class="btn-group" role="group">

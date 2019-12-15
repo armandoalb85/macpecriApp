@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Newsletter;
+use DateTime;
 
 class NewslettersController extends Controller
 {
@@ -33,7 +34,19 @@ class NewslettersController extends Controller
     /*
     This method allow create a newsletter
     */
-    public function saveNewsletters(){
+    public function saveNewsletters(Request $request){
+
+      $data = $this->dataValidator();
+
+      $newsletter = new Newsletter();
+      $newsletter->name = $request->title;
+      $newsletter->description = $request->description;
+      $time = strtotime($request->startdate);
+      $newsletter->stardate = date('Y-m-d',$time);
+
+      $newsletter->save();
+
+      return redirect('boletines');
 
     }
 
@@ -56,5 +69,21 @@ class NewslettersController extends Controller
     */
     public function destroyNewsletters(){
 
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidator(){
+
+      $data = request()->validate([
+        'title' => 'required',
+        'startdate' => 'required'
+      ],[
+        'tipo.required' => 'Titulo de boletin es obligatorio.',
+        'limit.required' => 'Fecha es requerida.'
+      ]);
+
+      return $data;
     }
 }
