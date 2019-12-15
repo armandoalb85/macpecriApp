@@ -27,10 +27,24 @@ class UsersController extends Controller
     */
     public function updatePassword(Request $request){
 
+        $data = request()->validate([
+          'actualPassword' => 'required',
+          'newPassword' => 'required',
+          'newPassword' => 'required|min:6',
+          'passwordConfirmation' => 'required',
+          'passwordConfirmation' => 'required|same:newPassword'
+        ],[
+          'actualPassword.required' => 'Password actual es obligatorio',
+          'newPassword.required' => 'Nuevo password es obligatorio',
+          'passwordConfirmation.required' => 'comfirmacion de password es obligatorio',
+          'min'=> 'El campo :attribute no puede tener menos de :min carácteres.'
+        ]);
+
         $user = new User;
         $user->where('email', '=', Auth::user()->email)
              ->update(['password' => md5($request->newPassword)]);
         return redirect('dashboard');
+
 
     }
 }

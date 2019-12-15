@@ -21,7 +21,7 @@
   <!--form -->
   <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <div class="ibox ">
           <div class="ibox-title">
             <h5>Modificar Password</h5>
@@ -29,27 +29,36 @@
           <div class="ibox-content">
             <form method="post" action="{{url('user/updatepassword')}}" >
               {{csrf_field()}}
-              <div class="form-group row">
+              <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Password Actual</label>
                 <div class="col-lg-7">
                   <input type="password" name="actualPassword" placeholder="******" class="form-control">
+                  @if ($errors->has('actualPassword'))
+                    <p>{{ $errors->first('actualPassword') }}</p>
+                  @endif
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Nuevo Password</label>
                 <div class="col-lg-7">
                   <input type="password" name = "newPassword" placeholder="******" class="form-control">
+                  @if ($errors->has('newPassword'))
+                    <p>{{ $errors->first('newPassword') }}</p>
+                  @endif
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Confirmar Password</label>
                 <div class="col-lg-7">
                   <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control">
+                  @if ($errors->has('passwordConfirmation'))
+                    <p>{{ $errors->first('passwordConfirmation') }}</p>
+                  @endif
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button class="btn btn-sm btn-white" type="submit">Aceptar</button>
+                  <button class="btn btn-md btn-primary" type="submit">Aceptar</button>
                 </div>
               </div>
             </form>
