@@ -30,7 +30,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema de Administración</span></a>
+                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema Administrativo</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span class="nav-label">Mi Cuenta</span> <span class="fa arrow"></span></a>
@@ -55,10 +55,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del Cliente</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del Lector</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="#">Consultar Pagos</a></li>
-                        <li><a href="{{ url('/suscriptores/') }}">Consultar Suscriptores</a></li>
+                        <li><a href="{{ url('/suscriptores/') }}">Consultar Lectores</a></li>
                     </ul>
                 </li>
                 <li>
