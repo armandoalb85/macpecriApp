@@ -46,10 +46,11 @@ class SubscriptionTypesController extends Controller
       $SubscriptionType = new SubscriptionType();
       $SubscriptionType->name = $request->tipo;
       $SubscriptionType->description = $request->description;
-      $SubscriptionType->cost = ($this->columnValidator($SubscriptionType->cost)) ? $SubscriptionType->cost : 0;
+      $SubscriptionType->cost = ($this->columnValidator($request->cost)) ? $request->cost : 0;
       $SubscriptionType->limit = $request->limit;
       $SubscriptionType->status = $request->status;
-      $SubscriptionType->cost = ($this->columnValidator($SubscriptionType->daysforpaying)) ? $SubscriptionType->daysforpaying : 0;
+      $SubscriptionType->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
+      $SubscriptionType->type =  ($this->columnValidator($request->cost)) ? 'Pago' : 'Gratuita';
       $SubscriptionType->save();
 
       return redirect('suscripciones');
@@ -74,10 +75,11 @@ class SubscriptionTypesController extends Controller
       $subscription = SubscriptionType::find($id);
       $subscription ->name = $request->tipo;
       $subscription->description = $request->description;
-      $subscription->cost = ($this->columnValidator($subscription->cost)) ? $subscription->cost : 0;
+      $subscription->cost = ($this->columnValidator($request->cost)) ? $request->cost : 0;
       $subscription->limit = $request->limit;
       $subscription->status = $request->status;
-      $subscription->cost = ($this->columnValidator($subscription->daysforpaying)) ? $subscription->daysforpaying : 0;
+      $subscription->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
+      $subscription->type = ($this->columnValidator($request->cost)) ? 'Pago' : 'Gratuita';
       $subscription->update();
 
       return redirect('suscripciones');
@@ -115,8 +117,8 @@ class SubscriptionTypesController extends Controller
 
       $value = false;
 
-      if ($column != '' or $column != null){
-        $value =true;
+      if ($column > '0' or $column > 0){
+        $value = true;
       }
 
       return $value;

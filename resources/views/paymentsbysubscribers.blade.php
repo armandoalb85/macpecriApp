@@ -26,15 +26,16 @@
           <h5>Consultar Pagos</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('boletines/nuevo') }}" >
+          <form method="" action="" >
             {{csrf_field()}}
             <br>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Suscripción</label>
             <div class="col-sm-9">
-              <select class="form-control m-b" name="status">
-                <option>Activo</option>
-                <option>Inactivo</option>
+              <select class="form-control m-b" name="subscriptionType">
+                @foreach ($subscriptionTypes as $subscriptionType)
+                  <option>{{ $subscriptionType->name }}</option>
+                @endforeach
               </select>
             </div>
             </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubscriptionType extends Model
 {
-    protected $fillable = ['name', 'description', 'cost','limit','status', 'daysforpaying'];
+    protected $fillable = ['name', 'description', 'cost','limit','status', 'daysforpaying', 'type'];
 
     /**
     *This method define an asociation between SubscriptionType with Subscriber

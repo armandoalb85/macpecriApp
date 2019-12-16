@@ -17,7 +17,8 @@ class SubscriptionTypeSeeder extends Seeder
             'cost' => 0,
             'limit' => 10,
             'status' => 'Activo',
-            'daysforpaying' => 0
+            'daysforpaying' => 0,
+            'type' => 'Gratuita'
         ]);
 
         DB::table('subscription_types')->insert([
@@ -26,7 +27,18 @@ class SubscriptionTypeSeeder extends Seeder
             'cost' => 1,
             'limit' => 999999,
             'status' => 'Activo',
-            'daysforpaying' => 5
+            'daysforpaying' => 5,
+            'type' => 'Pago'
+        ]);
+
+        DB::table('subscription_types')->insert([
+            'name' => 'Venezuela',
+            'description' => 'Subscripcion ilimitada usuarios de Venezuela',
+            'cost' => 0,
+            'limit' => 999999,
+            'status' => 'Activo',
+            'daysforpaying' => 0,
+            'type' => 'Gratuita'
         ]);
     }
 }

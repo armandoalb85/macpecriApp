@@ -21,6 +21,7 @@ class CreateSubscriptionTypesTable extends Migration
             $table->integer('limit');
             $table->string('status');
             $table->integer('daysforpaying')->default(0);
+            $table->String('type');
             $table->timestamps();
         });
     }

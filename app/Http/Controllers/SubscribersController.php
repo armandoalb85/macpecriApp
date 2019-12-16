@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SubscriptionType;
 
 class SubscribersController extends Controller
 {
@@ -24,14 +25,16 @@ class SubscribersController extends Controller
     This method show a dashboard for check payments by subscribers
     */
     public function checkPaymentsBySubscribers(){
-      return view ('paymentsbysubscribers');
+      $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
+      return view ('paymentsbysubscribers',compact('subscriptionTypes'));
     }
 
     /*
     This method show a dashboard for check subscribers with depts
     */
     public function checkSubscribersWithDebts(){
-      return view ('subscriberswithdepts');
+      $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
+      return view ('subscriberswithdepts', compact('subscriptionTypes'));
     }
 
 }

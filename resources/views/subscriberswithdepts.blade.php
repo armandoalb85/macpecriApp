@@ -33,8 +33,9 @@
               <label class="col-lg-3 col-form-label">Suscripción</label>
             <div class="col-sm-9">
               <select class="form-control m-b" name="status">
-                <option>Activo</option>
-                <option>Inactivo</option>
+                @foreach ($subscriptionTypes as $subscriptionType)
+                  <option>{{ $subscriptionType->name }}</option>
+                @endforeach
               </select>
             </div>
             </div>
