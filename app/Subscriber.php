@@ -13,4 +13,9 @@ class Subscriber extends Model
     public function paymentMethodRecords (){
       return $this->hasMany('App\PaymentMethodRecord');
     }
+
+    public function newsletters()
+    {
+        return $this->belongsToMany('App\Newsletter','newsletter_subscriber')->withPivot('subscriber_id','startdate', 'closedate','status');
+    }
 }
