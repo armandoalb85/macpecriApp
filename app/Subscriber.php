@@ -18,4 +18,16 @@ class Subscriber extends Model
     {
         return $this->belongsToMany('App\Newsletter','newsletter_subscriber')->withPivot('subscriber_id','startdate', 'closedate','status');
     }
+
+    public function subscribers(){
+      return $this->belongsToMany('\App\SubscriptionType','subscriber_subscription_type')->withPivot('subscriber_id', 'startdate', 'closedate','status', 'limit');
+    }
+
+    public function subscriberHistories(){
+      return $this->hasMany('App\SubscriberHistory');
+    }
+
+    public function user(){
+      return $this->hasOne('App\User');
+    }
 }
