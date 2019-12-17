@@ -18,7 +18,7 @@ class CreateSubscribersTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->date('birthday');
-            $table->date('phone');
+            $table->string('phone')->nullable(true);
             $table->timestamps();
         });
     }

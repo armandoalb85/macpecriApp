@@ -16,7 +16,7 @@ class CreateSubscriptionTypesTable extends Migration
         Schema::create('subscription_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable(true);;
             $table->float('cost');
             $table->integer('limit');
             $table->string('status');
