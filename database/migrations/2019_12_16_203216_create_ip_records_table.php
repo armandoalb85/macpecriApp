@@ -15,9 +15,14 @@ class CreateIpRecordsTable extends Migration
     {
         Schema::create('ip_records', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('ip');
             $table->string('location');
             $table->timestamps();
+
+            $table->integer('subscriber_id')->unsigned();
+            $table->foreign('subscriber_id')->references('id')->on('subscribers');
+
         });
     }
 
