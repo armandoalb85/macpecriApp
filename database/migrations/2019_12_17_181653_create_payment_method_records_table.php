@@ -22,6 +22,8 @@ class CreatePaymentMethodRecordsTable extends Migration
 
             $table->integer('subscriber_id')->unsigned();
             $table->foreign('subscriber_id')->references('id')->on('subscribers');
+            $table->integer('paymentmethod_id')->unsigned();
+            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
         });
     }
 
