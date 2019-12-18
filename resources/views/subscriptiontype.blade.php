@@ -29,7 +29,10 @@
                 <h5>Listado de Tipo de Suscripciones</h5>
               </div>
               <div class="col-2">
-                <a href="{{ url('suscripciones/nuevo') }}" class="btn btn-sm btn-primary float-right"><i class="glyphicon glyphicon-plus"></i>Nuevo Tipo</a>
+                <a href="{{ url('suscripciones/nuevo') }}" class="btn btn-sm btn-primary float-right">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  &nbsp;Nuevo Registro
+                </a>
               </div>
             </div>
           </div>
@@ -39,36 +42,46 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Tipo</th>
+                  <th>Limite de Lectura</th>
+                  <th>Costo</th>
+                  <th>Estatus</th>
+                  <th>Acciones</th>
               </tr>
               </thead>
               <tbody>
-                <tr class="gradeX">
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 4.0
+                @if($sucriptions->count())
+                  @foreach($sucriptions as $sucription)
+                  <tr>
+                    <td>{{$sucription->name}}</td>
+                    <td>{{$sucription->limit}}</td>
+                    <td>{{$sucription->cost}}</td>
+                    <td>{{$sucription->status}}</td>
+                    <td>
+                      <center>
+                      <div class="btn-group" role="group">
+                        <a href="#" class="btn btn-sm btn-white ">
+                          <span class="glyphicon glyphicon-search" title="Consulta de registro"></span>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-white ">
+                          <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-white ">
+                          <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
+                        </a>
+                      </div>
+                      </center>
                     </td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
-                    <td class="center">X</td>
-                </tr>
-                <tr class="gradeC">
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
-                    <td class="center">C</td>
-                </tr>
+                   </tr>
+                  @endforeach
+                @else
+                  <tr>
+                    <td colspan="8">No hay registro !!</td>
+                  </tr>
+                @endif
               </tfoot>
           </table>
             </div>
-
         </div>
     </div>
 </div>

@@ -8,7 +8,8 @@ use App\SubscriptionType;
 class SubscriptionTypesController extends Controller
 {
     public function indexSubscriptionType(){
-      return view('subscriptiontype');
+      $sucriptions=SubscriptionType::orderBy('id','DESC')->paginate(3);
+      return view('subscriptiontype',compact('sucriptions'));
     }
 
     public function newSubscriptionType(){
