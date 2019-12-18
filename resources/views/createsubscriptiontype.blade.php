@@ -32,21 +32,36 @@
           <form method="post" action="#" >
             {{csrf_field()}}
             <div class="form-group row">
-              <label class="col-lg-5 col-form-label">Nombre</label>
-              <div class="col-lg-7">
+              <label class="col-lg-3 col-form-label">Tipo</label>
+              <div class="col-lg-9">
                 <input type="text" name="Tipo" placeholder="Nombre Suscripción" class="form-control">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-5 col-form-label">Descripción</label>
-              <div class="col-lg-7">
+              <label class="col-lg-3 col-form-label">Descripción</label>
+              <div class="col-lg-9">
                 <textarea name="textarea" rows="3" cols="25" class="form-control">Descripción de tipo de suscripción</textarea>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-5 col-form-label">Limite</label>
-              <div class="col-lg-7">
-                <input type="text" name = "limit" placeholder="0" class="form-control">
+              <label class="col-lg-3 col-form-label">Limite</label>
+              <div class="col-lg-9">
+                <input type="number" name = "limit" placeholder="0" class="form-control">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">Estatus</label>
+            <div class="col-sm-9">
+              <select class="form-control m-b" name="account">
+                <option>Activo</option>
+                <option>Inactivo</option>
+              </select>
+            </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">Costo</label>
+              <div class="col-lg-9">
+                <input type="number" name = "estatus" placeholder="0.0" class="form-control">
               </div>
             </div>
             <div class="form-group row">
