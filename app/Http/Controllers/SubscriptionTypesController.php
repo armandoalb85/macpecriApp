@@ -12,8 +12,9 @@ class SubscriptionTypesController extends Controller
       return view('subscriptiontype',compact('sucriptions'));
     }
 
-    public function showSubscriptionType(){
-
+    public function showSubscriptionType($id){
+       $subscription=SubscriptionType::find($id);
+        return  view('showsubscriptiontype',compact('subscription'));
     }
 
     public function newSubscriptionType(){
@@ -51,7 +52,7 @@ class SubscriptionTypesController extends Controller
     }
 
     public function destroySubscriptionType(){
-      
+
     }
 
 }

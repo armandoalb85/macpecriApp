@@ -39,3 +39,5 @@ Route::get('suscriptores', 'SubscribersController@showSubscribers');
 Route::get('suscripciones','SubscriptionTypesController@indexSubscriptionType');
 Route::get('suscripciones/nuevo', 'SubscriptionTypesController@newSubscriptionType');
 Route::post('suscripciones/nuevo', 'SubscriptionTypesController@saveSubscriptionType');
+
+Route::get('/suscripciones/detalle/{id}','SubscriptionTypesController@showSubscriptionType');
