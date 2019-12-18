@@ -12,6 +12,10 @@ class SubscriptionTypesController extends Controller
       return view('subscriptiontype',compact('sucriptions'));
     }
 
+    public function showSubscriptionType(){
+
+    }
+
     public function newSubscriptionType(){
       return view('createsubscriptiontype');
     }
@@ -36,6 +40,18 @@ class SubscriptionTypesController extends Controller
 
       return redirect('suscripciones');
 
+    }
+
+    public function editSubscriptionType(){
+
+    }
+
+    public function updateSubscriptionType(){
+
+    }
+
+    public function destroySubscriptionType(){
+      
     }
 
 }
