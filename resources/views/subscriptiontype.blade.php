@@ -66,7 +66,7 @@
                         <a href="#" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-white ">
+                        <a href="{{action('SubscriptionTypesController@destroySubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
                         </a>
                       </div>
@@ -76,7 +76,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="8">No hay registro !!</td>
+                    <td colspan="8">No se encontraron registros</td>
                   </tr>
                 @endif
               </tfoot>
