@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubscriptionType extends Model
 {
+    protected $fillable = ['name', 'description', 'cost','limit','status'];
+
     public function subscribers(){
-      return $this->belongsToMany('\App\Subscriber','subscriber_subscription_type')->withPivot('subscription_id', 'startdate', 'closedate','status', 'limit'); 
+      return $this->belongsToMany('\App\Subscriber','subscriber_subscription_type')->withPivot('subscription_id', 'startdate', 'closedate','status', 'limit');
     }
 }
