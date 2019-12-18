@@ -17,6 +17,14 @@ class SubscriptionTypesController extends Controller
 
     public function saveSubscriptionType(Request $request){
 
+      $data = request()->validate([
+        'tipo' => 'required',
+        'limit' => 'required'
+      ],[
+        'tipo.required' => 'Tipo de Suscripción es obligatorio.',
+        'limit.required' => 'Indique un limite de articulos de lectura.'
+      ]);
+
       $SubscriptionType = new SubscriptionType();
       $SubscriptionType->name = $request->tipo;
       $SubscriptionType->description = $request->description;
