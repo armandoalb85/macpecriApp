@@ -27,6 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+    *This method define an asociation between User with Subscriber
+    */
     public function subscriber(){
       return $this->belongsTo('App\Subscriber');
     }
