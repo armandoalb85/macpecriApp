@@ -43,8 +43,9 @@ class SubscriptionTypesController extends Controller
 
     }
 
-    public function editSubscriptionType(){
-
+    public function editSubscriptionType($id){
+      $subscription=SubscriptionType::find($id);
+      return  view('editsubscriptiontype',compact('subscription'));
     }
 
     public function updateSubscriptionType(){

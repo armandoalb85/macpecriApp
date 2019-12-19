@@ -41,4 +41,7 @@ Route::get('suscripciones/nuevo', 'SubscriptionTypesController@newSubscriptionTy
 Route::post('suscripciones/nuevo', 'SubscriptionTypesController@saveSubscriptionType');
 
 Route::get('/suscripciones/detalle/{id}','SubscriptionTypesController@showSubscriptionType');
+Route::get('/suscripciones/edicion/{id}','SubscriptionTypesController@editSubscriptionType');
+Route::post('suscripciones/edicion/{id}', 'SubscriptionTypesController@updateSubscriptionType');
+
 Route::get('/suscripciones/borrar/{id}','SubscriptionTypesController@destroySubscriptionType');

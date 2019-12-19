@@ -63,7 +63,7 @@
                         <a href="{{action('SubscriptionTypesController@showSubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-search" title="Consulta de registro"></span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-white ">
+                        <a href="{{action('SubscriptionTypesController@editSubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
                         </a>
                         <a href="{{action('SubscriptionTypesController@destroySubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
