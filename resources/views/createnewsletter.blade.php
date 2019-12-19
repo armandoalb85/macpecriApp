@@ -60,7 +60,7 @@
                 <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
               </div>
               <div class="col-lg-4">
-                <a href="" class="btn btn-sm btn-white col-12">Volver</a>
+                <a href="{{ url('boletines')}}" class="btn btn-sm btn-white col-12">Volver</a>
               </div>
             </div>
           </form>
