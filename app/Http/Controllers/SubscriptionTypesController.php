@@ -54,9 +54,7 @@ class SubscriptionTypesController extends Controller
     public function destroySubscriptionType($id){
 
        SubscriptionType::find($id)->delete();
-
-       $sucriptions=SubscriptionType::orderBy('id','DESC')->paginate(3);
-       return view('subscriptiontype',compact('sucriptions'));
+       return redirect('suscripciones');
     }
 
 }
