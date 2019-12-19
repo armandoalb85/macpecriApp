@@ -29,10 +29,13 @@
         <div class="ibox-content">
           <form method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
             {{csrf_field()}}
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('tipo') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Tipo</label>
               <div class="col-lg-9">
                 <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}">
+                @if ($errors->has('tipo'))
+                  <p>{{ $errors->first('tipo') }}</p>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -43,10 +46,13 @@
                 </textarea>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Limite</label>
               <div class="col-lg-9">
                 <input type="number" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}">
+                @if ($errors->has('limit'))
+                  <p>{{ $errors->first('limit') }}</p>
+                @endif
               </div>
             </div>
             <div class="form-group row">
