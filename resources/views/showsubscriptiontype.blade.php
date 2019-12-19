@@ -61,8 +61,11 @@
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-lg-offset-2 col-lg-10">
-                <button class="btn btn-md btn-primary" type="submit">Aceptar</button>
+              <div class="col-lg-4">
+                <button class="btn btn-sm btn-primary col-12" type="submit">Editar</button>
+              </div>
+              <div class="col-lg-4">
+                <a href="#" class="btn btn-sm btn-white col-12">Volver</a>
               </div>
             </div>
           </form>
