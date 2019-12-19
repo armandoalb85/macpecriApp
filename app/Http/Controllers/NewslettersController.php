@@ -27,7 +27,7 @@ class NewslettersController extends Controller
     This method show a page for create newsletter
     */
     public function newNewsletters(){
-
+      return view('createnewsletter');
     }
 
     /*

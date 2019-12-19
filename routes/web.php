@@ -48,7 +48,7 @@ Route::get('/suscripciones/borrar/{id}','SubscriptionTypesController@destroySubs
 
 //Newsletters routes
 Route::get('boletines','NewslettersController@indexNewsletters');
-Route::get('boletines/nuevo','NewslettersController@createNewsletters');
+Route::get('boletines/nuevo','NewslettersController@newNewsletters');
 Route::post('boletines/nuevo','NewslettersController@saveNewsletters');
 
 Route::get('boletines/detalle/{id}','NewslettersController@showNewsletters');
