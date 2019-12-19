@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Newsletter;
 
 class NewslettersController extends Controller
 {
@@ -11,7 +12,8 @@ class NewslettersController extends Controller
     This method show a newsletter dashboard
     */
     public function indexNewsletters(){
-
+      $newsletters = Newsletter::orderBy('id','DESC')->paginate(3);
+      return view('newsletters',compact('newsletters'));
     }
 
     /*
