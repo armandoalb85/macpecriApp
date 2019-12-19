@@ -27,7 +27,7 @@
           <h5>Edición Suscripción Definida</h5>
         </div>
         <div class="ibox-content">
-          <form method="#" action="#" >
+          <form method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
             {{csrf_field()}}
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Tipo</label>

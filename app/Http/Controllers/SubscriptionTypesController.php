@@ -48,8 +48,24 @@ class SubscriptionTypesController extends Controller
       return  view('editsubscriptiontype',compact('subscription'));
     }
 
-    public function updateSubscriptionType(){
+    public function updateSubscriptionType(Request $request, $id){
 
+      $data = request()->validate([
+        'tipo' => 'required',
+        'limit' => 'required'
+      ],[
+        'tipo.required' => 'Tipo de Suscripción es obligatorio.',
+        'limit.required' => 'Indique un limite de articulos de lectura.'
+      ]);
+
+      $subscription = SubscriptionType::find($id);
+      $subscription ->name = $request->tipo;
+      $subscription->description = $request->description;
+      $subscription->cost = $request->cost;
+      $subscription->limit = $request->limit;
+      $subscription->status = $request->status;
+      $subscription->update();
+      return redirect('suscripciones');
     }
 
     public function destroySubscriptionType($id){
