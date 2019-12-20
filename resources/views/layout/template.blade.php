@@ -73,9 +73,6 @@
                         <li>
                           <a href="{{ url('suscripciones') }}">Tipos de suscripción </a>
                         </li>
-                        <li>
-                          <a href="#">Artículos / Suscripción </a>
-                        </li>
                     </ul>
                 </li>
                 <li>
