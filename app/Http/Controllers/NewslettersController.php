@@ -50,7 +50,7 @@ class NewslettersController extends Controller
       $newsletter->stardate = date('Y-m-d',$time);
 
       $newsletter->save();
-
+      
       return redirect('boletines');
 
     }

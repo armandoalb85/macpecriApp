@@ -17,7 +17,7 @@ class CreateSubscriberHistoriesTable extends Migration
             $table->increments('id');
             $table->string('status');
             $table->date('activedate');
-            $table->date('closedate');
+            $table->date('closedate')->nullable(true);
             $table->timestamps();
 
             $table->integer('subscriber_id')->unsigned();
