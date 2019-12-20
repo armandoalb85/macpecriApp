@@ -81,8 +81,9 @@
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del Lector</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">Consultar Pagos</a></li>
-                        <li><a href="{{ url('/suscriptores/') }}">Consultar Lectores</a></li>
+                        <li><a href="#">Pagos Realizados</a></li>
+                        <li><a href="#">Pagos Pendientes</a></li>
+                        <li><a href="{{ url('/suscriptores/') }}">Lectores</a></li>
                     </ul>
                 </li>
                 <li>
