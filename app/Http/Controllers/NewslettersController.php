@@ -58,15 +58,33 @@ class NewslettersController extends Controller
     /*
     This method show a page for edit newsletter in specific
     */
-    public function editNewsletter(){
-
+    public function editNewsletter($id){
+      $newsletter=Newsletter::find($id);
+      return  view('editnewsletter',compact('newsletter'));
     }
 
     /*
     This method allow update a newsletter
     */
-    public function updateNewsletters(){
+    public function updateNewsletter(Request $request, $id){
 
+      $data = $this->dataValidator();
+
+      $newsletter = Newsletter::find($id);
+      $newsletter ->name = $request->title;
+      $newsletter->description = $request->description;
+      $time = strtotime($request->startdate);
+      $newsletter->stardate = date('Y-m-d',$time);
+      $time = strtotime($request->closedate);
+      if ($request->closedate != '' or $request->closedate != null){
+        $newsletter->closedate = date('Y-m-d',$time);
+      }else {
+        $newsletter->closedate = null;
+      }
+
+      $newsletter->update();
+
+      return redirect('boletines');
     }
 
     /*
