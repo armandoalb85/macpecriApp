@@ -26,7 +26,7 @@
     <script src="/js/plugins/pace/pace.min.js"></script>
 
     <!-- jQuery UI -->
-    <script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- data table -->
     <script src="/js/plugins/dataTables/datatables.min.js"></script>

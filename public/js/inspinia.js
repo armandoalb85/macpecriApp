@@ -111,10 +111,11 @@ $(document).ready(function () {
 
     // Append config box / Only for demo purpose
     // Uncomment on server mode to enable XHR calls
-    $.get("skin-config.html", function (data) {
+    /// Parece que choca con gestion de xhr delaravel, por eso e comenta
+    /*$.get("skin-config.html", function (data) {
        if (!$('body').hasClass('no-skin-config'))
            $('body').append(data);
-    });
+    });*/
 
     // Minimalize menu
     $('.navbar-minimalize').on('click', function (event) {
@@ -311,5 +312,3 @@ function WinMove() {
         })
         .disableSelection();
 }
-
-
