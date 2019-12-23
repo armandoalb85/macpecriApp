@@ -26,7 +26,7 @@
           <h5>Consultar Pagos</h5>
         </div>
         <div class="ibox-content">
-          <form method="" action="" >
+          <form method="post" action="{{ url('pagos_realizados')}}" >
             {{csrf_field()}}
             <br>
             <div class="form-group row">
@@ -86,25 +86,28 @@
                   <thead>
                   <tr>
                       <th>Suscriptor</th>
-                      <th>Fecha</th>
+                      <th>Fecha de Corbo</th>
+                      <th>Fecha de Pago</th>
+                      <th>Mora</th>
                       <th>Pago</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                    </tr>
-                    <tr >
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                    </tr>
+                    @if ($payments->count())
+                      @foreach($payments as $payment)
+                        <tr>
+                          <td>{{$payment->name." ".$payment->lastname}}</td>
+                          <td>{{$payment->startdate}}</td>
+                          <td>{{$payment->closedate}}</td>
+                          <td>{{$payment->closedate - $payment->startdate }}</td>
+                          <td>{{$payment->amount}}</td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="8">No se encontraron registros</td>
+                      </tr>
+                    @endif
                   </tfoot>
               </table>
             </div>

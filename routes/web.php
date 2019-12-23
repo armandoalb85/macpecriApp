@@ -38,6 +38,8 @@ Route::get('suscriptores', 'SubscribersController@indexSubscribers');
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
 Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');
 
+Route::post('pagos_realizados', 'SubscribersController@listPaymentBySubscribers');
+
 //Config routes
 Route::get('suscripciones','SubscriptionTypesController@indexSubscriptionType');
 Route::get('suscripciones/nuevo', 'SubscriptionTypesController@newSubscriptionType');
