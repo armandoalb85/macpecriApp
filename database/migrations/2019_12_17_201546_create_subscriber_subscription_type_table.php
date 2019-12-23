@@ -16,7 +16,7 @@ class CreateSubscriberSubscriptionTypeTable extends Migration
         Schema::create('subscriber_subscription_type', function (Blueprint $table) {
             $table->increments('id');
             $table->date('startdate');
-            $table->date('closedate');
+            $table->date('closedate')->nullable(true);
             $table->string('status');
             $table->integer('limit');
             $table->timestamps();
