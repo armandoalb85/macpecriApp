@@ -26,13 +26,13 @@
           <h5>Consultar Pagos</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('boletines/nuevo') }}" >
+          <form method="post" action="{{ url('pagos_pendientes') }}" >
             {{csrf_field()}}
             <br>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Suscripción</label>
             <div class="col-sm-9">
-              <select class="form-control m-b" name="status">
+              <select class="form-control m-b" name="subscriptionType">
                 @foreach ($subscriptionTypes as $subscriptionType)
                   <option>{{ $subscriptionType->name }}</option>
                 @endforeach
@@ -77,7 +77,7 @@
     <div class="col-lg-8">
       <div class="ibox ">
           <div  class="ibox-title">
-              <h5>Listado de Pagos Realizados</h5>
+              <h5>Listado de Pagos Pendientes</h5>
           </div>
           <div class="ibox-content">
 
@@ -85,26 +85,29 @@
               <table class="table table-striped table-bordered table-hover dataTables-example" >
                   <thead>
                   <tr>
-                      <th>Suscriptor</th>
-                      <th>Fecha</th>
-                      <th>Pago</th>
+                    <th>Suscriptor</th>
+                    <th>Fecha de Corbo</th>
+                    <th>Días para Cancelar</th>
+                    <th>Fecha Actual</th>
+                    <th>Pago</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                    </tr>
-                    <tr >
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                    </tr>
+                    @if ($payments->count())
+                      @foreach($payments as $payment)
+                        <tr>
+                          <td>{{$payment->name." ".$payment->lastname}}</td>
+                          <td>{{$payment->startdate}}</td>
+                          <td>{{$payment->daysforpaying}}</td>
+                          <td>{{date('Y-m-d')}}</td>
+                          <td>{{$payment->amount}}</td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="8">No se encontraron registros</td>
+                      </tr>
+                    @endif
                   </tfoot>
               </table>
             </div>

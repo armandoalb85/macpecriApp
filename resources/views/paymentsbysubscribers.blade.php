@@ -88,7 +88,6 @@
                       <th>Suscriptor</th>
                       <th>Fecha de Corbo</th>
                       <th>Fecha de Pago</th>
-                      <th>Mora</th>
                       <th>Pago</th>
                   </tr>
                   </thead>
@@ -99,7 +98,6 @@
                           <td>{{$payment->name." ".$payment->lastname}}</td>
                           <td>{{$payment->startdate}}</td>
                           <td>{{$payment->closedate}}</td>
-                          <td>{{$payment->closedate - $payment->startdate }}</td>
                           <td>{{$payment->amount}}</td>
                         </tr>
                       @endforeach
