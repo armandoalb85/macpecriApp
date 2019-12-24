@@ -10,10 +10,14 @@ use DB;
 
 class SubscribersController extends Controller
 {
+    private $codeMessage;
+    private $message;
 
     public function __construct()
     {
         $this->middleware('auth');
+        $codeMessage = 'warning';
+        $message = 'Ocurrio un problema con la operación, intentlo de nuevo.';
     }
 
     /*

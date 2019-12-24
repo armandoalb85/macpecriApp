@@ -126,6 +126,7 @@
 
         <!-- Contenido o Cuerpo de Pagina -->
         <div class="wrapper wrapper-content">
+            @include('layouts/flashmessage')
             @yield('contentapp')
              <!-- Pie de Pagina -->
             <div class="footer">
@@ -174,6 +175,13 @@
           forceParse: false,
           calendarWeeks: true,
           autoclose: true
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        setTimeout(function(){
+          $('.fade-out').fadeOut(5000);
         });
       });
     </script>

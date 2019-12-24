@@ -34,7 +34,7 @@
                 <div class="col-lg-7">
                   <input type="password" name="actualPassword" placeholder="******" class="form-control">
                   @if ($errors->has('actualPassword'))
-                    <p>{{ $errors->first('actualPassword') }}</p>
+                    <strong class="error-text">{{ $errors->first('actualPassword') }}</strong>
                   @endif
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 <div class="col-lg-7">
                   <input type="password" name = "newPassword" placeholder="******" class="form-control">
                   @if ($errors->has('newPassword'))
-                    <p>{{ $errors->first('newPassword') }}</p>
+                    <strong class="error-text">{{ $errors->first('newPassword') }}</strong>
                   @endif
                 </div>
               </div>
@@ -52,7 +52,7 @@
                 <div class="col-lg-7">
                   <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control">
                   @if ($errors->has('passwordConfirmation'))
-                    <p>{{ $errors->first('passwordConfirmation') }}</p>
+                    <strong class="error-text">{{ $errors->first('passwordConfirmation') }}</strong>
                   @endif
                 </div>
               </div>

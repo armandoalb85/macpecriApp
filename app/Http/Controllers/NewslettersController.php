@@ -8,9 +8,15 @@ use DateTime;
 
 class NewslettersController extends Controller
 {
+    private $codeMessage;
+    private $message;
+    
     public function __construct()
     {
         $this->middleware('auth');
+
+        $codeMessage = 'warning';
+        $message = 'Ocurrio un problema con la operación, intentlo de nuevo.';
     }
 
     /*
@@ -49,9 +55,14 @@ class NewslettersController extends Controller
       $time = strtotime($request->startdate);
       $newsletter->stardate = date('Y-m-d',$time);
 
-      $newsletter->save();
-      
-      return redirect('boletines');
+      $operationResult = $newsletter->save();
+
+      if ($operationResult){
+        $this->codeMessage = 'info';
+        $this->message = 'El nuevo regitro fue guardado con exito.';
+      }
+
+      return redirect('boletines')->with($this->codeMessage, $this->message);
 
     }
 
@@ -82,9 +93,14 @@ class NewslettersController extends Controller
         $newsletter->closedate = null;
       }
 
-      $newsletter->update();
+      $operationResult = $newsletter->update();
 
-      return redirect('boletines');
+      if ($operationResult){
+        $this->codeMessage = 'info';
+        $this->message = 'El regitro fue actualizado con exito.';
+      }
+
+      return redirect('boletines')->with($this->codeMessage, $this->message);
     }
 
     /*

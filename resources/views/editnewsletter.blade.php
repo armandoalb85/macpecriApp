@@ -24,7 +24,7 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Nuevo Boletin Informativo</h5>
+          <h5>Edición de Boletin Informativo</h5>
         </div>
         <div class="ibox-content">
           <form method="post" action="{{ url('boletines/edicion/'.$newsletter->id ) }}" >
@@ -34,7 +34,7 @@
               <div class="col-lg-9">
                 <input type="text" name="title" placeholder="nombre del boletin" class="form-control" value="{{ $newsletter->name }}">
                 @if ($errors->has('title'))
-                  <p>{{ $errors->first('title') }}</p>
+                  <strong class="error-text">{{ $errors->first('title') }}</strong>
                 @endif
               </div>
             </div>
@@ -52,9 +52,9 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate" value="{{$newsletter->stardate}}">
+                    <input type="text" class="form-control col-lg-12" name="startdate" value="{{$newsletter->stardate}}">
                     @if ($errors->has('startdate'))
-                      <p>{{ $errors->first('startdate') }}</p>
+                      <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
                 </div>
               </div>

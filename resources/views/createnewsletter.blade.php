@@ -34,7 +34,7 @@
               <div class="col-lg-9">
                 <input type="text" name="title" placeholder="nombre del boletin" class="form-control">
                 @if ($errors->has('title'))
-                  <p>{{ $errors->first('title') }}</p>
+                  <strong class="error-text">{{ $errors->first('title') }}</strong>
                 @endif
               </div>
             </div>
@@ -50,9 +50,9 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate">
+                    <input type="text" class="form-control col-lg-12" name="startdate">
                     @if ($errors->has('startdate'))
-                      <p>{{ $errors->first('startdate') }}</p>
+                      <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
                 </div>
               </div>

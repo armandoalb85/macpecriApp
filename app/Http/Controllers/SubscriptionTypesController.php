@@ -7,10 +7,14 @@ use App\SubscriptionType;
 
 class SubscriptionTypesController extends Controller
 {
+    private $codeMessage;
+    private $message;
 
     public function __construct()
     {
         $this->middleware('auth');
+        $codeMessage = 'warning';
+        $message = 'Ocurrio un problema con la operación, intentlo de nuevo.';
     }
 
     /**
@@ -51,9 +55,14 @@ class SubscriptionTypesController extends Controller
       $SubscriptionType->status = $request->status;
       $SubscriptionType->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
       $SubscriptionType->type =  ($this->columnValidator($request->cost)) ? 'Pago' : 'Gratuita';
-      $SubscriptionType->save();
+      $operationResult = $SubscriptionType->save();
 
-      return redirect('suscripciones');
+      if ($operationResult){
+        $this->codeMessage = 'info';
+        $this->message = 'El nuevo regitro fue guardado con exito.';
+      }
+
+      return redirect('suscripciones')->with($this->codeMessage, $this->message);
 
     }
 
@@ -80,9 +89,14 @@ class SubscriptionTypesController extends Controller
       $subscription->status = $request->status;
       $subscription->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
       $subscription->type = ($this->columnValidator($request->cost)) ? 'Pago' : 'Gratuita';
-      $subscription->update();
+      $operationResult = $subscription->update();
 
-      return redirect('suscripciones');
+      if ($operationResult){
+        $this->codeMessage = 'info';
+        $this->message = 'El regitro fue actualizado con exito.';
+      }
+
+      return redirect('suscripciones')->with($this->codeMessage, $this->message);
     }
 
     /**

@@ -36,7 +36,7 @@
               <div class="col-lg-9">
                 <input type="text" name="tipo" placeholder="Nombre Suscripción" class="form-control">
                 @if ($errors->has('tipo'))
-                  <p>{{ $errors->first('tipo') }}</p>
+                  <strong class="error-text">{{ $errors->first('tipo') }}</strong>
                 @endif
               </div>
             </div>
@@ -51,7 +51,7 @@
               <div class="col-lg-9">
                 <input type="number" name = "limit" placeholder="0" class="form-control">
                 @if ($errors->has('limit'))
-                  <p>{{ $errors->first('limit') }}</p>
+                  <strong class="error-text">{{ $errors->first('limit') }}</strong>
                 @endif
               </div>
             </div>

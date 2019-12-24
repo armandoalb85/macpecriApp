@@ -27,6 +27,9 @@ class UsersController extends Controller
     */
     public function updatePassword(Request $request){
 
+        $codeMessage = 'warning';
+        $message = 'Opps!... ocurrio un problema, intenetlo de nuevo';
+
         $data = request()->validate([
           'actualPassword' => 'required',
           'newPassword' => 'required',
@@ -41,10 +44,14 @@ class UsersController extends Controller
         ]);
 
         $user = new User;
-        $user->where('email', '=', Auth::user()->email)
+        $value = $user->where('email', '=', Auth::user()->email)
              ->update(['password' => md5($request->newPassword)]);
-        return redirect('dashboard');
 
+        if ($value){
+          $codeMessage = 'info';
+          $message = 'Se modifico la información de forma exitosa.';
+        }
 
+        return redirect('password_modify')->with($codeMessage, $message);
     }
 }
