@@ -19,7 +19,7 @@ class CreateSubscribeNowsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('status');
-            $table->string('pathimage');
+            $table->string('pathimage')->nullable(true);;
 
             $table->timestamps();
         });
