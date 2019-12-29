@@ -52,6 +52,8 @@ Route::post('/suscripciones/edicion/{id}', 'SubscriptionTypesController@updateSu
 
 Route::get('/suscripciones/borrar/{id}','SubscriptionTypesController@destroySubscriptionType');
 
+Route::get('suscribase_ahora','SubscribeNowsController@indexSubscribeMessageConfig');
+
 //Newsletters routes
 Route::get('boletines','NewslettersController@indexNewsletters');
 Route::get('boletines/nuevo','NewslettersController@newNewsletters');

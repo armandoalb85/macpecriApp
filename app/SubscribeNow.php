@@ -10,7 +10,7 @@ class SubscribeNow extends Model
     *This method define an asociation between PaymentMethod with supscriptionmessage
     */
     public function paymentMethodRecords(){
-      return $this->->hasMany('App\SubscriptionMessage');
+      return $this->hasMany('App\SubscriptionMessage');
     }
 
 }
