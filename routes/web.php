@@ -45,22 +45,25 @@ Route::post('pagos_pendientes', 'SubscribersController@listDebtsBySubscribers');
 Route::get('suscripciones','SubscriptionTypesController@indexSubscriptionType');
 Route::get('suscripciones/nuevo', 'SubscriptionTypesController@newSubscriptionType');
 Route::post('suscripciones/nuevo', 'SubscriptionTypesController@saveSubscriptionType');
-
 Route::get('/suscripciones/detalle/{id}','SubscriptionTypesController@showSubscriptionType');
 Route::get('/suscripciones/edicion/{id}','SubscriptionTypesController@editSubscriptionType');
 Route::post('/suscripciones/edicion/{id}', 'SubscriptionTypesController@updateSubscriptionType');
-
 Route::get('/suscripciones/borrar/{id}','SubscriptionTypesController@destroySubscriptionType');
 
 Route::get('suscribase_ahora','SubscribeNowsController@indexSubscribeMessageConfig');
+Route::get('suscribase_ahora/detalle/{id}','SubscribeNowsController@showSubscribeMessageConfig');
+Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscribeMessageConfig');
+Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeMessageConfig');
+Route::get('suscribase_ahora/nuevo/{id}','SubscribeNowsController@newSubscribeMessageConfig');
+Route::post('suscribase_ahora/nuevo/{id}','SubscribeNowsController@saveSubscribeMessageConfig');
+Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
+
 
 //Newsletters routes
 Route::get('boletines','NewslettersController@indexNewsletters');
 Route::get('boletines/nuevo','NewslettersController@newNewsletters');
 Route::post('boletines/nuevo','NewslettersController@saveNewsletters');
-
 Route::get('boletines/detalle/{id}','NewslettersController@showNewsletter');
 Route::get('boletines/edicion/{id}','NewslettersController@editNewsletter');
 Route::post('boletines/edicion/{id}','NewslettersController@updateNewsletter');
-
 Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
