@@ -58,6 +58,12 @@ Route::get('suscribase_ahora/nuevo/{id}','SubscribeNowsController@newSubscribeMe
 Route::post('suscribase_ahora/nuevo/{id}','SubscribeNowsController@saveSubscribeMessageConfig');
 Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
 
+Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
+Route::get('mensajes/nuevo','SubscriptionMessagesController@newSubscriptionMessage');
+Route::post('mensajes/nuevo','SubscriptionMessagesController@saveSubscriptionMessage');
+Route::get('mensajes/edicion/{id}','SubscriptionMessagesController@editSubscriptionMessage');
+Route::get('mensajes/edicion/{id}','SubscriptionMessagesController@updateSubscriptionMessage');
+Route::get('mensajes/borrar/{id}','SubscriptionMessagesController@destroySubscriptionMessage');
 
 //Newsletters routes
 Route::get('boletines','NewslettersController@indexNewsletters');
