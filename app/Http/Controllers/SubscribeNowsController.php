@@ -8,6 +8,17 @@ use DB;
 
 class SubscribeNowsController extends Controller
 {
+    private $codeMessage;
+    private $message;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $codeMessage = 'warning';
+        $message = 'Ocurrio un problema con la operación, intentlo de nuevo.';
+    }
+    
     /*
     *This method show a index page with message config list
     */
