@@ -22,13 +22,6 @@ class SubscriptionMessagesController extends Controller
     }
 
     /*
-    *This method show a message on subscriber now
-    */
-    public function showSubscriptionMessage($idMessageConfig, $idMessageConfigParent){
-
-    }
-
-    /*
     *This method allow create a message
     */
     public function newSubscriptionMessage($id){
@@ -72,14 +65,33 @@ class SubscriptionMessagesController extends Controller
     /*
     *This method allow edit a message
     */
-    public function editSubscriptionMessage(){
+    public function editSubscriptionMessage($id){
+
+      $types = $this->typeMessage;
+      $subscribeMessage = SubscriptionMessage::find($id);
+      $subscribeNow = SubscribeNow::find($subscribeMessage->configmessage_id);
+      return view('editmessage', compact('subscribeNow','subscribeMessage','types'));
 
     }
 
     /*
     *This method allow update a message
     */
-    public function updateSubscriptionMessage(){
+    public function updateSubscriptionMessage(Request $request, $id){
+
+      $data = $this->dataValidator();
+
+      $subscribeMessage = SubscriptionMessage::find($id);
+      $subscribeMessage->message = $request->message;
+
+      $operationResult = $subscribeMessage->update();
+
+      if ($operationResult){
+        $this->codeMessage = 'info';
+        $this->message = 'El regitro fue actualizado con exito.';
+      }
+
+      return redirect('suscribase_ahora/detalle/'.$subscribeMessage->configmessage_id)->with($this->codeMessage, $this->message);
 
     }
 

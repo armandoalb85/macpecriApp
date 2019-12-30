@@ -24,7 +24,7 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Detalle de Mensaje Configurado</h5>
+          <h5>Detalle de Mensaje Padre a Configurar</h5>
         </div>
         <div class="ibox-content">
           <form method="" action="" >
@@ -140,7 +140,7 @@
                       <td>
                         <center>
                           <div class="btn-group" role="group">
-                            <a href="" class="btn btn-sm btn-white ">
+                            <a href="{{action('SubscriptionMessagesController@editSubscriptionMessage', $message->id)}}" class="btn btn-sm btn-white ">
                               <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
                             </a>
                             <a href="{{action('SubscriptionMessagesController@destroySubscriptionMessage', $message->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">

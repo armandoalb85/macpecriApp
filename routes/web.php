@@ -56,13 +56,13 @@ Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscrib
 Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeMessageConfig');
 Route::get('suscribase_ahora/nuevo/{id}','SubscribeNowsController@newSubscribeMessageConfig');
 Route::post('suscribase_ahora/nuevo/{id}','SubscribeNowsController@saveSubscribeMessageConfig');
-Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
+
 
 Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
 Route::get('mensajes/nuevo/{id}','SubscriptionMessagesController@newSubscriptionMessage');
 Route::post('mensajes/nuevo/{id}','SubscriptionMessagesController@saveSubscriptionMessage');
 Route::get('mensajes/edicion/{id}','SubscriptionMessagesController@editSubscriptionMessage');
-Route::get('mensajes/edicion/{id}','SubscriptionMessagesController@updateSubscriptionMessage');
+Route::post('mensajes/edicion/{id}','SubscriptionMessagesController@updateSubscriptionMessage');
 Route::get('mensajes/borrar/{id}','SubscriptionMessagesController@destroySubscriptionMessage');
 
 //Newsletters routes
