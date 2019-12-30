@@ -50,6 +50,8 @@ class SubscribeNowsController extends Controller
     */
     public function saveSubscribeMessageConfig(Request $request){
 
+      $data = $this->dataValidator();
+
       $status = ($this->thereIsAnActiveMessage()) ? 'Activo':'Inactivo';
       $subscribeNow = new SubscribeNow();
 
@@ -71,7 +73,7 @@ class SubscribeNowsController extends Controller
     /*
     *This method allow edit a message config
     */
-    public function editSubscribeMessageConfig(){
+    public function editSubscribeMessageConfig($id){
 
     }
 
@@ -123,9 +125,9 @@ class SubscribeNowsController extends Controller
 
       $data = request()->validate([
         'description' => 'required',
-        'name' => 'requiered'
+        'name' => 'required'
       ],[
-        'message.required' => 'El ontenido del mensaje es obligatorio.',
+        'description.required' => 'El ontenido del mensaje es obligatorio.',
         'name.required' => 'Es obligatorio que identifique el mensaje.'
       ]);
 
