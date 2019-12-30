@@ -31,7 +31,12 @@
             {{csrf_field()}}
             <div class="form-group row">
               <div class="col-lg-12">
-                <img src="image-not-found.png" alt="Smiley face" height="100%" width="25%">
+
+                @if ($subscribeNow->imagepath != null)
+                  <img src="{{ $subscribeNow->imagepath }}" alt="image not found" height="100%" width="25%">
+                @else
+                  <img src="/img/image_not_found.png" alt="image not found" height="100%" width="25%">
+                @endif
               </div>
             </div>
             <div class="form-group row">
