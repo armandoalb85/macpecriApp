@@ -24,7 +24,7 @@ class SubscriptionMessagesController extends Controller
     /*
     *This method show a message on subscriber now
     */
-    public function showSubscriptionMessage(){
+    public function showSubscriptionMessage($idMessageConfig, $idMessageConfigParent){
 
     }
 
@@ -86,7 +86,12 @@ class SubscriptionMessagesController extends Controller
     /*
     *This method allow delete a message
     */
-    public function destroySubscriptionMessage(){
+    public function destroySubscriptionMessage($id){
+
+      $subscriptionMessage = SubscriptionMessage::find($id);
+      $subscribeNow = SubscribeNow::find($subscriptionMessage->configmessage_id);
+      $subscriptionMessage->delete();
+      return redirect('suscribase_ahora/detalle/'.$subscribeNow->id);
 
     }
 

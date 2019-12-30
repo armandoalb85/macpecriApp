@@ -24,7 +24,7 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Detalle de Mensaje de Consiguración</h5>
+          <h5>Detalle de Mensaje Configurado</h5>
         </div>
         <div class="ibox-content">
           <form method="" action="" >
@@ -73,71 +73,95 @@
       </div>
     </div>
     <div class="col-lg-7">
-      <div class="row white-bg" >
+      @if($messages->count())
+        <div class="row col-12">
+          <div class="ibox col-lg-12">
+            <div class="ibox-title">
+              <h5>Mensajes Asociados a Suscribase Ahora</h5>
+            </div>
+            <div class="ibox-content">
+              @foreach($messages as $message)
+                <strong>Codigo: &nbsp; {{ $message->id }}</strong>
+                <p>{{$message->message}}</p>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      @else
+        <div class="row">
           <div class="col-lg-12">
             <div class="ibox ">
-                <div  class="ibox-title">
-                  <div class="row">
-                    <div class="col-10">
-                      <h5>Configuración de Mensajes Asociados</h5>
-                    </div>
-                    <div class="col-2">
-                      <a href="{{action('SubscriptionMessagesController@newSubscriptionMessage', $subscribeNow->id)}}" class="btn btn-sm btn-primary float-right">
-                        <i class="glyphicon glyphicon-plus"></i>
-                        &nbsp;Nuevo Registro
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="ibox-content">
-
-                  <div class="table-responsive">
-                  <table class="table table-striped table-bordered table-hover dataTables-example" >
-                    <thead>
-                    <tr>
-                      <th>Codigo</th>
-                      <th>Tipo</th>
-                      <th>Estatus</th>
-                      <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      @if($messages->count())
-                        @foreach($messages as $message)
-                        <tr>
-                          <th>{{$message->id}}</th>
-                          <th>{{$message->type}}</th>
-                          <th>{{$message->status}}</th>
-                          <td>
-                            <center>
-                            <div class="btn-group" role="group">
-                              <a href="" class="btn btn-sm btn-white ">
-                                <span class="glyphicon glyphicon-search" title="Consulta de registro"></span>
-                              </a>
-                              <a href="" class="btn btn-sm btn-white ">
-                                <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
-                              </a>
-                              <a href="" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
-                                <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
-                              </a>
-                            </div>
-                            </center>
-                          </td>
-                         </tr>
-                        @endforeach
-                      @else
-                        <tr>
-                          <td colspan="8">No se encontraron registros</td>
-                        </tr>
-                      @endif
-                    </tfoot>
-                </table>
-                  </div>
+              <div class="ibox-title">
+                <h5>Mensajes Asociados a Suscribase Ahora</h5>
               </div>
+              <div class="ibox-content">
+              </div>
+            </div>
           </div>
-      </div>
+        </div>
+      @endif
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div  class="ibox-title">
+          <div class="row">
+            <div class="col-10">
+              <h5>Configurar Mensajes Asociados</h5>
+            </div>
+            <div class="col-2">
+              <a href="{{action('SubscriptionMessagesController@newSubscriptionMessage', $subscribeNow->id)}}" class="btn btn-sm btn-primary float-right">
+              <i class="glyphicon glyphicon-plus"></i>
+                &nbsp;Nuevo Registro
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example" >
+              <thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Tipo</th>
+                  <th>Estatus</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @if($messages->count())
+                  @foreach($messages as $message)
+                    <tr>
+                      <th>{{$message->id}}</th>
+                      <th>{{$message->type}}</th>
+                      <th>{{$message->status}}</th>
+                      <td>
+                        <center>
+                          <div class="btn-group" role="group">
+                            <a href="" class="btn btn-sm btn-white ">
+                              <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
+                            </a>
+                            <a href="{{action('SubscriptionMessagesController@destroySubscriptionMessage', $message->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
+                              <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
+                            </a>
+                          </div>
+                        </center>
+                      </td>
+                    </tr>
+                  @endforeach
+                @else
+                  <tr>
+                    <td colspan="8">No se encontraron registros</td>
+                  </tr>
+                @endif
+              </tfoot>
+          </table>
+        </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
