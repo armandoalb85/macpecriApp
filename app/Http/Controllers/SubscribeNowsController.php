@@ -75,12 +75,37 @@ class SubscribeNowsController extends Controller
     */
     public function editSubscribeMessageConfig($id){
 
+      $subscribeNow = SubscribeNow::find($id);
+      return view ('editsubscribenow', compact('subscribeNow'));
+
     }
 
     /*
     *This method allow update a message config
     */
-    public function updateSubscribeMessageConfig(){
+    public function updateSubscribeMessageConfig(Request $request, $id){
+
+      $data = $this->dataValidator();
+
+      $status = ($this->thereIsAnActiveMessage()) ? 'Activo':'Inactivo';
+      $subscribeNow = SubscribeNow::find($id);
+
+      if ($subscribeNow->status == 'Activo' && $request->status == 'Inactivo' ){
+        $status = 'Inactivo';
+      }
+
+      $subscribeNow->name = $request->name;
+      $subscribeNow->description = $request->description;
+      $subscribeNow->status = $status;
+
+      $operationResult = $subscribeNow->update();
+
+      if($operationResult){
+        $codeMessage = 'info';
+        $message = 'El registro fue creado con exito y con estatus '.$status.'.';
+      }
+
+      return redirect('suscribase_ahora')->with($codeMessage, $message);
 
     }
 
