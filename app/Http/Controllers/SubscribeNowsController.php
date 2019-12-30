@@ -18,7 +18,7 @@ class SubscribeNowsController extends Controller
         $codeMessage = 'warning';
         $message = 'Ocurrio un problema con la operación, intentlo de nuevo.';
     }
-    
+
     /*
     *This method show a index page with message config list
     */
@@ -67,7 +67,20 @@ class SubscribeNowsController extends Controller
     /*
     *This method allow destroy a message config
     */
-    public function destroySubscribeMessageConfig(){
+    public function destroySubscribeMessageConfig($id){
+
+      $result = DB::table('subscription_messages')->where('subscription_messages.configmessage_id','=', $id);
+
+      if($result->count()){
+        $this->codeMessage = 'error';
+        $this->message = 'El registro no puede ser eliminado. El mismo posee una configuracion de mensajes asociada.';
+      }else{
+        $this->codeMessage = 'info';
+        $this->message = 'El registro fue eliminado con exito.';
+        SubscribeNow::find($id)->delete();
+      }
+
+      return redirect('suscribase_ahora')->with($this->codeMessage, $this->message);
 
     }
 

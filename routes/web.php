@@ -56,7 +56,7 @@ Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscrib
 Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeMessageConfig');
 Route::get('suscribase_ahora/nuevo/{id}','SubscribeNowsController@newSubscribeMessageConfig');
 Route::post('suscribase_ahora/nuevo/{id}','SubscribeNowsController@saveSubscribeMessageConfig');
-
+Route::get('suscribase_ahora/borrar/{id}','SubscribeNowsController@destroySubscribeMessageConfig');
 
 Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
 Route::get('mensajes/nuevo/{id}','SubscriptionMessagesController@newSubscriptionMessage');
