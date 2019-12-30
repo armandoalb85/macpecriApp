@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubscribeNow extends Model
 {
+    protected $fillable = ['name', 'description', 'status'];
     /**
     *This method define an asociation between PaymentMethod with supscriptionmessage
     */

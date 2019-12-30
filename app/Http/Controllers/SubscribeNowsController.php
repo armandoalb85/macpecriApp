@@ -41,12 +41,30 @@ class SubscribeNowsController extends Controller
     */
     public function newSubscribeMessageConfig(){
 
+      return view ('createsubscribernow');
+
     }
 
     /*
     *This method allow save a  message config
     */
-    public function saveSubscribeMessageConfig(){
+    public function saveSubscribeMessageConfig(Request $request){
+
+      $status = ($this->thereIsAnActiveMessage()) ? 'Activo':'Inactivo';
+      $subscribeNow = new SubscribeNow();
+
+      $subscribeNow->name = $request->name;
+      $subscribeNow->description = $request->description;
+      $subscribeNow->status = $status;
+
+      $operationResult = $subscribeNow->save();
+
+      if($operationResult){
+        $codeMessage = 'info';
+        $message = 'El registro fue creado con exito y con estatus '.$status.'.';
+      }
+
+      return redirect('suscribase_ahora')->with($codeMessage, $message);
 
     }
 
@@ -82,6 +100,36 @@ class SubscribeNowsController extends Controller
 
       return redirect('suscribase_ahora')->with($this->codeMessage, $this->message);
 
+    }
+
+    /*
+    * This method verify if exi an active specific type message
+    */
+    private function thereIsAnActiveMessage(){
+      $value = true;
+
+      $result = DB::table('subscribe_nows')
+        ->where('subscribe_nows.status','=', 'Activo')->get();
+
+      $value = ($result->count())? false: true;
+
+      return $value;
+    }
+
+    /**
+    *This method allow validate the field in createsubsribenow views
+    */
+    private function dataValidator(){
+
+      $data = request()->validate([
+        'description' => 'required',
+        'name' => 'requiered'
+      ],[
+        'message.required' => 'El ontenido del mensaje es obligatorio.',
+        'name.required' => 'Es obligatorio que identifique el mensaje.'
+      ]);
+
+      return $data;
     }
 
 
