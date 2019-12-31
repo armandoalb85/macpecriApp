@@ -27,8 +27,16 @@
           <h5>Edición  de Mensajes (Suscribase Ahora)</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" >
+          <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" enctype="multipart/form-data" >
             {{csrf_field()}}
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label">Subir Archivo</label>
+              <div class="col-sm-9">
+                  <input type="file" class="form-control" name="file">
+              </div>
+            </div>
+
             <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">name</label>
               <div class="col-lg-9">

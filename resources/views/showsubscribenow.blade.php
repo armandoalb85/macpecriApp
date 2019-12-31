@@ -32,8 +32,8 @@
             <div class="form-group row">
               <div class="col-lg-12">
 
-                @if ($subscribeNow->imagepath != null)
-                  <img src="{{ $subscribeNow->imagepath }}" alt="image not found" height="100%" width="25%">
+                @if ($url != null)
+                  <img src="{{ $url}}" alt="image not found" height="100%" width="25%">
                 @else
                   <img src="/img/image_not_found.png" alt="image not found" height="100%" width="25%">
                 @endif

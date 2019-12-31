@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SubscribeNow;
 use DB;
+use Storage;
 
 class SubscribeNowsController extends Controller
 {
@@ -31,9 +32,17 @@ class SubscribeNowsController extends Controller
     *This method show a message config
     */
     public function  showSubscribeMessageConfig($id){
+      $url = null;
       $subscribeNow = SubscribeNow::find($id);
       $messages = DB::table('subscription_messages')->where('subscription_messages.configmessage_id','=', $id)->get();
-      return  view('showsubscribenow',compact('subscribeNow', 'messages'));
+
+      if ($subscribeNow->pathimage != null){
+        $public_path = public_path();
+        //$url = $public_path.'/imageSubscribeMessage/'.$subscribeNow->pathimage;
+        $url = '/imageSubscribeMessage/'.$subscribeNow->pathimage;
+      }
+
+      return  view('showsubscribenow',compact('subscribeNow', 'messages', 'url'));
     }
 
     /*
@@ -86,6 +95,7 @@ class SubscribeNowsController extends Controller
     public function updateSubscribeMessageConfig(Request $request, $id){
 
       $data = $this->dataValidator();
+      $fileName = null;
 
       $status = ($this->thereIsAnActiveMessage()) ? 'Activo':'Inactivo';
       $subscribeNow = SubscribeNow::find($id);
@@ -94,13 +104,24 @@ class SubscribeNowsController extends Controller
         $status = 'Inactivo';
       }
 
+      $file = $request->file('file');
+
+      if ($file != null){
+        $fileName = $file->getClientOriginalName();
+      }
+
       $subscribeNow->name = $request->name;
       $subscribeNow->description = $request->description;
       $subscribeNow->status = $status;
+      $subscribeNow->pathimage = $fileName;
 
       $operationResult = $subscribeNow->update();
 
       if($operationResult){
+        if ($file != null){
+          \Storage::disk('local')->put($fileName,  \File::get($file));
+        }
+
         $codeMessage = 'info';
         $message = 'El registro fue creado con exito y con estatus '.$status.'.';
       }
@@ -115,6 +136,7 @@ class SubscribeNowsController extends Controller
     public function destroySubscribeMessageConfig($id){
 
       $result = DB::table('subscription_messages')->where('subscription_messages.configmessage_id','=', $id);
+      $subscribeNow = SubscribeNow::find($id);
 
       if($result->count()){
         $this->codeMessage = 'error';
@@ -122,7 +144,8 @@ class SubscribeNowsController extends Controller
       }else{
         $this->codeMessage = 'info';
         $this->message = 'El registro fue eliminado con exito.';
-        SubscribeNow::find($id)->delete();
+        Storage::delete([$subscribeNow->pathimage]);
+        $subscribeNow->delete();
       }
 
       return redirect('suscribase_ahora')->with($this->codeMessage, $this->message);
