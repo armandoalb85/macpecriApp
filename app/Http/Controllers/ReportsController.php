@@ -36,6 +36,18 @@ class ReportsController extends Controller
       $totalPay = null;
       $totalFree = null;
 
+      $totalPay = DB::table('subscription_types')
+            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+            ->whereNull('subscriber_subscription_type.closedate')
+            ->where('subscription_types.type', '=', 'Pago')
+            ->count('subscriber_subscription_type.id');
+
+     $totalFree = DB::table('subscription_types')
+            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+            ->whereNull('subscriber_subscription_type.closedate')
+            ->where('subscription_types.type', '=', 'Gratuita')
+            ->count('subscriber_subscription_type.id');
+
       $subQueryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
@@ -61,7 +73,6 @@ class ReportsController extends Controller
             ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
             ->get();
 
-      //echo $queryResults;
       return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree'));
     }
 

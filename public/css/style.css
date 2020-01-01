@@ -1526,7 +1526,8 @@ button:focus {
   color: #F98400;
 }
 .btn-success.btn-outline {
-  color: #1c84c6;
+  color: ##0ed200;
+
 }
 .btn-info.btn-outline {
   color: #23c6c8;
@@ -1559,8 +1560,8 @@ button:focus {
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus {
-  background-color: #F98400;
-  border-color: #F98400;
+  background-color: black;
+  border-color: black;
   color: #FFFFFF;
 }
 .btn-primary.disabled,
@@ -1584,15 +1585,15 @@ button:focus {
 }
 .btn-success {
   color: #fff;
-  background-color: #1c84c6;
-  border-color: #1c84c6;
+  background-color: ##0ed200;
+  border-color: ##0ed200;
 }
 .btn-success:hover,
 .btn-success:focus,
 .btn-success.focus {
   color: #fff;
-  background-color: #1a7bb9;
-  border-color: #1a7bb9;
+  background-color: black;
+  border-color: black;
 }
 .btn-success.disabled,
 .btn-success:disabled {
@@ -1952,7 +1953,7 @@ button.dim:active:before {
 }
 .label-success,
 .badge-success {
-  background-color: #1c84c6;
+  background-color: ##0ed200;
   color: #FFFFFF;
 }
 .label-warning,
@@ -3391,7 +3392,7 @@ label.error {
   border-left: 6px solid #f8ac59;
 }
 .inspinia-notify.alert-success {
-  border-left: 6px solid #1c84c6;
+  border-left: 6px solid ##0ed200;
 }
 .inspinia-notify.alert-danger {
   border-left: 6px solid #ed5565;
@@ -4148,8 +4149,8 @@ body.tour-open .animated {
 }
 .stream .stream-badge i.bg-success {
   color: #ffffff;
-  background-color: #1c84c6;
-  border-color: #1c84c6;
+  background-color: ##0ed200;
+  border-color: ##0ed200;
 }
 .stream .stream-badge i.bg-primary {
   color: #ffffff;
@@ -4893,7 +4894,7 @@ code {
 .ibox-content {
   background-color: #ffffff;
   color: inherit;
-  padding: 15px 20px 20px 20px;
+  padding: 15px 20px 5px 20px;
   border-color: #e7eaec;
   border-image: none;
   border-style: solid solid none;
@@ -5007,7 +5008,7 @@ table.table-mail tr td {
 }
 .blue-bg,
 .bg-success {
-  background-color: #1c84c6 !important;
+  background-color: ##0ed200 !important;
   color: #ffffff;
 }
 .navy-bg,
@@ -5041,11 +5042,11 @@ table.table-mail tr td {
   border-color: #F98400;
 }
 .panel-success {
-  border-color: #1c84c6;
+  border-color: ##0ed200;
 }
 .panel-success > .panel-heading {
-  background-color: #1c84c6;
-  border-color: #1c84c6;
+  background-color: ##0ed200;
+  border-color: ##0ed200;
   color: #ffffff;
 }
 .panel-info {
@@ -5092,7 +5093,7 @@ table.table-mail tr td {
   background-color: #3dc7ab;
 }
 .progress-bar-success {
-  background-color: #1c84c6;
+  background-color: ##0ed200;
 }
 .progress-bar-info {
   background-color: #23c6c8;
@@ -5121,7 +5122,7 @@ table.table-mail tr td {
   color: inherit !important;
 }
 .text-success {
-  color: #1c84c6 !important;
+  color: ##0ed200 !important;
 }
 .text-info {
   color: #23c6c8 !important;
@@ -5925,7 +5926,7 @@ ul.notes li div {
   color: #F98400;
 }
 .category-list li a .text-primary {
-  color: #1c84c6;
+  color: ##0ed200;
 }
 .category-list li a .text-info {
   color: #23c6c8;
@@ -6451,7 +6452,7 @@ table.issue-tracker tbody tr td {
   border-left: 3px solid #ed5565;
 }
 .agile-list li.info-element {
-  border-left: 3px solid #1c84c6;
+  border-left: 3px solid ##0ed200;
 }
 .agile-list li.success-element {
   border-left: 3px solid #F98400;
@@ -9573,4 +9574,9 @@ body.md-skin {
 
 .error-text{
   color: #FF0000;
+}
+
+.total-report{
+  background-color: #43d900;
+  text-color: black;
 }

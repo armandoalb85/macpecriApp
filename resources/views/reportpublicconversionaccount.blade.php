@@ -51,7 +51,6 @@
             </div>
             <div class="form-group row">
               <div class="col-lg-4">
-                <br>
                 <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
               </div>
             </div>
@@ -59,56 +58,60 @@
         </div>
       </div>
     </div>
-
     <div class="col-lg-8">
-      <div class="ibox ">
-          <div  class="ibox-title">
-              <h5>Reporte en Formato de Tabla</h5>
-          </div>
-          <div class="ibox-content">
-
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover dataTables-example" >
-                  <thead>
-                  <tr>
-                      <th>Suscriptor</th>
-                      <th>Fecha de suscripción</th>
-                      <th>Fecha de Conversión</th>
-                      <th>Cuenta</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @if ($queryResults != null)
-                      @foreach($queryResults as $queryResult)
-                        <tr>
-                          <td>{{$queryResult->name." ".$queryResult->lastname}}</td>
-                          <td>{{$queryResult->created_at}}</td>
-                          <td>{{$queryResult->startdate}}</td>
-                          <td>{{$queryResult->type}}</td>
-                        </tr>
-                      @endforeach
-                          <tr>
-                            <td><strong>Total de Cuentas Pagas: &nbsp;</strong></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td><strong>Total de Cuentas Gratis: &nbsp;</strong></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                    @else
-                      <tr>
-                        <td colspan="8">No se encontraron registros</td>
-                      </tr>
-                    @endif
-                  </tfoot>
-              </table>
+      <div class="ibox">
+        <div class="ibox-title">
+          <div class="row">
+            <div class="col-10">
+              <h5>Resultados Obtenidos</h5>
             </div>
-
+            <div class="col-2">
+              <a href="" class="btn btn-sm btn-success float-right">
+                <span class="glyphicon glyphicon-print" title="Exportar a hoja de cálculo"></span>
+              </a>
+            </div>
+          </div>
         </div>
+        <div class="ibox-content">
+        <table class="table table-bordered table-hover dataTables-example" >
+            <thead>
+            <tr>
+                <th>Suscriptor</th>
+                <th>Fecha de suscripción</th>
+                <th>Fecha de Conversión</th>
+                <th>Cuenta</th>
+            </tr>
+            </thead>
+            <tbody>
+              @if ($queryResults != null)
+                @foreach($queryResults as $queryResult)
+                  <tr>
+                    <td>{{$queryResult->name." ".$queryResult->lastname}}</td>
+                    <td>{{$queryResult->created_at}}</td>
+                    <td>{{$queryResult->startdate}}</td>
+                    <td>{{$queryResult->type}}</td>
+                  </tr>
+                @endforeach
+                  <tr>
+                    <td><strong>Total Cuentas Pagas</strong></td>
+                    <td>@if($totalPay != null){{$totalPay}} @else 0 @endif</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total Cuentas Gratuitas</strong></td>
+                    <td>@if($totalFree != null){{$totalFree}} @else 0 @endif</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+              @else
+                <tr>
+                  <td colspan="8">No se encontraron registros</td>
+                </tr>
+              @endif
+            </tfoot>
+        </table>
+      </div>
       </div>
     </div>
   </div>
