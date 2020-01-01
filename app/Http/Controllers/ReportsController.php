@@ -36,17 +36,8 @@ class ReportsController extends Controller
       $totalPay = null;
       $totalFree = null;
 
-      $totalPay = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->count('subscriber_subscription_type.id');
-
-     $totalFree = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->count('subscriber_subscription_type.id');
+      $totalPay = $this->totalPayAccount();
+      $totalFree = $this->totalFreeAccount();
 
       $subQueryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -91,6 +82,13 @@ class ReportsController extends Controller
     */
     public function reportCreatedAccount(Request $request){
 
+      $queryResults = null;
+      $totalPay = null;
+      $totalFree = null;
+
+      $totalPay = $this->totalPayAccount();
+      $totalFree = $this->totalFreeAccount();
+
       $queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
@@ -100,18 +98,6 @@ class ReportsController extends Controller
             ->where('subscribers.created_at', '<=', $this->dateFormat($request->closedate))
             ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type' )
             ->get();
-
-      $totalPay = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->count('subscriber_subscription_type.id');
-
-      $totalFree = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->count('subscriber_subscription_type.id');
 
       return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree'));
 
@@ -135,6 +121,36 @@ class ReportsController extends Controller
     *This method allows generate an account  expire report
     */
     public function reportAccountExpire(){
+
+    }
+
+    /*
+    * This method return the total subscribed accounts pay
+    */
+    private function totalPayAccount(){
+
+      $totalPay = DB::table('subscription_types')
+            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+            ->whereNull('subscriber_subscription_type.closedate')
+            ->where('subscription_types.type', '=', 'Pago')
+            ->count('subscriber_subscription_type.id');
+
+      return $totalPay;
+
+    }
+
+    /*
+    * This method return the total subscribed accounts free
+    */
+    private function totalFreeAccount(){
+
+      $totalFree = DB::table('subscription_types')
+            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+            ->whereNull('subscriber_subscription_type.closedate')
+            ->where('subscription_types.type', '=', 'Gratuita')
+            ->count('subscriber_subscription_type.id');
+
+      return $totalFree;
 
     }
 
