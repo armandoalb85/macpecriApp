@@ -87,7 +87,7 @@
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">Conversión de Cuentas</a></li>
+                        <li><a href="{{ url('r_conversion_cuenta')}}">Conversión de Cuentas</a></li>
                         <li><a href="#">Creación de Cuentas</a></li>
                         <li><a href="#">Canales de Pago</a></li>
                         <li><a href="#">Pagos Recibidos</a></li>
