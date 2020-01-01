@@ -104,9 +104,42 @@ class ReportsController extends Controller
     }
 
     /*
+    *This method show filters for report
+    */
+    public function filterPaymentUses(){
+      $queryResults = null;
+      $listUses = null;
+
+      return view ('reportpaymentuses', compact('queryResults','listUses'));
+
+    }
+    /*
     *This method allows generate a  payment uses report
     */
-    public function reportPaymentUses(){
+    public function reportPaymentUses(Request $request){
+
+      $listUses[] = array();
+      $i=0;
+
+      $queryResults = DB::table('payment_methods')
+        ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
+        ->where('payment_method_records.startdate', '>=', $this->dateFormat($request->startdate))
+        ->where('payment_method_records.startdate', '<=', $this->dateFormat($request->closedate))
+        ->select('payment_methods.name')->distinct()->get();
+
+      foreach ($queryResults as $queryResult) {
+
+        $totalPay = DB::table('payment_methods')
+              ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
+              ->where('payment_methods.name', '=', $queryResult->name )
+              ->count('payment_method_records.id');
+        $listUses[$i] = $totalPay;
+        $i ++;
+
+      }
+
+      //echo $queryResults;
+      return view ('reportpaymentuses', compact('queryResults','listUses'));
 
     }
 
