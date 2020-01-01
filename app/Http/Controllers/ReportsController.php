@@ -153,8 +153,31 @@ class ReportsController extends Controller
     /*
     *This method allows generate an account  expire report
     */
-    public function reportAccountExpire(){
+    public function filterAccountExpire(){
 
+      $queryResults = null;
+
+      return view ('reportaccountexpire', compact('queryResults'));
+    }
+
+    /*
+    *This method allows generate an account  expire report
+    */
+    public function reportAccountExpire(Request $request){
+
+      $queryResults = null;
+      $queryResults = DB::table('subscription_types')
+            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
+            ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
+            ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+            ->where('subscription_types.type', '=', 'Pago')
+            ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+            ->whereNull('payment_account_statements.closedate')
+            ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
+            ->get();
+
+      return view ('reportaccountexpire', compact('queryResults'));
     }
 
     /*

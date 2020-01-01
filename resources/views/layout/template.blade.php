@@ -90,9 +90,8 @@
                         <li><a href="{{ url('r_conversion_cuenta')}}">Conversión de Cuentas</a></li>
                         <li><a href="{{ url('r_creacion_cuenta')}}">Creación de Cuentas</a></li>
                         <li><a href="{{ url('r_canales_pago')}}">Canales de Pago</a></li>
-                        <li><a href="#">Pagos Recibidos</a></li>
-                        <li><a href="#">Cuentas por Vencerse</a></li>
-                        <li><a href="#">Visitas por suscripción </a></li>
+                        <li><a href="">Pagos Recibidos</a></li>
+                        <li><a href="{{ url('r_cuentas_por_vencer')}}">Cuentas por Vencerse</a></li>
                     </ul>
                 </li>
             </ul>
