@@ -78,7 +78,8 @@ Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
 Route::get('r_conversion_cuenta','ReportsController@filterPublicConversionAccount');
 Route::post('r_conversion_cuenta','ReportsController@reportPublicConversionAccount');
 
-Route::get('r_creacion_cuenta','ReportsController@reportCreatedAccount');
+Route::get('r_creacion_cuenta','ReportsController@filterCreatedAccount');
+Route::post('r_creacion_cuenta','ReportsController@reportCreatedAccount');
 
 Route::get('r_canales_pago','ReportsController@reportPaymentUses');
 Route::get('r_pagos_recibidos','ReportsController@reportPaymentsReceived');
