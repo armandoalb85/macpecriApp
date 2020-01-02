@@ -138,7 +138,6 @@ class ReportsController extends Controller
 
       }
 
-      //echo $queryResults;
       return view ('reportpaymentuses', compact('queryResults','listUses'));
 
     }
@@ -146,8 +145,48 @@ class ReportsController extends Controller
     /*
     *This method allows generate a  payments received report
     */
-    public function reportPaymentsReceived(){
+    public function filterPaymentsReceived(){
 
+      $queryResults = null;
+      $listTotal = null;
+
+      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal'));
+    }
+
+    /*
+    *This method allows generate a  payments received report
+    */
+    public function reportPaymentsReceived(Request $request){
+
+      $listPayments = null;
+      $listTotal[] = array();
+      $i=0;
+
+      $queryResults = DB::table('subscription_types')
+          ->join('subscriber_subscription_type', 'subscription_types.id','=','subscriber_subscription_type.subscription_id')
+          ->join('subscribers', 'subscriber_subscription_type.subscriber_id','=','subscribers.id')
+          ->join('payment_method_records', 'subscribers.id','=','payment_method_records.subscriber_id')
+          ->join('payment_account_statements', 'payment_method_records.paymentmethod_id','=','payment_method_records.id')
+          ->select('subscription_types.name as type')->distinct()->get();
+
+      foreach ($queryResults as $queryResult) {
+
+        $totalPayment = DB::table('subscription_types')
+              ->join('subscriber_subscription_type', 'subscription_types.id','=','subscriber_subscription_type.subscription_id')
+              ->join('subscribers', 'subscribers.id','=','subscriber_subscription_type.subscriber_id')
+              ->join('payment_method_records', 'subscribers.id','=','payment_method_records.subscriber_id')
+              ->join('payment_account_statements', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
+              ->where('payment_account_statements.status', '=', 'Pagado')
+              ->where('subscription_types.name', '=', $queryResult->type)
+              ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+              ->where('payment_account_statements.startdate', '<=', $this->dateFormat($request->closedate))
+              ->sum('payment_account_statements.amount');
+
+        $listTotal[$i] = $totalPayment;
+        $i++;
+      }
+
+      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal'));
     }
 
     /*

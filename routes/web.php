@@ -84,7 +84,8 @@ Route::post('r_creacion_cuenta','ReportsController@reportCreatedAccount');
 Route::get('r_canales_pago','ReportsController@filterPaymentUses');
 Route::post('r_canales_pago','ReportsController@reportPaymentUses');
 
-Route::get('r_pagos_recibidos','ReportsController@reportPaymentsReceived');
+Route::get('r_pagos_recibidos','ReportsController@filterPaymentsReceived');
+Route::post('r_pagos_recibidos','ReportsController@reportPaymentsReceived');
 
 Route::get('r_cuentas_por_vencer','ReportsController@filterAccountExpire');
 Route::post('r_cuentas_por_vencer','ReportsController@reportAccountExpire');

@@ -64,3 +64,27 @@ SELECT count(pamr.paymentmethod_id) AS "Total"
 FROM  payment_method_records pamr, payment_methods pame
 WHERE  pame.id = pamr.paymentmethod_id
     AND pame.name = 'MasterCard';
+
+---Pagos Recibidos
+SELECT sum(paas.amount)
+FROM Subscription_types subt, subscriber_subscription_type sust,
+    subscribers subs, payment_method_records pamr, payment_account_statements paas
+WHERE subt.id =sust.subscription_id
+    AND sust.subscriber_id = subt.id
+    AND subt.id = pamr.subscriber_id
+    AND pamr.id = paas.paymentmethod_id
+    AND paas.status = 'Pagado'
+    AND paas.startdate >= '2019-11-01'
+    AND paas.startdate <= '2019-12-01'
+    AND subt.name = 'Venezuela';
+
+SELECT distinct(subt.name)
+FROM Subscription_types subt, subscriber_subscription_type sust,
+    subscribers subs, payment_method_records pamr, payment_account_statements paas
+WHERE subt.id =sust.subscription_id
+    AND sust.subscriber_id = subt.id
+    AND subt.id = pamr.subscriber_id
+    AND pamr.id = paas.paymentmethod_id
+    AND paas.status = 'Pagado'
+    AND paas.startdate >= '2019-11-01'
+    AND paas.startdate <= '2019-12-01';
