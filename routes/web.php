@@ -1,5 +1,6 @@
 <?php
-
+/*use App\Exports\SubscribersExport;
+use Maatwebsite\Excel\Facades\Excel;*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,3 +90,11 @@ Route::post('r_pagos_recibidos','ReportsController@reportPaymentsReceived');
 
 Route::get('r_cuentas_por_vencer','ReportsController@filterAccountExpire');
 Route::post('r_cuentas_por_vencer','ReportsController@reportAccountExpire');
+
+//Exports
+/*Route::get('/excel', 'ExportsController@subscriberExcelExport');*/
+Route::get('conversion_cuenta_excel', 'ExportsController@xlsPublicConversionAccount');
+Route::get('creacion_cuenta_excel', 'ExportsController@xlsCreatedAccount');
+Route::get('canales_pago_excel', 'ExportsController@xlsPaymentUses');
+Route::get('pagos_recibidos_excel', 'ExportsController@xlsPaymentsReceived');
+Route::get('cuentas_por_vencer_excel', 'ExportsController@xlsAccountExpire');
