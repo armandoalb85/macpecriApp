@@ -39,7 +39,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsPaymentUses(){
-
+      return Excel::download(new PaymentUsesExport('2019-02-10','2019-06-10'), 'MetodosDePagoUsados.xlsx');
     }
 
     /*
