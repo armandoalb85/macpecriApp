@@ -17,9 +17,6 @@ class ExportsController extends Controller
     {
         $this->middleware('auth');
     }
-    /*public function subscriberExcelExport(){
-      return Excel::download(new SubscribersExport, 'subscribers.xlsx');
-    }*/
 
     /*
     *
