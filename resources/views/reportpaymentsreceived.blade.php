@@ -66,7 +66,7 @@
               <h5>Resultados Obtenidos</h5>
             </div>
             <div class="col-2">
-              <a href="" class="btn btn-sm btn-success float-right">
+              <a href="{{ url('pagos_recibidos_excel') }}" class="btn btn-sm btn-success float-right">
                 <span class="glyphicon glyphicon-print" title="Exportar a hoja de cálculo"></span>
               </a>
             </div>

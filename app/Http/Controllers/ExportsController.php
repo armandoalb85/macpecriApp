@@ -46,7 +46,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsPaymentsReceived(){
-
+      return Excel::download(new ReceivePaymentsExport('2017-02-10','2019-06-10'), 'PagosRecibidos.xlsx');
     }
 
     /*
