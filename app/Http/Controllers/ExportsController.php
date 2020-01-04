@@ -32,7 +32,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsCreatedAccount(){
-
+      return Excel::download(new CreateAccountsExport('2019-02-10','2019-06-10'), 'CreacionDeCuenta.xlsx');
     }
 
     /*
