@@ -163,8 +163,10 @@ class ReportsController extends Controller
 
       $queryResults = null;
       $listTotal = null;
+      $dateIni = null;
+      $dateFin = null;
 
-      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal'));
+      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal', 'dateIni', 'dateFin'));
     }
 
     /*
@@ -175,6 +177,9 @@ class ReportsController extends Controller
       $listPayments = null;
       $listTotal[] = array();
       $i=0;
+
+      $dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);
 
       $queryResults = DB::table('subscription_types')
           ->join('subscriber_subscription_type', 'subscription_types.id','=','subscriber_subscription_type.subscription_id')
@@ -200,7 +205,7 @@ class ReportsController extends Controller
         $i++;
       }
 
-      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal'));
+      return view ('reportpaymentsreceived', compact('queryResults', 'listTotal', 'dateIni', 'dateFin'));
     }
 
     /*
