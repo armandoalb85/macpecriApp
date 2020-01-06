@@ -60,12 +60,12 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <!--<li>
                     <a href="{{ url('boletines') }}">
                       <i class="glyphicon glyphicon-envelope"></i>
                       <span class="nav-label">Boletines Informativos </span>
                     </a>
-                </li>
+                </li>-->
                 <li >
                     <a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">Configuración</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
