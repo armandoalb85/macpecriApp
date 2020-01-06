@@ -118,8 +118,10 @@ class ReportsController extends Controller
     public function filterPaymentUses(){
       $queryResults = null;
       $listUses = null;
+      $dateIni = null;
+      $dateFin = null;
 
-      return view ('reportpaymentuses', compact('queryResults','listUses'));
+      return view ('reportpaymentuses', compact('queryResults','listUses','dateIni','dateFin'));
 
     }
     /*
@@ -129,6 +131,9 @@ class ReportsController extends Controller
 
       $listUses[] = array();
       $i=0;
+
+      $dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);
 
       $queryResults = DB::table('payment_methods')
         ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
@@ -147,7 +152,7 @@ class ReportsController extends Controller
 
       }
 
-      return view ('reportpaymentuses', compact('queryResults','listUses'));
+      return view ('reportpaymentuses', compact('queryResults','listUses', 'dateIni', 'dateFin'));
 
     }
 
