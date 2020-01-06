@@ -69,7 +69,7 @@
             <div class="form-group row {{ $errors->has('message') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Contenido</label>
               <div class="col-lg-9">
-                <textarea name="message" rows="5" cols="100" class="form-control">
+                <textarea name="message" rows="5" cols="100" class="form-control" maxlength="150">
                   {{ $subscribeMessage->message }}
                 </textarea>
                 @if ($errors->has('message'))
