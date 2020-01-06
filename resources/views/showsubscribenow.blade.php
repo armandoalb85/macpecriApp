@@ -112,9 +112,8 @@
               <h5>Configurar Mensajes Asociados</h5>
             </div>
             <div class="col-2">
-              <a href="{{action('SubscriptionMessagesController@newSubscriptionMessage', $subscribeNow->id)}}" class="btn btn-sm btn-primary float-right">
-              <i class="glyphicon glyphicon-plus"></i>
-                &nbsp;Nuevo Registro
+              <a href="{{action('SubscriptionMessagesController@newSubscriptionMessage', $subscribeNow->id)}}" class="btn btn-md btn-primary float-right" title="Nuevo Registro">
+                <i class="glyphicon glyphicon-plus"></i>
               </a>
             </div>
           </div>

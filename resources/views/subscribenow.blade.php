@@ -29,9 +29,8 @@
                 <h5>Listado de Boletines</h5>
               </div>
               <div class="col-2">
-                <a href="{{ url('suscribase_ahora/nuevo') }}" class="btn btn-sm btn-primary float-right">
+                <a href="{{ url('suscribase_ahora/nuevo') }}" class="btn btn-md btn-primary float-right" title="Nuevo Registro">
                   <i class="glyphicon glyphicon-plus"></i>
-                  &nbsp;Nuevo Registro
                 </a>
               </div>
             </div>
