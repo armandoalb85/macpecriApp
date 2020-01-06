@@ -28,11 +28,13 @@
               <div class="col-10">
                 <h5>Listado de Tipo de Suscripciones</h5>
               </div>
-              <div class="col-2">
+              <!-- BTN RegisterEDg -->
+              <!--<div class="col-2">
                 <a href="{{ url('suscripciones/nuevo') }}" class="btn btn-md btn-primary float-right" title="Nuevo Registro">
                   <i class="glyphicon glyphicon-plus"></i>
                 </a>
-              </div>
+              </div>-->
+              <!--BTN RegisterEDg  -->
             </div>
           </div>
           <div class="ibox-content">
@@ -43,7 +45,7 @@
               <tr>
                   <th>Tipo</th>
                   <th>Limite de Lectura</th>
-                  <th>Costo</th>
+                  <!--<th>Costo</th>-->
                   <th>Estatus</th>
                   <th>Acciones</th>
               </tr>
@@ -54,7 +56,7 @@
                   <tr>
                     <td>{{$sucription->name}}</td>
                     <td>{{$sucription->limit}}</td>
-                    <td>{{$sucription->cost}}</td>
+                    <!--<td>{{$sucription->cost}}</td>-->
                     <td>{{$sucription->status}}</td>
                     <td>
                       <center>
@@ -65,9 +67,9 @@
                         <a href="{{action('SubscriptionTypesController@editSubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
                         </a>
-                        <a href="{{action('SubscriptionTypesController@destroySubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
+                        <!--<a href="{{action('SubscriptionTypesController@destroySubscriptionType', $sucription->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
                           <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
-                        </a>
+                        </a>-->
                       </div>
                       </center>
                     </td>

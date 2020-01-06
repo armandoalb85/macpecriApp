@@ -86,7 +86,7 @@
                   <thead>
                   <tr>
                     <th>Suscriptor</th>
-                    <th>Fecha de Corbo</th>
+                    <th>Fecha de Cobro</th>
                     <th>Días para Cancelar</th>
                     <th>Fecha Actual</th>
                     <th>Pago</th>
