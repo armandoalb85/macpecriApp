@@ -27,15 +27,15 @@
           <h5>Detalle de Mensaje Padre a Configurar</h5>
         </div>
         <div class="ibox-content">
-          <form method="" action="" >
+          <form method="get" action="{{action('SubscribeNowsController@editSubscribeMessageConfig', $subscribeNow->id)}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class="col-lg-12">
 
                 @if ($url != null)
-                  <img src="{{ $url}}" alt="image not found" height="100%" width="25%">
+                  <img src="{{ asset($url) }}" alt="image not found" height="100%" width="25%">
                 @else
-                  <img src="/img/image_not_found.png" alt="image not found" height="100%" width="25%">
+                  <img src="{{ asset('/img/image_not_found.png') }}" alt="image not found" height="100%" width="25%">
                 @endif
               </div>
             </div>

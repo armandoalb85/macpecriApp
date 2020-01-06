@@ -8,29 +8,28 @@
 
     <title>MACPERCRI | Dashboard </title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <link href="/css/animate.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
     <!-- Mainly scripts -->
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="/js/inspinia.js"></script>
-    <script src="/js/plugins/pace/pace.min.js"></script>
+    <script src="{{ asset('/js/inspinia.js') }}"></script>
+    <script src="{{ asset('/js/plugins/pace/pace.min.js') }}"></script>
 
     <!-- jQuery UI -->
-    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 
     <!-- data table -->
-    <script src="/js/plugins/dataTables/datatables.min.js"></script>
-    <script src="/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('/js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('/js/plugins/dataTables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Data picker -->
    <script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
