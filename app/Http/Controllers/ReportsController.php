@@ -24,7 +24,9 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
-      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree'));
+      $dateIni = null;
+      $dateFin = null;
+      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
     }
 
     /*
@@ -35,6 +37,8 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
+      $dateIni = $request->dateIni;
+      $dateFin = $request->dateFin;
 
       $totalPay = $this->totalPayAccount();
       $totalFree = $this->totalFreeAccount();
@@ -64,7 +68,7 @@ class ReportsController extends Controller
             ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
             ->get();
 
-      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree'));
+      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
     }
 
     /*

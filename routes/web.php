@@ -92,7 +92,7 @@ Route::get('r_cuentas_por_vencer','ReportsController@filterAccountExpire');
 Route::post('r_cuentas_por_vencer','ReportsController@reportAccountExpire');
 
 //Exports
-Route::get('conversion_cuenta_excel', 'ExportsController@xlsPublicConversionAccount');
+Route::get('conversion_cuenta_excel/{dateini}/{datefin}', 'ExportsController@xlsPublicConversionAccount');
 Route::get('creacion_cuenta_excel', 'ExportsController@xlsCreatedAccount');
 Route::get('canales_pago_excel', 'ExportsController@xlsPaymentUses');
 Route::get('pagos_recibidos_excel', 'ExportsController@xlsPaymentsReceived');

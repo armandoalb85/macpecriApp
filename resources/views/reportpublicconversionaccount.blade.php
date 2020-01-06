@@ -66,9 +66,16 @@
               <h5>Resultados Obtenidos</h5>
             </div>
             <div class="col-2">
-              <a href="{{ url('conversion_cuenta_excel') }}" class="btn btn-sm btn-success float-right">
-                <span class="glyphicon glyphicon-print" title="Exportar a hoja de cálculo"></span>
-              </a>
+              <form method="get" action="{{action('ExportsController@xlsPublicConversionAccount', ($dateIni.'/'.$dateFin))}}">
+                <!--<a href="{{ url('conversion_cuenta_excel/') }}" class="btn btn-sm btn-success float-right">
+                  <span class="glyphicon glyphicon-print" title="Exportar a hoja de cálculo"></span>
+                </a>-->
+                <div class="form-group row">
+                  <div class="col-lg-4">
+                    <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

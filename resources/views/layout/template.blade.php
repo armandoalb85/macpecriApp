@@ -32,7 +32,7 @@
     <script src="{{ asset('/js/plugins/dataTables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Data picker -->
-   <script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+   <script src="{{ asset('/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
 
 </head>
 
