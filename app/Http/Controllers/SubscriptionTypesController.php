@@ -115,10 +115,12 @@ class SubscriptionTypesController extends Controller
 
       $data = request()->validate([
         'tipo' => 'required',
+        'tipo' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
         'limit' => 'required'
       ],[
         'tipo.required' => 'Tipo de Suscripción es obligatorio.',
-        'limit.required' => 'Indique un limite de articulos de lectura.'
+        'limit.required' => 'Indique un limite de articulos de lectura.',
+        'regex' => 'Solo se permiten caracteres alfabeticos y números enteros.'
       ]);
 
       return $data;

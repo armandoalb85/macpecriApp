@@ -43,13 +43,13 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Descripción</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="3" cols="25" class="form-control">Descripción de tipo de suscripción</textarea>
+                <textarea name="description" rows="3" cols="25" class="form-control" maxlength="150">Descripción de tipo de suscripción</textarea>
               </div>
             </div>
             <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Limite</label>
               <div class="col-lg-9">
-                <input type="number" name = "limit" placeholder="0" class="form-control">
+                <input type="number" name = "limit" placeholder="0" class="form-control" min="0" pattern="^[0-9]+">
                 @if ($errors->has('limit'))
                   <strong class="error-text">{{ $errors->first('limit') }}</strong>
                 @endif
@@ -67,13 +67,13 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Costo</label>
               <div class="col-lg-9">
-                <input type="number" name = "cost" placeholder="0" class="form-control">
+                <input type="number" name = "cost" placeholder="0" class="form-control" min="0" pattern="^[0-9]+">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Días para Pagar</label>
               <div class="col-lg-9">
-                <input type="number" name = "daysforpaying" placeholder="0" class="form-control">
+                <input type="number" name = "daysforpaying" placeholder="0" class="form-control" min="0" pattern="^[0-9]+">
               </div>
             </div>
             <div class="form-group row">
