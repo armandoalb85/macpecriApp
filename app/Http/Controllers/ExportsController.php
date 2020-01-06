@@ -21,8 +21,9 @@ class ExportsController extends Controller
     /*
     *
     */
-    public function xlsPublicConversionAccount(){
-      return Excel::download(new ConversionAccountsExport('2019-02-10','2019-06-10'), 'CuentasConConversion.xlsx');
+    public function xlsPublicConversionAccount(Request $request){
+
+      return Excel::download(new ConversionAccountsExport($request->dateIni,$request->dateFin), 'CuentasConConversion.xlsx');
     }
 
     /*
@@ -60,7 +61,7 @@ class ExportsController extends Controller
         $date;
 
         if($value != ''){
-          $date = explode('/', $value);
+          $date = explode('-', $value);
           return $date[2].'-'.$date[0].'-'.$date[1];
         }else{
           return date("Y").'-'.date("m").'-'.date("d");

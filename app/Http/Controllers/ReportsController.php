@@ -37,8 +37,8 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
-      $dateIni = $request->dateIni;
-      $dateFin = $request->dateFin;
+      $dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);
 
       $totalPay = $this->totalPayAccount();
       $totalFree = $this->totalFreeAccount();
@@ -69,6 +69,7 @@ class ReportsController extends Controller
             ->get();
 
       return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
+
     }
 
     /*
