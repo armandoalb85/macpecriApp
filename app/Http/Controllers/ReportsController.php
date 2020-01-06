@@ -79,7 +79,9 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree'));
+      $dateIni = null;
+      $dateFin = null;
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin'));
     }
 
     /*
@@ -93,6 +95,8 @@ class ReportsController extends Controller
 
       $totalPay = $this->totalPayAccount();
       $totalFree = $this->totalFreeAccount();
+      $dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);
 
       $queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -104,7 +108,7 @@ class ReportsController extends Controller
             ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type' )
             ->get();
 
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree'));
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin'));
 
     }
 
