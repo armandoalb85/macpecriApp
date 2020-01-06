@@ -32,7 +32,7 @@
             <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">name</label>
               <div class="col-lg-9">
-                <input type="text" name="name"  class="form-control">
+                <input type="text" name="name"  class="form-control" maxlength="30">
                 @if ($errors->has('name'))
                   <strong class="error-text">{{ $errors->first('name') }}</strong>
                 @endif
@@ -50,7 +50,7 @@
             <div class="form-group row {{ $errors->has('description') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Descripción</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="5" cols="100" class="form-control"></textarea>
+                <textarea name="description" rows="5" cols="100" class="form-control" maxlength="150"></textarea>
                 @if ($errors->has('description'))
                   <strong class="error-text">{{ $errors->first('description') }}</strong>
                 @endif

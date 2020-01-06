@@ -173,10 +173,12 @@ class SubscribeNowsController extends Controller
 
       $data = request()->validate([
         'description' => 'required',
-        'name' => 'required'
+        'name' => 'required',
+        'name' => ['required', 'regex:/^[A-Za-z0-9\s]+$/']
       ],[
-        'description.required' => 'El ontenido del mensaje es obligatorio.',
-        'name.required' => 'Es obligatorio que identifique el mensaje.'
+        'description.required' => 'El contenido del mensaje es obligatorio.',
+        'name.required' => 'Es obligatorio que identifique el mensaje.',
+        'regex' => 'Solo se permiten caracteres alfabeticos y números enteros.'
       ]);
 
       return $data;

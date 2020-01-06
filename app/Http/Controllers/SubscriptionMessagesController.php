@@ -200,7 +200,7 @@ class SubscriptionMessagesController extends Controller
       $data = request()->validate([
         'message' => 'required'
       ],[
-        'message.required' => 'Elc ontenido del mensaje es obligatorio.'
+        'message.required' => 'El contenido del mensaje es obligatorio.'
       ]);
 
       return $data;

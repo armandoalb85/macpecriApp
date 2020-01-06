@@ -40,7 +40,7 @@
             <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">name</label>
               <div class="col-lg-9">
-                <input type="text" name="name"  class="form-control" value='{{ $subscribeNow->name }}'>
+                <input type="text" name="name"  class="form-control" value='{{ $subscribeNow->name }}' maxlength="30">
                 @if ($errors->has('name'))
                   <strong class="error-text">{{ $errors->first('name') }}</strong>
                 @endif
