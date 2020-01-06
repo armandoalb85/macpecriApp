@@ -51,8 +51,8 @@ class ExportsController extends Controller
     /*
     *
     */
-    public function xlsAccountExpire(){
-      return Excel::download(new ExpireAccountsExport('2019-06-10'), 'CuestasPorVencer.xlsx');
+    public function xlsAccountExpire(Request $request){
+      return Excel::download(new ExpireAccountsExport($request->dateIni), 'CuestasPorVencer.xlsx');
     }
 
     /*

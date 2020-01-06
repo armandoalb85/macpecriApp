@@ -214,8 +214,9 @@ class ReportsController extends Controller
     public function filterAccountExpire(){
 
       $queryResults = null;
+      $dateIni = null;
 
-      return view ('reportaccountexpire', compact('queryResults'));
+      return view ('reportaccountexpire', compact('queryResults', 'dateIni'));
     }
 
     /*
@@ -224,6 +225,8 @@ class ReportsController extends Controller
     public function reportAccountExpire(Request $request){
 
       $queryResults = null;
+      $dateIni = $this->dateFormat($request->startdate);
+
       $queryResults = DB::table('subscription_types')
             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -235,7 +238,7 @@ class ReportsController extends Controller
             ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
             ->get();
 
-      return view ('reportaccountexpire', compact('queryResults'));
+      return view ('reportaccountexpire', compact('queryResults', 'dateIni'));
     }
 
     /*
