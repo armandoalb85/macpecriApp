@@ -37,6 +37,8 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
+      $data = $this->dataValidator();
+
       $dateIni = $this->dateFormat($request->startdate);
       $dateFin = $this->dateFormat($request->closedate);
 
@@ -283,6 +285,21 @@ class ReportsController extends Controller
         }else{
           return date("Y").'-'.date("m").'-'.date("d");
         }
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidator(){
+
+      $data = request()->validate([
+        'startdate' => 'required',
+        'closedate' => 'required'
+      ],[
+        'required' => 'El filtro de fecha es obligarorio para el reporte.'
+      ]);
+
+      return $data;
     }
 
 }
