@@ -182,6 +182,8 @@ class ReportsController extends Controller
       $listTotal[] = array();
       $i=0;
 
+      $data = $this->dataValidator();
+
       $dateIni = $this->dateFormat($request->startdate);
       $dateFin = $this->dateFormat($request->closedate);
 
