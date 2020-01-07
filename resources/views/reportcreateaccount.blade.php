@@ -29,23 +29,29 @@
           <form method="post" action="{{ url('r_creacion_cuenta')}}" >
             {{csrf_field()}}
             <br>
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
                     <input type="text" class="form-control" name="startdate">
+                    @if ($errors->has('startdate'))
+                      <strong class="error-text">{{ $errors->first('startdate') }}</strong>
+                    @endif
                 </div>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Hasta</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
                     <input type="text" class="form-control" name="closedate">
+                    @if ($errors->has('closedate'))
+                      <strong class="error-text">{{ $errors->first('closedate') }}</strong>
+                    @endif
                 </div>
               </div>
             </div>
@@ -71,7 +77,11 @@
                  <input type="text" name="dateFin" value="{{ $dateFin }}" disabled hidden>
                  <div class="form-group row">
                    <div class="col-lg-12">
-                     <button class="btn btn-md btn-success col-6 float-right" type="submit" >
+                     @if ($dateIni !=null && $dateFin != null)
+                       <button class="btn btn-md btn-success col-6 float-right" type="submit" >
+                     @else
+                       <button class="btn btn-md btn-success col-6 float-right" type="submit" disabled>
+                     @endif
                          <span class="glyphicon glyphicon-print" title="exportar csv"></span>
                      </button>
                    </div>

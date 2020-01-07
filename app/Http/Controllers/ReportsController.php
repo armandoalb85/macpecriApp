@@ -94,6 +94,7 @@ class ReportsController extends Controller
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
+      $data = $this->dataValidator();
 
       $totalPay = $this->totalPayAccount();
       $totalFree = $this->totalFreeAccount();
