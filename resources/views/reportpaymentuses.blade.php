@@ -74,10 +74,9 @@
             <div class="col-2">
               <form method="get" action="{{ action('ExportsController@xlsPaymentUses', [$dateIni, $dateFin])}}">
                  <input type="text" name="dateIni" value="{{ $dateIni }}" disabled hidden>
-                 <input type="text" name="dateFin" value="{{ $dateFin }}" disabled hidden>
                  <div class="form-group row">
                    <div class="col-lg-12">
-                     @if ($dateIni !=null && $dateFin != null)
+                     @if ($dateIni !=null)
                        <button class="btn btn-md btn-success col-6 float-right" type="submit" >
                      @else
                        <button class="btn btn-md btn-success col-6 float-right" type="submit" disabled>

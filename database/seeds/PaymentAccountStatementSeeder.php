@@ -52,12 +52,22 @@ class PaymentAccountStatementSeeder extends Seeder
         ]);
 
         DB::table('payment_account_statements')->insert([
-            'startdate' => date('Y-m-d',strtotime('05/05/2020')),
-            'closedate' => date('Y-m-d',strtotime('05/05/2020')),
+            'startdate' => date('Y-m-d',strtotime('12/01/2019')),
+            'closedate' => date('Y-m-d',strtotime('07/01/2019')),
             'status' => 'Pagado',
             'amount' => 1,
             'paymentmethod_id' => 1
         ]);
+
+        DB::table('payment_account_statements')->insert([
+            'startdate' => date('Y-m-d',strtotime('01/05/2020')),
+            'closedate' => null,
+            'status' => 'Por Pagar',
+            'amount' => 1,
+            'paymentmethod_id' => 1
+        ]);
+
+
 
     }
 }

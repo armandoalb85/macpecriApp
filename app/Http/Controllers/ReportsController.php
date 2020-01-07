@@ -221,6 +221,7 @@ class ReportsController extends Controller
 
       $queryResults = null;
       $dateIni = null;
+      $dateIni = null;
 
       return view ('reportaccountexpire', compact('queryResults', 'dateIni'));
     }
@@ -231,8 +232,11 @@ class ReportsController extends Controller
     public function reportAccountExpire(Request $request){
 
       $queryResults = null;
+
+
       $dateIni = $this->dateFormat($request->startdate);
 
+      $data = $this->dataValidatorStartDate();
       $queryResults = DB::table('subscription_types')
             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -299,6 +303,20 @@ class ReportsController extends Controller
       $data = request()->validate([
         'startdate' => 'required',
         'closedate' => 'required'
+      ],[
+        'required' => 'El filtro de fecha es obligarorio para el reporte.'
+      ]);
+
+      return $data;
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidatorStartDate(){
+
+      $data = request()->validate([
+        'startdate' => 'required'
       ],[
         'required' => 'El filtro de fecha es obligarorio para el reporte.'
       ]);
