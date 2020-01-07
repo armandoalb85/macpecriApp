@@ -22,7 +22,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsPublicConversionAccount(Request $request){
-
+      
       return Excel::download(new ConversionAccountsExport($request->dateIni,$request->dateFin), 'CuentasConConversion.xlsx');
     }
 
