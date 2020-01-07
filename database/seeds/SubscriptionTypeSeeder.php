@@ -12,7 +12,7 @@ class SubscriptionTypeSeeder extends Seeder
     public function run()
     {
         DB::table('subscription_types')->insert([
-            'name' => 'Subscripción Gratuita',
+            'name' => 'Subscripcion Gratuita',
             'description' => 'Subscripcion con lectura de articulos limitados.',
             'cost' => 0,
             'limit' => 10,
@@ -22,7 +22,7 @@ class SubscriptionTypeSeeder extends Seeder
         ]);
 
         DB::table('subscription_types')->insert([
-            'name' => 'Subscripción Paga',
+            'name' => 'Subscripcion Paga',
             'description' => 'Subscripcion con lectura ilimitada.',
             'cost' => 1,
             'limit' => 999999,
@@ -38,7 +38,7 @@ class SubscriptionTypeSeeder extends Seeder
             'limit' => 999999,
             'status' => 'Activo',
             'daysforpaying' => 0,
-            'type' => 'Gratuita'
+            'type' => 'Venezuela'
         ]);
     }
 }
