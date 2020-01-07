@@ -134,6 +134,7 @@ class ReportsController extends Controller
 
       $listUses[] = array();
       $i=0;
+      $data = $this->dataValidator();
 
       $dateIni = $this->dateFormat($request->startdate);
       $dateFin = $this->dateFormat($request->closedate);
