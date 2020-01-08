@@ -56,5 +56,14 @@ class UserSeeder extends Seeder
           'updated_at' => date('Y-m-d',strtotime('09/10/2019'))
       ]);
 
+      DB::table('users')->insert([
+          'name' => 'Edgar',
+          'email' => 'edglandaeta.15@gmail.com',
+          'password' => md5('Edg123*'),
+          'username' => 'edgkid',
+          'created_at' => date('Y-m-d',strtotime('01/08/2020')),
+          'updated_at' => date('Y-m-d',strtotime('01/08/2020'))
+      ]);
+
     }
 }
