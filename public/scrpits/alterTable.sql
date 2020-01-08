@@ -1,3 +1,4 @@
+---- boreado de datos
 DELETE FROM subscriber_subscription_type;
 DELETE FROM newsletter_subscriber;
 DELETE FROM payment_account_statements;
@@ -12,7 +13,7 @@ DELETE FROM newsletters;
 DELETE FROM subscription_messages;
 DELETE FROM Subscribe_nows;
 commit;
-
+--Actualización de AUTO_INCREMENT
 ALTER TABLE subscriber_subscription_type AUTO_INCREMENT = 1;
 ALTER TABLE users AUTO_INCREMENT = 1;
 ALTER TABLE subscribers AUTO_INCREMENT = 1;

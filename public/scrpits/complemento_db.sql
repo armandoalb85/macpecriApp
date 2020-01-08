@@ -12,7 +12,7 @@ BEGIN
 
 END;
 
----- Procedimiento para migrar usuarios Wp
+--- Procedimiento para migrar usuarios Wp
 CREATE OR REPLACE PROCEDURE migrate_admin_wp_users()
 BEGIN
 
