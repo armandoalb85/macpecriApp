@@ -32,7 +32,7 @@
             <div class="form-group row {{ $errors->has('tipo') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Tipo</label>
               <div class="col-lg-9">
-                <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}">
+                <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}" maxlength="45">
                 @if ($errors->has('tipo'))
                   <strong class="error-text">{{ $errors->first('tipo') }}</strong>
                 @endif
@@ -49,7 +49,7 @@
             <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Limite</label>
               <div class="col-lg-9">
-                <input type="number" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}" min="0" pattern="^[0-9]+">
+                <input type="number" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}" min="0" max="999999" pattern="^[0-9]+" >
                 @if ($errors->has('limit'))
                   <strong class="error-text">{{ $errors->first('limit') }}</strong>
                 @endif
@@ -64,16 +64,16 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row">
+            <!--<div class="form-group row">
               <label class="col-lg-3 col-form-label">Costo</label>
               <div class="col-lg-9">
-                <input type="number" name = "cost" class="form-control" value="{{$subscription->cost}}" min="0" pattern="^[0-9]+">
+                <input type="number" name = "cost" class="form-control" value="{{$subscription->cost}}" min="0" pattern="^[0-9]+" hidden>
               </div>
-            </div>
+            </div>-->
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Días para Pagar</label>
               <div class="col-lg-9">
-                <input type="number" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" min="0" pattern="^[0-9]+">
+                <input type="number" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" min="0" max="99" pattern="^[0-9]+">
               </div>
             </div>
             <div class="form-group row">

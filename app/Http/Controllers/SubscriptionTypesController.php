@@ -84,7 +84,7 @@ class SubscriptionTypesController extends Controller
       $subscription = SubscriptionType::find($id);
       $subscription ->name = $request->tipo;
       $subscription->description = $request->description;
-      $subscription->cost = ($this->columnValidator($request->cost)) ? $request->cost : 0;
+      //$subscription->cost = ($this->columnValidator($request->cost)) ? $request->cost : 0;
       $subscription->limit = $request->limit;
       $subscription->status = $request->status;
       $subscription->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
