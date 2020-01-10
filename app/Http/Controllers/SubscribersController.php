@@ -99,7 +99,10 @@ class SubscribersController extends Controller
 
         if($value != ''){
           $date = explode('/', $value);
-          return $date[2].'-'.$date[0].'-'.$date[1];
+          ///01/10/2020
+          //return $date[2].'-'.$date[0].'-'.$date[1];
+          //10/01/2020
+          return $date[2].'-'.$date[1].'-'.$date[0];
         }else{
           return date("Y").'-'.date("m").'-'.date("d");
         }

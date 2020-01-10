@@ -27,12 +27,12 @@
           <h5>Edición Suscripción Definida</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
+          <form id="form" method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
             {{csrf_field()}}
             <div class="form-group row {{ $errors->has('tipo') ? ' has-error' : '' }}">
               <label class="col-lg-4 col-form-label">Nombre de suscripción</label>
               <div class="col-lg-8">
-                <input type="text" name="type"  class="form-control" value="{{$subscription->name}}" maxlength="45">
+                <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}" maxlength="45">
                 @if ($errors->has('tipo'))
                   <strong class="error-text">{{ $errors->first('tipo') }}</strong>
                 @endif

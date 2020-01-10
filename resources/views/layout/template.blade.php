@@ -80,7 +80,7 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ url('pagos_realizados') }}">Pagos Realizados</a></li>
                         <li><a href="{{ url('pagos_pendientes') }}">Pagos Pendientes</a></li>
-                        <li><a href="{{ url('/suscriptores/') }}">Lectores</a></li>
+                        <!--<li><a href="{{ url('/suscriptores/') }}">Lectores</a></li>-->
                     </ul>
                 </li>
                 <li>
@@ -147,7 +147,7 @@
         });
     </script>
     <script>
-      $(document).ready(function(){
+      /*$(document).ready(function(){
         var mem = $('#newsletterCalendar .input-group.date').datepicker({
           todayBtn: "linked",
           keyboardNavigation: false,
@@ -156,6 +156,36 @@
           autoclose: true,
           dateFormat: 'dd-mm-yy'
         });
+      });*/
+      $(document).ready(function(){
+        $.fn.datepicker.defaults.language = 'es';
+        $.fn.datepicker.dates['es'] = {
+            days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+            daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+            daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+            months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+            monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            today: "Hoy",
+            clear: "Borrar",
+            weekStart: 1,
+        };
+        $('div.input-group.date').each(function() {
+            var target = $(this);
+            target.find("input:text").each(function() {
+                if (!$(this).is('[readonly]')) {
+                    target.datepicker({
+                        todayBtn: "linked",
+                        keyboardNavigation: false,
+                        forceParse: false,
+                        calendarWeeks: false,
+                        autoclose: true,
+                        format: "dd/mm/yyyy",
+                        dateFormat: "dd/mm/yyyy",
+                        language: 'es'
+                    });
+                }
+            });
+        });
       });
     </script>
     <script>
@@ -163,6 +193,35 @@
         setTimeout(function(){
           $('.fade-out').fadeOut(5000);
         });
+      });
+    </script>
+    <script>
+      $('#form input[type=text]').on('change invalid', function() {
+        var campotexto = $(this).get(0);
+
+        campotexto.setCustomValidity('');
+
+        if (!campotexto.validity.valid) {
+          campotexto.setCustomValidity('No se permiten caracteres especiales');
+        }
+      });
+      $('#form input[type=number]').on('change invalid', function() {
+          var campotexto = $(this).get(0);
+
+          campotexto.setCustomValidity('');
+
+          if (!campotexto.validity.valid) {
+            campotexto.setCustomValidity('Se permiten solo caracteres númericos');
+          }
+      });
+      $('#fdate input[type=text]').on('change invalid', function() {
+          var campotexto = $(this).get(0);
+
+          campotexto.setCustomValidity('');
+
+          if (!campotexto.validity.valid) {
+            campotexto.setCustomValidity('El formato correcto es dd/mm/yyyy');
+          }
       });
     </script>
 
