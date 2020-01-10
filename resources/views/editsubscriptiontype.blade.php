@@ -30,25 +30,25 @@
           <form method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
             {{csrf_field()}}
             <div class="form-group row {{ $errors->has('tipo') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Tipo</label>
-              <div class="col-lg-9">
-                <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}" maxlength="45">
+              <label class="col-lg-4 col-form-label">Nombre de suscripción</label>
+              <div class="col-lg-8">
+                <input type="text" name="type"  class="form-control" value="{{$subscription->name}}" maxlength="45">
                 @if ($errors->has('tipo'))
                   <strong class="error-text">{{ $errors->first('tipo') }}</strong>
                 @endif
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Descripción</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Descripción</label>
+              <div class="col-lg-8">
                 <textarea name="description" rows="3" cols="25" class="form-control" maxlength="150">
                   {{$subscription->description}}
                 </textarea>
               </div>
             </div>
             <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Limite</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Límite de artículos</label>
+              <div class="col-lg-8">
                 <input type="number" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}" min="0" max="999999" pattern="^[0-9]+" >
                 @if ($errors->has('limit'))
                   <strong class="error-text">{{ $errors->first('limit') }}</strong>
@@ -56,8 +56,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Estatus</label>
-              <div class="col-sm-9">
+              <label class="col-lg-4 col-form-label">Estatus</label>
+              <div class="col-sm-8">
                 <select class="form-control m-b" name="status">
                   <option>Activo</option>
                   <option>Inactivo</option>
@@ -71,8 +71,8 @@
               </div>
             </div>-->
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Días para Pagar</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Días para pagar</label>
+              <div class="col-lg-8">
                 <input type="number" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" min="0" max="99" pattern="^[0-9]+">
               </div>
             </div>

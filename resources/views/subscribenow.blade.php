@@ -3,7 +3,7 @@
 <!-- Guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Mensajes de Invitación (Suscribase Ahora)</h2>
+        <h2>Mensajes de Invitación (Suscríbase Ahora)</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index-2.html">Sistema Administrativo</a>

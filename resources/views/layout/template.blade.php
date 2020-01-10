@@ -71,7 +71,7 @@
                     <ul class="nav nav-second-level">
                         <li>
                           <a href="{{ url('suscripciones') }}">Tipos de suscripción </a>
-                          <a href="{{ url('suscribase_ahora') }}">Suscribase Ahora </a>
+                          <a href="{{ url('suscribase_ahora') }}">Suscríbase Ahora </a>
                         </li>
                     </ul>
                 </li>
