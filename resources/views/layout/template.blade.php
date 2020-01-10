@@ -153,7 +153,8 @@
           keyboardNavigation: false,
           forceParse: false,
           calendarWeeks: true,
-          autoclose: true
+          autoclose: true,
+          dateFormat: 'dd-mm-yy'
         });
       });
     </script>

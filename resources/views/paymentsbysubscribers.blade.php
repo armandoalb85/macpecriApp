@@ -38,7 +38,7 @@
                 @endforeach
               </select>
             </div>
-            </div>
+          </div>
 
 
             <div class="form-group row">
@@ -47,7 +47,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate">
+                    <input type="text" class="form-control" name="startdate" maxlength="10" >
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate">
+                    <input type="text" class="form-control" name="closedate" maxlength="10">
                 </div>
               </div>
             </div>
