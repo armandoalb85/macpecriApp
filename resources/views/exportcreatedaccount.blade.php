@@ -19,7 +19,7 @@
             <td>{{$queryResult->type}}</td>
           </tr>
         @endforeach
-          <tr>
+          <!--<tr>
             <td><strong>Total Cuentas Pagas</strong></td>
             <td>@if($totalPay != null){{$totalPay}} @else 0 @endif</td>
             <td></td>
@@ -32,7 +32,7 @@
             <td></td>
             <td></td>
             <td></td>
-          </tr>
+          </tr>-->
       @else
         <tr>
           <td colspan="8">No se encontraron registros</td>

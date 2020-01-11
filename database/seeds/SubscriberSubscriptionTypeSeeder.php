@@ -57,7 +57,7 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
 
         DB::table('subscriber_subscription_type')->insert([
             'startdate' => date('Y-m-d',strtotime('09/10/2019')),
-            'closedate' => null,
+            'closedate' => date('Y-m-d',strtotime('10/11/2019')),
             'status' => 0,
             'limit' => 10,
             'created_at' => date('Y-m-d',strtotime('09/10/2019')),
