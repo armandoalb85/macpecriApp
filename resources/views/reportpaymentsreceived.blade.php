@@ -35,7 +35,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate">
+                    <input type="text" class="form-control" name="startdate"  maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
                     @if ($errors->has('startdate'))
                       <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
@@ -48,7 +48,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate">
+                    <input type="text" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
                     @if ($errors->has('closedate'))
                       <strong class="error-text">{{ $errors->first('closedate') }}</strong>
                     @endif
@@ -105,14 +105,14 @@
                 @foreach($queryResults as $queryResult)
                   @php($y= $y + $listTotal[$i])
                   <tr>
-                    <td>{{$queryResult->type}}</td>
-                    <td>{{$listTotal[$i]}} @php($i++)</td>
+                    <td>{{$queryResult->method}}</td>
+                    <td>{{$listTotal[$i]}} @php($i++)&nbsp;$</td>
                   </tr>
                 @endforeach
                   <tr>
                     <td><strong>Total:</strong></td>
                     <td>
-                    {{$y}}
+                    {{$y}}&nbsp;$
                     </td>
                   </tr>
               @else
