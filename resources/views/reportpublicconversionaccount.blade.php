@@ -73,7 +73,7 @@
             </div>
             <div class="col-2">
              <form method="get" action="{{ action('ExportsController@xlsPublicConversionAccount', [$dateIni, $dateFin])}}">
-                <input type="text" name="dateIni" value="{{ $dateIni }}" disabled  >
+                <input type="text" name="dateIni" value="{{ $dateIni }}" disabled  hidden>
                 <input type="text" name="dateFin" value="{{ $dateFin }}" disabled  hidden>
                 <div class="form-group row">
                   <div class="col-lg-12">
