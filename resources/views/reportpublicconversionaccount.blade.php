@@ -26,16 +26,16 @@
           <h5>Filtros de Reporte</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('r_conversion_cuenta')}}" >
+          <form id="fdate" method="post" action="{{ url('r_conversion_cuenta')}}" >
             {{csrf_field()}}
             <br>
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
+              <div class="form-group col-lg-9" >
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate">
+                    <input type="text" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
                     @if ($errors->has('startdate'))
                       <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
@@ -48,7 +48,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate">
+                    <input type="text" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
                     @if ($errors->has('closedate'))
                       <strong class="error-text">{{ $errors->first('closedate') }}</strong>
                     @endif
@@ -73,7 +73,7 @@
             </div>
             <div class="col-2">
              <form method="get" action="{{ action('ExportsController@xlsPublicConversionAccount', [$dateIni, $dateFin])}}">
-                <input type="text" name="dateIni" value="{{ $dateIni }}" disabled  hidden>
+                <input type="text" name="dateIni" value="{{ $dateIni }}" disabled  >
                 <input type="text" name="dateFin" value="{{ $dateFin }}" disabled  hidden>
                 <div class="form-group row">
                   <div class="col-lg-12">

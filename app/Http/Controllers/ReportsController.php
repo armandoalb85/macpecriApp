@@ -42,9 +42,6 @@ class ReportsController extends Controller
       $dateIni = $this->dateFormat($request->startdate);
       $dateFin = $this->dateFormat($request->closedate);
 
-      $totalPay = $this->totalPayAccount();
-      $totalFree = $this->totalFreeAccount();
-
       $subQueryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
@@ -70,8 +67,12 @@ class ReportsController extends Controller
             ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
             ->get();
 
-      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
+      if ($queryResults != null){
+        $totalPay = $this->totalPayAccount();
+        $totalFree = $this->totalFreeAccount();
+      }
 
+      return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
     }
 
     /*
@@ -289,7 +290,8 @@ class ReportsController extends Controller
 
         if($value != ''){
           $date = explode('/', $value);
-          return $date[2].'-'.$date[0].'-'.$date[1];
+          // 11/01/2019    01/11/2019
+          return $date[2].'-'.$date[1].'-'.$date[0];
         }else{
           return date("Y").'-'.date("m").'-'.date("d");
         }
