@@ -94,7 +94,7 @@
         <table class="table table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Tipo de Cuenta</th>
+                <th>Metodo de Pago</th>
                 <th>Monto</th>
             </tr>
             </thead>

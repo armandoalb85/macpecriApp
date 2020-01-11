@@ -43,25 +43,24 @@ class ReceivePaymentsExport implements FromView, ShouldAutoSize, WithEvents
         $listTotal[] = array();
         $i=0;
 
-        $queryResults = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id','=','subscriber_subscription_type.subscription_id')
-            ->join('subscribers', 'subscriber_subscription_type.subscriber_id','=','subscribers.id')
-            ->join('payment_method_records', 'subscribers.id','=','payment_method_records.subscriber_id')
-            ->join('payment_account_statements', 'payment_method_records.paymentmethod_id','=','payment_method_records.id')
-            ->select('subscription_types.name as type')->distinct()->get();
+        $queryResults = DB::table('payment_account_statements')
+            ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
+            ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
+            ->whereNotNull('payment_account_statements.closedate')
+            ->where('payment_account_statements.startdate', '>=', $this->startdate)
+            ->where('payment_account_statements.startdate', '<=', $this->closedate)
+            ->select('payment_methods.name as method')->distinct()->get();
 
         foreach ($queryResults as $queryResult) {
 
-          $totalPayment = DB::table('subscription_types')
-                ->join('subscriber_subscription_type', 'subscription_types.id','=','subscriber_subscription_type.subscription_id')
-                ->join('subscribers', 'subscribers.id','=','subscriber_subscription_type.subscriber_id')
-                ->join('payment_method_records', 'subscribers.id','=','payment_method_records.subscriber_id')
-                ->join('payment_account_statements', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
-                ->where('payment_account_statements.status', '=', 'Pagado')
-                ->where('subscription_types.name', '=', $queryResult->type)
-                ->where('payment_account_statements.startdate', '>=', $this->startdate)
-                ->where('payment_account_statements.startdate', '<=', $this->closedate)
-                ->sum('payment_account_statements.amount');
+          $totalPayment = DB::table('payment_account_statements')
+              ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
+              ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
+              ->whereNotNull('payment_account_statements.closedate')
+              ->where('payment_methods.name','=',$queryResult->method)
+              ->where('payment_account_statements.startdate', '>=', $this->startdate)
+              ->where('payment_account_statements.startdate', '<=', $this->closedate)
+              ->sum('payment_account_statements.amount');
 
           $listTotal[$i] = $totalPayment;
           $i++;

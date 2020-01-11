@@ -1,7 +1,7 @@
-<table class="table table-bordered table-hover dataTables-example" >
+<table>
     <thead>
     <tr>
-        <th>Tipo de Cuenta</th>
+        <th>Metodo de Pago</th>
         <th>Monto</th>
     </tr>
     </thead>
@@ -12,14 +12,14 @@
         @foreach($queryResults as $queryResult)
           @php($y= $y + $listTotal[$i])
           <tr>
-            <td>{{$queryResult->type}}</td>
-            <td>{{$listTotal[$i]}} @php($i++)</td>
+            <td>{{$queryResult->method}}</td>
+            <td>{{$listTotal[$i]}} @php($i++)&nbsp;$</td>
           </tr>
         @endforeach
           <tr>
             <td><strong>Total:</strong></td>
             <td>
-            {{$y}}
+            {{$y}}&nbsp;$
             </td>
           </tr>
       @else
