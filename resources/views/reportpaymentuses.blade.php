@@ -26,7 +26,7 @@
           <h5>Filtros de Reporte</h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="{{ url('r_canales_pago')}}" >
+          <form id="fdate" method="post" action="{{ url('r_canales_pago')}}" >
             {{csrf_field()}}
             <br>
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
@@ -35,7 +35,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate">
+                    <input type="text" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
                     @if ($errors->has('startdate'))
                       <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
@@ -48,7 +48,7 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate">
+                    <input type="text" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
                     @if ($errors->has('closedate'))
                       <strong class="error-text">{{ $errors->first('closedate') }}</strong>
                     @endif
