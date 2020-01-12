@@ -39,8 +39,11 @@ class ReportsController extends Controller
       $totalFree = null;
       $data = $this->dataValidator();
 
-      $dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);
+      /*$dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);*/
+
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $subQueryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -62,8 +65,10 @@ class ReportsController extends Controller
             ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
             ->where('subscription_types.type', '=', 'Pago')
             ->whereIn('subscriber_subscription_type.subscriber_id', $values )
-            ->where('subscriber_subscription_type.startdate', '>=', $this->dateFormat($request->startdate))
-            ->where('subscriber_subscription_type.startdate', '<=', $this->dateFormat($request->closedate))
+            //->where('subscriber_subscription_type.startdate', '>=', $this->dateFormat($request->startdate))
+            //->where('subscriber_subscription_type.startdate', '<=', $this->dateFormat($request->closedate))
+            ->where('subscriber_subscription_type.startdate', '>=', $request->startdate)
+            ->where('subscriber_subscription_type.startdate', '<=', $request->closedate)
             ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
             ->get();
 
@@ -97,16 +102,20 @@ class ReportsController extends Controller
       $totalFree = null;
       $data = $this->dataValidator();
 
-      $dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);
+      /*$dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);*/
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
             ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscribers.created_at', '>=', $this->dateFormat($request->startdate))
-            ->where('subscribers.created_at', '<=', $this->dateFormat($request->closedate))
+            //->where('subscribers.created_at', '>=', $this->dateFormat($request->startdate))
+            //->where('subscribers.created_at', '<=', $this->dateFormat($request->closedate))
+            ->where('subscribers.created_at', '>=', $request->startdate)
+            ->where('subscribers.created_at', '<=', $request->closedate)
             ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type' )
             ->get();
 
@@ -140,13 +149,17 @@ class ReportsController extends Controller
       $i=0;
       $data = $this->dataValidator();
 
-      $dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);
+      /*$dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);*/
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $queryResults = DB::table('payment_methods')
         ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-        ->where('payment_method_records.startdate', '>=', $this->dateFormat($request->startdate))
-        ->where('payment_method_records.startdate', '<=', $this->dateFormat($request->closedate))
+        //->where('payment_method_records.startdate', '>=', $this->dateFormat($request->startdate))
+        //->where('payment_method_records.startdate', '<=', $this->dateFormat($request->closedate))
+        ->where('payment_method_records.startdate', '>=', $request->startdate)
+        ->where('payment_method_records.startdate', '<=', $request->closedate)
         ->select('payment_methods.name')->distinct()->get();
 
       foreach ($queryResults as $queryResult) {
@@ -188,15 +201,19 @@ class ReportsController extends Controller
 
       $data = $this->dataValidator();
 
-      $dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);
+      /*$dateIni = $this->dateFormat($request->startdate);
+      $dateFin = $this->dateFormat($request->closedate);*/
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $queryResults = DB::table('payment_account_statements')
           ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
           ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
           ->whereNotNull('payment_account_statements.closedate')
-          ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
-          ->where('payment_account_statements.startdate', '<=', $this->dateFormat($request->closedate))
+          //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+          //->where('payment_account_statements.startdate', '<=', $this->dateFormat($request->closedate))
+          ->where('payment_account_statements.startdate', '>=', $request->startdate)
+          ->where('payment_account_statements.startdate', '<=', $request->closedate)
           ->select('payment_methods.name as method')->distinct()->get();
 
       foreach ($queryResults as $queryResult) {
@@ -206,8 +223,8 @@ class ReportsController extends Controller
             ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
             ->whereNotNull('payment_account_statements.closedate')
             ->where('payment_methods.name','=',$queryResult->method)
-            ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
-            ->where('payment_account_statements.startdate', '<=', $this->dateFormat($request->closedate))
+            ->where('payment_account_statements.startdate', '>=', $request->startdate)
+            ->where('payment_account_statements.startdate', '<=', $request->closedate)
             ->sum('payment_account_statements.amount');
 
         $listTotal[$i] = $totalPayment;
@@ -237,7 +254,8 @@ class ReportsController extends Controller
       $queryResults = null;
 
 
-      $dateIni = $this->dateFormat($request->startdate);
+      //$dateIni = $this->dateFormat($request->startdate);
+      $dateIni = $request->startdate;
 
       $data = $this->dataValidatorStartDate();
       $queryResults = DB::table('subscription_types')
@@ -246,7 +264,8 @@ class ReportsController extends Controller
             ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
-            ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+            //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+            ->where('payment_account_statements.startdate', '>=', $request->startdate)
             ->whereNull('payment_account_statements.closedate')
             ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
             ->get();
