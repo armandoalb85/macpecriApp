@@ -44,6 +44,8 @@ class SubscribersController extends Controller
 
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
+      $data = $this->dataValidator();
+
       $payments = DB::table('subscription_types')
             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -51,8 +53,10 @@ class SubscribersController extends Controller
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->where('subscription_types.name', '=', $request->subscriptionType)
-            ->where('payment_account_statements.closedate', '>=', $this->dateFormat($request->startdate))
-            ->where('payment_account_statements.closedate', '<=', $this->dateFormat($request->closedate))
+            //->where('payment_account_statements.closedate', '>=', $this->dateFormat($request->startdate))
+            //->where('payment_account_statements.closedate', '<=', $this->dateFormat($request->closedate))
+            ->where('payment_account_statements.closedate', '>=', $request->startdate)
+            ->where('payment_account_statements.closedate', '<=', $request->closedate)
             ->select('subscription_types.name', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
             ->get();
 
@@ -75,6 +79,8 @@ class SubscribersController extends Controller
 
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
+      $data = $this->dataValidatorOneDate();
+
       $payments = DB::table('subscription_types')
             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -82,7 +88,8 @@ class SubscribersController extends Controller
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->where('subscription_types.name', '=', $request->subscriptionType)
-            ->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+            //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
+            ->where('payment_account_statements.startdate', '>=', $request->startdate)
             ->whereNull('payment_account_statements.closedate')
             ->select('subscription_types.name', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
             ->get();
@@ -106,6 +113,35 @@ class SubscribersController extends Controller
         }else{
           return date("Y").'-'.date("m").'-'.date("d");
         }
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidator(){
+
+      $data = request()->validate([
+        'startdate' => 'required',
+        'closedate' => 'required'
+      ],[
+        'required' => 'El filtro de fecha es obligarorio para consulta.'
+      ]);
+
+      return $data;
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidatorOneDate(){
+
+      $data = request()->validate([
+        'startdate' => 'required'
+      ],[
+        'required' => 'El filtro de fecha es obligarorio para consulta.'
+      ]);
+
+      return $data;
     }
 
 }
