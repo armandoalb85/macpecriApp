@@ -66,11 +66,19 @@ class SubscribeNowsController extends Controller
 
       $file = $request->file('file');
 
+
+      $subscribeNow = SubscribeNow::find($id);
+
       if ($file != null){
+
+        if ($subscribeNow->pathimage != null){
+          Storage::delete([$subscribeNow->pathimage]);
+        }
+
         $fileName = $file->getClientOriginalName();
         $subscribeNow->pathimage = $fileName;
       }
-      $subscribeNow = SubscribeNow::find($id);
+
       $subscribeNow->description = $request->description;
       $subscribeNow->status = $request->status;
 
