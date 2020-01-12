@@ -32,7 +32,7 @@
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Password Actual</label>
                 <div class="col-lg-7">
-                  <input type="password" name="actualPassword" placeholder="******" class="form-control">
+                  <input type="password" name="actualPassword" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('actualPassword'))
                     <strong class="error-text">{{ $errors->first('actualPassword') }}</strong>
                   @endif
@@ -41,7 +41,7 @@
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Nuevo Password</label>
                 <div class="col-lg-7">
-                  <input type="password" name = "newPassword" placeholder="******" class="form-control">
+                  <input type="password" name = "newPassword" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('newPassword'))
                     <strong class="error-text">{{ $errors->first('newPassword') }}</strong>
                   @endif
@@ -50,7 +50,7 @@
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
                 <label class="col-lg-5 col-form-label">Confirmar Password</label>
                 <div class="col-lg-7">
-                  <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control">
+                  <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('passwordConfirmation'))
                     <strong class="error-text">{{ $errors->first('passwordConfirmation') }}</strong>
                   @endif

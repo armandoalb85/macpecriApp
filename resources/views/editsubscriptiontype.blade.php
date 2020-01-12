@@ -49,7 +49,7 @@
             <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
               <label class="col-lg-4 col-form-label">Límite de artículos</label>
               <div class="col-lg-8">
-                <input type="number" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}" min="0" max="999999" pattern="^[0-9]+" >
+                <input type="text" name = "limit" placeholder="0" class="form-control" value="{{$subscription->limit}}" maxlength="6" pattern="^[0-9]+" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                 @if ($errors->has('limit'))
                   <strong class="error-text">{{ $errors->first('limit') }}</strong>
                 @endif
@@ -73,7 +73,7 @@
             <div class="form-group row">
               <label class="col-lg-4 col-form-label">Días para pagar</label>
               <div class="col-lg-8">
-                <input type="number" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" min="0" max="99" pattern="^[0-9]+">
+                <input type="text" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" maxlength="2" pattern="^[0-9]+" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
               </div>
             </div>
             <div class="form-group row">

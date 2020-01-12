@@ -216,7 +216,7 @@
         });
       });
     </script>
-    <script>
+    <!--<script>
       $('#form input[type=text]').on('change invalid', function() {
         var campotexto = $(this).get(0);
 
@@ -244,7 +244,16 @@
             campotexto.setCustomValidity('El formato correcto es dd/mm/yyyy');
           }
       });
-    </script>
+    </script>-->
+    <!--<script>
+
+    $(document).ready(function validaNumericos(event) {
+        if(event.charCode >= 48 && event.charCode <= 57){
+          return true;
+         }
+         return false;
+      });
+    </script>-->
 
 </body>
 
