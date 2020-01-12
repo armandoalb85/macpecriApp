@@ -105,8 +105,16 @@
                 @foreach($queryResults as $queryResult)
                   <tr>
                     <td>{{$queryResult->name." ".$queryResult->lastname}}</td>
-                    <td>{{$queryResult->created_at}}</td>
-                    <td>{{$queryResult->startdate}}</td>
+                    <td>
+                      @php($data = explode(' ',$queryResult->created_at))
+                      @php($data = explode('-',$data[0]))
+                      {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                    </td>
+                    <td>
+
+                      @php($data = explode('-',$queryResult->startdate))
+                      {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                    </td>
                     <td>{{$queryResult->type}}</td>
                   </tr>
                 @endforeach

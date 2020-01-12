@@ -97,9 +97,15 @@
                       @foreach($payments as $payment)
                         <tr>
                           <td>{{$payment->name." ".$payment->lastname}}</td>
-                          <td>{{$payment->startdate}}</td>
+                          <td>
+                            @php($data = explode('-', $payment->startdate))
+                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          </td>
                           <td>{{$payment->daysforpaying}}</td>
-                          <td>{{date('Y-m-d')}}</td>
+                          <td>
+                            @php($data = explode('-',date('Y-m-d')))
+                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          </td>
                           <td>{{$payment->amount}}</td>
                         </tr>
                       @endforeach

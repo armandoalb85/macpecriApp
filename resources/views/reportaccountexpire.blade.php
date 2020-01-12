@@ -93,7 +93,10 @@
                   <tr>
                     <td>{{ $queryResult->name." ".$queryResult->lastname}}</td>
                     <td>{{ $queryResult->type}}</td>
-                    <td>{{ $queryResult->startdate}}</td>
+                    <td>
+                      @php($data = explode('-',$queryResult->startdate))
+                      {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                    </td>
                     <td>{{ $queryResult->daysforpaying}}</td>
                     <td>{{ $queryResult->amount}}</td>
                   </tr>
