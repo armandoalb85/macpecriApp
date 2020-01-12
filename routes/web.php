@@ -51,13 +51,14 @@ Route::get('/suscripciones/edicion/{id}','SubscriptionTypesController@editSubscr
 Route::post('/suscripciones/edicion/{id}', 'SubscriptionTypesController@updateSubscriptionType');
 Route::get('/suscripciones/borrar/{id}','SubscriptionTypesController@destroySubscriptionType');
 
-Route::get('suscribase_ahora','SubscribeNowsController@indexSubscribeMessageConfig');
-Route::get('suscribase_ahora/detalle/{id}','SubscribeNowsController@showSubscribeMessageConfig');
-Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscribeMessageConfig');
-Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeMessageConfig');
-Route::get('suscribase_ahora/nuevo','SubscribeNowsController@newSubscribeMessageConfig');
+Route::get('suscribase_ahora','SubscribeNowsController@indexSubscribeNow');
+
+Route::get('suscribase_ahora/detalle/{id}','SubscribeNowsController@showSubscribeNow');
+Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscribeNow');
+Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeNow');
+/*Route::get('suscribase_ahora/nuevo','SubscribeNowsController@newSubscribeMessageConfig');
 Route::post('suscribase_ahora/nuevo','SubscribeNowsController@saveSubscribeMessageConfig');
-Route::get('suscribase_ahora/borrar/{id}','SubscribeNowsController@destroySubscribeMessageConfig');
+Route::get('suscribase_ahora/borrar/{id}','SubscribeNowsController@destroySubscribeMessageConfig');*/
 
 Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
 Route::get('mensajes/nuevo/{id}','SubscriptionMessagesController@newSubscriptionMessage');

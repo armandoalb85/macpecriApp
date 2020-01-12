@@ -26,13 +26,13 @@
           <div  class="ibox-title">
             <div class="row">
               <div class="col-10">
-                <h5>Listado de Boletines</h5>
+                <h5>Lista de mensajes para suscríbase ahora </h5>
               </div>
-              <div class="col-2">
+              <!--<div class="col-2">
                 <a href="{{ url('suscribase_ahora/nuevo') }}" class="btn btn-md btn-primary float-right" title="Nuevo Registro">
                   <i class="glyphicon glyphicon-plus"></i>
                 </a>
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="ibox-content">
@@ -41,9 +41,9 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Codigo</th>
-                  <th>Configuración</th>
+                  <th>Mensaje</th>
                   <th>Estatus</th>
+                  <th>Categoria</th>
                   <th>Acciones</th>
               </tr>
               </thead>
@@ -51,20 +51,17 @@
                 @if($subscribeNows->count())
                   @foreach($subscribeNows as $subscribeNow)
                   <tr>
-                    <td>{{$subscribeNow->id}}</td>
                     <td>{{$subscribeNow->name}}</td>
                     <td>{{$subscribeNow->status}}</td>
+                    <td>{{$subscribeNow->category}}</td>
                     <td>
                       <center>
                       <div class="btn-group" role="group">
-                        <a href="{{action('SubscribeNowsController@showSubscribeMessageConfig', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
+                        <a href="{{action('SubscribeNowsController@showSubscribeNow', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-search" title="Consulta de registro"></span>
                         </a>
-                        <a href="{{action('SubscribeNowsController@editSubscribeMessageConfig', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
+                        <a href="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
                           <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
-                        </a>
-                        <a href="{{action('SubscribeNowsController@destroySubscribeMessageConfig', $subscribeNow->id)}}" class="btn btn-sm btn-white " onclick="return confirm('Seguro que desea eliminar el registro?')">
-                          <span class="glyphicon glyphicon-trash" title="Eliminar de registro"></span>
                         </a>
                       </div>
                       </center>

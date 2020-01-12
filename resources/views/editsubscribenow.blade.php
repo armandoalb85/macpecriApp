@@ -3,16 +3,16 @@
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Edición de Base de Mensajes (Suscribase Ahora)</h2>
+        <h2>Suscríbase Ahora ({{ $subscribeNow->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index-2.html">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Mensaje Suscribase Ahora</a>
+                <a>Edición</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>Mensaje Suscribase Ahora</strong>
+                <strong>{{ $subscribeNow->category }}</strong>
             </li>
         </ol>
     </div>
@@ -21,7 +21,7 @@
 
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
           <h5>Edición  de Mensajes (Suscribase Ahora)</h5>
@@ -37,12 +37,12 @@
               </div>
             </div>
 
-            <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">name</label>
+            <div class="form-group row {{ $errors->has('category') ? ' has-error' : '' }}">
+              <label class="col-lg-3 col-form-label">Categoía</label>
               <div class="col-lg-9">
-                <input type="text" name="name"  class="form-control" value='{{ $subscribeNow->name }}' maxlength="30">
-                @if ($errors->has('name'))
-                  <strong class="error-text">{{ $errors->first('name') }}</strong>
+                <input type="text" name="name"  class="form-control" value='{{ $subscribeNow->category }}' maxlength="30" disabled>
+                @if ($errors->has('category'))
+                  <strong class="error-text">{{ $errors->first('category') }}</strong>
                 @endif
               </div>
             </div>
@@ -56,9 +56,9 @@
               </div>
             </div>
             <div class="form-group row {{ $errors->has('description') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Descripción</label>
+              <label class="col-lg-3 col-form-label">Mensaje</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="5" cols="100" class="form-control">
+                <textarea name="description" rows="5" cols="100" class="form-control" maxlength="200">
                   {{ $subscribeNow->description }}
                 </textarea>
                 @if ($errors->has('description'))
