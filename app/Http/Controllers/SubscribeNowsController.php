@@ -41,7 +41,7 @@ class SubscribeNowsController extends Controller
         $url = '/imageSubscribeMessage/'.$subscribeNow->pathimage;
       }
 
-      return  view('showsubscribenow',compact('subscribeNow', 'messages', 'url'));
+      return  view('showsubscribenow',compact('subscribeNow', 'url'));
     }
 
     /*
