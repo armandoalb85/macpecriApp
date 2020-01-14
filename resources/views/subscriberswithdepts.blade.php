@@ -5,15 +5,12 @@
       <div class="col-lg-10">
           <h2>Consulta de Subscriptores con Pagos Pendientes</h2>
           <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                  <a href="index-2.html">Sistema Administrativo</a>
-              </li>
-              <li class="breadcrumb-item">
-                  <a>Pagos pendientes</a>
-              </li>
-              <li class="breadcrumb-item active">
-                  <strong>Pagos pendientes</strong>
-              </li>
+            <li class="breadcrumb-item">
+                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <a><strong>Consulta de Pagos Pendientes</strong></a>
+            </li>
           </ol>
       </div>
   </div>

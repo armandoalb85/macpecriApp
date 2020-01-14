@@ -6,13 +6,10 @@
           <h2>Tipos de Suscripción</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="index-2.html">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item">
-                  <a>Suscripciones</a>
-              </li>
-              <li class="breadcrumb-item active">
-                  <strong>Suscripciones</strong>
+                  <a><strong>Suscripciones</strong></a>
               </li>
           </ol>
       </div>
@@ -43,8 +40,8 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Tipo</th>
-                  <th>Limite de Lectura</th>
+                  <th>Nombre de Suscripción</th>
+                  <th>Límite de Artículos</th>
                   <!--<th>Costo</th>-->
                   <th>Estatus</th>
                   <th>Acciones</th>

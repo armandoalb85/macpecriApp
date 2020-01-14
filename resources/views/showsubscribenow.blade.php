@@ -6,13 +6,13 @@
         <h2>Suscríbase Ahora ({{ $subscribeNow->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index-2.html">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Suscribase ahora</a>
+                <a href="{{ url('suscribase_ahora') }}">Mensajes de Suscríbase Ahora</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>{{ $subscribeNow->name }}</strong>
+                <strong> Mensaje de &nbsp;{{ $subscribeNow->name }}</strong>
             </li>
         </ol>
     </div>
@@ -24,7 +24,7 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Detalle de Mensaje Padre a Configurar</h5>
+          <h5>Detalle de mensaje / {{ $subscribeNow->category }} </h5>
         </div>
         <div class="ibox-content">
           <form method="get" action="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow->id)}}" >

@@ -6,13 +6,13 @@
         <h2>Suscríbase Ahora ({{ $subscribeNow->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index-2.html">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Edición</a>
+                <a href="{{ url('suscribase_ahora') }}">Mensajes de Suscríbase Ahora</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>{{ $subscribeNow->category }}</strong>
+                <strong> Mensaje de &nbsp;{{ $subscribeNow->name }}</strong>
             </li>
         </ol>
     </div>
@@ -24,7 +24,7 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Edición  de Mensajes (Suscribase Ahora)</h5>
+          <h5>Edición de mensaje / {{ $subscribeNow->category }}</h5>
         </div>
         <div class="ibox-content">
           <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" enctype="multipart/form-data" >

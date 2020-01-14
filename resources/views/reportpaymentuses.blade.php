@@ -6,13 +6,10 @@
           <h2>Reporte de Canales de Pagos Utilizados</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="index-2.html">Sistema Administrativo</a>
-              </li>
-              <li class="breadcrumb-item">
-                  <a>Reportes</a>
+                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <strong>Canales de Pago</strong>
+                  <a><strong>Canales de Pago</strong></a>
               </li>
           </ol>
       </div>

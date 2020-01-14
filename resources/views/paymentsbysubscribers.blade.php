@@ -6,13 +6,10 @@
           <h2>Consulta de Pagos Realizados por los Suscriptores</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="index-2.html">Sistema Administrativo</a>
-              </li>
-              <li class="breadcrumb-item">
-                  <a>Pagos realizados</a>
+                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <strong>Pagos realizados</strong>
+                  <a><strong>Consulta de Pagos realizados</strong></a>
               </li>
           </ol>
       </div>

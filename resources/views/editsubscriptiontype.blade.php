@@ -6,13 +6,13 @@
         <h2>Editar Tipo de Suscripción</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index-2.html">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Edición de Tipo</a>
+                <a href="{{ url('suscripciones') }}">Suscripciones</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>Edición de Tipo</strong>
+                <a><strong>Edición de Tipo</strong></a>
             </li>
         </ol>
     </div>

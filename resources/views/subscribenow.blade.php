@@ -6,13 +6,10 @@
         <h2>Mensajes de Invitación (Suscríbase Ahora)</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index-2.html">Sistema Administrativo</a>
+                <a href="{{ url('dashboard')}}">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Suscriabase Ahora</a>
-            </li>
-            <li class="breadcrumb-item active">
-                <strong>Suscriabase Ahora</strong>
+                <a><strong>Mensajes de Suscríbase Ahora</strong></a>
             </li>
         </ol>
     </div>

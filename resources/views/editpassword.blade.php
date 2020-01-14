@@ -6,13 +6,10 @@
           <h2>Modificar Password de Usuario</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="index-2.html">dashboard</a>
+                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item">
-                  <a>Modificar Password</a>
-              </li>
-              <li class="breadcrumb-item active">
-                  <strong>Modificar Password</strong>
+                  <a><strong>Modificar Password</strong></a>
               </li>
           </ol>
       </div>
