@@ -64,6 +64,33 @@ class UserSeeder extends Seeder
           'created_at' => date('Y-m-d',strtotime('01/08/2020')),
           'updated_at' => date('Y-m-d',strtotime('01/08/2020'))
       ]);
+//'''''''''''''''''''''''''''''
+      DB::table('users')->insert([
+          'name' => 'jessica',
+          'email' => 'jesi1970@gmail.com',
+          'password' => md5('Edg123*'),
+          'username' => 'jfLectorA',
+          'created_at' => date('Y-m-d',strtotime('08/01/2019')),
+          'updated_at' => date('Y-m-d',strtotime('08/01/2019'))
+      ]);
+
+      DB::table('users')->insert([
+          'name' => 'Yudresky',
+          'email' => 'juski0@gmail.com',
+          'password' => md5('Edg123*'),
+          'username' => 'pucca',
+          'created_at' => date('Y-m-d',strtotime('09/10/2019')),
+          'updated_at' => date('Y-m-d',strtotime('09/10/2019'))
+      ]);
+
+      DB::table('users')->insert([
+          'name' => 'Sophia',
+          'email' => 'SophiPsico@gmail.com',
+          'password' => md5('Edg123*'),
+          'username' => 'ucvps',
+          'created_at' => date('Y-m-d',strtotime('09/15/2019')),
+          'updated_at' => date('Y-m-d',strtotime('09/15/2019'))
+      ]);
 
     }
 }

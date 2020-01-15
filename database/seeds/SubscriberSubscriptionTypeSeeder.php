@@ -87,5 +87,49 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'subscriber_id' => 5,
             'subscription_id' => 2
         ]);
+
+        DB::table('subscriber_subscription_type')->insert([
+            'startdate' => date('Y-m-d',strtotime('08/01/2019')),
+            'closedate' => null,
+            'status' => 0,
+            'limit' => 10,
+            'created_at' => date('Y-m-d',strtotime('08/01/2019')),
+            'updated_at' => date('Y-m-d',strtotime('08/01/2019')),
+            'subscriber_id' => 6,
+            'subscription_id' => 2
+        ]);
+
+        DB::table('subscriber_subscription_type')->insert([
+            'startdate' => date('Y-m-d',strtotime('09/10/2019')),
+            'closedate' => null,
+            'status' => 0,
+            'limit' => 10,
+            'created_at' => date('Y-m-d',strtotime('09/10/2019')),
+            'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
+            'subscriber_id' => 7,
+            'subscription_id' => 2
+        ]);
+
+        DB::table('subscriber_subscription_type')->insert([
+            'startdate' => date('Y-m-d',strtotime('09/15/2019')),
+            'closedate' => date('Y-m-d',strtotime('11/15/2019')),
+            'status' => 0,
+            'limit' => 10,
+            'created_at' => date('Y-m-d',strtotime('09/15/2019')),
+            'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
+            'subscriber_id' => 8,
+            'subscription_id' => 1
+        ]);
+
+        DB::table('subscriber_subscription_type')->insert([
+            'startdate' => date('Y-m-d',strtotime('11/15/2019')),
+            'closedate' => null,
+            'status' => 0,
+            'limit' => 10,
+            'created_at' => date('Y-m-d',strtotime('11/15/2019')),
+            'updated_at' => date('Y-m-d',strtotime('11/15/2019')),
+            'subscriber_id' => 8,
+            'subscription_id' => 2
+        ]);
     }
 }

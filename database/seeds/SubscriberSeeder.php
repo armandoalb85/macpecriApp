@@ -60,6 +60,36 @@ class SubscriberSeeder extends Seeder
             'updated_at' => date('Y-m-d',strtotime('10/09/2019')),
             'user_id' => 5
         ]);
+        //'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        DB::table('subscribers')->insert([
+            'name' => 'Jessica',
+            'lastname' => 'Guerrero',
+            'birthday' => date('Y-m-d',strtotime('11/04/1990')),
+            'phone' => '0424-2745896',
+            'created_at' => date('Y-m-d',strtotime('08/01/2019')),
+            'updated_at' => date('Y-m-d',strtotime('08/01/2019')),
+            'user_id' => 7
+        ]);
+
+        DB::table('subscribers')->insert([
+            'name' => 'Jessica',
+            'lastname' => 'Guerrero',
+            'birthday' => date('Y-m-d',strtotime('12/08/1995')),
+            'phone' => '0424-2745896',
+            'created_at' => date('Y-m-d',strtotime('09/10/2019')),
+            'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
+            'user_id' => 8
+        ]);
+
+        DB::table('subscribers')->insert([
+            'name' => 'Jessica',
+            'lastname' => 'Guerrero',
+            'birthday' => date('Y-m-d',strtotime('18/02/1999')),
+            'phone' => '0424-2745896',
+            'created_at' => date('Y-m-d',strtotime('09/15/2019')),
+            'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
+            'user_id' => 9
+        ]);
 
 
     }
