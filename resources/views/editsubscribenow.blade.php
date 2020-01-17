@@ -24,7 +24,7 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Edición de mensaje / {{ $subscribeNow->category }}</h5>
+          <h5>Edición de Mensaje / {{ $subscribeNow->category }}</h5>
         </div>
         <div class="ibox-content">
           <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" enctype="multipart/form-data" >
@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-group row {{ $errors->has('category') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Categoía</label>
+              <label class="col-lg-3 col-form-label">Categoría</label>
               <div class="col-lg-9">
                 <input type="text" name="name"  class="form-control" value='{{ $subscribeNow->category }}' maxlength="30" disabled>
                 @if ($errors->has('category'))

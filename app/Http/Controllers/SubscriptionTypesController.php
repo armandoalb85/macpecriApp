@@ -118,7 +118,7 @@ class SubscriptionTypesController extends Controller
         'tipo' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
         'limit' => 'required'
       ],[
-        'tipo.required' => 'Tipo de Suscripción es obligatorio.',
+        'tipo.required' => 'Nombre de suscripción es obligatorio.',
         'limit.required' => 'Indique un limite de articulos de lectura.',
         'regex' => 'Solo se permiten caracteres alfabeticos y números enteros.'
       ]);

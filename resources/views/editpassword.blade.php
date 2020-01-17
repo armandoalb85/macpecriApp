@@ -3,13 +3,13 @@
   <!-- guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Modificar Password de Usuario</h2>
+          <h2>Modificar Contraseña de Usuario</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item">
-                  <a><strong>Modificar Password</strong></a>
+                  <a><strong>Modificar Contraseña</strong></a>
               </li>
           </ol>
       </div>
@@ -21,13 +21,13 @@
       <div class="col-lg-6">
         <div class="ibox ">
           <div class="ibox-title">
-            <h5>Modificar Password</h5>
+            <h5>Modificar Contraseña</h5>
           </div>
           <div class="ibox-content">
             <form method="post" action="{{url('user/updatepassword')}}" >
               {{csrf_field()}}
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
-                <label class="col-lg-5 col-form-label">Password Actual</label>
+                <label class="col-lg-5 col-form-label">Contraseña Actual</label>
                 <div class="col-lg-7">
                   <input type="password" name="actualPassword" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('actualPassword'))
@@ -36,7 +36,7 @@
                 </div>
               </div>
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
-                <label class="col-lg-5 col-form-label">Nuevo Password</label>
+                <label class="col-lg-5 col-form-label">Nueva Contraseña</label>
                 <div class="col-lg-7">
                   <input type="password" name = "newPassword" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('newPassword'))
@@ -45,7 +45,7 @@
                 </div>
               </div>
               <div class="form-group row {{ $errors->has('actualPassword') ? ' has-error' : '' }}">
-                <label class="col-lg-5 col-form-label">Confirmar Password</label>
+                <label class="col-lg-5 col-form-label">Confirmar Contraseña</label>
                 <div class="col-lg-7">
                   <input type="password" name = "passwordConfirmation" placeholder="******" class="form-control" maxlength="8">
                   @if ($errors->has('passwordConfirmation'))

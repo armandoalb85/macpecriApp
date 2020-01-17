@@ -24,7 +24,7 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Detalle de mensaje / {{ $subscribeNow->category }} </h5>
+          <h5>Detalle de Mensaje / {{ $subscribeNow->category }} </h5>
         </div>
         <div class="ibox-content">
           <form method="get" action="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow->id)}}" >

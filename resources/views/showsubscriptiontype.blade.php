@@ -30,28 +30,28 @@
           <form method="get" action="{{url('suscripciones/edicion/'.$subscription->id ) }}" >
             {{csrf_field()}}
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Nombre de Suscripción</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Nombre de Suscripción</label>
+              <div class="col-lg-8">
                 <input type="text" name="tipo"  class="form-control" value="{{$subscription->name}}" disabled>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Descripción</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Descripción</label>
+              <div class="col-lg-8">
                 <textarea name="description" rows="3" cols="25" class="form-control" disabled>
                   {{$subscription->description}}
                 </textarea>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Límite de artículos</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Límite de Artículos</label>
+              <div class="col-lg-8">
                 <input type="text" name = "limit" class="form-control" value="{{$subscription->limit}}" disabled>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Estatus</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Estatus</label>
+              <div class="col-lg-8">
                 <input type="text" name = "status" class="form-control" value="{{$subscription->status}}" disabled>
               </div>
             </div>
@@ -62,8 +62,8 @@
               </div>
             </div>-->
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Días para Pagar</label>
-              <div class="col-lg-9">
+              <label class="col-lg-4 col-form-label">Días para Pagar</label>
+              <div class="col-lg-8">
                 <input type="number" name = "daysforpaying" placeholder="0" class="form-control" value="{{$subscription->daysforpaying}}" disabled>
               </div>
             </div>

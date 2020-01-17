@@ -117,7 +117,7 @@
         <table class="table table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Metodo de Pago</th>
+                <th>Método de Pago</th>
                 <th>Monto</th>
             </tr>
             </thead>

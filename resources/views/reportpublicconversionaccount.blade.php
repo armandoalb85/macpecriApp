@@ -3,7 +3,7 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de Publico con Conversion de Cuenta</h2>
+          <h2>Reporte de Público con Conversión de Cuentas</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
@@ -118,7 +118,7 @@
             <thead>
             <tr>
                 <th>Suscriptor</th>
-                <th>Fecha de suscripción</th>
+                <th>Fecha de Suscripción</th>
                 <th>Fecha de Conversión</th>
                 <th>Cuenta</th>
             </tr>

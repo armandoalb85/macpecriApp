@@ -93,7 +93,7 @@
                 <th>Suscriptor</th>
                 <th>Tipo de Cuenta</th>
                 <th>Fecha de Pago</th>
-                <th>Días para pagar</th>
+                <th>Días para Pagar</th>
                 <th>Monto a Pagar</th>
             </tr>
             </thead>

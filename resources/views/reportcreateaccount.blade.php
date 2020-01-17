@@ -3,7 +3,7 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de Publico General con Cuenta Suscrita</h2>
+          <h2>Reporte de Público General con Cuenta Suscrita</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard')}}">Sistema Administrativo</a>

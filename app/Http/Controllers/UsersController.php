@@ -38,11 +38,12 @@ class UsersController extends Controller
           'passwordConfirmation' => 'required',
           'passwordConfirmation' => 'required|same:newPassword'
         ],[
-          'actualPassword.required' => 'Password actual es obligatorio',
-          'newPassword.required' => 'Nuevo password es obligatorio',
-          'passwordConfirmation.required' => 'comfirmacion de password es obligatorio',
+          'actualPassword.required' => 'Contraseña actual es obligatoria.',
+          'newPassword.required' => 'Nueva contraseña es obligatoria.',
+          'passwordConfirmation.required' => 'comfirmacion de contraseña es obligatoria.',
           'min'=> 'El campo :attribute no puede tener menos de :min carácteres.',
-          'regex' => 'El password debe contener 6 a 8 caracteres, al menos una mayúscula, al menos un dígito, y al menos un símbolo'
+          'passwordConfirmation.same' => 'Nueva contraseña y confirmación de contraseña deben coincidir.',
+          'regex' => 'La contraseña debe contener 6 a 8 caracteres, al menos una mayúscula, al menos un dígito, y al menos un símbolo'
         ]);
 
         $user = new User;

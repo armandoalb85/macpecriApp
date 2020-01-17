@@ -55,10 +55,10 @@
                       <center>
                       <div class="btn-group" role="group">
                         <a href="{{action('SubscribeNowsController@showSubscribeNow', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
-                          <span class="glyphicon glyphicon-search" title="Consulta de registro"></span>
+                          <span class="glyphicon glyphicon-search" title="Consulta Registro"></span>
                         </a>
                         <a href="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow->id)}}" class="btn btn-sm btn-white ">
-                          <span class="glyphicon glyphicon-pencil" title="Editar de registro"></span>
+                          <span class="glyphicon glyphicon-pencil" title="Editar Registro"></span>
                         </a>
                       </div>
                       </center>
