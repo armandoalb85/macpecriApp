@@ -80,7 +80,7 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ url('pagos_realizados') }}">Consultar Pagos Realizados</a></li>
                         <li><a href="{{ url('pagos_pendientes') }}">Consultar Pagos Pendientes</a></li>
-                        <!--<li><a href="{{ url('/suscriptores/') }}">Lectores</a></li>-->
+                        <li><a href="{{ url('gestion_suscriptores') }}">Suscriptores</a></li>
                     </ul>
                 </li>
                 <li>

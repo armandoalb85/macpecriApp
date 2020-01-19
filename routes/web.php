@@ -34,7 +34,8 @@ Route::post('user/updatepassword', 'UsersController@updatePassword');
 Route::get('dashboard', 'DashboardController@showDashboard');
 
 //Subscriber admin routes
-Route::get('suscriptores', 'SubscribersController@indexSubscribers');
+Route::get('gestion_suscriptores','SubscribersController@indexSubscribers');
+//Route::get('suscriptores', 'SubscribersController@indexSubscribers');
 
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
 Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');

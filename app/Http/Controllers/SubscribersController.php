@@ -25,7 +25,12 @@ class SubscribersController extends Controller
     */
     public function indexSubscribers(){
 
-      return view ('subscribers');
+      $totalPay = $this->countSubscribers('Pago');
+      $totalFree = $this->countSubscribers('Gratuita');
+      $totalVenezuela = $this->countSubscribers('Venezuela');
+      $totalSubscribers = $totalPay + $totalFree  + $totalVenezuela;
+
+      return view ('subscribers', compact('totalPay', 'totalFree', 'totalVenezuela', 'totalSubscribers'));
     }
 
     /*
@@ -142,6 +147,20 @@ class SubscribersController extends Controller
       ]);
 
       return $data;
+    }
+
+    /*
+    * This method count the subscribers
+    */
+    public function countSubscribers($type){
+
+      $total = DB::table('subscribers')
+        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+        ->where('subscription_types.type', '=', $type)
+        ->count();
+
+        return $total;
     }
 
 }
