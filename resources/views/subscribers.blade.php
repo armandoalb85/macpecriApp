@@ -156,7 +156,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
+            <!--<div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Hasta</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
@@ -168,7 +168,7 @@
                     @endif
                 </div>
               </div>
-            </div>
+            </div>-->
             <div class="form-group row">
               <div class="col-lg-4">
                 <br>
