@@ -148,19 +148,21 @@
               </select>
             </div>
             </div>
+
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
+                    <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
                     @if ($errors->has('startdate'))
-                      <strong class="error-text">{{ $errors->first('startdate') }}</strong>
+                      <strong class="error-text col-lg-12">{{ $errors->first('startdate') }}</strong>
                     @endif
                 </div>
               </div>
             </div>
+
             <div class="form-group row">
               <div class="col-lg-4">
                 <br>

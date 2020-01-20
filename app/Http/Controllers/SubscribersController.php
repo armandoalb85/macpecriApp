@@ -48,6 +48,7 @@ class SubscribersController extends Controller
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscription_types.type', '=', $type)
+          ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
       }elseif($type == 'Total'){
@@ -55,6 +56,7 @@ class SubscribersController extends Controller
           ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
+          ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
       }
@@ -68,7 +70,8 @@ class SubscribersController extends Controller
     public function listSubscribersByFilter(Request $request){
 
       $queryResults = null;
-      
+      $data = $this->dataValidatorOneDate();
+
       if ($request->subscriptionType != 'Todos'){
         $queryResults = DB::table('subscribers')
           ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -76,6 +79,7 @@ class SubscribersController extends Controller
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
           ->where('subscription_types.type', '=', $request->subscriptionType)
+          ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
       }else{
@@ -84,6 +88,7 @@ class SubscribersController extends Controller
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
+          ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
       }
@@ -139,6 +144,8 @@ class SubscribersController extends Controller
     This method show a list with depts by subscribers
     */
     public function listDebtsBySubscribers(REquest $request){
+
+
 
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
@@ -216,6 +223,7 @@ class SubscribersController extends Controller
         ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
         ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
         ->where('subscription_types.type', '=', $type)
+        ->whereNull('subscriber_subscription_type.closedate')
         ->count();
 
         return $total;
