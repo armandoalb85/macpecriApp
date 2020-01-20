@@ -36,6 +36,7 @@ Route::get('dashboard', 'DashboardController@showDashboard');
 //Subscriber admin routes
 Route::get('gestion_suscriptores','SubscribersController@indexSubscribers');
 Route::post('suscriptores/{type}', 'SubscribersController@listSubscribers');
+Route::post('suscriptores', 'SubscribersController@listSubscribersByFilter');
 
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
 Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');

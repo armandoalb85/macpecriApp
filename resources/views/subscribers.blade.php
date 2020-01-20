@@ -132,13 +132,14 @@
           <h5>Consultar Suscriptores</h5>
         </div>
         <div class="ibox-content">
-          <form id="fdate" method="post" action="#" >
+          <form id="fdate" method="post" action="{{ url('suscriptores') }}" >
             {{csrf_field()}}
             <br>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Suscripción</label>
             <div class="col-sm-9">
               <select class="form-control m-b" name="subscriptionType">
+                  <option>Todos</option>
                   @if($subscriptionTypes != null)
                     @foreach($subscriptionTypes as $subscriptionType)
                       <option>{{ $subscriptionType->type }}</option>

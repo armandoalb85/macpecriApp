@@ -35,6 +35,9 @@ class SubscribersController extends Controller
       return view ('subscribers', compact('totalPay', 'totalFree', 'totalVenezuela', 'totalSubscribers', 'subscriptionTypes'));
     }
 
+    /*
+    *This method return a list subscribers
+    */
     public function listSubscribers($type){
 
       $queryResults = null;
@@ -52,6 +55,35 @@ class SubscribersController extends Controller
           ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
+          ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->get();
+      }
+
+      return view('subscribermanager',compact('queryResults'));
+    }
+
+    /*
+    *This method return a list subscriber by filter
+    */
+    public function listSubscribersByFilter(Request $request){
+
+      $queryResults = null;
+      
+      if ($request->subscriptionType != 'Todos'){
+        $queryResults = DB::table('subscribers')
+          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('users','users.id', '=', 'subscribers.user_id')
+          ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
+          ->where('subscription_types.type', '=', $request->subscriptionType)
+          ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->get();
+      }else{
+        $queryResults = DB::table('subscribers')
+          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('users','users.id', '=', 'subscribers.user_id')
+          ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
       }
