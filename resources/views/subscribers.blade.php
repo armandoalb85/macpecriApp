@@ -10,7 +10,7 @@
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Resumen de Suscriptores</a></strong>
+                  <strong><a>Suscriptores</a></strong>
               </li>
           </ol>
       </div>
@@ -32,7 +32,7 @@
           </h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="#" >
+          <form method="post" action="{{action('SubscribersController@listSubscribers', 'Gratuita')}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class="col-lg-offset-12 col-lg-12">
@@ -58,7 +58,7 @@
           </h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="#" >
+          <form method="post" action="{{action('SubscribersController@listSubscribers', 'Pago')}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class="col-lg-offset-12 col-lg-12">
@@ -84,7 +84,7 @@
           </h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="#" >
+          <form method="post" action="{{action('SubscribersController@listSubscribers', 'Venezuela')}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class=" col-lg-12">
@@ -110,7 +110,7 @@
           </h5>
         </div>
         <div class="ibox-content">
-          <form method="post" action="#" >
+          <form method="post" action="{{action('SubscribersController@listSubscribers', 'Total')}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class=" col-lg-12">
@@ -139,7 +139,11 @@
               <label class="col-lg-3 col-form-label">Suscripción</label>
             <div class="col-sm-9">
               <select class="form-control m-b" name="subscriptionType">
-                  <option>Selecciona</option>
+                  @if($subscriptionTypes != null)
+                    @foreach($subscriptionTypes as $subscriptionType)
+                      <option>{{ $subscriptionType->type }}</option>
+                    @endforeach
+                  @endif
               </select>
             </div>
             </div>
@@ -156,19 +160,6 @@
                 </div>
               </div>
             </div>
-            <!--<div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Hasta</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
-                <div class="input-group date">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i></span>
-                    <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
-                    @if ($errors->has('closedate'))
-                      <strong class="error-text">{{ $errors->first('closedate') }}</strong>
-                    @endif
-                </div>
-              </div>
-            </div>-->
             <div class="form-group row">
               <div class="col-lg-4">
                 <br>

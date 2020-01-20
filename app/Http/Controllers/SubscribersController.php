@@ -30,7 +30,33 @@ class SubscribersController extends Controller
       $totalVenezuela = $this->countSubscribers('Venezuela');
       $totalSubscribers = $totalPay + $totalFree  + $totalVenezuela;
 
-      return view ('subscribers', compact('totalPay', 'totalFree', 'totalVenezuela', 'totalSubscribers'));
+      $subscriptionTypes = SubscriptionType::all();
+
+      return view ('subscribers', compact('totalPay', 'totalFree', 'totalVenezuela', 'totalSubscribers', 'subscriptionTypes'));
+    }
+
+    public function listSubscribers($type){
+
+      $queryResults = null;
+
+      if ($type == 'Gratuita' || $type == 'Pago' || $type == 'Venezuela'){
+        $queryResults = DB::table('subscribers')
+          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('users','users.id', '=', 'subscribers.user_id')
+          ->where('subscription_types.type', '=', $type)
+          ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->get();
+      }elseif($type == 'Total'){
+        $queryResults = DB::table('subscribers')
+          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('users','users.id', '=', 'subscribers.user_id')
+          ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->get();
+      }
+
+      return view('subscribermanager',compact('queryResults'));
     }
 
     /*
