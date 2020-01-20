@@ -169,6 +169,27 @@ class SubscribersController extends Controller
     }
 
     /*
+    * This method show detail the subscribers
+    */
+    public function showSubscriber(){
+
+    }
+
+    /*
+    * this method show a edit view for subscirber
+    */
+    public function editSubscriber(){
+
+    }
+
+    /*
+    * This method update a subscriber
+    */
+    public function updateSubscriber(){
+
+    }
+
+    /*
     This method allow aplicate format on date parameter
     */
     private function dateFormat($value){
