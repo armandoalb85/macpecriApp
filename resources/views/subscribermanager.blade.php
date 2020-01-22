@@ -29,6 +29,7 @@
         <table class="table table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
+                <th>Código</th>
                 <th>Nombre de Suscriptor</th>
                 <th>Apellido de Suscriptor</th>
                 <th>Correo</th>
@@ -41,6 +42,7 @@
               @if ($queryResults != null)
                 @foreach($queryResults as $queryResult)
                   <tr>
+                    <td>{{$queryResult->id}}</td>
                     <td>{{$queryResult->name}}</td>
                     <td>{{$queryResult->lastname}}</td>
                     <td>{{$queryResult->email}}</td>
