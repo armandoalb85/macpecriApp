@@ -163,6 +163,20 @@
               </div>
             </div>
 
+            <div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
+              <label class="col-lg-3 col-form-label">Hasta</label>
+              <div class="form-group col-lg-9" id="newsletterCalendar">
+                <div class="input-group date">
+                  <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i></span>
+                    <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
+                    @if ($errors->has('closedate'))
+                      <strong class="error-text col-lg-12">{{ $errors->first('closedate') }}</strong>
+                    @endif
+                </div>
+              </div>
+            </div>
+
             <div class="form-group row">
               <div class="col-lg-4">
                 <br>

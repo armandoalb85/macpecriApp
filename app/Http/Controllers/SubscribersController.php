@@ -70,7 +70,7 @@ class SubscribersController extends Controller
     public function listSubscribersByFilter(Request $request){
 
       $queryResults = null;
-      $data = $this->dataValidatorOneDate();
+      $data = $this->dataValidatorDate();
 
       if ($request->subscriptionType != 'Todos'){
         $queryResults = DB::table('subscribers')
@@ -78,6 +78,7 @@ class SubscribersController extends Controller
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
+          ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
           ->where('subscription_types.type', '=', $request->subscriptionType)
           ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
@@ -88,6 +89,7 @@ class SubscribersController extends Controller
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
+          ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
           ->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
           ->get();
@@ -228,6 +230,21 @@ class SubscribersController extends Controller
 
       $data = request()->validate([
         'startdate' => 'required'
+      ],[
+        'required' => 'El filtro de fecha es obligarorio para consulta.'
+      ]);
+
+      return $data;
+    }
+
+    /**
+    *This method allow validate the field in newsletter views
+    */
+    private function dataValidatorDate(){
+
+      $data = request()->validate([
+        'startdate' => 'required',
+        'closedate' => 'required'
       ],[
         'required' => 'El filtro de fecha es obligarorio para consulta.'
       ]);
