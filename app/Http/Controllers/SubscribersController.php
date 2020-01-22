@@ -198,10 +198,7 @@ class SubscribersController extends Controller
         ->select('payment_account_statements.startdate', 'payment_account_statements.closedate','payment_account_statements.status')
         ->get();
 
-        echo $subscriber.'<br>';
-        echo $subscriberAccount.'<br>';
-        echo $subscriberPayment.'<br>';
-
+      return view ('showsubscribers');
     }
 
     /*
