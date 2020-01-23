@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SubscriptionType;
 use App\Subscriber;
+use App\User;
 use App\PaymentMethodRecord;
 use DB;
 
@@ -176,6 +177,7 @@ class SubscribersController extends Controller
     public function showSubscriber($id){
 
       $subscriber = Subscriber::find($id);
+      $account = User::find($subscriber->user_id);
       $subscriberAccount = DB::table ('subscribers')
         ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
         ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
@@ -198,7 +200,9 @@ class SubscribersController extends Controller
         ->select('payment_account_statements.startdate', 'payment_account_statements.closedate','payment_account_statements.status')
         ->get();
 
-      return view ('showsubscribers');
+
+
+      return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account'));
     }
 
     /*
