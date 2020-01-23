@@ -38,8 +38,9 @@ Route::get('gestion_suscriptores','SubscribersController@indexSubscribers');
 Route::post('suscriptores/{type}', 'SubscribersController@listSubscribers');
 Route::post('suscriptores', 'SubscribersController@listSubscribersByFilter');
 Route::get('suscriptor/detalle/{id}', 'SubscribersController@showSubscriber');
-Route::get('suscriptor/edicion/{id}', 'SubscribersController@editSubscriber');
-Route::post('suscriptor/edicion/{id}', 'SubscribersController@updateSubscriber');
+
+//Route::get('suscriptor/edicion/{id}', 'SubscribersController@editSubscriber');
+//Route::post('suscriptor/edicion/{id}', 'SubscribersController@updateSubscriber');
 
 
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
