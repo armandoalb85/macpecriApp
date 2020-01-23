@@ -5,6 +5,9 @@
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
           <h2>Suscriptores a Consultar</h2>
+          {{ $typeSubscribers}}
+          {{ $startDate}}
+          {{ $closeDate}}
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
@@ -13,7 +16,7 @@
                   <a href="{{ url('gestion_suscriptores') }}">Suscriptores</a>
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Gestion de Suscriptores</a></strong>
+                  <strong><a>Gestion de Suscriptores&nbsp;({{ $typeSubscribers }})</a></strong>
               </li>
           </ol>
       </div>

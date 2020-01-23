@@ -42,6 +42,9 @@ class SubscribersController extends Controller
     public function listSubscribers($type){
 
       $queryResults = null;
+      $typeSubscribers = $type;
+      $startDate =null;
+      $closeDate = null;
 
       if ($type == 'Gratuita' || $type == 'Pago' || $type == 'Venezuela'){
         $queryResults = DB::table('subscribers')
@@ -62,7 +65,7 @@ class SubscribersController extends Controller
           ->get();
       }
 
-      return view('subscribermanager',compact('queryResults'));
+      return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
@@ -71,6 +74,9 @@ class SubscribersController extends Controller
     public function listSubscribersByFilter(Request $request){
 
       $queryResults = null;
+      $typeSubscribers = $request->subscriptionType;
+      $startDate = $request->startdate;
+      $closeDate = $request->closedate;
       $data = $this->dataValidatorDate();
 
       if ($request->subscriptionType != 'Todos'){
@@ -96,7 +102,7 @@ class SubscribersController extends Controller
           ->get();
       }
 
-      return view('subscribermanager',compact('queryResults'));
+      return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*

@@ -35,8 +35,12 @@ Route::get('dashboard', 'DashboardController@showDashboard');
 
 //Subscriber admin routes
 Route::get('gestion_suscriptores','SubscribersController@indexSubscribers');
+
+
 Route::post('suscriptores/{type}', 'SubscribersController@listSubscribers');
+
 Route::post('suscriptores', 'SubscribersController@listSubscribersByFilter');
+
 Route::get('suscriptor/detalle/{id}', 'SubscribersController@showSubscriber');
 
 //Route::get('suscriptor/edicion/{id}', 'SubscribersController@editSubscriber');
