@@ -60,7 +60,7 @@
                             <a href="{{action('SubscribersController@showSubscriber', [$queryResult->id,$typeSubscribers,$startDate,$closeDate])}}" class="btn btn-sm btn-white ">
                             <span class="glyphicon glyphicon-search" title="Consulta Registro"></span>
                           </a>
-                          <a href="" class="btn btn-sm btn-white ">
+                          <a href="{{action('SubscribersController@editSubscriber', [$queryResult->id,$typeSubscribers,$startDate,$closeDate])}}" class="btn btn-sm btn-white ">
                             <span class="glyphicon glyphicon-pencil" title="Editar Registro"></span>
                           </a>
                         </div>

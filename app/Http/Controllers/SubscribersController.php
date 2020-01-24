@@ -211,16 +211,44 @@ class SubscribersController extends Controller
         ->select('payment_account_statements.startdate', 'payment_account_statements.closedate','payment_account_statements.status')
         ->get();
 
-
-
       return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
     * this method show a edit view for subscirber
     */
-    public function editSubscriber(){
+    public function editSubscriber($id, $type, $startdate, $closedate){
 
+      $subscriber = Subscriber::find($id);
+      $account = User::find($subscriber->user_id);
+
+      $typeSubscribers = $type;
+      $startDate = $startdate;
+      $closeDate = $closedate;
+
+      $subscriberAccount = DB::table ('subscribers')
+        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+        ->where('subscribers.id', '=', $id)
+        ->whereNull('subscriber_subscription_type.closedate')
+        ->select('subscriber_subscription_type.status', 'subscription_types.type')
+        ->get();
+
+        $subQuery = DB::table('subscribers')
+                ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
+                ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+                ->where('subscribers.id', '=', $id )
+                ->max('payment_account_statements.startdate');
+
+      $subscriberPayment = DB::table('subscribers')
+        ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
+        ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+        ->where('subscribers.id', '=', $id )
+        ->where('payment_account_statements.startdate', '=', $subQuery )
+        ->select('payment_account_statements.startdate', 'payment_account_statements.closedate','payment_account_statements.status')
+        ->get();
+
+      return view ('editsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
