@@ -4,14 +4,20 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Datos de Suscriptor</h2>
-
+          <h2>Datos del Suscriptor</h2>
+          {{ $typeSubscribers }}
+          {{ $startDate }}
+          {{ $closeDate }}
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
               </li>
               <li class="breadcrumb-item">
-                  <a href="">Lista de Suscriptores</a>
+                @if($startDate === "a")
+                  <a href="{{action('SubscribersController@listSubscribers', $typeSubscribers)}}">Lista de Suscriptores</a>
+                @else
+                  <a href="{{action('specialsController@listSubscribersByFilterWihtParams', [$typeSubscribers,$startDate,$closeDate])}}">Lista de Suscriptores</a>
+                @endif
               </li>
               <li class="breadcrumb-item">
                   <strong><a>Detalle de Suscriptor</a></strong>
@@ -56,7 +62,11 @@
 
           <div class="form-group row">
             <div class="col-lg-4">
-              <a href="" class="btn btn-sm btn-white col-12">Volver</a>
+              @if($startDate === "a")
+                <a href="{{action('SubscribersController@listSubscribers', $typeSubscribers)}}" class="btn btn-sm btn-white col-12">Volver</a>
+              @else
+                <a href="{{action('specialsController@listSubscribersByFilterWihtParams', [$typeSubscribers,$startDate,$closeDate])}}" class="btn btn-sm btn-white col-12">Volver</a>
+              @endif
             </div>
           </div>
         </form>

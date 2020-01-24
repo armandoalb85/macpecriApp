@@ -6,7 +6,10 @@
       <div class="col-lg-10">
           <h2>Suscriptores a Consultar</h2>
           {{ $typeSubscribers}}
-          {{ $startDate}}
+          @if ( $startDate == null || $startDate == null )
+           @php($startDate = "a")
+           @php($closeDate = "b")
+          @endif
           {{ $closeDate}}
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
@@ -54,7 +57,7 @@
                     <td>
                       <center>
                         <div class="btn-group" role="group">
-                          <a href="{{action('SubscribersController@showSubscriber', $queryResult->id)}}" class="btn btn-sm btn-white ">
+                            <a href="{{action('SubscribersController@showSubscriber', [$queryResult->id,$typeSubscribers,$startDate,$closeDate])}}" class="btn btn-sm btn-white ">
                             <span class="glyphicon glyphicon-search" title="Consulta Registro"></span>
                           </a>
                           <a href="" class="btn btn-sm btn-white ">

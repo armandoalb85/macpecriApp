@@ -180,10 +180,15 @@ class SubscribersController extends Controller
     /*
     * This method show detail the subscribers
     */
-    public function showSubscriber($id){
+    public function showSubscriber($id, $type, $startdate, $closedate){
 
       $subscriber = Subscriber::find($id);
       $account = User::find($subscriber->user_id);
+
+      $typeSubscribers = $type;
+      $startDate = $startdate;
+      $closeDate = $closedate;
+
       $subscriberAccount = DB::table ('subscribers')
         ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
         ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
@@ -208,7 +213,7 @@ class SubscribersController extends Controller
 
 
 
-      return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account'));
+      return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
