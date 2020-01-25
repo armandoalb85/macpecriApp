@@ -152,7 +152,7 @@ class SubscribersController extends Controller
     /*
     This method show a list with depts by subscribers
     */
-    public function listDebtsBySubscribers(REquest $request){
+    public function listDebtsBySubscribers(Request $request){
 
 
 
@@ -254,7 +254,43 @@ class SubscribersController extends Controller
     /*
     * This method update a subscriber
     */
-    public function updateSubscriber(){
+    public function updateSubscriber(Request $request, $id){
+
+      $data = explode('-',date('Y-m-d'));
+      $today = $data[0].'-'.$data[1].'-'.$data[2];
+
+      $subscriber = Subscriber::find($id);
+      $account = User::find($subscriber->user_id);
+      $subscriberAccount = DB::table ('subscribers')
+        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+        ->where('subscribers.id', '=', $id)
+        ->whereNull('subscriber_subscription_type.closedate')
+        ->select('subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.limit', 'subscriber_subscription_type.subscription_id')
+        ->get();
+
+      $account->email = $request->email;
+
+      if ($subscriberAccount[0]->status != $request->status){
+        $affectedRegister = DB::update("update subscriber_subscription_type set status ='".$request->status."', closedate='".$today."' where closedate is null AND subscriber_id = ?", [$id]);
+        $limit = "`limit`";
+        DB::insert('insert into subscriber_subscription_type (startdate, status,'.$limit.', created_at, updated_at, subscriber_id, subscription_id) values (?, ?, ?, ?, ?, ?, ?) ', [$today,$request->status,$subscriberAccount[0]->limit, $today, $today, $subscriber->id,$subscriberAccount[0]->subscription_id]);
+      }
+
+      $accountUpdated =$account->update();
+
+      if ($accountUpdated || $affectedRegister > 0){
+        $codeMessage = 'info';
+        $message = 'La información del suscriptor fue actualizada con éxito.';
+      }
+
+      if ($request->startDate == 'a'){
+        return redirect(action('SubscribersController@listSubscribers', $request->subscriberType))->with($this->codeMessage, $this->message);
+      }else{
+        return redirect(action('specialsController@listSubscribersByFilterWihtParams', [$request->subscriberType,$request->startDate,$request->closeDate]))->with($this->codeMessage, $this->message);
+      }
+
+
 
     }
 

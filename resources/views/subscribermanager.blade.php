@@ -1,16 +1,13 @@
 @extends('layout/template')
 @section('contentapp')
-
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
           <h2>Suscriptores a Consultar</h2>
-          {{ $typeSubscribers}}
           @if ( $startDate == null || $startDate == null )
            @php($startDate = "a")
            @php($closeDate = "b")
           @endif
-          {{ $closeDate}}
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema Administrativo</a>

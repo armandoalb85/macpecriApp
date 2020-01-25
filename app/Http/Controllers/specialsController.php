@@ -40,5 +40,4 @@ class specialsController extends Controller
     return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
   }
 
-
 }

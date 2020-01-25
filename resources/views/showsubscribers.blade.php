@@ -41,22 +41,24 @@
               <input type="text" name="username" value="{{ $account->username }}" class="form-control" disabled>
             </div>
           </div>
+
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label">Tipo de Cuenta</label>
+            <div class="col-lg-9">
+              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
+            </div>
+          </div>
+
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Correo</label>
             <div class="col-lg-9">
-              <input type="text" name="email" value="{{ $account->email }}" class="form-control" disabled>
+              <input type="text" name="email" value="{{ $account->email }}" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Estatus</label>
             <div class="col-lg-9">
               <input type="text" name="status" value="{{ $subscriberAccount[0]->status }}" class="form-control" disabled>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Tipo de Cuenta</label>
-            <div class="col-lg-9">
-              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
             </div>
           </div>
 

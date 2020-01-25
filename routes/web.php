@@ -45,8 +45,7 @@ Route::post('suscriptores', 'SubscribersController@listSubscribersByFilter');
 Route::get('suscriptor/detalle/{id}/{type}/{startdate}/{closedate}', 'SubscribersController@showSubscriber');
 
 Route::get('suscriptor/edicion/{id}/{type}/{startdate}/{closedate}', 'SubscribersController@editSubscriber');
-//Route::post('suscriptor/edicion/{id}', 'SubscribersController@updateSubscriber');
-
+Route::post('suscriptor/edicion/{id}', 'SubscribersController@updateSubscriber');
 
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
 Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');
