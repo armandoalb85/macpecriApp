@@ -47,6 +47,9 @@ Route::get('suscriptor/detalle/{id}/{type}/{startdate}/{closedate}', 'Subscriber
 Route::get('suscriptor/edicion/{id}/{type}/{startdate}/{closedate}', 'SubscribersController@editSubscriber');
 Route::post('suscriptor/edicion/{id}', 'SubscribersController@updateSubscriber');
 
+Route::get('suscriptor/edicion_pw/{id}/{type}/{startdate}/{closedate}', 'SubscribersController@editPasswordSubscriber');
+Route::post('suscriptor/edicion_pw/{id}', 'SubscribersController@updatePasswordSubscriber');
+
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
 Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');
 

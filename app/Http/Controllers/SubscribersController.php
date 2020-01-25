@@ -289,8 +289,37 @@ class SubscribersController extends Controller
       }else{
         return redirect(action('specialsController@listSubscribersByFilterWihtParams', [$request->subscriberType,$request->startDate,$request->closeDate]))->with($this->codeMessage, $this->message);
       }
+    }
 
+    public function editPasswordSubscriber($id, $type, $startdate, $closedate){
 
+      $subscriber = Subscriber::find($id);
+
+      $typeSubscribers = $type;
+      $startDate = $startdate;
+      $closeDate = $closedate;
+
+      return view ('editpasswordsubscriber', compact('subscriber', 'typeSubscribers', 'startDate', 'closeDate'));
+    }
+
+    public function updatePasswordSubscriber(Request $request, $id){
+
+      $subscriber = Subscriber::find($id);
+      $account = User::find($subscriber->user_id);
+
+      $account->password = md5($request->password);
+      $accountUpdated = $account->update();
+
+      if ($accountUpdated){
+        $codeMessage = 'info';
+        $message = 'La información del suscriptor fue actualizada con éxito.';
+      }
+
+      if ($request->startDate == 'a'){
+        return redirect(action('SubscribersController@listSubscribers', $request->subscriberType))->with($this->codeMessage, $this->message);
+      }else{
+        return redirect(action('specialsController@listSubscribersByFilterWihtParams', [$request->subscriberType,$request->startDate,$request->closeDate]))->with($this->codeMessage, $this->message);
+      }
 
     }
 
