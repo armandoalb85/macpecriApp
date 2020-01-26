@@ -280,8 +280,8 @@ class SubscribersController extends Controller
       $accountUpdated =$account->update();
 
       if ($accountUpdated || $affectedRegister > 0){
-        $codeMessage = 'info';
-        $message = 'La información del suscriptor fue actualizada con éxito.';
+        $this->codeMessage = 'info';
+        $this->message = 'La información del suscriptor fue actualizada con éxito.';
       }
 
       if ($request->startDate == 'a'){
@@ -289,6 +289,7 @@ class SubscribersController extends Controller
       }else{
         return redirect(action('specialsController@listSubscribersByFilterWihtParams', [$request->subscriberType,$request->startDate,$request->closeDate]))->with($this->codeMessage, $this->message);
       }
+
     }
 
     public function editPasswordSubscriber($id, $type, $startdate, $closedate){
@@ -311,8 +312,8 @@ class SubscribersController extends Controller
       $accountUpdated = $account->update();
 
       if ($accountUpdated){
-        $codeMessage = 'info';
-        $message = 'La información del suscriptor fue actualizada con éxito.';
+        $this->codeMessage = 'info';
+        $this->message = 'La contraseña del suscriptor fue actualizada con éxito.';
       }
 
       if ($request->startDate == 'a'){

@@ -59,7 +59,7 @@ class SubscriptionTypesController extends Controller
 
       if ($operationResult){
         $this->codeMessage = 'info';
-        $this->message = 'El nuevo regitro fue guardado con exito.';
+        $this->message = 'El nuevo regitro fue guardado con éxito.';
       }
 
       return redirect('suscripciones')->with($this->codeMessage, $this->message);
