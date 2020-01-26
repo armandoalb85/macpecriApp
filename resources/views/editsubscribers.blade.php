@@ -51,10 +51,13 @@
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
             <label class="col-lg-3 col-form-label">Correo</label>
             <div class="col-lg-9">
-              <input type="text" name="email" value="{{ $account->email }}" class="form-control">
+              <input type="text" name="email" value="{{ $account->email }}" class="form-control" maxlength="45">
+              @if ($errors->has('email'))
+                <strong class="error-text">{{ $errors->first('email') }}</strong>
+              @endif
             </div>
           </div>
           <div class="form-group row">
@@ -65,8 +68,8 @@
                   <option>Activo</option>
                   <option>Inactivo</option>
                 @elseif($subscriberAccount[0]->status == 'Inactivo')
-                <option>Inactivo</option>
-                <option>Activo</option>
+                  <option>Inactivo</option>
+                  <option>Activo</option>
                 @endif
               </select>
             </div>

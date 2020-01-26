@@ -256,6 +256,7 @@ class SubscribersController extends Controller
     */
     public function updateSubscriber(Request $request, $id){
 
+      $validateData = $this->subscriberInfoValidator();
       $data = explode('-',date('Y-m-d'));
       $today = $data[0].'-'.$data[1].'-'.$data[2];
 
@@ -374,6 +375,20 @@ class SubscribersController extends Controller
       ]);
 
       return $data;
+    }
+
+    private function subscriberInfoValidator(){
+
+      $data = request()->validate([
+        'email'    => 'required',
+        'email' => ['required', 'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/']
+      ],[
+        'required' => 'El campo de correo es obligatorio.',
+        'regex' => 'El formato de correo no es correcto'
+      ]);
+
+      return $data;
+
     }
 
     /**
