@@ -21,7 +21,7 @@
     <div class="alert alert-success alert-block fade-out">
     	<button type="button" class="close" data-dismiss="alert">×</button>
       @if($buttonRecord[0]->status == 'Activo')
-    	   <h4><strong>El boton de pago se encuentra ACTIVO</strong></h4>
+    	   <h4><strong>El boton de pago ENCENDIDO</strong></h4>
        @else
         <h4><strong>El boton de pago APAGADO</strong></h4>
       @endif
