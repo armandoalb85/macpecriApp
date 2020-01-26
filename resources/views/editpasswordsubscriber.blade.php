@@ -37,23 +37,29 @@
           <input type="text" name="startDate" value="{{ $startDate }}" class="form-control" hidden>
           <input type="text" name="closeDate" value="{{ $closeDate }}" class="form-control" hidden>
           <!-- -->
-          <div class="form-group row">
+          <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
             <label class="col-lg-3 col-form-label">Contraseña</label>
             <div class="col-lg-9">
-              <input type="password" name="password" placeholder="********" value="" class="form-control">
+              <input type="password" name="password" placeholder="********" value="" class="form-control" maxlength="8">
+              @if ($errors->has('password'))
+                <strong class="error-text">{{ $errors->first('password') }}</strong>
+              @endif
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row {{ $errors->has('passwordConfirmation') ? ' has-error' : '' }}">
             <label class="col-lg-3 col-form-label">Confirmar Contraseña</label>
             <div class="col-lg-9">
-              <input type="password" name="passwordConfirmation" placeholder="********" value="" class="form-control">
+              <input type="password" name="passwordConfirmation" placeholder="********" value="" class="form-control" maxlength="8">
+              @if ($errors->has('passwordConfirmation'))
+                <strong class="error-text">{{ $errors->first('passwordConfirmation') }}</strong>
+              @endif
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-lg-4">
-              <button class="btn  btn-primary" type="submit">Aceptar</button>
+              <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
             </div>
             <div class="col-lg-4">
               @if($startDate === "a")

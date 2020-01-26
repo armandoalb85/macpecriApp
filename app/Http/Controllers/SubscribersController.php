@@ -305,6 +305,7 @@ class SubscribersController extends Controller
 
     public function updatePasswordSubscriber(Request $request, $id){
 
+      $data = $this->passwordValidator();
       $subscriber = Subscriber::find($id);
       $account = User::find($subscriber->user_id);
 
@@ -351,6 +352,25 @@ class SubscribersController extends Controller
         'closedate' => 'required'
       ],[
         'required' => 'El filtro de fecha es obligarorio para consulta.'
+      ]);
+
+      return $data;
+    }
+
+    private function passwordValidator(){
+
+      $data = request()->validate([
+        'password' => 'required',
+        'passwordConfirmation' => 'required',
+        'password' => 'required|min:6',
+        'password' => ['required', 'regex:/\A(?=.*[A-Z])(?=.*\d)(?=.*(?:!|#|\$|%|&|\/|\(|\)|=|\?|\*|\.)).{6,8}\z/'],
+        'passwordConfirmation' => 'required|same:password'
+      ],[
+        'password.required' => 'Nueva contraseña es obligatoria.',
+        'passwordConfirmation.required' => 'comfirmacion de contraseña es obligatoria.',
+        'min'=> 'El campo de contraseña no puede tener menos de :min carácteres.',
+        'passwordConfirmation.same' => 'Nueva contraseña y confirmación de contraseña deben coincidir.',
+        'regex' => 'La contraseña debe contener 6 a 8 caracteres, al menos una mayúscula, al menos un dígito, y al menos un símbolo'
       ]);
 
       return $data;
