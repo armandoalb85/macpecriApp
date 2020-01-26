@@ -70,16 +70,18 @@ Route::get('suscribase_ahora','SubscribeNowsController@indexSubscribeNow');
 Route::get('suscribase_ahora/detalle/{id}','SubscribeNowsController@showSubscribeNow');
 Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscribeNow');
 Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeNow');
+
+Route::get('pagos_config','ButtonRecordsController@index');
 /*Route::get('suscribase_ahora/nuevo','SubscribeNowsController@newSubscribeMessageConfig');
 Route::post('suscribase_ahora/nuevo','SubscribeNowsController@saveSubscribeMessageConfig');
 Route::get('suscribase_ahora/borrar/{id}','SubscribeNowsController@destroySubscribeMessageConfig');*/
 
-Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
+/*Route::get('mensajes/detalle/{id}','SubscriptionMessagesController@showSubscriptionMessage');
 Route::get('mensajes/nuevo/{id}','SubscriptionMessagesController@newSubscriptionMessage');
 Route::post('mensajes/nuevo/{id}','SubscriptionMessagesController@saveSubscriptionMessage');
 Route::get('mensajes/edicion/{id}','SubscriptionMessagesController@editSubscriptionMessage');
 Route::post('mensajes/edicion/{id}','SubscriptionMessagesController@updateSubscriptionMessage');
-Route::get('mensajes/borrar/{id}','SubscriptionMessagesController@destroySubscriptionMessage');
+Route::get('mensajes/borrar/{id}','SubscriptionMessagesController@destroySubscriptionMessage');*/
 
 //Newsletters routes
 Route::get('boletines','NewslettersController@indexNewsletters');

@@ -72,6 +72,7 @@
                         <li>
                           <a href="{{ url('suscripciones') }}">Tipos de Suscripción </a>
                           <a href="{{ url('suscribase_ahora') }}">Suscríbase Ahora </a>
+                          <a href="{{ url('pagos_config') }}">Boton de Pago </a>
                         </li>
                     </ul>
                 </li>

@@ -16,7 +16,7 @@ class CreateButtonRecordsTable extends Migration
         Schema::create('button_records', function (Blueprint $table) {
             $table->increments('id');
             $table->date('startdate');
-            $table->date('closedate');
+            $table->date('closedate')->nullable(true);
             $table->string('status');
             $table->timestamps();
         });
