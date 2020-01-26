@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
           'password' => md5('Macpecri123#'),
           'username' => 'adi411',
           'created_at' => date('Y-m-d',strtotime('09/15/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/15/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -26,7 +27,8 @@ class UserSeeder extends Seeder
           'password' => md5('Macpecri123#'),
           'username' => 'kimicaral',
           'created_at' => date('Y-m-d',strtotime('09/03/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/03/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/03/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -35,7 +37,8 @@ class UserSeeder extends Seeder
           'password' => md5('Macpecri123#'),
           'username' => 'juancho',
           'created_at' => date('Y-m-d',strtotime('09/10/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/10/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -44,7 +47,8 @@ class UserSeeder extends Seeder
           'password' => md5('Macpecri123*'),
           'username' => 'gabito',
           'created_at' => date('Y-m-d',strtotime('09/02/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/02/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/02/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -53,7 +57,8 @@ class UserSeeder extends Seeder
           'password' => md5('Macpecri123*'),
           'username' => 'sarita',
           'created_at' => date('Y-m-d',strtotime('09/10/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/10/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -62,7 +67,8 @@ class UserSeeder extends Seeder
           'password' => md5('Edg123*'),
           'username' => 'edgkid',
           'created_at' => date('Y-m-d',strtotime('01/08/2020')),
-          'updated_at' => date('Y-m-d',strtotime('01/08/2020'))
+          'updated_at' => date('Y-m-d',strtotime('01/08/2020')),
+          'type' =>'Admin'
       ]);
 //'''''''''''''''''''''''''''''
       DB::table('users')->insert([
@@ -71,7 +77,8 @@ class UserSeeder extends Seeder
           'password' => md5('Edg123*'),
           'username' => 'jfLectorA',
           'created_at' => date('Y-m-d',strtotime('08/01/2019')),
-          'updated_at' => date('Y-m-d',strtotime('08/01/2019'))
+          'updated_at' => date('Y-m-d',strtotime('08/01/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -80,7 +87,8 @@ class UserSeeder extends Seeder
           'password' => md5('Edg123*'),
           'username' => 'pucca',
           'created_at' => date('Y-m-d',strtotime('09/10/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/10/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
+          'type' =>'Lector'
       ]);
 
       DB::table('users')->insert([
@@ -89,7 +97,8 @@ class UserSeeder extends Seeder
           'password' => md5('Edg123*'),
           'username' => 'ucvps',
           'created_at' => date('Y-m-d',strtotime('09/15/2019')),
-          'updated_at' => date('Y-m-d',strtotime('09/15/2019'))
+          'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
+          'type' =>'Lector'
       ]);
 
     }
