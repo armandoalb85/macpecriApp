@@ -16,6 +16,19 @@
 </div> <br>
 <!-- guia -->
 <!-- dashboard-->
+<div class="row">
+  <div class="col-4">
+    <div class="alert alert-success alert-block fade-out">
+    	<button type="button" class="close" data-dismiss="alert">×</button>
+      @if($buttonRecord[0]->status == 'Activo')
+    	   <h4><strong>El boton de pago se encuentra ACTIVO</strong></h4>
+       @else
+        <h4><strong>El boton de pago APAGADO</strong></h4>
+      @endif
+    </div>
+  </div>
+</div>
+
 <div class="alert alert-warning alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
 	<h4><strong>Al activar boton de pago para Venezuela, cambiara las propiedades una cuenta de suscripción de venexula por una cuenta de suscripción gratuita comun</strong></h4>
