@@ -18,7 +18,7 @@
 <!-- dashboard-->
 <div class="alert alert-warning alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4><strong>Al Activar boton de pago para Venezuela, cambiara las propiedades una cuenta de suscripción de venexula por una cuenta de suscripción gratuita comun</strong></h4>
+	<h4><strong>Al activar boton de pago para Venezuela, cambiara las propiedades una cuenta de suscripción de venexula por una cuenta de suscripción gratuita comun</strong></h4>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">

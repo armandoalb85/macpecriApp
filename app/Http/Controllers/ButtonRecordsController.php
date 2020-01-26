@@ -23,4 +23,12 @@ class ButtonRecordsController extends Controller
         ->get();
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
+
+    public function enableButton(){
+
+    }
+
+    public function disabledButton(){
+      
+    }
 }
