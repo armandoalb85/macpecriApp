@@ -24,11 +24,14 @@ class ButtonRecordsController extends Controller
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
 
-    public function enableButton(){
+    public function modifyButton($action){
+      if($action == 'enable'){
+        echo 'Activo boton';
+      }elseif($action == 'disabled'){
+        echo 'Inactivo Boton';
+      }
 
     }
 
-    public function disabledButton(){
-      
-    }
+
 }

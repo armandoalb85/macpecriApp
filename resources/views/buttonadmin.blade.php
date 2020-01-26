@@ -33,7 +33,10 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Desde:</label>
               <div class="col-sm-9">
-                <label class="col-lg-8 col-form-label">{{$buttonRecord[0]->startdate}}</label>
+                <label class="col-lg-8 col-form-label">
+                  @php($data = explode('-',$buttonRecord[0]->startdate))
+                  {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                </label>
               </div>
             </div>
             <div class="form-group row">
@@ -73,7 +76,7 @@
             <div class="form-group row">
               <div class="col-lg-6">
                 @if($buttonRecord[0]->status == 'Inactivo')
-                  <a href="" class="btn btn-sm btn-success col-12">Activar</a>
+                  <a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-12">Activar</a>
                 @else
                   <button class="btn btn-sm btn-success col-12" disabled>Activar</button>
                 @endif
@@ -82,7 +85,7 @@
                 @if($buttonRecord[0]->status == 'Inactivo')
                   <button class="btn btn-sm btn-success col-12" disabled>Inactivar</button>
                 @else
-                  <a href="" class="btn btn-sm btn-danger col-12">Inactivar</a>
+                  <a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-12">Inactivar</a>
                 @endif
               </div>
             </div>
