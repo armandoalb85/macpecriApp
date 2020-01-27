@@ -49,7 +49,7 @@
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Correo</label>
             <div class="col-lg-9">
-              <input type="text" name="email" value="{{ $account->email }}" class="form-control">
+              <input type="text" name="email" value="{{ $account->email }}" class="form-control" disabled>
             </div>
           </div>
           <div class="form-group row">
