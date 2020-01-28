@@ -18,7 +18,8 @@ class SubscriptionTypeSeeder extends Seeder
             'limit' => 10,
             'status' => 'Activo',
             'daysforpaying' => 0,
-            'type' => 'Gratuita'
+            'type' => 'Gratuita',
+            'typeswap' => 'Gratuita'
         ]);
 
         DB::table('subscription_types')->insert([
@@ -28,7 +29,8 @@ class SubscriptionTypeSeeder extends Seeder
             'limit' => 999999,
             'status' => 'Activo',
             'daysforpaying' => 5,
-            'type' => 'Pago'
+            'type' => 'Pago',
+            'typeswap' => 'Pago'
         ]);
 
         DB::table('subscription_types')->insert([
@@ -38,7 +40,8 @@ class SubscriptionTypeSeeder extends Seeder
             'limit' => 999999,
             'status' => 'Activo',
             'daysforpaying' => 0,
-            'type' => 'Venezuela'
+            'type' => 'Venezuela',
+            'typeswap' => 'Venezuela'
         ]);
     }
 }

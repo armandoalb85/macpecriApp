@@ -25,7 +25,7 @@ class ButtonRecordsController extends Controller
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
-        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status')
+        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status', 'subscription_types.typeswap')
         ->get();
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
@@ -69,7 +69,7 @@ class ButtonRecordsController extends Controller
         ->whereIn('id', [1, 3])
         ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status')
         ->get();
-        
+
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
 

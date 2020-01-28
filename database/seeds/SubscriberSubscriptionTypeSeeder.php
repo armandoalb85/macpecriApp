@@ -19,7 +19,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/15/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
             'subscriber_id' => 1,
-            'subscription_id' => 1
+            'subscription_id' => 1,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -30,7 +31,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/03/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/03/2019')),
             'subscriber_id' => 2,
-            'subscription_id' => 1
+            'subscription_id' => 1,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -41,7 +43,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/10/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
             'subscriber_id' => 3,
-            'subscription_id' => 3
+            'subscription_id' => 3,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -52,7 +55,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/02/2019')),
             'updated_at' => date('Y-m-d',strtotime('11/15/2019')),
             'subscriber_id' => 4,
-            'subscription_id' => 1
+            'subscription_id' => 1,
+            'status' => 'Inactivo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -63,7 +67,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/10/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
             'subscriber_id' => 5,
-            'subscription_id' => 1
+            'subscription_id' => 1,
+            'status' => 'Inactivo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -74,7 +79,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('11/15/2019')),
             'updated_at' => date('Y-m-d',strtotime('11/15/2019')),
             'subscriber_id' => 4,
-            'subscription_id' => 2
+            'subscription_id' => 2,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -85,7 +91,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/10/2019')),
             'updated_at' => date('Y-m-d',strtotime('10/11/2019')),
             'subscriber_id' => 5,
-            'subscription_id' => 2
+            'subscription_id' => 2,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -96,7 +103,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('08/01/2019')),
             'updated_at' => date('Y-m-d',strtotime('08/01/2019')),
             'subscriber_id' => 6,
-            'subscription_id' => 2
+            'subscription_id' => 2,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -107,7 +115,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/10/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/10/2019')),
             'subscriber_id' => 7,
-            'subscription_id' => 2
+            'subscription_id' => 2,
+            'status' => 'Activo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -118,7 +127,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('09/15/2019')),
             'updated_at' => date('Y-m-d',strtotime('09/15/2019')),
             'subscriber_id' => 8,
-            'subscription_id' => 1
+            'subscription_id' => 1,
+            'status' => 'Inactivo'
         ]);
 
         DB::table('subscriber_subscription_type')->insert([
@@ -129,7 +139,8 @@ class SubscriberSubscriptionTypeSeeder extends Seeder
             'created_at' => date('Y-m-d',strtotime('11/15/2019')),
             'updated_at' => date('Y-m-d',strtotime('11/15/2019')),
             'subscriber_id' => 8,
-            'subscription_id' => 2
+            'subscription_id' => 2,
+            'status' => 'Activo'
         ]);
     }
 }

@@ -128,6 +128,7 @@
             <tr>
                 <th>Código</th>
                 <th>Tipo de Cuenta</th>
+                <th>Propiedad Heredada</th>
                 <th>Límite  de Articulos</th>
                 <th>Costo</th>
                 <th>Días para Pagar</th>
@@ -140,6 +141,7 @@
                   <tr>
                     <th>{{$config->id}}</th>
                     <th>{{$config->type}}</th>
+                    <th>{{$config->typeswap}}</th>
                     @if($config->limit >= 999999)
                       <th>Sin Límite</th>
                     @else
