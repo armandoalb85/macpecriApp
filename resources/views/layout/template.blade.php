@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MACPECRI | Dashboard </title>
+    <title>MACPECRI | Administrador de Suscripciones </title>
 
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -60,28 +60,27 @@
                         </li>
                     </ul>
                 </li>
-                <!--<li>
-                    <a href="{{ url('boletines') }}">
-                      <i class="glyphicon glyphicon-envelope"></i>
-                      <span class="nav-label">Boletines Informativos </span>
-                    </a>
-                </li>-->
                 <li >
                     <a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">Configuración</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                           <a href="{{ url('suscripciones') }}">Tipos de Suscripción </a>
                           <a href="{{ url('suscribase_ahora') }}">Suscríbase Ahora </a>
-                          <a href="{{ url('pagos_config') }}">Boton de Pago </a>
+                          <a href="{{ url('pagos_config') }}">Botón de Pago </a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{ url('gestion_suscriptores') }}">
+                      <i class="glyphicon glyphicon-globe"></i>
+                      <span class="nav-label">Gestión de Suscripción</span>
+                    </a>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del Lector</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ url('pagos_realizados') }}">Consultar Pagos Realizados</a></li>
                         <li><a href="{{ url('pagos_pendientes') }}">Consultar Pagos Pendientes</a></li>
-                        <li><a href="{{ url('gestion_suscriptores') }}">Suscriptores</a></li>
                     </ul>
                 </li>
                 <li>

@@ -33,9 +33,9 @@
             <thead>
             <tr>
                 <th>Código</th>
-                <th>Nombre de Suscriptor</th>
-                <th>Apellido de Suscriptor</th>
+                <th>Suscriptor</th>
                 <th>Correo</th>
+                <th>Suscripción</th>
                 <th>Estatus</th>
                 <th>Tipo de Cuenta</th>
                 <th>Acciones</th>
@@ -46,9 +46,12 @@
                 @foreach($queryResults as $queryResult)
                   <tr>
                     <td>{{$queryResult->id}}</td>
-                    <td>{{$queryResult->name}}</td>
-                    <td>{{$queryResult->lastname}}</td>
+                    <td>{{$queryResult->name}}&nbsp;{{$queryResult->lastname}}</td>
                     <td>{{$queryResult->email}}</td>
+                    <td>
+                      @php($data = explode('-',$queryResult->startdate))
+                      {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                    </td>
                     <td>{{$queryResult->status}}</td>
                     <td>{{$queryResult->type}}</td>
                     <td>

@@ -53,7 +53,7 @@ class SubscribersController extends Controller
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->where('subscription_types.type', '=', $type)
           ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
           ->get();
       }elseif($type == 'Total'){
         $queryResults = DB::table('subscribers')
@@ -61,7 +61,7 @@ class SubscribersController extends Controller
           ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type','subscriber_subscription_type.startdate')
           ->get();
       }
 
@@ -88,7 +88,7 @@ class SubscribersController extends Controller
           ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
           ->where('subscription_types.type', '=', $request->subscriptionType)
           ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
           ->get();
       }else{
         $queryResults = DB::table('subscribers')
@@ -98,7 +98,7 @@ class SubscribersController extends Controller
           ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
           ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
           ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
           ->get();
       }
 

@@ -37,7 +37,7 @@
             <div class="form-group row">
               <div class="col-lg-offset-12 col-lg-12">
                 <button class="btn btn-md btn-primary" type="submit" title="Consultar Suscriptores">
-                  Aceptar
+                  Buscar
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
@@ -63,7 +63,7 @@
             <div class="form-group row">
               <div class="col-lg-offset-12 col-lg-12">
                 <button class="btn btn-md btn-primary" type="submit" title="Consultar Suscriptores">
-                  Aceptar
+                  Buscar
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
@@ -89,7 +89,7 @@
             <div class="form-group row">
               <div class=" col-lg-12">
                 <button class="btn btn-primary" type="submit" title="Consultar Suscriptotres">
-                  Aceptar
+                  Buscar
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
@@ -115,7 +115,7 @@
             <div class="form-group row">
               <div class=" col-lg-12">
                 <button class="btn btn-primary" type="submit" title="Consultar Suscriptores">
-                  Aceptar
+                  Buscar
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
