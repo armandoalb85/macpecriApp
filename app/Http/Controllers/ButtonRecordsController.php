@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ButtonRecord;
+use App\SubscriptionType;
 use DB;
 
 class ButtonRecordsController extends Controller
@@ -50,12 +51,14 @@ class ButtonRecordsController extends Controller
         if($action == 'enable'){
           DB::insert('insert into button_records (startdate, status, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'Activo', $button->closedate, $button->closedate]);
           $value = 'activado';
+          $this->updateActiveButton();
         }elseif($action == 'disabled'){
           DB::insert('insert into button_records (startdate, status, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'Inactivo', $button->closedate, $button->closedate]);
           $value = 'Inactivado';
+          $this->updateInactiveButton();
         }
         $codeMessage = 'info';
-        $message = 'El boton de pago se fue '.$value;
+        $message = 'Boton de pago: '.$value;
       }
 
       $buttonRecord = DB::table('button_records')
@@ -67,11 +70,37 @@ class ButtonRecordsController extends Controller
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
-        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status')
+        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status', 'subscription_types.typeswap')
         ->get();
 
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
 
+    private function updateActiveButton(){
+
+      $subscriptioVenezuela = SubscriptionType::find(3);
+      $subscriptioFree = SubscriptionType::find(1);
+
+      $subscriptioVenezuela->typeswap = $subscriptioFree->typeswap;
+      $subscriptioVenezuela->limit = $subscriptioFree->limit;
+      $subscriptioVenezuela->cost = $subscriptioFree->cost;
+      $subscriptioVenezuela->daysforpaying = $subscriptioFree->daysforpaying;
+
+      $subscriptioVenezuela->update();
+
+    }
+
+    private function updateInactiveButton(){
+
+      $subscriptioVenezuela = SubscriptionType::find(3);
+
+      $subscriptioVenezuela->typeswap = 'Venezuela';
+      $subscriptioVenezuela->limit = '999999';
+      $subscriptioVenezuela->cost = 0;
+      $subscriptioVenezuela->daysforpaying = 0;
+
+      $subscriptioVenezuela->update();
+
+    }
 
 }

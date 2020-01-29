@@ -31,7 +31,7 @@
 
 <div class="alert alert-warning alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4><strong>Al activar boton de pago para Venezuela, cambiara las propiedades una cuenta de suscripción de venexula por una cuenta de suscripción gratuita comun</strong></h4>
+	<h4><strong>La acción de activar o inactivar el botón de pago, alternara las propiedades de una cuenta gratita común y una cuenta gratuita con acceso ilimitado para Venezuela.</strong></h4>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -82,23 +82,16 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Acciones Sobre Boton de Pago</h5>
+          <h5>Acción Sobre Boton de Pago</h5>
         </div>
         <div class="ibox-content">
           <form>
             <div class="form-group row">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 @if($buttonRecord[0]->status == 'Inactivo')
-                  <a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-12">Activar</a>
+                  <center><a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-6">Activar</a></center>
                 @else
-                  <button class="btn btn-sm btn-success col-12" disabled>Activar</button>
-                @endif
-              </div>
-              <div class="col-lg-6">
-                @if($buttonRecord[0]->status == 'Inactivo')
-                  <button class="btn btn-sm btn-success col-12" disabled>Inactivar</button>
-                @else
-                  <a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-12">Inactivar</a>
+                  <center><a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-6">Inactivar</a></center>
                 @endif
               </div>
             </div>
