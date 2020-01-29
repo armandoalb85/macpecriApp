@@ -85,13 +85,13 @@ Route::post('mensajes/edicion/{id}','SubscriptionMessagesController@updateSubscr
 Route::get('mensajes/borrar/{id}','SubscriptionMessagesController@destroySubscriptionMessage');*/
 
 //Newsletters routes
-Route::get('boletines','NewslettersController@indexNewsletters');
+/*Route::get('boletines','NewslettersController@indexNewsletters');
 Route::get('boletines/nuevo','NewslettersController@newNewsletters');
 Route::post('boletines/nuevo','NewslettersController@saveNewsletters');
 Route::get('boletines/detalle/{id}','NewslettersController@showNewsletter');
 Route::get('boletines/edicion/{id}','NewslettersController@editNewsletter');
 Route::post('boletines/edicion/{id}','NewslettersController@updateNewsletter');
-Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');
+Route::get('boletines/borrar/{id}','NewslettersController@destroyNewsletters');*/
 
 //Reports
 Route::get('r_conversion_cuenta','ReportsController@filterPublicConversionAccount');
