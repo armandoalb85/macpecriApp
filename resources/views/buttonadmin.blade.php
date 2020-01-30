@@ -3,13 +3,13 @@
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
-        <h2>Configuración de Botón de Pago</h2>
+        <h2>Configuración de botón de pago</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema administrativo</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>Botón de Pago</strong>
+                <strong>Botón de pago</strong>
             </li>
         </ol>
     </div>
@@ -21,9 +21,9 @@
     <div class="alert alert-success alert-block fade-out">
     	<button type="button" class="close" data-dismiss="alert">×</button>
       @if($buttonRecord[0]->status == 'Activo')
-    	   <h4><strong>Botón de pago ENCENDIDO</strong></h4>
+    	   <h4><strong>Botón de pago. ENCENDIDO</strong></h4>
        @else
-        <h4><strong>Botón de pago APAGADO</strong></h4>
+        <h4><strong>Botón de pago. APAGADO</strong></h4>
       @endif
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Configuración Actual del Botón</h5>
+          <h5>Configuración actual del botón</h5>
         </div>
         <div class="ibox-content">
           @if($buttonRecord[0]->startdate != null && $buttonRecord[0]->status != null)
@@ -67,7 +67,7 @@
     <div class="col-lg-3">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Cuentas Afectadas</h5>
+          <h5>Cuentas afectadas</h5>
         </div>
         <div class="ibox-content">
           @if($vezuelaAccounts != null)
@@ -82,7 +82,7 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Acción Sobre Botón de Pago</h5>
+          <h5>Acción sobre botón de pago</h5>
         </div>
         <div class="ibox-content">
           <form>
@@ -105,7 +105,7 @@
       <div class="ibox-title">
         <div class="row">
           <div class="col-8">
-            <h5>Configuración de Cuentas</h5>
+            <h5>Configuración de cuentas</h5>
           </div>
           <div class="col-4">
             <a href="{{ url('suscripciones') }}" class="btn btn-md btn-primary float-right" title="Configuración de Cuentas">
@@ -120,11 +120,11 @@
             <thead>
             <tr>
                 <th>Código</th>
-                <th>Tipo de Cuenta</th>
-                <th>Propiedad Heredada</th>
-                <th>Límite  de Articulos</th>
+                <th>Tipo de cuenta</th>
+                <th>Propiedad heredada</th>
+                <th>Límite  de articulos</th>
                 <th>Costo</th>
-                <th>Días para Pagar</th>
+                <th>Días para pagar</th>
                 <th>Estatus</th>
             </tr>
             </thead>

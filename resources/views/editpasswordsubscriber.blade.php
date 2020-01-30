@@ -3,20 +3,20 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Editar Contraseña de Suscriptor</h2>
+          <h2>Editar contraseña de suscriptor</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item">
                 @if($startDate === "a")
-                  <a href="{{action('SubscribersController@listSubscribers', $typeSubscribers)}}">Lista de Suscriptores</a>
+                  <a href="{{action('SubscribersController@listSubscribers', $typeSubscribers)}}">Lista de suscriptores</a>
                 @else
                   <a href="{{action('specialsController@listSubscribersByFilterWihtParams', [$typeSubscribers,$startDate,$closeDate])}}">Lista de Suscriptores</a>
                 @endif
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Edición de Contraseña de Suscriptor</a></strong>
+                  <strong><a>Edición de contraseña de suscriptor</a></strong>
               </li>
           </ol>
       </div>
@@ -48,7 +48,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('passwordConfirmation') ? ' has-error' : '' }}">
-            <label class="col-lg-3 col-form-label">Confirmar Contraseña</label>
+            <label class="col-lg-3 col-form-label">Confirmar contraseña</label>
             <div class="col-lg-9">
               <input type="password" name="passwordConfirmation" placeholder="********" value="" class="form-control" maxlength="8">
               @if ($errors->has('passwordConfirmation'))

@@ -4,10 +4,10 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Datos del Suscriptor</h2>
+          <h2>Datos del suscriptor</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item">
                 @if($startDate === "a")
@@ -17,7 +17,7 @@
                 @endif
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Detalle de Suscriptor</a></strong>
+                  <strong><a>Detalle de suscriptor</a></strong>
               </li>
           </ol>
       </div>
@@ -33,14 +33,14 @@
         <form method="" action="">
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Nombre de Usuario</label>
+            <label class="col-lg-3 col-form-label">Nombre de usuario</label>
             <div class="col-lg-9">
               <input type="text" name="username" value="{{ $account->username }}" class="form-control" disabled>
             </div>
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Tipo de Cuenta</label>
+            <label class="col-lg-3 col-form-label">Tipo de cuenta</label>
             <div class="col-lg-9">
               <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
             </div>
@@ -75,13 +75,13 @@
   <div class="col-lg-4">
     <div class="ibox ">
       <div class="ibox-title">
-        <h5>Información del Último Pago</h5>
+        <h5>Información del último pago</h5>
       </div>
       <div class="ibox-content">
         @if (sizeof($subscriberPayment) != 0)
         <form>
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Dia de Pago</label>
+            <label class="col-lg-3 col-form-label">Dia de pago</label>
             <div class="col-lg-9">
               @php($data = explode('-',$subscriberPayment[0]->startdate))
               <input type="text" name="PaymentDate" value="{{ $data[2].'/'.$data[1].'/'.$data[0]}}" class="form-control" disabled>
@@ -89,7 +89,7 @@
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Pago Efectuado</label>
+            <label class="col-lg-3 col-form-label">Pago efectuado</label>
             <div class="col-lg-9">
               @if ($subscriberPayment[0]->closedate != null)
                 @php($data = explode('-',$subscriberPayment[0]->closedate))
@@ -101,7 +101,7 @@
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Estatus del Pago</label>
+            <label class="col-lg-3 col-form-label">Estatus del pago</label>
             <div class="col-lg-9">
               <input type="text" name="status" value="{{ $subscriberPayment[0]->status }}" class="form-control" disabled>
             </div>
@@ -116,7 +116,7 @@
   <div class="col-lg-4">
     <div class="ibox ">
       <div class="ibox-title">
-        <h5>Datos de Contacto</h5>
+        <h5>Datos de contacto</h5>
       </div>
       <div class="ibox-content">
         <form>

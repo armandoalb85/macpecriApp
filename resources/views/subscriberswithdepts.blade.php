@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Consulta de Subscriptores con Pagos Pendientes</h2>
+          <h2>Consulta de subscriptores con pagos pendientes</h2>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema administrativo</a>
             </li>
             <li class="breadcrumb-item active">
-                <a><strong>Consulta de Pagos Pendientes</strong></a>
+                <a><strong>Consulta de pagos pendientes</strong></a>
             </li>
           </ol>
       </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Consultar Pagos</h5>
+          <h5>Consultar pagos</h5>
         </div>
         <div class="ibox-content">
           <form id="fdate" method="post" action="{{ url('pagos_pendientes') }}" >
@@ -97,9 +97,9 @@
                   <thead>
                   <tr>
                     <th>Suscriptor</th>
-                    <th>Fecha de Cobro</th>
-                    <th>Días para Cancelar</th>
-                    <th>Fecha Actual</th>
+                    <th>Fecha de cobro</th>
+                    <th>Días para cancelar</th>
+                    <th>Fecha actual</th>
                     <th>Pago</th>
                   </tr>
                   </thead>

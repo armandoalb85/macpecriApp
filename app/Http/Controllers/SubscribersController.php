@@ -130,8 +130,6 @@ class SubscribersController extends Controller
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->where('subscription_types.name', '=', $request->subscriptionType)
-            //->where('payment_account_statements.closedate', '>=', $this->dateFormat($request->startdate))
-            //->where('payment_account_statements.closedate', '<=', $this->dateFormat($request->closedate))
             ->where('payment_account_statements.closedate', '>=', $request->startdate)
             ->where('payment_account_statements.closedate', '<=', $request->closedate)
             ->select('subscription_types.name', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')

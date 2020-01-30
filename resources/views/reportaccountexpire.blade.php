@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de Cuentas por Vencerse</h2>
+          <h2>Reporte de cuentas por vencerse</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <a><strong>Cuentas por Vencer</strong></a>
+                  <a><strong>Cuentas por vencer</strong></a>
               </li>
           </ol>
       </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Filtros de Reporte</h5>
+          <h5>Filtros de reportes</h5>
         </div>
         <div class="ibox-content">
           <form id="fdate" method="post" action="{{ url('r_cuentas_por_vencer')}}" >
@@ -66,7 +66,7 @@
         <div class="ibox-title">
           <div class="row">
             <div class="col-10">
-              <h5>Resultados Obtenidos</h5>
+              <h5>Resultados obtenidos</h5>
             </div>
             <div class="col-2">
               <form method="get" action="{{ action('ExportsController@xlsAccountExpire', $dateIni)}}">
@@ -91,10 +91,10 @@
             <thead>
             <tr>
                 <th>Suscriptor</th>
-                <th>Tipo de Cuenta</th>
-                <th>Fecha de Pago</th>
-                <th>Días para Pagar</th>
-                <th>Monto a Pagar</th>
+                <th>Tipo de cuenta</th>
+                <th>Fecha de pago</th>
+                <th>Días para pagar</th>
+                <th>Monto a pagar</th>
             </tr>
             </thead>
             <tbody>

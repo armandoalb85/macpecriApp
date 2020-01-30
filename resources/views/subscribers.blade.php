@@ -4,10 +4,10 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Consultar Suscriptores</h2>
+          <h2>Consultar suscriptores</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item">
                   <strong><a>Suscriptores</a></strong>
@@ -23,7 +23,7 @@
     <div class="col-lg-3">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Cuentas Gratuita:&nbsp;
+          <h5>Cuentas gratuita:&nbsp;
             <h1>@if($totalFree!= null)
               {{$totalFree}}
             @else
@@ -49,7 +49,7 @@
     <div class="col-lg-3">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Cuentas de Pago:&nbsp;
+          <h5>Cuentas de pago:&nbsp;
             <h1>@if($totalPay!= null)
               {{$totalPay}}
             @else
@@ -129,7 +129,7 @@
     <div class="col-lg-6">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Consultar Suscriptores</h5>
+          <h5>Consultar suscriptores</h5>
         </div>
         <div class="ibox-content">
           <form id="fdate" method="post" action="{{ url('suscriptores') }}" >

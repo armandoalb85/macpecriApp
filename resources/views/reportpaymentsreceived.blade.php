@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de Pagos Recibidos</h2>
+          <h2>Reporte de pagos recibidos</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <a><strong>Pagos Recibidos</strong></a>
+                  <a><strong>Pagos recibidos</strong></a>
               </li>
           </ol>
       </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Filtros de Reporte</h5>
+          <h5>Filtros de reportes</h5>
         </div>
         <div class="ibox-content">
           <form method="post" action="{{ url('r_pagos_recibidos')}}" >
@@ -92,7 +92,7 @@
         <div class="ibox-title">
           <div class="row">
             <div class="col-10">
-              <h5>Resultados Obtenidos</h5>
+              <h5>Resultados obtenidos</h5>
             </div>
             <div class="col-2">
               <form method="get" action="{{ action('ExportsController@xlsPaymentsReceived', [$dateIni, $dateFin])}}">
@@ -117,7 +117,7 @@
         <table class="table table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Método de Pago</th>
+                <th>Método de pago</th>
                 <th>Monto</th>
             </tr>
             </thead>

@@ -3,13 +3,13 @@
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Suscríbase Ahora ({{ $subscribeNow->name }})</h2>
+        <h2>Suscríbase ahora ({{ $subscribeNow->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                <a href="{{ url('dashboard') }}">Sistema administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="{{ url('suscribase_ahora') }}">Mensajes de Suscríbase Ahora</a>
+                <a href="{{ url('suscribase_ahora') }}">Mensajes de suscríbase ahora</a>
             </li>
             <li class="breadcrumb-item active">
                 <strong> Mensaje de &nbsp;{{ $subscribeNow->name }}</strong>
@@ -24,14 +24,14 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Edición de Mensaje / {{ $subscribeNow->category }}</h5>
+          <h5>Edición de mensaje / {{ $subscribeNow->category }}</h5>
         </div>
         <div class="ibox-content">
           <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" enctype="multipart/form-data" >
             {{csrf_field()}}
 
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Subir Archivo</label>
+              <label class="col-lg-3 col-form-label">Subir archivo</label>
               <div class="col-sm-9">
                   <input type="file" class="form-control" name="file">
               </div>

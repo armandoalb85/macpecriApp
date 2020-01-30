@@ -3,10 +3,10 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de Público General con Cuenta Suscrita</h2>
+          <h2>Reporte de público general con cuenta suscrita</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard')}}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard')}}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item active">
                   <a><strong>Conversión de cuentas</strong></a>
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Filtros de Reporte</h5>
+          <h5>Filtros de reporte</h5>
         </div>
         <div class="ibox-content">
           <form id="fdate" method="post" action="{{ url('r_creacion_cuenta')}}" >
@@ -92,7 +92,7 @@
         <div class="ibox-title">
           <div class="row">
             <div class="col-10">
-              <h5>Resultados Obtenidos</h5>
+              <h5>Resultados obtenidos</h5>
             </div>
             <div class="col-2">
               <form method="get" action="{{ action('ExportsController@xlsCreatedAccount', [$dateIni, $dateFin])}}">
@@ -119,9 +119,9 @@
             <tr>
                 <th>Suscriptor</th>
                 <th>Usuario</th>
-                <th>Email</th>
-                <th>Fecha de Suscripción</th>
-                <th>Tipo de Cuenta</th>
+                <th>Correo</th>
+                <th>Fecha de suscripción</th>
+                <th>Tipo de cuenta</th>
             </tr>
             </thead>
             <tbody>

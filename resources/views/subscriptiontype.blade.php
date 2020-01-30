@@ -3,10 +3,10 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Tipos de Suscripción</h2>
+          <h2>Tipos de suscripción</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item">
                   <a><strong>Suscripciones</strong></a>
@@ -23,7 +23,7 @@
           <div  class="ibox-title">
             <div class="row">
               <div class="col-10">
-                <h5>Listado de Tipo de Suscripciones</h5>
+                <h5>Listado de tipo de suscripciones</h5>
               </div>
               <!-- BTN RegisterEDg -->
               <!--<div class="col-2">
@@ -40,8 +40,8 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Nombre de Suscripción</th>
-                  <th>Límite de Artículos</th>
+                  <th>Nombre de suscripción</th>
+                  <th>Límite de artículos</th>
                   <!--<th>Costo</th>-->
                   <th>Estatus</th>
                   <th>Acciones</th>

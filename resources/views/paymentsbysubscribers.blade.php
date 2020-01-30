@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Consulta de Pagos Realizados por los Suscriptores</h2>
+          <h2>Consulta de pagos realizados por los suscriptores</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <a><strong>Consulta de Pagos realizados</strong></a>
+                  <a><strong>Consulta de pagos realizados</strong></a>
               </li>
           </ol>
       </div>
@@ -20,7 +20,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Consultar Pagos</h5>
+          <h5>Consultar pagos</h5>
         </div>
         <div class="ibox-content">
           <form id="fdate" method="post" action="{{ url('pagos_realizados')}}" >
@@ -102,7 +102,7 @@
     <div class="col-lg-8">
       <div class="ibox ">
           <div  class="ibox-title">
-              <h5>Listado de Pagos Realizados</h5>
+              <h5>Listado de pagos realizados</h5>
           </div>
           <div class="ibox-content">
 
@@ -111,8 +111,8 @@
                   <thead>
                   <tr>
                       <th>Suscriptor</th>
-                      <th>Fecha de Cobro</th>
-                      <th>Fecha de Pago</th>
+                      <th>Fecha de cobro</th>
+                      <th>Fecha de pago</th>
                       <th>Pago</th>
                   </tr>
                   </thead>

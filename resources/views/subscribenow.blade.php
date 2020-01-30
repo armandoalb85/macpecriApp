@@ -3,13 +3,13 @@
 <!-- Guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Mensajes de Invitación (Suscríbase Ahora)</h2>
+        <h2>Mensajes de invitación (suscríbase ahora)</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ url('dashboard')}}">Sistema Administrativo</a>
+                <a href="{{ url('dashboard')}}">Sistema administrativo</a>
             </li>
             <li class="breadcrumb-item">
-                <a><strong>Mensajes de Suscríbase Ahora</strong></a>
+                <a><strong>Mensajes de suscríbase ahora</strong></a>
             </li>
         </ol>
     </div>

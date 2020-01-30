@@ -3,20 +3,20 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Suscriptores a Consultar</h2>
+          <h2>Suscriptores a consultar</h2>
           @if ( $startDate == null || $startDate == null )
            @php($startDate = "a")
            @php($closeDate = "b")
           @endif
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                  <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
+                  <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item">
                   <a href="{{ url('gestion_suscriptores') }}">Suscriptores</a>
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Gestion de Suscriptores&nbsp;({{ $typeSubscribers }})</a></strong>
+                  <strong><a>Gestion de suscriptores&nbsp;({{ $typeSubscribers }})</a></strong>
               </li>
           </ol>
       </div>
@@ -26,7 +26,7 @@
     <div class="col-lg-12">
       <div class="ibox">
         <div class="ibox-title">
-          <h5>Suscriptores Encontrados</h5>
+          <h5>Suscriptores encontrados</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-bordered table-hover dataTables-example" >
@@ -37,7 +37,7 @@
                 <th>Correo</th>
                 <th>Suscripción</th>
                 <th>Estatus</th>
-                <th>Tipo de Cuenta</th>
+                <th>Tipo de cuenta</th>
                 <th>Acciones</th>
             </tr>
             </thead>
