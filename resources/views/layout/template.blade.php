@@ -50,13 +50,13 @@
                     </div>
                 </li>
                 <li>
-                    <a href="{{ url('/dashboard/') }}"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema Administrativo</span></a>
+                    <a href="{{ url('/dashboard/') }}"><i class="glyphicon glyphicon-th-large"></i> <span class="nav-label">Sistema administrativo</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span class="nav-label">Mi Cuenta</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span class="nav-label">Mi cuenta</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                          <a href="{{ url('/password_modify/') }}">Modificar Contraseña </a>
+                          <a href="{{ url('/password_modify/') }}">Modificar contraseña </a>
                         </li>
                     </ul>
                 </li>
@@ -64,33 +64,33 @@
                     <a href="#"><i class="glyphicon glyphicon-cog"></i> <span class="nav-label">Configuración</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                          <a href="{{ url('suscripciones') }}">Tipos de Suscripción </a>
-                          <a href="{{ url('suscribase_ahora') }}">Suscríbase Ahora </a>
-                          <a href="{{ url('pagos_config') }}">Botón de Pago </a>
+                          <a href="{{ url('suscripciones') }}">Tipos de suscripción </a>
+                          <a href="{{ url('suscribase_ahora') }}">Suscríbase ahora </a>
+                          <a href="{{ url('pagos_config') }}">Botón de pago </a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="{{ url('gestion_suscriptores') }}">
                       <i class="glyphicon glyphicon-globe"></i>
-                      <span class="nav-label">Gestión de Suscripción</span>
+                      <span class="nav-label">Gestión de suscripción</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del Lector</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">Información del lector</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="{{ url('pagos_realizados') }}">Consultar Pagos Realizados</a></li>
-                        <li><a href="{{ url('pagos_pendientes') }}">Consultar Pagos Pendientes</a></li>
+                        <li><a href="{{ url('pagos_realizados') }}">Consultar pagos realizados</a></li>
+                        <li><a href="{{ url('pagos_pendientes') }}">Consultar pagos pendientes</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="{{ url('r_conversion_cuenta')}}">Conversión de Cuentas</a></li>
-                        <li><a href="{{ url('r_creacion_cuenta')}}">Creación de Cuentas</a></li>
-                        <li><a href="{{ url('r_canales_pago')}}">Canales de Pago</a></li>
-                        <li><a href="{{ url('r_pagos_recibidos')}}">Pagos Recibidos</a></li>
-                        <li><a href="{{ url('r_cuentas_por_vencer')}}">Cuentas por Vencerse</a></li>
+                        <li><a href="{{ url('r_conversion_cuenta')}}">Conversión de cuentas</a></li>
+                        <li><a href="{{ url('r_creacion_cuenta')}}">Creación de cuentas</a></li>
+                        <li><a href="{{ url('r_canales_pago')}}">Canales de pago</a></li>
+                        <li><a href="{{ url('r_pagos_recibidos')}}">Pagos recibidos</a></li>
+                        <li><a href="{{ url('r_cuentas_por_vencer')}}">Cuentas por vencerse</a></li>
                     </ul>
                 </li>
             </ul>
@@ -130,7 +130,7 @@
              <!-- Pie de Pagina -->
             <div class="footer">
                 <div>
-                    <strong>Grupo Macpecri - Rif: J-29355653-8 2019 </strong>
+                    <center><strong>Grupo Macpecri - RIF: J-29355653-8 2019 </strong></center>
                 </div>
             </div>
 
