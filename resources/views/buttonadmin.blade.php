@@ -3,13 +3,13 @@
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
-        <h2>Nuevo Boletin Informativo</h2>
+        <h2>Configuración de Botón de Pago</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ url('dashboard') }}">Sistema Administrativo</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>Boton de Pago</strong>
+                <strong>Botón de Pago</strong>
             </li>
         </ol>
     </div>
@@ -21,9 +21,9 @@
     <div class="alert alert-success alert-block fade-out">
     	<button type="button" class="close" data-dismiss="alert">×</button>
       @if($buttonRecord[0]->status == 'Activo')
-    	   <h4><strong>El boton de pago ENCENDIDO</strong></h4>
+    	   <h4><strong>Botón de pago ENCENDIDO</strong></h4>
        @else
-        <h4><strong>El boton de pago APAGADO</strong></h4>
+        <h4><strong>Botón de pago APAGADO</strong></h4>
       @endif
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="col-lg-4">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Configuración Actual del Boton</h5>
+          <h5>Configuración Actual del Botón</h5>
         </div>
         <div class="ibox-content">
           @if($buttonRecord[0]->startdate != null && $buttonRecord[0]->status != null)
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Esatus:</label>
+              <label class="col-lg-3 col-form-label">Estatus:</label>
               <div class="col-sm-9">
                 <label class="col-lg-8 col-form-label">{{$buttonRecord[0]->status}}</label>
               </div>
@@ -82,7 +82,7 @@
     <div class="col-lg-5">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Acción Sobre Boton de Pago</h5>
+          <h5>Acción Sobre Botón de Pago</h5>
         </div>
         <div class="ibox-content">
           <form>
