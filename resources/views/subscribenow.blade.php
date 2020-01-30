@@ -40,7 +40,7 @@
               <tr>
                   <th>Mensaje</th>
                   <th>Estatus</th>
-                  <th>Categoria</th>
+                  <th>Categoría</th>
                   <th>Acciones</th>
               </tr>
               </thead>

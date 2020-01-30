@@ -52,7 +52,11 @@
                   @foreach($sucriptions as $sucription)
                   <tr>
                     <td>{{$sucription->name}}</td>
-                    <td>{{$sucription->limit}}</td>
+                    @if($sucription->limit >= 999999)
+                      <td>Sin Límite</td>
+                    @else
+                      <td>{{$sucription->limit}}</td>
+                    @endif
                     <!--<td>{{$sucription->cost}}</td>-->
                     <td>{{$sucription->status}}</td>
                     <td>

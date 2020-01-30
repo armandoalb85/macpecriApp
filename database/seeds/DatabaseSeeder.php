@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SubscriberSubscriptionTypeSeeder::class);
         $this->call(AfiliationSeeder::class);
         $this->call(SubscribeNowSeeder::class);
+        $this->call(ButtonSeeder::class);
     }
 }

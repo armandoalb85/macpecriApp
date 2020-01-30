@@ -7,6 +7,7 @@ DELETE FROM payment_methods;
 DELETE FROM ip_records;
 DELETE FROM subscriber_histories;
 DELETE FROM subscribers;
+DELETE FROM button_records;
 DELETE FROM subscription_types;
 DELETE FROM users;
 DELETE FROM newsletters;
@@ -27,6 +28,7 @@ ALTER TABLE ip_records AUTO_INCREMENT = 1;
 ALTER TABLE subscriber_histories AUTO_INCREMENT = 1;
 --ALTER TABLE subscription_messages AUTO_INCREMENT = 1;
 ALTER TABLE Subscribe_nows AUTO_INCREMENT = 1;
+ALTER TABLE Button_Records AUTO_INCREMENT = 1;
 commit;
 
 -------- DOP TABLES
@@ -38,6 +40,7 @@ DROP TABLE payment_methods;
 DROP TABLE ip_records;
 DROP TABLE subscriber_histories;
 DROP TABLE subscribers;
+DROP TABLE button_records;
 DROP TABLE subscription_types;
 DROP TABLE users;
 DROP TABLE newsletters;
