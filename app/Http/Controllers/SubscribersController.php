@@ -154,8 +154,6 @@ class SubscribersController extends Controller
     */
     public function listDebtsBySubscribers(Request $request){
 
-
-
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
       $data = $this->dataValidatorOneDate();
@@ -165,12 +163,14 @@ class SubscribersController extends Controller
             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+            ->join('users', 'users.id', '=', 'subscribers.user_id')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->where('subscription_types.name', '=', $request->subscriptionType)
             //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
             ->where('payment_account_statements.startdate', '>=', $request->startdate)
             ->whereNull('payment_account_statements.closedate')
-            ->select('subscription_types.name', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
+            ->select('subscription_types.name as type', 'subscription_types.cost as cost', 'subscription_types.daysforpaying as daysforpaying', 'subscribers.name as subsname', 'subscribers.lastname as subslastname', 'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 'payment_account_statements.amount as amount', 'users.email as email', 'subscriber_subscription_type.startDate as suscripcion','payment_methods.name as method')
             ->get();
 
       return view ('subscriberswithdepts',compact('subscriptionTypes', 'payments'));

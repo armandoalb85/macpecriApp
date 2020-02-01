@@ -36,7 +36,7 @@
               </select>
             </div>
           </div>
-          
+
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
@@ -115,7 +115,7 @@
                             {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                           </td>
                           <td>{{$payment->amount}}</td>
-                          <th>{{$payment->method}}</th>
+                          <td>{{$payment->method}}</td>
                         </tr>
                       @endforeach
                     @else
