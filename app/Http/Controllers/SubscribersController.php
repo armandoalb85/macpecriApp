@@ -156,7 +156,7 @@ class SubscribersController extends Controller
 
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
-      $data = $this->dataValidatorOneDate();
+      $data = $this->dataValidator();
 
       $payments = DB::table('subscription_types')
             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
@@ -167,8 +167,8 @@ class SubscribersController extends Controller
             ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->where('subscription_types.name', '=', $request->subscriptionType)
-            //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
             ->where('payment_account_statements.startdate', '>=', $request->startdate)
+            ->where('payment_account_statements.startdate', '<=', $request->closedate)
             ->whereNull('payment_account_statements.closedate')
             ->select('subscription_types.name as type', 'subscription_types.cost as cost', 'subscription_types.daysforpaying as daysforpaying', 'subscribers.name as subsname', 'subscribers.lastname as subslastname', 'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 'payment_account_statements.amount as amount', 'users.email as email', 'subscriber_subscription_type.startDate as suscripcion','payment_methods.name as method')
             ->get();

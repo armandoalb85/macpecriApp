@@ -51,16 +51,19 @@
               </div>
             </div>
 
-            <!--<div class="form-group row">
+            <div class="form-group row {{ $errors->has('closedate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Hasta</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
+                    <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
+                    @if ($errors->has('closedate'))
+                      <strong class="error-text">{{ $errors->first('closedate') }}</strong>
+                    @endif
                 </div>
               </div>
-            </div>-->
+            </div>
 
             <div class="form-group row">
               <div class="col-lg-4">
@@ -89,7 +92,7 @@
                     <th>Suscripción de cuenta</th>
                     <th>Fecha de cobro</th>
                     <th>Días para pagar</th>
-                    <th>Fecha actual</th>
+                    <!--<th>Fecha actual</th>-->
                     <th>Pago</th>
                     <th>Método de pago</th>
                   </tr>
@@ -109,10 +112,10 @@
                             {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                           </td>
                           <td>{{$payment->daysforpaying}}</td>
-                          <td>
+                          <!--<td>
                             @php($data = explode('-',date('Y-m-d')))
                             {{ $data[2].'/'.$data[1].'/'.$data[0]}}
-                          </td>
+                          </td>-->
                           <td>{{$payment->amount}}</td>
                           <td>{{$payment->method}}</td>
                         </tr>
