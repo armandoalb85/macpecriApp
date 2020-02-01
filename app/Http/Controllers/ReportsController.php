@@ -241,9 +241,9 @@ class ReportsController extends Controller
 
       $queryResults = null;
       $dateIni = null;
-      $dateIni = null;
+      $dateFin = null;
 
-      return view ('reportaccountexpire', compact('queryResults', 'dateIni'));
+      return view ('reportaccountexpire', compact('queryResults', 'dateIni', 'dateFin'));
     }
 
     /*
@@ -254,6 +254,7 @@ class ReportsController extends Controller
       $queryResults = null;
 
       $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $data = $this->dataValidator();
       $queryResults = DB::table('subscription_types')
@@ -266,10 +267,10 @@ class ReportsController extends Controller
             ->where('payment_account_statements.startdate', '>=', $request->startdate)
             ->where('payment_account_statements.startdate', '<=', $request->closedate)
             ->whereNull('payment_account_statements.closedate')
-            ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount', 'users.email', 'users.name')
+            ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount', 'users.email', 'users.name as user')
             ->get();
 
-      return view ('reportaccountexpire', compact('queryResults', 'dateIni'));
+      return view ('reportaccountexpire', compact('queryResults', 'dateIni', 'dateFin'));
     }
 
     /*

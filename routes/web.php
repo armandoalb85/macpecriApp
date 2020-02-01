@@ -114,4 +114,4 @@ Route::get('conversion_cuenta_excel/{dateIni}/{dateFin}', 'ExportsController@xls
 Route::get('creacion_cuenta_excel/{dateIni}/{dateFin}', 'ExportsController@xlsCreatedAccount');
 Route::get('canales_pago_excel/{dateIni}/{dateFin}', 'ExportsController@xlsPaymentUses');
 Route::get('pagos_recibidos_excel/{dateIni}/{dateFin}', 'ExportsController@xlsPaymentsReceived');
-Route::get('cuentas_por_vencer_excel/{dateIni}', 'ExportsController@xlsAccountExpire');
+Route::get('cuentas_por_vencer_excel/{dateIni}/{dateFin}', 'ExportsController@xlsAccountExpire');

@@ -22,7 +22,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsPublicConversionAccount(Request $request){
-      
+
       return Excel::download(new ConversionAccountsExport($request->dateIni,$request->dateFin), 'CuentasConConversion.xlsx');
     }
 
@@ -52,7 +52,7 @@ class ExportsController extends Controller
     *
     */
     public function xlsAccountExpire(Request $request){
-      return Excel::download(new ExpireAccountsExport($request->dateIni), 'CuestasPorVencer.xlsx');
+      return Excel::download(new ExpireAccountsExport($request->dateIni, $request->dateFin), 'CuestasPorVencer.xlsx');
     }
 
     /*
