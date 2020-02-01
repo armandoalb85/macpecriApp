@@ -36,19 +36,7 @@
               </select>
             </div>
           </div>
-
-
-            <!--<div class="form-group row">
-              <label class="col-lg-3 col-form-label">Desde</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
-                <div class="input-group date">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
-                </div>
-              </div>
-            </div>-->
-
+          
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
@@ -62,17 +50,6 @@
                 </div>
               </div>
             </div>
-
-            <!--<div class="form-group row">
-              <label class="col-lg-3 col-form-label">Hasta</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
-                <div class="input-group date">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
-                </div>
-              </div>
-            </div>-->
 
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Hasta</label>
@@ -111,25 +88,34 @@
                   <thead>
                   <tr>
                       <th>Suscriptor</th>
+                      <th>Correo</th>
+                      <th>Suscripción de cuenta</th>
                       <th>Fecha de cobro</th>
                       <th>Fecha de pago</th>
                       <th>Pago</th>
+                      <th>Método de pago</th>
                   </tr>
                   </thead>
                   <tbody>
                     @if ($payments->count())
                       @foreach($payments as $payment)
                         <tr>
-                          <td>{{$payment->name." ".$payment->lastname}}</td>
+                          <td>{{$payment->subsname." ".$payment->subslastname}}</td>
+                          <td>{{$payment->email}}</td>
                           <td>
-                            @php($data = explode('-',$payment->startdate))
+                            @php($data = explode('-',$payment->subscriptiondate))
                             {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                           </td>
                           <td>
-                            @php($data = explode('-',$payment->closedate))
+                            @php($data = explode('-',$payment->paymentdate))
+                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          </td>
+                          <td>
+                            @php($data = explode('-',$payment->payclosedate))
                             {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                           </td>
                           <td>{{$payment->amount}}</td>
+                          <th>{{$payment->method}}</th>
                         </tr>
                       @endforeach
                     @else
