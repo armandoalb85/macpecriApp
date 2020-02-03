@@ -82,9 +82,10 @@
               <h5>Resultados obtenidos</h5>
             </div>
             <div class="col-2">
-              <form method="get" action="{{ action('ExportsController@xlsCreatedAccount', [$dateIni, $dateFin])}}">
+              <form method="get" action="{{ action('ExportsController@xlsCreatedAccount', [$dateIni, $dateFin,$typeSubscription])}}">
                  <input type="text" name="dateIni" value="{{ $dateIni }}" disabled hidden>
                  <input type="text" name="dateFin" value="{{ $dateFin }}" disabled hidden>
+                 <input type="text" name="typeSubscription" value="{{ $typeSubscription }}" disabled hidden>
                  <div class="form-group row">
                    <div class="col-lg-12">
                      @if ($dateIni !=null && $dateFin != null)

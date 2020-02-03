@@ -31,7 +31,7 @@ class ExportsController extends Controller
     */
     public function xlsCreatedAccount(Request $request){
 
-      return Excel::download(new CreateAccountsExport($request->dateIni,$request->dateFin), 'CreacionDeCuenta.xlsx');
+      return Excel::download(new CreateAccountsExport($request->dateIni,$request->dateFin, $request->typeSubscription), 'CreacionDeCuenta.xlsx');
     }
 
     /*
