@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SubscriptionType;
 use DB;
 
 class ReportsController extends Controller
@@ -87,8 +88,8 @@ class ReportsController extends Controller
       $totalFree = null;
       $dateIni = null;
       $dateFin = null;
-      $typeAccount = SubscriptionType::all();
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccount' ));
+      $typeAccounts = SubscriptionType::all();
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccounts' ));
     }
 
     /*
@@ -104,25 +105,37 @@ class ReportsController extends Controller
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
 
-      $typeAccount = SubscriptionType::all();
+      $typeAccounts = SubscriptionType::all();
 
-      $queryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscribers.created_at', '>=', $request->startdate)
-            ->where('subscribers.created_at', '<=', $request->closedate)
-            ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
-            ->get();
+      if($request->type == 'Todos'){
+        $queryResults = DB::table('subscribers')
+              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              ->join('users', 'users.id', '=', 'subscribers.user_id')
+              ->whereNull('subscriber_subscription_type.closedate')
+              ->where('subscribers.created_at', '>=', $request->startdate)
+              ->where('subscribers.created_at', '<=', $request->closedate)
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->get();
+      }elseif ($request->type == 'Gratuita' || $request->type == 'Pago' || $request->type == 'Venezuela') {
+        $queryResults = DB::table('subscribers')
+              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              ->join('users', 'users.id', '=', 'subscribers.user_id')
+              ->whereNull('subscriber_subscription_type.closedate')
+              ->where('subscription_types.name', '=', $request->type )
+              ->where('subscribers.created_at', '>=', $request->startdate)
+              ->where('subscribers.created_at', '<=', $request->closedate)
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->get();
+      }
 
       if ($queryResults != null ){
         $totalPay = $this->totalPayAccount();
         $totalFree = $this->totalFreeAccount();
       }
 
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccount' ));
-
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccounts' ));
     }
 
     /*

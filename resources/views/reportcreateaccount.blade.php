@@ -28,7 +28,14 @@
             <br>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Tipo de cuenta</label>
-              
+              <div class="col-sm-9">
+                <select class="form-control m-b" name="type">
+                  <option>Todos</option>
+                  @foreach($typeAccounts as $typeAccount)
+                  <option>{{ $typeAccount->type }}</option>
+                  @endforeach
+                </select>
+              </div>
             </div>
 
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
