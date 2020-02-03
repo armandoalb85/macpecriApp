@@ -67,7 +67,7 @@ class ConversionAccountsExport implements FromView, ShouldAutoSize, WithEvents/*
         $i++;
       }
 
-      $queryResults = DB::table('subscribers')
+      /*$queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
             ->where('subscription_types.type', '=', 'Pago')
@@ -75,6 +75,18 @@ class ConversionAccountsExport implements FromView, ShouldAutoSize, WithEvents/*
             ->where('subscriber_subscription_type.startdate', '>=', $this->startdate)
             ->where('subscriber_subscription_type.startdate', '<=', $this->closedate)
             ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
+            ->get();*/
+      $queryResults = DB::table('subscribers')
+            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+            ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
+            ->join('users', 'users.id', '=', 'subscribers.user_id')
+            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
+            ->where('subscription_types.type', '=', 'Pago')
+            ->whereIn('subscriber_subscription_type.subscriber_id', $values )
+            ->where('subscriber_subscription_type.startdate', '>=', $this->startdate)
+            ->where('subscriber_subscription_type.startdate', '<=', $this->closedate)
+            ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname', 'users.email', 'payment_methods.name as method')
             ->get();
 
         return view('exportpublicconversionaccount', [

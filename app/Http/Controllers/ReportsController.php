@@ -39,9 +39,6 @@ class ReportsController extends Controller
       $totalFree = null;
       $data = $this->dataValidator();
 
-      /*$dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);*/
-
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
 
@@ -63,13 +60,14 @@ class ReportsController extends Controller
       $queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
+            ->join('users', 'users.id', '=', 'subscribers.user_id')
+            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
             ->where('subscription_types.type', '=', 'Pago')
             ->whereIn('subscriber_subscription_type.subscriber_id', $values )
-            //->where('subscriber_subscription_type.startdate', '>=', $this->dateFormat($request->startdate))
-            //->where('subscriber_subscription_type.startdate', '<=', $this->dateFormat($request->closedate))
             ->where('subscriber_subscription_type.startdate', '>=', $request->startdate)
             ->where('subscriber_subscription_type.startdate', '<=', $request->closedate)
-            ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname')
+            ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname', 'users.email', 'payment_methods.name as method')
             ->get();
 
       if ($queryResults != null){
