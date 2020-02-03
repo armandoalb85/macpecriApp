@@ -90,7 +90,7 @@ class SubscribeNowsController extends Controller
         }
 
         $codeMessage = 'info';
-        $message = 'El registro fue creado con exito y con estatus.';
+        $message = 'El registro fue actualizado con éxito.';
       }
 
       return redirect('suscribase_ahora')->with($codeMessage, $message);

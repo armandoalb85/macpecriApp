@@ -58,9 +58,7 @@
             <div class="form-group row {{ $errors->has('description') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Mensaje</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="5" cols="100" class="form-control" maxlength="200">
-                  {{ $subscribeNow->description }}
-                </textarea>
+                <textarea name="description" rows="6" cols="100" class="form-control" maxlength="500">{{ $subscribeNow->description }}</textarea>
                 @if ($errors->has('description'))
                   <strong class="error-text">{{ $errors->first('description') }}</strong>
                 @endif

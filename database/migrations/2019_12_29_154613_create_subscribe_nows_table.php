@@ -17,7 +17,7 @@ class CreateSubscribeNowsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('status');
             $table->string('category');
             $table->string('pathimage')->nullable(true);

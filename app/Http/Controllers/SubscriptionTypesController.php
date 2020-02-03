@@ -93,7 +93,7 @@ class SubscriptionTypesController extends Controller
 
       if ($operationResult){
         $this->codeMessage = 'info';
-        $this->message = 'El regitro fue actualizado con exito.';
+        $this->message = 'El regitro fue actualizado con éxito.';
       }
 
       return redirect('suscripciones')->with($this->codeMessage, $this->message);
@@ -115,7 +115,7 @@ class SubscriptionTypesController extends Controller
 
       $data = request()->validate([
         'tipo' => 'required',
-        'tipo' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
+        'tipo' => ['required', 'regex:/^[A-Za-z0-9\s\ñáéíóú]+$/'],
         'limit' => 'required'
       ],[
         'tipo.required' => 'Nombre de suscripción es obligatorio.',

@@ -48,9 +48,7 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Mensaje</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="3" cols="25" class="form-control" disabled>
-                  {{ $subscribeNow->description }}
-                </textarea>
+                <textarea name="description" rows="6" cols="25" class="form-control" disabled>{{ $subscribeNow->description }}</textarea>
               </div>
             </div>
             <div class="form-group row">

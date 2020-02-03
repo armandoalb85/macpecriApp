@@ -41,9 +41,7 @@
             <div class="form-group row">
               <label class="col-lg-4 col-form-label">Descripción</label>
               <div class="col-lg-8">
-                <textarea name="description" rows="3" cols="25" class="form-control" maxlength="150">
-                  {{$subscription->description}}
-                </textarea>
+                <textarea name="description" rows="6" cols="25" class="form-control" maxlength="500">{{ $subscription->description }}</textarea>
               </div>
             </div>
             <div class="form-group row {{ $errors->has('limit') ? ' has-error' : '' }}">
