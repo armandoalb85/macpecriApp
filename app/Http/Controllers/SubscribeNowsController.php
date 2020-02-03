@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SubscribeNow;
+use Input;
+use Validator;
 use DB;
 use Storage;
 
@@ -110,6 +112,5 @@ class SubscribeNowsController extends Controller
 
       return $data;
     }
-
 
 }

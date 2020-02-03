@@ -16,7 +16,7 @@
                   <a href="{{ url('gestion_suscriptores') }}">Suscriptores</a>
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Gestion de suscriptores&nbsp;({{ $typeSubscribers }})</a></strong>
+                  <strong><a>Gestion de suscriptores&nbsp;({{ strtolower ($typeSubscribers) }})</a></strong>
               </li>
           </ol>
       </div>
