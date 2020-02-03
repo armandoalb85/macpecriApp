@@ -87,7 +87,8 @@ class ReportsController extends Controller
       $totalFree = null;
       $dateIni = null;
       $dateFin = null;
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin'));
+      $typeAccount = SubscriptionType::all();
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccount' ));
     }
 
     /*
@@ -100,21 +101,19 @@ class ReportsController extends Controller
       $totalFree = null;
       $data = $this->dataValidator();
 
-      /*$dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);*/
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
+
+      $typeAccount = SubscriptionType::all();
 
       $queryResults = DB::table('subscribers')
             ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
             ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
             ->whereNull('subscriber_subscription_type.closedate')
-            //->where('subscribers.created_at', '>=', $this->dateFormat($request->startdate))
-            //->where('subscribers.created_at', '<=', $this->dateFormat($request->closedate))
             ->where('subscribers.created_at', '>=', $request->startdate)
             ->where('subscribers.created_at', '<=', $request->closedate)
-            ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type' )
+            ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
             ->get();
 
       if ($queryResults != null ){
@@ -122,7 +121,7 @@ class ReportsController extends Controller
         $totalFree = $this->totalFreeAccount();
       }
 
-      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin'));
+      return view ('reportcreateaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni', 'dateFin', 'typeAccount' ));
 
     }
 
