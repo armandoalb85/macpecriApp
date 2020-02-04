@@ -8,11 +8,12 @@ BEGIN
     SELECT max(id) INTO maxAdminUserId
     FROM wp_users;
 
-    INSERT INTO users (name, email, password, username) VALUES (
+    INSERT INTO users (name, email, password, username, type) VALUES (
         (SELECT user_login FROM wp_users WHERE id = maxAdminUserId),
         (SELECT user_email FROM wp_users WHERE id = maxAdminUserId),
         MD5('Macpecri123#'),
-        (SELECT user_nicename FROM wp_users WHERE id = maxAdminUserId ));
+        (SELECT user_nicename FROM wp_users WHERE id = maxAdminUserId ),
+        'Admin');
 
 END;
 
