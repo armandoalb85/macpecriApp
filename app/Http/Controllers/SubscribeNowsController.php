@@ -61,7 +61,6 @@ class SubscribeNowsController extends Controller
     */
     public function updateSubscribeNow(Request $request, $id){
 
-      $data = $this->dataValidator();
       $fileName = null;
 
       $data = $this->dataValidator();
@@ -105,9 +104,12 @@ class SubscribeNowsController extends Controller
     private function dataValidator(){
 
       $data = request()->validate([
-        'description' => 'required'
+        'description' => 'required',
+        'file' => 'image|mimes:jpeg, png, jpg|max:4096'
       ],[
-        'description.required' => 'El contenido del mensaje es obligatorio.'
+        'description.required' => 'El contenido del mensaje es obligatorio.',
+        'file.image' => 'Solo se permiten archivos jpg, png y jpeg.',
+        'file.max' => 'El archivo no debe pesar más de 4 MB.'
       ]);
 
       return $data;

@@ -30,11 +30,14 @@
           <form method="post" action="{{ url('suscribase_ahora/edicion/'.$subscribeNow->id ) }}" enctype="multipart/form-data" >
             {{csrf_field()}}
 
-            <div class="form-group row">
+            <div class="form-group row {{ $errors->has('file') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Subir archivo</label>
               <div class="col-sm-9">
                   <input type="file" class="form-control" name="file">
-                  <p><center><h5>Archivos permitidos: .JPEG y.PNG, máximo 4MB</h5></center></p>
+                  <center><h5>(Archivos permitidos: .JPEG y.PNG, máximo 4MB)</h5></center>
+                  @if ($errors->has('file'))
+                    <strong class="error-text">{{ $errors->first('file') }}</strong>
+                  @endif
               </div>
             </div>
 
