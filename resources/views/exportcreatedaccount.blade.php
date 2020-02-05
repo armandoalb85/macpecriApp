@@ -15,7 +15,10 @@
             <td>{{$queryResult->name." ".$queryResult->lastname}}</td>
             <td>{{$queryResult->username}}</td>
             <td>{{$queryResult->email}}</td>
-            <td>{{$queryResult->suscripcion}}</td>
+            <td>
+              @php($data = explode('-',$queryResult->suscripcion))
+              {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+            </td>
             <td>{{$queryResult->type}}</td>
           </tr>
         @endforeach
