@@ -26,17 +26,6 @@
           <form id="fdate" method="post" action="{{ url('pagos_pendientes') }}" >
             {{csrf_field()}}
             <br>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label">Suscripción</label>
-            <div class="col-sm-9">
-              <select class="form-control m-b" name="subscriptionType">
-                @foreach ($subscriptionTypes as $subscriptionType)
-                  <option>{{ $subscriptionType->name }}</option>
-                @endforeach
-              </select>
-            </div>
-            </div>
-
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
               <label class="col-lg-3 col-form-label">Desde</label>
               <div class="form-group col-lg-9" id="newsletterCalendar">
