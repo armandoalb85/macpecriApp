@@ -4,7 +4,8 @@
         <th>Suscriptor</th>
         <th>Usuario</th>
         <th>Email</th>
-        <th>Fecha de Suscripción</th>
+        <th>Fecha de suscripción</th>
+        <th>Tipo de suscripción</th>
         <th>Tipo de Cuenta</th>
     </tr>
     </thead>
@@ -19,23 +20,10 @@
               @php($data = explode('-',$queryResult->suscripcion))
               {{ $data[2].'/'.$data[1].'/'.$data[0]}}
             </td>
+            <td>{{$queryResult->typeSuscrupcion}}</td>
             <td>{{$queryResult->type}}</td>
           </tr>
         @endforeach
-          <!--<tr>
-            <td><strong>Total Cuentas Pagas</strong></td>
-            <td>@if($totalPay != null){{$totalPay}} @else 0 @endif</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Total Cuentas Gratuitas</strong></td>
-            <td>@if($totalFree != null){{$totalFree}} @else 0 @endif</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>-->
       @else
         <tr>
           <td colspan="8">No se encontraron registros</td>

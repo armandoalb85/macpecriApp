@@ -44,7 +44,11 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
+                    @if ($dateIni)
+                      <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{$dateIni}}">
+                    @else
+                      <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
+                    @endif
                     @if ($errors->has('startdate'))
                       <strong class="error-text">{{ $errors->first('startdate') }}</strong>
                     @endif
@@ -58,13 +62,18 @@
                 <div class="input-group date">
                   <span class="input-group-addon">
                     <i class="fa fa-calendar"></i></span>
-                    <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
+                    @if( $dateFin != null )
+                      <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{ $dateFin}}">
+                    @else
+                      <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" >
+                    @endif
                     @if ($errors->has('closedate'))
                       <strong class="error-text">{{ $errors->first('closedate') }}</strong>
                     @endif
                 </div>
               </div>
             </div>
+
             <div class="form-group row">
               <div class="col-lg-4">
                 <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
@@ -109,6 +118,7 @@
                 <th>Usuario</th>
                 <th>Correo</th>
                 <th>Fecha de suscripción</th>
+                <th>Tipo de suscripción</th>
                 <th>Tipo de cuenta</th>
             </tr>
             </thead>
@@ -123,23 +133,10 @@
                       @php($data = explode('-',$queryResult->suscripcion))
                       {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                     </td>
+                    <td>{{$queryResult->typeSuscrupcion}}</td>
                     <td>{{$queryResult->type}}</td>
                   </tr>
                 @endforeach
-                  <!--<tr>
-                    <td><strong>Total Cuentas Pagas</strong></td>
-                    <td>@if($totalPay != null){{$totalPay}} @else 0 @endif</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Total Cuentas Gratuitas</strong></td>
-                    <td>@if($totalFree != null){{$totalFree}} @else 0 @endif</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>-->
               @else
                 <tr>
                   <td colspan="8">No se encontraron registros</td>

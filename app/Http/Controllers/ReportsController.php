@@ -118,7 +118,7 @@ class ReportsController extends Controller
               ->whereNull('subscriber_subscription_type.closedate')
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
               ->get();
       }elseif ($request->type == 'Gratuita' || $request->type == 'Pago' || $request->type == 'Venezuela') {
         $queryResults = DB::table('subscribers')
@@ -129,7 +129,7 @@ class ReportsController extends Controller
               ->where('subscription_types.name', '=', $request->type )
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
               ->get();
       }
 

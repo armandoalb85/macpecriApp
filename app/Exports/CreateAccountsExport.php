@@ -53,15 +53,6 @@ class CreateAccountsExport implements FromView, ShouldAutoSize, WithEvents
             ->where('subscription_types.type', '=', 'Gratuita')
             ->count('subscriber_subscription_type.id');
 
-      /*$queryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscribers.created_at', '>=', $this->startdate)
-            ->where('subscribers.created_at', '<=', $this->closedate)
-            ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type' )
-            ->get();*/
       if($this->type == 'Todos'){
         $queryResults = DB::table('subscribers')
               ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -70,8 +61,9 @@ class CreateAccountsExport implements FromView, ShouldAutoSize, WithEvents
               ->whereNull('subscriber_subscription_type.closedate')
               ->where('subscribers.created_at', '>=', $this->startdate)
               ->where('subscribers.created_at', '<=', $this->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
               ->get();
+
       }elseif ($this->type == 'Gratuita' || $this->type == 'Pago' || $this->type == 'Venezuela') {
         $queryResults = DB::table('subscribers')
               ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -81,7 +73,7 @@ class CreateAccountsExport implements FromView, ShouldAutoSize, WithEvents
               ->where('subscription_types.name', '=', $this->type )
               ->where('subscribers.created_at', '>=', $this->startdate)
               ->where('subscribers.created_at', '<=', $this->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
               ->get();
       }
 

@@ -163,21 +163,12 @@
                 pageLength: 10,
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
-                buttons: []
+                buttons: [],
+                "ordering": false
               });
         });
     </script>
     <script>
-      /*$(document).ready(function(){
-        var mem = $('#newsletterCalendar .input-group.date').datepicker({
-          todayBtn: "linked",
-          keyboardNavigation: false,
-          forceParse: false,
-          calendarWeeks: true,
-          autoclose: true,
-          dateFormat: 'dd-mm-yy'
-        });
-      });*/
       $(document).ready(function(){
         $.fn.datepicker.defaults.language = 'es';
         $.fn.datepicker.dates['es'] = {
@@ -216,45 +207,6 @@
         });
       });
     </script>
-    <!--<script>
-      $('#form input[type=text]').on('change invalid', function() {
-        var campotexto = $(this).get(0);
-
-        campotexto.setCustomValidity('');
-
-        if (!campotexto.validity.valid) {
-          campotexto.setCustomValidity('No se permiten caracteres especiales');
-        }
-      });
-      $('#form input[type=number]').on('change invalid', function() {
-          var campotexto = $(this).get(0);
-
-          campotexto.setCustomValidity('');
-
-          if (!campotexto.validity.valid) {
-            campotexto.setCustomValidity('Se permiten solo caracteres númericos');
-          }
-      });
-      $('#fdate input[type=text]').on('change invalid', function() {
-          var campotexto = $(this).get(0);
-
-          campotexto.setCustomValidity('');
-
-          if (!campotexto.validity.valid) {
-            campotexto.setCustomValidity('El formato correcto es dd/mm/yyyy');
-          }
-      });
-    </script>-->
-    <!--<script>
-
-    $(document).ready(function validaNumericos(event) {
-        if(event.charCode >= 48 && event.charCode <= 57){
-          return true;
-         }
-         return false;
-      });
-    </script>-->
-
 </body>
 
 </html>
