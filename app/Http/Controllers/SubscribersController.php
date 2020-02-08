@@ -109,15 +109,20 @@ class SubscribersController extends Controller
     This method show a dashboard for check payments by subscribers
     */
     public function checkPaymentsBySubscribers(){
+      $dateIni = null;
+      $dateFin = null;
       $payments = DB::table('subscription_types')->where('subscription_types.name','=', '')->get();
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
-      return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments'));
+      return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
     }
 
     /*
     This method show a list with payments by subscribers
     */
     public function listPaymentBySubscribers(Request $request){
+
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
 
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
@@ -137,16 +142,18 @@ class SubscribersController extends Controller
             ->select('subscription_types.name as name', 'subscription_types.cost as cost', 'subscription_types.daysforpaying as daysforpaying', 'subscribers.name as subsname', 'subscribers.lastname as subslastname', 'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 'payment_account_statements.amount as amount', 'users.email as email', 'subscriber_subscription_type.startdate as subscriptiondate', 'payment_methods.name as method')
             ->get();
 
-      return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments'));
+      return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
     }
 
     /*
     This method show a dashboard for check subscribers with depts
     */
     public function checkSubscribersWithDebts(){
+      $dateIni = null;
+      $dateFin = null;
       $payments = DB::table('subscription_types')->where('subscription_types.name','=', '')->get();
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
-      return view ('subscriberswithdepts', compact('subscriptionTypes', 'payments'));
+      return view ('subscriberswithdepts', compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
     }
 
     /*
@@ -154,6 +161,8 @@ class SubscribersController extends Controller
     */
     public function listDebtsBySubscribers(Request $request){
 
+      $dateIni = $request->startdate;
+      $dateFin = $request->closedate;
       $subscriptionTypes = SubscriptionType::where("type","=", "Pago")->paginate(10);
 
       $data = $this->dataValidator();
@@ -173,7 +182,7 @@ class SubscribersController extends Controller
             ->select('subscription_types.name as type', 'subscription_types.cost as cost', 'subscription_types.daysforpaying as daysforpaying', 'subscribers.name as subsname', 'subscribers.lastname as subslastname', 'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 'payment_account_statements.amount as amount', 'users.email as email', 'subscriber_subscription_type.startDate as suscripcion','payment_methods.name as method')
             ->get();
 
-      return view ('subscriberswithdepts',compact('subscriptionTypes', 'payments'));
+      return view ('subscriberswithdepts',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
 
     }
 
