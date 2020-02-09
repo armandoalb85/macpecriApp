@@ -1,7 +1,7 @@
 <table>
     <thead>
     <tr>
-        <th>Metodo de Pago</th>
+        <th>Metodo de pago</th>
         <th>Monto</th>
     </tr>
     </thead>

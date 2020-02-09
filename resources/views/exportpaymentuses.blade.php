@@ -1,7 +1,7 @@
 <table>
     <thead>
     <tr>
-        <th>Canal de Pagos</th>
+        <th>Canal de pago</th>
         <th>Pagos</th>
     </tr>
     </thead>

@@ -4,7 +4,7 @@
         <th>Suscriptor</th>
         <th>Correo</th>
         <th>Fecha de suscripción</th>
-        <th>Fecha de Conversión</th>
+        <th>Fecha de conversión</th>
         <th>Cuenta</th>
         <th>Método de pago</th>
     </tr>

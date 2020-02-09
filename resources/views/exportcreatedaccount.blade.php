@@ -3,7 +3,7 @@
     <tr>
         <th>Suscriptor</th>
         <th>Usuario</th>
-        <th>Email</th>
+        <th>Correo</th>
         <th>Fecha de suscripción</th>
         <th>Tipo de suscripción</th>
         <th>Tipo de Cuenta</th>
