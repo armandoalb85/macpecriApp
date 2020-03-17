@@ -27,7 +27,7 @@
   <div class="col-lg-5">
     <div class="ibox ">
       <div class="ibox-title">
-        <h5><strong>Suscriptor:</strong>&nbsp;{{ $subscriber->name}} &nbsp; {{$subscriber->lastname}}</h5>
+        <h5><strong>Suscriptor:</strong>&nbsp;{{ $subscriber->name}} {{$subscriber->lastname}}</h5>
       </div>
       <div class="ibox-content">
         <form method="post" action="{{ url('suscriptor/edicion_pw/'.$subscriber->id) }}">
@@ -40,7 +40,7 @@
           <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
             <label class="col-lg-3 col-form-label">Contraseña</label>
             <div class="col-lg-9">
-              <input type="password" name="password" placeholder="********" value="" class="form-control" maxlength="8">
+              <input type="password" name="password" placeholder="********" value="" class="form-control" minlength="6" maxlength="16">
               @if ($errors->has('password'))
                 <strong class="error-text">{{ $errors->first('password') }}</strong>
               @endif
@@ -50,7 +50,7 @@
           <div class="form-group row {{ $errors->has('passwordConfirmation') ? ' has-error' : '' }}">
             <label class="col-lg-3 col-form-label">Confirmar contraseña</label>
             <div class="col-lg-9">
-              <input type="password" name="passwordConfirmation" placeholder="********" value="" class="form-control" maxlength="8">
+              <input type="password" name="passwordConfirmation" placeholder="********" value="" class="form-control" minlength="6" maxlength="16">
               @if ($errors->has('passwordConfirmation'))
                 <strong class="error-text">{{ $errors->first('passwordConfirmation') }}</strong>
               @endif

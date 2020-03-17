@@ -45,9 +45,31 @@
           </div>
 
           <div class="form-group row">
+            <label class="col-lg-6 col-form-label">Fecha de nacimiento</label>
+            <div class="col-lg-6">
+              <input type="text" name="birthDate" value="{{date('d/m/Y', strtotime($subscriber->birthday))}}" class="form-control" disabled>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label">Sexo</label>
+            <div class="col-lg-9">
+              @php($sex = ($subscriber->sex=='f'?'Femenino':'Masculino'))
+              <input type="text" name="sex" value="{{ $sex }}" class="form-control" disabled>
+            </div>
+          </div>
+
+          <div class="form-group row">
             <label class="col-lg-3 col-form-label">Cuenta</label>
             <div class="col-lg-9">
-              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
+              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->name }}" class="form-control" disabled>
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label">País</label>
+            <div class="col-lg-9">
+              <input type="text" name="country" value="{{ $country->country }}" class="form-control" disabled>
             </div>
           </div>
 
@@ -116,13 +138,6 @@
               @else
                 <input type="text" name="payment" value="dd/mm/yyyy" class="form-control" disabled>
               @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-6 col-form-label">Estatus del pago</label>
-            <div class="col-lg-6">
-              <input type="text" name="status" value="{{ $subscriberPayment[0]->status }}" class="form-control" disabled>
             </div>
           </div>
         </form>

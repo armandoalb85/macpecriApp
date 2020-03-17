@@ -57,7 +57,7 @@
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Cuenta</label>
             <div class="col-lg-9">
-              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
+              <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->name }}" class="form-control" disabled>
             </div>
           </div>
           <div class="form-group row">
@@ -66,13 +66,13 @@
               <input type="text" name="country" value="{{ $country->country }}" class="form-control" disabled>
             </div>
           </div>
-
+          <!--
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Región</label>
             <div class="col-lg-9">
               <input type="text" name="region" value="" class="form-control" disabled>
             </div>
-          </div>
+          </div>-->
 
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">Estatus</label>
@@ -119,13 +119,6 @@
               @else
                 <input type="text" name="payment" value="N/A" class="form-control" disabled>
               @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-lg-5 col-form-label">Estatus del pago</label>
-            <div class="col-lg-7">
-              <input type="text" name="status" value="{{ $subscriberPayment[0]->status }}" class="form-control" disabled>
             </div>
           </div>
         </form>
