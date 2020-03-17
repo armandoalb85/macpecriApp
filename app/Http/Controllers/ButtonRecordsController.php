@@ -21,8 +21,8 @@ class ButtonRecordsController extends Controller
         ->whereNull('button_records.closedate')
         ->select('button_records.startdate', 'button_records.closedate', 'button_records.status')
         ->get();
-      $vezuelaAccounts = DB::table('subscriber_subscription_type')
-        ->where('subscriber_subscription_type.subscription_id', '=', '3')
+      $vezuelaAccounts = DB::table('subscribers')
+        ->where('subscribers.subscription_types_id', '=', '3')
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
@@ -78,28 +78,17 @@ class ButtonRecordsController extends Controller
 
     private function updateActiveButton(){
 
-      $subscriptioVenezuela = SubscriptionType::find(3);
-      $subscriptioFree = SubscriptionType::find(1);
-
-      $subscriptioVenezuela->typeswap = $subscriptioFree->typeswap;
-      $subscriptioVenezuela->limit = $subscriptioFree->limit;
-      $subscriptioVenezuela->cost = $subscriptioFree->cost;
-      $subscriptioVenezuela->daysforpaying = $subscriptioFree->daysforpaying;
-
-      $subscriptioVenezuela->update();
+      DB::table('subscribers')
+      ->where('region', 'like', '%Venezuela%')
+      ->update(['subscription_types_id' => 1]);
 
     }
 
     private function updateInactiveButton(){
 
-      $subscriptioVenezuela = SubscriptionType::find(3);
-
-      $subscriptioVenezuela->typeswap = 'Venezuela';
-      $subscriptioVenezuela->limit = '999999';
-      $subscriptioVenezuela->cost = 0;
-      $subscriptioVenezuela->daysforpaying = 0;
-
-      $subscriptioVenezuela->update();
+      DB::table('subscribers')
+      ->where('region', 'like', '%Venezuela%')
+      ->update(['subscription_types_id' => 3]);
 
     }
 

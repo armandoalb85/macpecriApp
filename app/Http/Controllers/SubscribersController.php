@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SubscriptionType;
 use App\Subscriber;
 use App\User;
+use App\Paises;
 use App\PaymentMethodRecord;
 use DB;
 
@@ -26,9 +27,9 @@ class SubscribersController extends Controller
     */
     public function indexSubscribers(){
 
-      $totalPay = $this->countSubscribers('Pago');
-      $totalFree = $this->countSubscribers('Gratuita');
-      $totalVenezuela = $this->countSubscribers('Venezuela');
+      $totalFree = $this->countSubscribers(1);
+      $totalPay = $this->countSubscribers(2);
+      $totalVenezuela = $this->countSubscribers(3);
       $totalSubscribers = $totalPay + $totalFree  + $totalVenezuela;
 
       $subscriptionTypes = SubscriptionType::all();
@@ -42,26 +43,35 @@ class SubscribersController extends Controller
     public function listSubscribers($type){
 
       $queryResults = null;
-      $typeSubscribers = $type;
+      $type = (integer) $type;
+      $typeSubscribers="Total";
       $startDate =null;
       $closeDate = null;
 
-      if ($type == 'Gratuita' || $type == 'Pago' || $type == 'Venezuela'){
+      if ($type > 0){
+
+        $typeSubscribers=SubscriptionType::find($type);
+
         $queryResults = DB::table('subscribers')
-          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
-          ->where('subscription_types.type', '=', $type)
-          ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
+          ->join('status','status.id', '=', 'users.status_id')
+          ->join('paises','paises.id', '=', 'subscribers.country_id')
+          ->where('subscribers.subscription_types_id', '=', $type)
+          //->whereNull('subscriber_subscription_type.closedate')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types', 'subscribers.created_at')
+          ->orderBy('subscribers.name','asc')
           ->get();
-      }elseif($type == 'Total'){
+      }else{
         $queryResults = DB::table('subscribers')
-          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
-          ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type','subscriber_subscription_type.startdate')
+          ->join('status','status.id', '=', 'users.status_id')
+          ->join('paises','paises.id', '=', 'subscribers.country_id')
+          //->whereNull('subscriber_subscription_type.closedate')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types','subscribers.created_at')
+          ->orderBy('subscribers.name','asc')
           ->get();
       }
 
@@ -74,21 +84,26 @@ class SubscribersController extends Controller
     public function listSubscribersByFilter(Request $request){
 
       $queryResults = null;
-      $typeSubscribers = $request->subscriptionType;
+      $typeSubscribers="Total";
       $startDate = $request->startdate;
       $closeDate = $request->closedate;
       $data = $this->dataValidatorDate();
 
-      if ($request->subscriptionType != 'Todos'){
+      if ($request->subscriptionType > 0){
+
+        $typeSubscribers=SubscriptionType::find($request->subscriptionType);
+
         $queryResults = DB::table('subscribers')
-          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
-          ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
-          ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
-          ->where('subscription_types.type', '=', $request->subscriptionType)
-          ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
+          ->join('status','status.id', '=', 'users.status_id')
+          ->join('paises','paises.id', '=', 'subscribers.country_id')
+          ->where('subscribers.created_at','>=', $request->startdate)
+          ->where('subscribers.created_at','<=', $request->closedate)
+          ->where('subscription_types.id', '=', $request->subscriptionType)
+          //->whereNull('subscriber_subscription_type.closedate')
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types', 'subscribers.created_at')
           ->get();
       }else{
         $queryResults = DB::table('subscribers')
@@ -193,7 +208,8 @@ class SubscribersController extends Controller
 
       $subscriber = Subscriber::find($id);
       $account = User::find($subscriber->user_id);
-
+      $country = Paises::find($subscriber->country_id);
+      //dd($subscriber->country_id);
       $typeSubscribers = $type;
       $startDate = $startdate;
       $closeDate = $closedate;
@@ -220,7 +236,7 @@ class SubscribersController extends Controller
         ->select('payment_account_statements.startdate', 'payment_account_statements.closedate','payment_account_statements.status')
         ->get();
 
-      return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers', 'startDate', 'closeDate'));
+      return view ('showsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers','country', 'startDate', 'closeDate'));
     }
 
     /*
@@ -372,15 +388,15 @@ class SubscribersController extends Controller
       $data = request()->validate([
         'password' => 'required',
         'passwordConfirmation' => 'required',
-        'password' => 'required|min:6',
-        'password' => ['required', 'regex:/\A(?=.*[A-Z])(?=.*\d)(?=.*(?:!|#|\$|%|&|\/|\(|\)|=|\?|\*|\.)).{6,8}\z/'],
+        //'password' => 'required|min:6',
+        'password' => ['required', 'regex:/\A(?=.*[A-Z])(?=.*\d)(?=.*(?:!|#|\$|%|&|\/|\(|\)|=|\?|\*|\.)).{6,16}\z/'],
         'passwordConfirmation' => 'required|same:password'
       ],[
         'password.required' => 'Nueva contraseña es obligatoria.',
-        'passwordConfirmation.required' => 'comfirmacion de contraseña es obligatoria.',
+        'passwordConfirmation.required' => 'Confirmación de contraseña es obligatoria.',
         'min'=> 'El campo de contraseña no puede tener menos de :min carácteres.',
         'passwordConfirmation.same' => 'Nueva contraseña y confirmación de contraseña deben coincidir.',
-        'regex' => 'La contraseña debe contener 6 a 8 caracteres, al menos una mayúscula, al menos un dígito, y al menos un símbolo'
+        'regex' => 'La contraseña debe contener de seis a dieciséis caracteres y como mínimo una mayúscula, un número y un símbolo.'
       ]);
 
       return $data;
@@ -435,10 +451,10 @@ class SubscribersController extends Controller
     public function countSubscribers($type){
 
       $total = DB::table('subscribers')
-        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-        ->where('subscription_types.type', '=', $type)
-        ->whereNull('subscriber_subscription_type.closedate')
+        //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+        ->where('subscription_types.id', '=', $type)
+        //->whereNull('subscriber_subscription_type.closedate')
         ->count();
 
         return $total;

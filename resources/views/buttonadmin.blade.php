@@ -31,7 +31,7 @@
 
 <div class="alert alert-warning alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4><strong>La acción de activar o inactivar el botón de pago, alternara las propiedades de una cuenta gratita común y una cuenta gratuita con acceso ilimitado para Venezuela.</strong></h4>
+	<h4><strong>Activar o desactivar el botón de pago modificará las propiedades de una cuenta gratuita común y una cuenta gratuita con acceso ilimitado para Venezuela.</strong></h4>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -91,7 +91,7 @@
                 @if($buttonRecord[0]->status == 'Inactivo')
                   <center><a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-6">Activar</a></center>
                 @else
-                  <center><a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-6">Inactivar</a></center>
+                  <center><a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-6">Desactivar</a></center>
                 @endif
               </div>
             </div>
@@ -100,7 +100,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <!--<div class="row">
     <div class="col-12">
       <div class="ibox-title">
         <div class="row">
@@ -119,13 +119,13 @@
           <table class="table table-striped table-bordered table-hover" >
             <thead>
             <tr>
-                <th>Código</th>
-                <th>Tipo de cuenta</th>
+                <th class="text-center">Código</th>
+                <th class="text-center">Tipo de cuenta</th>
                 <th>Propiedad heredada</th>
-                <th>Límite  de articulos</th>
-                <th>Costo</th>
-                <th>Días para pagar</th>
-                <th>Estatus</th>
+                <th class="text-center">Límite  de artículos</th>
+                <th class="text-center">Costo</th>
+                <th class="text-center">Días para pagar</th>
+                <th class="text-center">Estatus</th>
             </tr>
             </thead>
             <tbody>
@@ -136,7 +136,7 @@
                     <th>{{$config->type}}</th>
                     <th>{{$config->typeswap}}</th>
                     @if($config->limit >= 999999)
-                      <th>Sin Límite</th>
+                      <th>Sin límite</th>
                     @else
                       <th>{{$config->limit}}</th>
                     @endif
@@ -150,6 +150,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
 @endsection

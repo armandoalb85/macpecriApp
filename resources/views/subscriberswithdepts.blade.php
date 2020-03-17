@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Consulta de subscriptores con pagos pendientes</h2>
+          <h2>Consulta de suscriptores con pagos pendientes</h2>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ url('dashboard') }}">Sistema administrativo</a>
             </li>
             <li class="breadcrumb-item active">
-                <a><strong>Consulta de pagos pendientes</strong></a>
+                <a><strong>Consulta de suscriptores con pagos pendientes</strong></a>
             </li>
           </ol>
       </div>
@@ -77,7 +77,7 @@
     <div class="col-lg-8">
       <div class="ibox ">
           <div  class="ibox-title">
-              <h5>Listado de Pagos Pendientes</h5>
+              <h5>Lista de pagos pendientes</h5>
           </div>
           <div class="ibox-content">
 
@@ -85,14 +85,14 @@
               <table class="table table-striped table-bordered table-hover dataTables-example" >
                   <thead>
                   <tr>
-                    <th>Suscriptor</th>
-                    <th>Correo</th>
-                    <th>Suscripción de cuenta</th>
-                    <th>Fecha de cobro</th>
-                    <th>Días para pagar</th>
+                    <th class="text-center">Suscriptor</th>
+                    <th class="text-center">Correo</th>
+                    <th class="text-center">Suscripción de cuenta</th>
+                    <th class="text-center">Fecha de cobro</th>
+                    <th class="text-center">Días para pagar</th>
                     <!--<th>Fecha actual</th>-->
-                    <th>Pago</th>
-                    <th>Método de pago</th>
+                    <th class="text-center">Pago</th>
+                    <th class="text-center">Método de pago</th>
                   </tr>
                   </thead>
                   <tbody>

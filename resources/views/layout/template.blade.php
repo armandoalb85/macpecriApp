@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MACPECRI | Administrador de Suscripciones </title>
+    <title>MACPECRI | Administrador de suscripciones </title>
 
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -88,7 +88,7 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="{{ url('r_conversion_cuenta')}}">Conversión de cuentas</a></li>
                         <li><a href="{{ url('r_creacion_cuenta')}}">Creación de cuentas</a></li>
-                        <li><a href="{{ url('r_canales_pago')}}">Canales de pago</a></li>
+                        <li><a href="{{ url('r_canales_pago')}}">Formas de pago</a></li>
                         <li><a href="{{ url('r_pagos_recibidos')}}">Pagos recibidos</a></li>
                         <li><a href="{{ url('r_cuentas_por_vencer')}}">Cuentas por vencerse</a></li>
                     </ul>
@@ -112,7 +112,7 @@
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                        <i class="fa fa-sign-out"></i> Cerrar Sesión
+                        <i class="fa fa-sign-out"></i> Cerrar sesión
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
@@ -129,8 +129,8 @@
             @yield('contentapp')
              <!-- Pie de Pagina -->
             <div class="footer">
-                <div>
-                    <center><strong>Grupo Macpecri - RIF: J-29355653-8 2019 </strong></center>
+                <div class="text-center">
+                    <strong> &copy; {{ date('Y')}} - Grupo Editorial Macpecri - RIF: J-29355653-8</strong>
                 </div>
             </div>
 
@@ -143,12 +143,12 @@
                 "language": {
                   "decimal": "",
                   "emptyTable": "No hay información",
-                  "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                  "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                  "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                  "info": "Mostrando _END_ de _TOTAL_ registros", //_START_
+                  "infoEmpty": "Mostrando 0 de 0 registros",
+                  "infoFiltered": "(Filtrado de _MAX_ registros en total)",
                   "infoPostFix": "",
                   "thousands": ",",
-                  "lengthMenu": "Mostrar _MENU_ Entradas",
+                  "lengthMenu": "Mostrar _MENU_ registros",
                   "loadingRecords": "Cargando...",
                   "processing": "Procesando...",
                   "search": "Buscar:",

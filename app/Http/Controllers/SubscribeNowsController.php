@@ -33,7 +33,7 @@ class SubscribeNowsController extends Controller
     /*
     *This method show a message config
     */
-    public function  showSubscribeNow($id){
+    public function showSubscribeNow($id){
       $url = null;
       $subscribeNow = SubscribeNow::find($id);
 
@@ -42,7 +42,7 @@ class SubscribeNowsController extends Controller
         //$url = $public_path.'/imageSubscribeMessage/'.$subscribeNow->pathimage;
         $url = '/imageSubscribeMessage/'.$subscribeNow->pathimage;
       }
-
+      //dd($subscribeNow->name);
       return  view('showsubscribenow',compact('subscribeNow', 'url'));
     }
 

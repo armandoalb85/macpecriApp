@@ -27,7 +27,7 @@
   <div class="col-lg-4">
     <div class="ibox ">
       <div class="ibox-title">
-        <h5><strong>Suscriptor:</strong>&nbsp;{{ $subscriber->name}} &nbsp; {{$subscriber->lastname}}</h5>
+        <h5><strong>Nombre:</strong>&nbsp;{{ $subscriber->name}} {{$subscriber->lastname}}</h5>
       </div>
       <div class="ibox-content">
         <form method="post" action="{{ url('suscriptor/edicion/'.$subscriber->id) }}">
@@ -38,14 +38,14 @@
           <input type="text" name="closeDate" value="{{ $closeDate }}" class="form-control" hidden>
           <!-- -->
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Nombre de usuario</label>
+            <label class="col-lg-3 col-form-label">Usuario</label>
             <div class="col-lg-9">
               <input type="text" name="username" value="{{ $account->username }}" class="form-control" disabled>
             </div>
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Tipo de cuenta</label>
+            <label class="col-lg-3 col-form-label">Cuenta</label>
             <div class="col-lg-9">
               <input type="text" name="typeAcccount" value="{{ $subscriberAccount[0]->type }}" class="form-control" disabled>
             </div>
@@ -100,16 +100,16 @@
         @if (sizeof($subscriberPayment) != 0)
         <form>
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Dia de pago</label>
-            <div class="col-lg-9">
+            <label class="col-lg-6 col-form-label">Día de pago</label>
+            <div class="col-lg-6">
               @php($data = explode('-',$subscriberPayment[0]->startdate))
               <input type="text" name="PaymentDate" value="{{ $data[2].'/'.$data[1].'/'.$data[0]}}" class="form-control" disabled>
             </div>
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Pago efectuado</label>
-            <div class="col-lg-9">
+            <label class="col-lg-6 col-form-label">Pago efectuado</label>
+            <div class="col-lg-6">
               @if ($subscriberPayment[0]->closedate != null)
                 @php($data = explode('-',$subscriberPayment[0]->closedate))
                 <input type="text" name="payment" value="{{ $data[2].'/'.$data[1].'/'.$data[0] }}" class="form-control" disabled>
@@ -120,14 +120,14 @@
           </div>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Estatus del pago</label>
-            <div class="col-lg-9">
+            <label class="col-lg-6 col-form-label">Estatus del pago</label>
+            <div class="col-lg-6">
               <input type="text" name="status" value="{{ $subscriberPayment[0]->status }}" class="form-control" disabled>
             </div>
           </div>
         </form>
         @else
-          <h5>Ho existe información de pago.</h5>
+          <h5>No existe información de pago.</h5>
         @endif
       </div>
     </div>
@@ -141,7 +141,7 @@
         <form>
 
           <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Telefono</label>
+            <label class="col-lg-3 col-form-label">Teléfono</label>
             <div class="col-lg-9">
               <input type="text" name="phone" value="{{ $subscriber->phone}}" class="form-control" disabled>
             </div>

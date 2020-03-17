@@ -41,7 +41,7 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Contenido</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="5" cols="100" class="form-control">Descripción de tipo de suscripción</textarea>
+                <textarea name="description" rows="5" cols="100" class="form-control">Descripción de suscripción</textarea>
               </div>
             </div>
             <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">

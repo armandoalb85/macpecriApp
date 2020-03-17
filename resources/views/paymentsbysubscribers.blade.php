@@ -78,7 +78,7 @@
     <div class="col-lg-8">
       <div class="ibox ">
           <div  class="ibox-title">
-              <h5>Listado de pagos realizados</h5>
+              <h5>Lista de pagos realizados</h5>
           </div>
           <div class="ibox-content">
 
@@ -86,13 +86,13 @@
               <table class="table table-striped table-bordered table-hover dataTables-example" >
                   <thead>
                   <tr>
-                      <th>Suscriptor</th>
-                      <th>Correo</th>
-                      <th>Suscripción de cuenta</th>
-                      <th>Fecha de cobro</th>
-                      <th>Fecha de pago</th>
-                      <th>Pago</th>
-                      <th>Método de pago</th>
+                      <th class="text-center">Suscriptor</th>
+                      <th class="text-center">Correo</th>
+                      <th class="text-center">Suscripción de cuenta</th>
+                      <th class="text-center">Fecha de cobro</th>
+                      <th class="text-center">Fecha de pago</th>
+                      <th class="text-center">Pago</th>
+                      <th class="text-center">Método de pago</th>
                   </tr>
                   </thead>
                   <tbody>

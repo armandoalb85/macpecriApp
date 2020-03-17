@@ -3,13 +3,13 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Reporte de canales de pagos utilizados</h2>
+          <h2>Reporte de formas de pagos utilizados</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item">
                   <a href="{{ url('dashboard') }}">Sistema administrativo</a>
               </li>
               <li class="breadcrumb-item active">
-                  <a><strong>Canales de pago</strong></a>
+                  <a><strong>Formas de pago</strong></a>
               </li>
           </ol>
       </div>

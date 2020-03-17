@@ -12,7 +12,7 @@
                 @if($startDate === "a")
                   <a href="{{action('SubscribersController@listSubscribers', $typeSubscribers)}}">Lista de suscriptores</a>
                 @else
-                  <a href="{{action('specialsController@listSubscribersByFilterWihtParams', [$typeSubscribers,$startDate,$closeDate])}}">Lista de Suscriptores</a>
+                  <a href="{{action('specialsController@listSubscribersByFilterWihtParams', [$typeSubscribers,$startDate,$closeDate])}}">Lista de suscriptores</a>
                 @endif
               </li>
               <li class="breadcrumb-item">

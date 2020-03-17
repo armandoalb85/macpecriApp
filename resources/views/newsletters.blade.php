@@ -25,7 +25,7 @@
           <div  class="ibox-title">
             <div class="row">
               <div class="col-10">
-                <h5>Listado de Boletines</h5>
+                <h5>Lista de Boletines</h5>
               </div>
               <div class="col-2">
                 <a href="{{ url('boletines/nuevo') }}" class="btn btn-sm btn-primary float-right">

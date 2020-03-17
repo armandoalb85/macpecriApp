@@ -38,10 +38,10 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Mensaje</th>
-                  <th>Estatus</th>
-                  <th>Categoría</th>
-                  <th>Acciones</th>
+                  <th class="text-center">Mensaje</th>
+                  <th class="text-center">Estatus</th>
+                  <th class="text-center">Categoría</th>
+                  <th class="text-center">Acciones</th>
               </tr>
               </thead>
               <tbody>

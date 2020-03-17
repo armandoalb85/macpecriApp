@@ -3,7 +3,7 @@
 <!-- guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Editar tipo de suscripción</h2>
+        <h2>Editar suscripción</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ url('dashboard') }}">Sistema administrativo</a>
@@ -12,7 +12,7 @@
                 <a href="{{ url('suscripciones') }}">Suscripciones</a>
             </li>
             <li class="breadcrumb-item active">
-                <a><strong>Edición de tipo</strong></a>
+                <a><strong>Edición de suscripción</strong></a>
             </li>
         </ol>
     </div>
@@ -24,7 +24,7 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Edición suscripción definida</h5>
+          <h5>Edición de suscripción</h5>
         </div>
         <div class="ibox-content">
           <form id="form" method="post" action="{{ url('suscripciones/edicion/'.$subscription->id ) }}" >
@@ -53,7 +53,7 @@
                 @endif
               </div>
             </div>
-            <div class="form-group row">
+            <!--<div class="form-group row">
               <label class="col-lg-4 col-form-label">Estatus</label>
               <div class="col-sm-8">
                 <select class="form-control m-b" name="status">
@@ -62,7 +62,7 @@
                 </select>
               </div>
             </div>
-            <!--<div class="form-group row">
+            <div class="form-group row">
               <label class="col-lg-3 col-form-label">Costo</label>
               <div class="col-lg-9">
                 <input type="number" name = "cost" class="form-control" value="{{$subscription->cost}}" min="0" pattern="^[0-9]+" hidden>

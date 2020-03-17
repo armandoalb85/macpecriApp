@@ -86,7 +86,6 @@ class SubscriptionTypesController extends Controller
       $subscription->description = $request->description;
       //$subscription->cost = ($this->columnValidator($request->cost)) ? $request->cost : 0;
       $subscription->limit = $request->limit;
-      $subscription->status = $request->status;
       $subscription->daysforpaying = ($this->columnValidator($request->daysforpaying)) ? $request->daysforpaying : 0;
       $subscription->type = ($this->columnValidator($request->cost)) ? 'Pago' : 'Gratuita';
       $operationResult = $subscription->update();
@@ -119,7 +118,7 @@ class SubscriptionTypesController extends Controller
         'limit' => 'required'
       ],[
         'tipo.required' => 'Nombre de suscripción es obligatorio.',
-        'limit.required' => 'Indique un limite de articulos de lectura.',
+        'limit.required' => 'Indique un limite de artículos de lectura.',
         'regex' => 'Solo se permiten caracteres alfabeticos y números enteros.'
       ]);
 

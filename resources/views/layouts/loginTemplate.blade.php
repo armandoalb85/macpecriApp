@@ -23,7 +23,7 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div><img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;"></div>
-            <p><strong>Administrador de Suscripciones Macpecri</strong></p>
+            <p><strong>Administrador de suscripciones de Macpecri</strong></p>
             @yield('logincontent')
         </div>
     </div>

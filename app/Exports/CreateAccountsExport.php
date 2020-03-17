@@ -53,29 +53,56 @@ class CreateAccountsExport implements FromView, ShouldAutoSize, WithEvents
             ->where('subscription_types.type', '=', 'Gratuita')
             ->count('subscriber_subscription_type.id');
 
-      if($this->type == 'Todos'){
+      if($this->type == 0){
         $queryResults = DB::table('subscribers')
-              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
               ->join('users', 'users.id', '=', 'subscribers.user_id')
-              ->whereNull('subscriber_subscription_type.closedate')
+              //->whereNull('subscriber_subscription_type.closedate')
               ->where('subscribers.created_at', '>=', $this->startdate)
               ->where('subscribers.created_at', '<=', $this->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->orderBy('subscribers.name','asc')
               ->get();
 
-      }elseif ($this->type == 'Gratuita' || $this->type == 'Pago' || $this->type == 'Venezuela') {
+      }else{//if ($this->type == 'Gratuita' || $this->type == 'Pago' || $this->type == 'Venezuela') {
         $queryResults = DB::table('subscribers')
-              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
               ->join('users', 'users.id', '=', 'subscribers.user_id')
-              ->whereNull('subscriber_subscription_type.closedate')
-              ->where('subscription_types.name', '=', $this->type )
+              //->whereNull('subscriber_subscription_type.closedate')
+              ->where('subscription_types.id', '=', $this->type )
               ->where('subscribers.created_at', '>=', $this->startdate)
               ->where('subscribers.created_at', '<=', $this->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->orderBy('subscribers.name','asc')
               ->get();
       }
+      /*
+      if($request->type == 0){
+        $queryResults = DB::table('subscribers')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+              ->join('users', 'users.id', '=', 'subscribers.user_id')
+              //->whereNull('subscriber_subscription_type.closedate')
+              ->where('subscribers.created_at', '>=', $this->startdate)
+              ->where('subscribers.created_at', '<=', $this->closedate)
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->get();
+      //}elseif ($request->type == 'Gratuita' || $request->type == 'Pago' || $request->type == 'Venezuela') {
+      }else{
+        $queryResults = DB::table('subscribers')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+              ->join('users', 'users.id', '=', 'subscribers.user_id')
+              //->whereNull('subscriber_subscription_type.closedate')
+              //->where('subscription_types.name', '=', $request->type )
+              ->where('subscription_types.id', '=', $this->type )
+              ->where('subscribers.created_at', '>=', $this->startdate)
+              ->where('subscribers.created_at', '<=', $this->closedate)
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->get();
+      }*/
 
       return view('exportcreatedaccount', [
           'queryResults' => $queryResults,

@@ -23,7 +23,7 @@
           <div  class="ibox-title">
             <div class="row">
               <div class="col-10">
-                <h5>Listado de tipo de suscripciones</h5>
+                <h5>Lista de tipo de suscripciones</h5>
               </div>
               <!-- BTN RegisterEDg -->
               <!--<div class="col-2">
@@ -40,11 +40,11 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" >
               <thead>
               <tr>
-                  <th>Nombre de suscripción</th>
-                  <th>Límite de artículos</th>
-                  <!--<th>Costo</th>-->
-                  <th>Estatus</th>
-                  <th>Acciones</th>
+                  <th class="text-center">Nombre de suscripción</th>
+                  <th class="text-center">Límite de artículos</th>
+                  <!--<th>Costo</th>
+                  <th class="text-center">Estatus</th>-->
+                  <th class="text-center">Acciones</th>
               </tr>
               </thead>
               <tbody>
@@ -53,12 +53,12 @@
                   <tr>
                     <td>{{$sucription->name}}</td>
                     @if($sucription->limit >= 999999)
-                      <td>Sin Límite</td>
+                      <td>Sin límite</td>
                     @else
                       <td>{{$sucription->limit}}</td>
                     @endif
-                    <!--<td>{{$sucription->cost}}</td>-->
-                    <td>{{$sucription->status}}</td>
+                    <!--<td>{{$sucription->cost}}</td>
+                    <td>{{$sucription->status}}</td>-->
                     <td>
                       <center>
                       <div class="btn-group" role="group">

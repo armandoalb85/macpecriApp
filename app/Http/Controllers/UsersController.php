@@ -34,16 +34,15 @@ class UsersController extends Controller
           'actualPassword' => 'required',
           'newPassword' => 'required',
           'newPassword' => 'required|min:6',
-          'newPassword' => ['required', 'regex:/\A(?=.*[A-Z])(?=.*\d)(?=.*(?:!|#|\$|%|&|\/|\(|\)|=|\?|\*|\.)).{6,8}\z/'],
+          'newPassword' => ['required', 'regex:/\A(?=.*[A-Z])(?=.*\d)(?=.*(?:!|#|\$|%|&|\/|\(|\)|=|\?|\*|\.)).{6,16}\z/'],
           'passwordConfirmation' => 'required',
           'passwordConfirmation' => 'required|same:newPassword'
         ],[
-          'actualPassword.required' => 'Contraseña actual es obligatoria.',
-          'newPassword.required' => 'Nueva contraseña es obligatoria.',
-          'passwordConfirmation.required' => 'comfirmacion de contraseña es obligatoria.',
+          'actualPassword.required' => 'La contraseña actual es obligatoria.',
+          'newPassword.required' => 'La nueva contraseña es obligatoria.',
+          'passwordConfirmation.required' => 'La confirmacion de contraseña es obligatoria.',
           'min'=> 'El campo :attribute no puede tener menos de :min carácteres.',
-          'passwordConfirmation.same' => 'Nueva contraseña y confirmación de contraseña deben coincidir.',
-          'regex' => 'La contraseña debe contener 6 a 8 caracteres, al menos una mayúscula, al menos un dígito, y al menos un símbolo'
+          'passwordConfirmation.same' => 'La contraseña debe contener de seis a dieciséis caracteres y como mínimo una mayúscula, un número y un símbolo.'
         ]);
 
         $user = new User;

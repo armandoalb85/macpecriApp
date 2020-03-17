@@ -12,7 +12,7 @@
                 <a href="{{ url('suscribase_ahora') }}">Mensajes de suscríbase ahora</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong> Mensaje de &nbsp;{{ strtolower ($subscribeNow->name) }}</strong>
+                <strong> Mensaje de {{ strtolower ($subscribeNow->name) }}</strong>
             </li>
         </ol>
     </div>
@@ -34,7 +34,7 @@
               <label class="col-lg-3 col-form-label">Subir archivo</label>
               <div class="col-sm-9">
                   <input type="file" class="form-control" name="file">
-                  <center><h5>(Archivos permitidos: .JPEG y.PNG, máximo 4MB)</h5></center>
+                  <center><h5>(Archivos permitidos: JPEG y PNG, máximo 4MB)</h5></center>
                   @if ($errors->has('file'))
                     <strong class="error-text">{{ $errors->first('file') }}</strong>
                   @endif

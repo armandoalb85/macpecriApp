@@ -13,7 +13,7 @@ class SubscriptionTypeSeeder extends Seeder
     {
         DB::table('subscription_types')->insert([
             'name' => 'Suscripción Gratuita',
-            'description' => 'Suscripción con lectura de articulos limitados.',
+            'description' => 'Suscripción con lectura de artículos limitados.',
             'cost' => 0,
             'limit' => 10,
             'status' => 'Activo',

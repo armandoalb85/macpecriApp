@@ -3,7 +3,11 @@
 <!-- Guia -->
   <div class="row wrapper border-bottom white-bg page-heading">
       <div class="col-lg-10">
-          <h2>Suscriptores a consultar</h2>
+          @if ( $startDate == "")
+            <h2>Suscriptores a consultar</h2>
+          @else
+            <h2>Suscriptores a consultar - Desde el {{date("d/m/Y", strtotime($startDate))}} hasta {{date("d/m/Y", strtotime($closeDate))}}</h2>
+          @endif
           @if ( $startDate == null || $startDate == null )
            @php($startDate = "a")
            @php($closeDate = "b")
@@ -16,7 +20,7 @@
                   <a href="{{ url('gestion_suscriptores') }}">Suscriptores</a>
               </li>
               <li class="breadcrumb-item">
-                  <strong><a>Gestion de suscriptores&nbsp;({{ strtolower ($typeSubscribers) }})</a></strong>
+                  <strong><a>Gestión de suscriptores ({{ (is_object($typeSubscribers)?$typeSubscribers->name:$typeSubscribers) }})</a></strong>
               </li>
           </ol>
       </div>
@@ -32,13 +36,14 @@
         <table class="table table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Código</th>
-                <th>Suscriptor</th>
-                <th>Correo</th>
-                <th>Suscripción</th>
-                <th>Estatus</th>
-                <th>Tipo de cuenta</th>
-                <th>Acciones</th>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Correo</th>
+                <th class="text-center">País</th>
+                <th class="text-center">Suscripción</th>
+                <th class="text-center">Estatus</th>
+                <th class="text-center">Cuenta</th>
+                <th class="text-center">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -48,12 +53,12 @@
                     <td>{{$queryResult->id}}</td>
                     <td>{{$queryResult->name}}&nbsp;{{$queryResult->lastname}}</td>
                     <td>{{$queryResult->email}}</td>
+                    <td>{{$queryResult->country}}</td>
                     <td>
-                      @php($data = explode('-',$queryResult->startdate))
-                      {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                      {{date("d/m/Y", strtotime($queryResult->created_at))}}
                     </td>
                     <td>{{$queryResult->status}}</td>
-                    <td>{{$queryResult->type}}</td>
+                    <td>{{$queryResult->types}}</td>
                     <td>
                       <center>
                         <div class="btn-group" role="group">

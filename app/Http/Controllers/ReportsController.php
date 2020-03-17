@@ -110,26 +110,31 @@ class ReportsController extends Controller
 
       $typeAccounts = SubscriptionType::all();
 
-      if($request->type == 'Todos'){
+      //if($request->type == 'Todos'){
+      if($request->type == 0){
         $queryResults = DB::table('subscribers')
-              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
               ->join('users', 'users.id', '=', 'subscribers.user_id')
-              ->whereNull('subscriber_subscription_type.closedate')
+              //->whereNull('subscriber_subscription_type.closedate')
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->orderBy('subscribers.name','asc')
               ->get();
-      }elseif ($request->type == 'Gratuita' || $request->type == 'Pago' || $request->type == 'Venezuela') {
+      //}elseif ($request->type == 'Gratuita' || $request->type == 'Pago' || $request->type == 'Venezuela') {
+      }else{
         $queryResults = DB::table('subscribers')
-              ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-              ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+              //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+              ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
               ->join('users', 'users.id', '=', 'subscribers.user_id')
-              ->whereNull('subscriber_subscription_type.closedate')
-              ->where('subscription_types.name', '=', $request->type )
+              //->whereNull('subscriber_subscription_type.closedate')
+              //->where('subscription_types.name', '=', $request->type )
+              ->where('subscription_types.id', '=', $request->type )
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
-              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscriber_subscription_type.startdate as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
+              ->orderBy('subscribers.name','asc')
               ->get();
       }
 
@@ -276,7 +281,7 @@ class ReportsController extends Controller
             ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->where('subscription_types.type', '=', 'Pago')
+            ->where('subscription_types.id', '=', 2)
             ->where('payment_account_statements.startdate', '>=', $request->startdate)
             ->where('payment_account_statements.startdate', '<=', $request->closedate)
             ->whereNull('payment_account_statements.closedate')

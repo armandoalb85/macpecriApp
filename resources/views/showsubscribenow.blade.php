@@ -3,7 +3,7 @@
 <!-- Guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Suscríbase ahora ({{ strtolower ($subscribeNow->name) }})</h2>
+        <h2>Suscríbase ahora ({{ $subscribeNow->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ url('dashboard') }}">Sistema administrativo</a>
@@ -12,7 +12,7 @@
                 <a href="{{ url('suscribase_ahora') }}">Mensajes de suscríbase ahora</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong> Mensaje de &nbsp;{{ strtolower ($subscribeNow->name) }}</strong>
+                <strong> Mensaje de {{ $subscribeNow->name }}</strong>
             </li>
         </ol>
     </div>
