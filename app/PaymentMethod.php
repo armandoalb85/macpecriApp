@@ -11,5 +11,6 @@ class PaymentMethod extends Model
     */
     public function paymentMethodRecords(){
       return $this->hasMany('App\PaymentMethodRecord');
+      //un comentario
     }
 }
