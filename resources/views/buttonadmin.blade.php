@@ -142,7 +142,6 @@
                     @endif
                     <th>{{$config->cost}}</th>
                     <th>{{$config->daysforpaying}}</th>
-                    <th>{{$config->status}}</th>
                   </tr>
                 @endforeach
               @endif
