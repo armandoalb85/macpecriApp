@@ -16,66 +16,63 @@
   </div>
 <!-- Guia -->
 <div class="wrapper wrapper-content animated fadeInRight">
+  
   <div class="row">
-    <div class="col-lg-4">
-      <div class="ibox ">
-        <div class="ibox-title">
-          <h5>Consultar pagos</h5>
-        </div>
-        <div class="ibox-content">
-          <form id="fdate" method="post" action="{{ url('pagos_realizados')}}" >
-            {{csrf_field()}}
-            <br>
-            <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Desde</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
-                <div class="input-group date">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i></span>
-                    @if($dateIni != null)
-                      <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{$dateIni}}">
-                    @else
-                      <input type="date" class="form-control" name="startdate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
-                    @endif
-
-                    @if ($errors->has('startdate'))
-                      <strong class="error-text">{{ $errors->first('startdate') }}</strong>
-                    @endif
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">Desde</div>
+                        <div class="col-md-5">Hasta</div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <form id="fdate" method="post" action="{{ url('pagos_realizados')}}" >
+                      {{csrf_field()}}
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="input-group date {{ $errors->has('startdate') ? ' has-error' : '' }}">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i></span>
+                                    @if($dateIni)
+                                    <input type="date" class="form-control" name="startdate" maxlength="10"
+                                        pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{$dateIni}}">
+                                    @else
+                                    <input type="date" class="form-control" name="startdate" maxlength="10"
+                                        pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
+                                    @endif
+                                    @if ($errors->has('startdate'))
+                                    <strong class="error-text">{{ $errors->first('startdate') }}</strong>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-group date {{ $errors->has('closedate') ? ' has-error' : '' }}">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i></span>
+                                    @if($dateFin)
+                                    <input type="date" class="form-control" name="closedate" maxlength="10"
+                                        pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{$dateFin}}">
+                                    @else
+                                    <input type="date" class="form-control" name="closedate" maxlength="10"
+                                        pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
+                                    @endif
+                                    @if ($errors->has('closedate'))
+                                    <strong class="error-text">{{ $errors->first('closedate') }}</strong>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-sm btn-primary" type="submit">Aceptar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
             </div>
-
-            <div class="form-group row {{ $errors->has('startdate') ? ' has-error' : '' }}">
-              <label class="col-lg-3 col-form-label">Hasta</label>
-              <div class="form-group col-lg-9" id="newsletterCalendar">
-                <div class="input-group date">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i></span>
-                    @if($dateFin != null)
-                      <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})" value="{{$dateFin}}">
-                    @else
-                      <input type="date" class="form-control" name="closedate" maxlength="10" pattern="[0-9]{2}[/][0-9]{2}[/]([0-9]{4})">
-                    @endif
-
-                    @if ($errors->has('closedate'))
-                      <strong class="error-text">{{ $errors->first('closedate') }}</strong>
-                    @endif
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-lg-4">
-                <br>
-                <button class="btn btn-sm btn-primary col-12" type="submit">Aceptar</button>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-
-    <div class="col-lg-8">
+  
+  <div class="row mt-3">
+    <div class="col-md-12">
       <div class="ibox ">
           <div  class="ibox-title">
               <h5>Lista de pagos realizados</h5>

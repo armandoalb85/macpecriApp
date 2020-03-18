@@ -26,7 +26,7 @@ class ButtonRecordsController extends Controller
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
-        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status', 'subscription_types.typeswap')
+        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.typeswap')
         ->get();
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
     }
@@ -70,7 +70,7 @@ class ButtonRecordsController extends Controller
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
-        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.status', 'subscription_types.typeswap')
+        ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.typeswap')
         ->get();
 
       return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
@@ -79,7 +79,7 @@ class ButtonRecordsController extends Controller
     private function updateActiveButton(){
 
       DB::table('subscribers')
-      ->where('region', 'like', '%Venezuela%')
+      ->where('country_id', '=', 231)
       ->update(['subscription_types_id' => 1]);
 
     }
@@ -87,7 +87,7 @@ class ButtonRecordsController extends Controller
     private function updateInactiveButton(){
 
       DB::table('subscribers')
-      ->where('region', 'like', '%Venezuela%')
+      ->where('country_id', '=', 231)
       ->update(['subscription_types_id' => 3]);
 
     }
