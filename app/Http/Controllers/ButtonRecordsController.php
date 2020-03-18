@@ -79,7 +79,7 @@ class ButtonRecordsController extends Controller
     private function updateActiveButton(){
 
       DB::table('subscribers')
-      ->where('country_id', '=', 231)
+      ->where('subscription_types_id', '=', 3)
       ->update(['subscription_types_id' => 1]);
 
     }
@@ -88,6 +88,7 @@ class ButtonRecordsController extends Controller
 
       DB::table('subscribers')
       ->where('country_id', '=', 231)
+      ->whereIn('subscription_types_id', [1,2])
       ->update(['subscription_types_id' => 3]);
 
     }
