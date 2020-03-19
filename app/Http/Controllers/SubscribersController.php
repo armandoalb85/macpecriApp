@@ -143,20 +143,20 @@ class SubscribersController extends Controller
 
       $data = $this->dataValidator();
 
-      $payments = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
-            ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-            ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+      $payments = DB::table('subscribers')
+            ->join('payment_account_statements', 'payment_account_statements.subscriber_id', '=', 'subscribers.id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
-            ->where('subscription_types.type', '=', 'Pago')
-            //->where('subscription_types.name', '=', $request->subscriptionType)
-            ->where('payment_account_statements.closedate', '>=', $request->startdate)
-            ->where('payment_account_statements.closedate', '<=', $request->closedate)
-            ->select('subscription_types.name as name', 'subscription_types.cost as cost', 'subscription_types.daysforpaying as daysforpaying', 'subscribers.name as subsname', 'subscribers.lastname as subslastname', 'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 'payment_account_statements.amount as amount', 'users.email as email', 'subscriber_subscription_type.startdate as subscriptiondate', 'payment_methods.name as method')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+            ->where('payment_account_statements.subscriber_id', '>', 0)
+            ->where('payment_account_statements.amount', '>', 0.99)
+            ->where('payment_account_statements.startdate', '>=', $request->startdate)
+            ->where('payment_account_statements.startdate', '<=', $request->closedate)
+            ->select('subscribers.name','subscribers.lastname', 'payment_account_statements.amount as cost', 
+            'payment_account_statements.startdate as paymentdate', 'payment_account_statements.closedate as payclosedate', 
+            'payment_account_statements.amount as amount', 'users.email as email', 'subscribers.created_at as subscriptiondate', 
+            'payment_methods.name as method')//->toSql();
             ->get();
-
+      //dd($request->startdate,$request->closedate,$payments);
       return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
     }
 

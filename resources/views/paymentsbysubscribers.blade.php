@@ -96,7 +96,7 @@
                     @if ($payments->count())
                       @foreach($payments as $payment)
                         <tr>
-                          <td>{{$payment->subsname." ".$payment->subslastname}}</td>
+                          <td>{{$payment->name." ".$payment->lastname}}</td>
                           <td>{{$payment->email}}</td>
                           <td>
                             @php($data = explode('-',$payment->subscriptiondate))
