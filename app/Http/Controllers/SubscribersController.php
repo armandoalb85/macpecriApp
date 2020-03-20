@@ -213,14 +213,7 @@ class SubscribersController extends Controller
       $typeSubscribers = $type;
       $startDate = $startdate;
       $closeDate = $closedate;
-      /*
-      $subscriberAccount = DB::table ('subscribers')
-        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-        ->where('subscribers.id', '=', $id)
-        ->whereNull('subscriber_subscription_type.closedate')
-        ->select('subscriber_subscription_type.status', 'subscription_types.type')
-        ->get();*/
+
         $subscriberAccount = DB::table ('subscribers')
         ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
         ->join('users', 'users.id', '=', 'subscribers.user_id')

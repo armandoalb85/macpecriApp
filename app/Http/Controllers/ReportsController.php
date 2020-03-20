@@ -58,17 +58,18 @@ class ReportsController extends Controller
         $i++;
       }
 
-      $queryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
+      $queryResults = DB::table('subscriber_subscription_type')
+            ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
+            //->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->whereIn('subscriber_subscription_type.subscriber_id', $values )
+            ->join('payment_account_statements', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+            ->where('subscriber_subscription_type.subscription_id', '=', 2)
             ->where('subscriber_subscription_type.startdate', '>=', $request->startdate)
             ->where('subscriber_subscription_type.startdate', '<=', $request->closedate)
-            ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname', 'users.email', 'payment_methods.name as method')
+            ->select('subscribers.name', 'subscribers.lastname', 'users.email', 
+            'subscribers.created_at', 'subscriber_subscription_type.startdate', 
+            'payment_methods.name as method')
             ->get();
 
       if ($queryResults != null){
@@ -296,11 +297,11 @@ class ReportsController extends Controller
     */
     private function totalPayAccount(){
 
-      $totalPay = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->count('subscriber_subscription_type.id');
+      $totalPay = DB::table('subscribers')
+      ->join('users', 'users.id', '=', 'subscribers.user_id')
+      ->where('users.status_id', '=', 1)
+      ->where('subscribers.subscription_types_id', '=', 2)
+      ->count('subscribers.subscription_types_id');
 
       return $totalPay;
 
@@ -311,11 +312,11 @@ class ReportsController extends Controller
     */
     private function totalFreeAccount(){
 
-      $totalFree = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->count('subscriber_subscription_type.id');
+      $totalFree = DB::table('subscribers')
+            ->join('users', 'users.id', '=', 'subscribers.user_id')
+            ->where('users.status_id', '=', 1)
+            ->where('subscribers.subscription_types_id', '=', 1)
+            ->count('subscribers.subscription_types_id');
 
       return $totalFree;
 

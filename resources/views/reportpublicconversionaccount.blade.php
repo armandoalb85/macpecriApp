@@ -106,7 +106,6 @@
                                 <th class="text-center">Correo</th>
                                 <th class="text-center">Fecha de suscripción</th>
                                 <th class="text-center">Fecha de conversión</th>
-                                <th class="text-center">Cuenta</th>
                                 <th class="text-center">Método de pago</th>
                             </tr>
                         </thead>
@@ -125,7 +124,6 @@
                                     @php($data = explode('-',$queryResult->startdate))
                                     {{ $data[2].'/'.$data[1].'/'.$data[0]}}
                                 </td>
-                                <td>{{$queryResult->type}}</td>
                                 <td>{{$queryResult->method}}</td>
                             </tr>
                             @endforeach
