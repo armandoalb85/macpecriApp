@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MACPERCRI | Login</title>
+    <title>MACPECRI | Login</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -24,6 +24,7 @@
         <div>
             <div><img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;"></div>
             <p><strong>Administrador de suscripciones de Macpecri</strong></p>
+            <p><strong>¡Dígalo con cultura!</strong></p>
             @yield('logincontent')
         </div>
     </div>
