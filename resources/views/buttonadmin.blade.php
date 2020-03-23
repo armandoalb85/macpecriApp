@@ -20,7 +20,7 @@
   <div class="col-4">
     <div class="alert alert-success alert-block fade-out">
     	<button type="button" class="close" data-dismiss="alert">×</button>
-      @if($buttonRecord[0]->status == 'Activo')
+      @if($buttonRecord[0]->status_id == 1)
     	   <h4><strong>Botón de pago. ENCENDIDO</strong></h4>
        @else
         <h4><strong>Botón de pago. APAGADO</strong></h4>
@@ -42,20 +42,21 @@
           <h5>Configuración actual del botón</h5>
         </div>
         <div class="ibox-content">
-          @if($buttonRecord[0]->startdate != null && $buttonRecord[0]->status != null)
+          @if($buttonRecord[0]->startdate != null && $buttonRecord[0]->status_id >= 0)
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Desde:</label>
               <div class="col-sm-9">
                 <label class="col-lg-8 col-form-label">
                   @php($data = explode('-',$buttonRecord[0]->startdate))
                   {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                  
                 </label>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Estatus:</label>
               <div class="col-sm-9">
-                <label class="col-lg-8 col-form-label">{{$buttonRecord[0]->status}}</label>
+                <label class="col-lg-8 col-form-label">{{$buttonRecord[0]->name}}</label>
               </div>
             </div>
           @else
@@ -70,10 +71,10 @@
           <h5>Cuentas afectadas</h5>
         </div>
         <div class="ibox-content">
-          @if($vezuelaAccounts != null)
-            <h2>Total:&nbsp;{{$vezuelaAccounts}}</h2>
+          @if($venezuelaAccounts != null)
+            <h2>Total:&nbsp;{{$venezuelaAccounts}}</h2>
           @else
-            <h2>Total:&nbsp;0</h2>
+            <h2>Total: 0</h2>
           @endif
 
         </div>
@@ -87,11 +88,11 @@
         <div class="ibox-content">
           <form>
             <div class="form-group row">
-              <div class="col-lg-12">
-                @if($buttonRecord[0]->status == 'Inactivo')
-                  <center><a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-6">Activar</a></center>
+              <div class="col-lg-12 text-center">
+                @if($buttonRecord[0]->status_id == 0)
+                  <a href="{{url('pagos_config/enable')}}" class="btn btn-sm btn-success col-6">Activar</a>
                 @else
-                  <center><a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-6">Desactivar</a></center>
+                  <a href="{{url('pagos_config/disabled')}}" class="btn btn-sm btn-danger col-6">Desactivar</a>
                 @endif
               </div>
             </div>

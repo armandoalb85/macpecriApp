@@ -72,7 +72,8 @@ Route::get('suscribase_ahora/edicion/{id}','SubscribeNowsController@editSubscrib
 Route::post('suscribase_ahora/edicion/{id}','SubscribeNowsController@updateSubscribeNow');
 
 Route::get('pagos_config','ButtonRecordsController@index');
-Route::get('pagos_config/{accion}', 'ButtonRecordsController@modifyButton');
+//Route::get('pagos_config/{accion}', 'ButtonRecordsController@modifyButton');
+
 /*Route::get('suscribase_ahora/nuevo','SubscribeNowsController@newSubscribeMessageConfig');
 Route::post('suscribase_ahora/nuevo','SubscribeNowsController@saveSubscribeMessageConfig');
 Route::get('suscribase_ahora/borrar/{id}','SubscribeNowsController@destroySubscribeMessageConfig');*/

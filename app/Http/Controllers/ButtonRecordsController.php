@@ -18,17 +18,19 @@ class ButtonRecordsController extends Controller
     public function index(){
 
       $buttonRecord = DB::table('button_records')
+        ->join('status','status.id','=','button_records.status_id')
         ->whereNull('button_records.closedate')
-        ->select('button_records.startdate', 'button_records.closedate', 'button_records.status')
+        ->select('button_records.startdate', 'button_records.closedate', 'button_records.status_id','status.name')
         ->get();
-      $vezuelaAccounts = DB::table('subscribers')
+        //dd($buttonRecord);
+      $venezuelaAccounts = DB::table('subscribers')
         ->where('subscribers.subscription_types_id', '=', '3')
         ->count();
       $subscriptionConfigs = DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
         ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.typeswap')
         ->get();
-      return view('buttonadmin', compact('buttonRecord','vezuelaAccounts','subscriptionConfigs'));
+      return view('buttonadmin', compact('buttonRecord','venezuelaAccounts','subscriptionConfigs'));
     }
 
     public function modifyButton($action){
@@ -49,11 +51,11 @@ class ButtonRecordsController extends Controller
 
       if($updated){
         if($action == 'enable'){
-          DB::insert('insert into button_records (startdate, status, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'Activo', $button->closedate, $button->closedate]);
+          DB::insert('insert into button_records (startdate, status_id, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'1', $button->closedate, $button->closedate]);
           $value = 'activado';
           $this->updateActiveButton();
         }elseif($action == 'disabled'){
-          DB::insert('insert into button_records (startdate, status, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'Inactivo', $button->closedate, $button->closedate]);
+          DB::insert('insert into button_records (startdate, status_id, created_at, updated_at) values (?, ?, ?, ?) ', [$button->closedate,'0', $button->closedate, $button->closedate]);
           $value = 'Inactivado';
           $this->updateInactiveButton();
         }
@@ -62,8 +64,9 @@ class ButtonRecordsController extends Controller
       }
 
       $buttonRecord = DB::table('button_records')
+        ->join('status','status.id','=','button_records.status_id')
         ->whereNull('button_records.closedate')
-        ->select('button_records.startdate', 'button_records.closedate', 'button_records.status')
+        ->select('button_records.startdate', 'button_records.closedate', 'button_records.status_id','status.name')
         ->get();
       $vezuelaAccounts = DB::table('subscriber_subscription_type')
         ->where('subscriber_subscription_type.subscription_id', '=', '3')
