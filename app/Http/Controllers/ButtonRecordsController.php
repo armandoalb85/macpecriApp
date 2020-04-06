@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ButtonRecord;
-use App\SubscriptionType;
+//use App\SubscriptionType;
 use DB;
 
 class ButtonRecordsController extends Controller
@@ -26,10 +26,10 @@ class ButtonRecordsController extends Controller
       $venezuelaAccounts = DB::table('subscribers')
         ->where('subscribers.country_id', '=', 231)
         ->count();
-      $subscriptionConfigs = DB :: table ('subscription_types')
+      $subscriptionConfigs = "";/*DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
         ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.typeswap')
-        ->get();
+        ->get();*/
       return view('buttonadmin', compact('buttonRecord','venezuelaAccounts','subscriptionConfigs'));
     }
 
@@ -71,10 +71,10 @@ class ButtonRecordsController extends Controller
         $venezuelaAccounts = DB::table('subscribers')
         ->where('subscribers.country_id', '=', 231)
         ->count();
-      $subscriptionConfigs = DB :: table ('subscription_types')
+      $subscriptionConfigs = "";/*DB :: table ('subscription_types')
         ->whereIn('id', [1, 3])
         ->select('subscription_types.id','subscription_types.type', 'subscription_types.limit', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscription_types.typeswap')
-        ->get();
+        ->get();*/
 
       return view('buttonadmin', compact('buttonRecord','venezuelaAccounts','subscriptionConfigs'));
     }

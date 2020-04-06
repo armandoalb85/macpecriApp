@@ -96,22 +96,19 @@
                     @if ($payments->count())
                       @foreach($payments as $payment)
                         <tr>
-                          <td>{{$payment->name." ".$payment->lastname}}</td>
-                          <td>{{$payment->email}}</td>
-                          <td>
-                            @php($data = explode('-',$payment->subscriptiondate))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          <td class="text-center">{{$payment->name." ".$payment->lastname}}</td>
+                          <td class="text-center">{{$payment->email}}</td>
+                          <td class="text-center">
+                            {{date("d/m/Y", strtotime($payment->subscriptiondate))}}
                           </td>
-                          <td>
-                            @php($data = explode('-',$payment->paymentdate))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          <td class="text-center">
+                            {{date("d/m/Y", strtotime($payment->paymentdate))}}
                           </td>
-                          <td>
-                            @php($data = explode('-',$payment->payclosedate))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          <td class="text-center">
+                            {{date("d/m/Y", strtotime($payment->payclosedate))}}
                           </td>
-                          <td>{{$payment->amount}}</td>
-                          <td>{{$payment->method}}</td>
+                          <td class="text-center">{{$payment->amount}}</td>
+                          <td class="text-center">{{$payment->method}}</td>
                         </tr>
                       @endforeach
                     @else
