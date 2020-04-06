@@ -50,7 +50,7 @@ class SubscribersController extends Controller
 
       if ($type > 0){
 
-        //$typeSubscribers=SubscriptionType::find($type);
+        $typeSubscribers=SubscriptionType::find($type);
 
         $queryResults = DB::table('subscribers')
           //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
@@ -75,8 +75,7 @@ class SubscribersController extends Controller
           ->get();
       }
 
-      //return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
-      return view('subscribermanager',compact('queryResults', 'startDate', 'closeDate'));
+      return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
