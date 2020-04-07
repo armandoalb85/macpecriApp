@@ -72,7 +72,8 @@ class SubscribersController extends Controller
           //->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types','subscribers.created_at')
           ->orderBy('subscribers.name','asc')
-          ->get();
+          ->get();//->toSql();
+          //dd($queryResults);
       }
 
       return view('subscribermanager',compact('queryResults', 'typeSubscribers', 'startDate', 'closeDate'));
@@ -157,7 +158,8 @@ class SubscribersController extends Controller
             'payment_methods.name as method')//->toSql();
             ->get();
       //dd($request->startdate,$request->closedate,$payments);
-      return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
+      //return view ('paymentsbysubscribers',compact('subscriptionTypes', 'payments', 'dateIni', 'dateFin'));
+      return view ('paymentsbysubscribers',compact('payments', 'dateIni', 'dateFin'));
     }
 
     /*

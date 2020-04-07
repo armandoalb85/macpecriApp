@@ -214,41 +214,21 @@ class ReportsController extends Controller
     */
     public function reportPaymentsReceived(Request $request){
 
-      $listPayments = null;
-      $listTotal[] = array();
-      $i=0;
-
       $data = $this->dataValidator();
 
-      /*$dateIni = $this->dateFormat($request->startdate);
-      $dateFin = $this->dateFormat($request->closedate);*/
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
 
-      $queryResults = DB::table('payment_account_statements')
-          ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
-          ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-          ->whereNotNull('payment_account_statements.closedate')
-          //->where('payment_account_statements.startdate', '>=', $this->dateFormat($request->startdate))
-          //->where('payment_account_statements.startdate', '<=', $this->dateFormat($request->closedate))
-          ->where('payment_account_statements.startdate', '>=', $request->startdate)
-          ->where('payment_account_statements.startdate', '<=', $request->closedate)
-          ->select('payment_methods.name as method')->distinct()->get();
-
-      foreach ($queryResults as $queryResult) {
-
-        $totalPayment = DB::table('payment_account_statements')
-            ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
-            ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-            ->whereNotNull('payment_account_statements.closedate')
-            ->where('payment_methods.name','=',$queryResult->method)
-            ->where('payment_account_statements.startdate', '>=', $request->startdate)
-            ->where('payment_account_statements.startdate', '<=', $request->closedate)
-            ->sum('payment_account_statements.amount');
-
-        $listTotal[$i] = $totalPayment;
-        $i++;
-      }
+      $queryResults =DB::table('payment_account_statements')
+      ->join('payment_methods', 'payment_methods.id','=','payment_account_statements.paymentmethod_id')
+      ->whereNotNull('payment_account_statements.closedate')
+      ->where('payment_account_statements.startdate', '>=', $request->startdate)
+      ->where('payment_account_statements.startdate', '<=', $request->closedate)
+      ->where('payment_methods.status', '=', 1)
+      ->where('payment_account_statements.subscriber_id', '>', 0)
+      ->select('payment_methods.name',DB::raw('SUM(payment_account_statements.amount) AS amount'))
+      ->groupBy('payment_account_statements.paymentmethod_id')
+      ->get();
 
       return view ('reportpaymentsreceived', compact('queryResults', 'listTotal', 'dateIni', 'dateFin'));
     }

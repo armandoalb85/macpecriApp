@@ -109,19 +109,17 @@
             </thead>
             <tbody>
               @if ($queryResults != null)
-                @php($i=0)
-                @php($y=0)
                 @foreach($queryResults as $queryResult)
-                  @php($y= $y + $listTotal[$i])
                   <tr>
-                    <td>{{$queryResult->method}}</td>
-                    <td>{{$listTotal[$i]}} @php($i++)&nbsp;$</td>
+                    <td>{{$queryResult->name}}</td>
+                    <td>{{$queryResult->amount}} USD</td>
+                    @PHP($total=$queryResult->amount)
                   </tr>
                 @endforeach
                   <tr>
                     <td><strong>Total:</strong></td>
                     <td>
-                    {{$y}}&nbsp;$
+                    {{$total}} USD
                     </td>
                   </tr>
               @else
