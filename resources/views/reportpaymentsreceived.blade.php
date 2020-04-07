@@ -108,6 +108,7 @@
             </tr>
             </thead>
             <tbody>
+              @PHP($total=0)
               @if ($queryResults != null)
                 @foreach($queryResults as $queryResult)
                   <tr>
