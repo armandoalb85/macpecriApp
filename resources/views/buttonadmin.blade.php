@@ -101,55 +101,5 @@
       </div>
     </div>
   </div>
-  <!--<div class="row">
-    <div class="col-12">
-      <div class="ibox-title">
-        <div class="row">
-          <div class="col-8">
-            <h5>Configuración de cuentas</h5>
-          </div>
-          <div class="col-4">
-            <a href="{{ url('suscripciones') }}" class="btn btn-md btn-primary float-right" title="Configuración de Cuentas">
-              <i class="glyphicon glyphicon-cog"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="ibox-content">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover" >
-            <thead>
-            <tr>
-                <th class="text-center">Código</th>
-                <th class="text-center">Tipo de cuenta</th>
-                <th>Propiedad heredada</th>
-                <th class="text-center">Límite  de artículos</th>
-                <th class="text-center">Costo</th>
-                <th class="text-center">Días para pagar</th>
-                <th class="text-center">Estatus</th>
-            </tr>
-            </thead>
-            <tbody>
-              @if ($subscriptionConfigs != null)
-                @foreach($subscriptionConfigs as $config)
-                  <tr>
-                    <th>{{$config->id}}</th>
-                    <th>{{$config->type}}</th>
-                    <th>{{$config->typeswap}}</th>
-                    @if($config->limit >= 999999)
-                      <th>Sin límite</th>
-                    @else
-                      <th>{{$config->limit}}</th>
-                    @endif
-                    <th>{{$config->cost}}</th>
-                    <th>{{$config->daysforpaying}}</th>
-                  </tr>
-                @endforeach
-              @endif
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>-->
 </div>
 @endsection

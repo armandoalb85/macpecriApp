@@ -21,6 +21,7 @@ class ButtonRecordsController extends Controller
         ->join('status','status.id','=','button_records.status_id')
         ->whereNull('button_records.closedate')
         ->select('button_records.startdate', 'button_records.closedate', 'button_records.status_id','status.name')
+        //->toSql();
         ->get();
         //dd($buttonRecord);
       $venezuelaAccounts = DB::table('subscribers')

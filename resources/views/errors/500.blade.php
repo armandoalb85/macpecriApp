@@ -6,7 +6,7 @@
 
     <div class="error-desc">
       El servidor encontró algo inesperado que no le permitió completar la solicitud. Nos disculpamos. Intente más tarde. 
-        <a href="{{ url('dashboard') }}"><img src="{{ asset('/img/macpecri_dash.png') }}" style="width:100%; height:auto; margin-top: 30%;"></a>
+        <a href="{{ url('dashboard') }}"><img src="{{ asset('/img/macpecri_dash.jpg') }}" style="width:100%; height:auto; margin-top: 30%;"></a>
     </div>
 
 </div>
