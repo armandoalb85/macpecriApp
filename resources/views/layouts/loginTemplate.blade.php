@@ -24,7 +24,8 @@
         <div>
             <div><img class="logo-imgEdg" src="img/Logo_B.png" style="width: 80%; height: 90%;"></div>
             <p><strong>Administrador de suscripciones de Macpecri</strong></p>
-            <p><strong>¡Dígalo con cultura!</strong></p>
+            <h2>¡Dígalo con cultura!</h2>
+            <!--<p><strong>¡Dígalo con cultura!</strong></p>-->
             @yield('logincontent')
         </div>
     </div>
