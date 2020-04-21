@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MACPECRI | Administrador de suscripciones </title>
+    <title>¡Dígalo con cultura! | Administrador de suscripciones </title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{{ asset('/img/favicon.png') }}">
 
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
