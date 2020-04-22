@@ -69,7 +69,7 @@
           <div class="form-group row">
             <label class="col-lg-3 col-form-label">País</label>
             <div class="col-lg-9">
-              <input type="text" name="country" value="{{ $country->country }}" class="form-control" disabled>
+              <input type="text" name="country" value="{{ $subscriberAccount[0]->country }}" class="form-control" disabled>
             </div>
           </div>
 
@@ -87,11 +87,11 @@
             <div class="col-sm-9">
               <select class="form-control m-b" name="status">
                 @if( $subscriberAccount[0]->status == 'Activo')
-                  <option>Activo</option>
-                  <option>Inactivo</option>
+                  <option value="1" selected>Activo</option>
+                  <option value="0">Inactivo</option>
                 @elseif($subscriberAccount[0]->status == 'Inactivo')
-                  <option>Inactivo</option>
-                  <option>Activo</option>
+                  <option value="0" selected>Inactivo</option>
+                  <option value="1">Activo</option>
                 @endif
               </select>
             </div>
@@ -119,31 +119,26 @@
         <h5>Información del último pago</h5>
       </div>
       <div class="ibox-content">
-        @if (sizeof($subscriberPayment) != 0)
-        <form>
-          <div class="form-group row">
-            <label class="col-lg-6 col-form-label">Día de pago</label>
+      <div class="form-group row">
+            <label class="col-lg-6 col-form-label">Fecha de pago</label>
             <div class="col-lg-6">
-              @php($data = explode('-',$subscriberPayment[0]->startdate))
-              <input type="text" name="PaymentDate" value="{{ $data[2].'/'.$data[1].'/'.$data[0]}}" class="form-control" disabled>
+            @php( $startDate = date('d/m/Y',strtotime($subscriberAccount[0]->startdate)))
+              <input type="text" name="paymentDate" value="{{ $startDate }}" class="form-control" disabled>
             </div>
           </div>
-
+          
           <div class="form-group row">
-            <label class="col-lg-6 col-form-label">Pago efectuado</label>
+            <label class="col-lg-6 col-form-label">Método de pago</label>
             <div class="col-lg-6">
-              @if ($subscriberPayment[0]->closedate != null)
-                @php($data = explode('-',$subscriberPayment[0]->closedate))
-                <input type="text" name="payment" value="{{ $data[2].'/'.$data[1].'/'.$data[0] }}" class="form-control" disabled>
-              @else
-                <input type="text" name="payment" value="dd/mm/yyyy" class="form-control" disabled>
-              @endif
+              <input type="text" name="amount" value="{{ $subscriberAccount[0]->payment_method }}" class="form-control" disabled>
             </div>
           </div>
-        </form>
-        @else
-          <h5>No existe información de pago.</h5>
-        @endif
+          <div class="form-group row">
+            <label class="col-lg-6 col-form-label">Monto</label>
+            <div class="col-lg-6">
+              <input type="text" name="amount" value="{{ number_format($subscriberAccount[0]->amount, 2 , ',' , '.') }} USD" class="form-control" disabled>
+            </div>
+          </div>
       </div>
     </div>
   </div>

@@ -247,7 +247,6 @@ class SubscribersController extends Controller
 
       $subscriber = Subscriber::find($id);
       $account = User::find($subscriber->user_id);
-      $country = Paises::find($subscriber->country_id);
 
       $typeSubscribers = $type;
       $startDate = $startdate;
@@ -257,25 +256,19 @@ class SubscribersController extends Controller
         ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
         ->join('users', 'users.id', '=', 'subscribers.user_id')
         ->join('status', 'status.id', '=', 'users.status_id')
-        ->where('subscribers.id', '=', $id)
-        ->select('status.name as status', 'subscription_types.name')
-        ->get();
+        ->join('payment_account_statements', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
+        ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+        ->join('paises', 'paises.id', '=', 'subscribers.country_id')
+        ->where('subscribers.id', '=', $subscriber->id)
+        ->select('status.name as status','payment_methods.name as payment_method', 
+        'subscription_types.name','payment_account_statements.startdate',
+        'payment_account_statements.closedate','payment_account_statements.amount','paises.country')
+        ->orderBy('payment_account_statements.closedate','desc')
+        ->take(1)
+        ->get(); 
 
-        $subQuery = DB::table('subscribers')
-                ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-                ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
-                ->where('subscribers.id', '=', $id )
-                ->max('payment_account_statements.startdate');
-
-      $subscriberPayment = DB::table('subscribers')
-        ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-        ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
-        ->where('subscribers.id', '=', $id )
-        ->where('payment_account_statements.startdate', '=', $subQuery )
-        ->select('payment_account_statements.startdate', 'payment_account_statements.closedate')
-        ->get();
-
-      return view ('editsubscribers', compact('subscriber', 'subscriberAccount', 'subscriberPayment', 'account', 'typeSubscribers','country', 'startDate', 'closeDate'));
+      return view ('editsubscribers', compact('subscriber', 'subscriberAccount', 'account', 
+      'typeSubscribers', 'startDate', 'closeDate'));
     }
 
     /*
@@ -284,30 +277,19 @@ class SubscribersController extends Controller
     public function updateSubscriber(Request $request, $id){
 
       $validateData = $this->subscriberInfoValidator();
-      $data = explode('-',date('Y-m-d'));
-      $today = $data[0].'-'.$data[1].'-'.$data[2];
 
       $subscriber = Subscriber::find($id);
       $account = User::find($subscriber->user_id);
-      $subscriberAccount = DB::table ('subscribers')
-        ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-        ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-        ->where('subscribers.id', '=', $id)
-        ->whereNull('subscriber_subscription_type.closedate')
-        ->select('subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.limit', 'subscriber_subscription_type.subscription_id')
-        ->get();
 
+      $account->status_id = $request->status;
+      $account->username = $request->email;
       $account->email = $request->email;
-
-      if ($subscriberAccount[0]->status != $request->status){
-        $affectedRegister = DB::update("update subscriber_subscription_type set status ='".$request->status."', closedate='".$today."' where closedate is null AND subscriber_id = ?", [$id]);
-        $limit = "`limit`";
-        DB::insert('insert into subscriber_subscription_type (startdate, status,'.$limit.', created_at, updated_at, subscriber_id, subscription_id) values (?, ?, ?, ?, ?, ?, ?) ', [$today,$request->status,$subscriberAccount[0]->limit, $today, $today, $subscriber->id,$subscriberAccount[0]->subscription_id]);
-      }
+      $accoutUpd = $account->save();
 
       $accountUpdated =$account->update();
 
-      if ($accountUpdated || $affectedRegister > 0){
+      //if ($accountUpdated || $affectedRegister > 0){
+      if ($account){
         $this->codeMessage = 'info';
         $this->message = 'La información del suscriptor fue actualizada con éxito.';
       }
