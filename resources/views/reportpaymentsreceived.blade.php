@@ -120,7 +120,7 @@
                   <tr>
                     <td><strong>Total:</strong></td>
                     <td>
-                    {{ number_format($total->amount, 2 , ',' , '.') }} USD
+                    {{ number_format($total, 2 , ',' , '.') }} USD
                     </td>
                   </tr>
               @else
