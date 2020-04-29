@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SubscribeNow;
+use App\AppRoute;
 use Input;
 use Validator;
 use DB;
@@ -50,8 +51,7 @@ class SubscribeNowsController extends Controller
 
       if ($subscribeNow[0]->pathimage != null){
         $public_path = public_path();
-        //$url = $public_path.'/imageSubscribeMessage/'.$subscribeNow->pathimage;
-        $url = '/imageSubscribeMessage/'.$subscribeNow[0]->pathimage;
+        $url = $subscribeNow[0]->pathimage;
       }
       //dd($subscribeNow->name);
       return  view('showsubscribenow',compact('subscribeNow', 'url'));
@@ -73,6 +73,7 @@ class SubscribeNowsController extends Controller
     public function updateSubscribeNow(Request $request, $id){
 
       $fileName = null;
+      $url=$this->searchPathSubscriberNowImage(2);
 
       $data = $this->dataValidator();
 
@@ -88,7 +89,7 @@ class SubscribeNowsController extends Controller
         }
 
         $fileName = $file->getClientOriginalName();
-        $subscribeNow->pathimage = $fileName;
+        $subscribeNow->pathimage = $url.$fileName;
       }
 
       $subscribeNow->description = $request->description;
@@ -124,6 +125,17 @@ class SubscribeNowsController extends Controller
       ]);
 
       return $data;
+    }
+
+    /**
+     * 
+     */
+    private function searchPathSubscriberNowImage($id){
+      
+      $path = AppRoute::where('id', $id)->first();
+
+      return $path->route;
+      
     }
 
 }
