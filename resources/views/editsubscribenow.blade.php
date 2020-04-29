@@ -54,8 +54,14 @@
               <label class="col-lg-3 col-form-label">Estatus</label>
               <div class="col-sm-9">
                 <select class="form-control m-b" name="status">
-                  <option>Activo</option>
-                  <option>Inactivo</option>
+                @if ($subscribeNow->status=='1')
+                  <option value="1" selected>Activo</option>
+                  <option value="0">Inactivo</option>
+                @else
+                  <option value="0" selected>Inactivo</option>
+                  <option value="1">Activo</option>
+                @endif
+                  
                 </select>
               </div>
             </div>

@@ -3,7 +3,7 @@
 <!-- Guia -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Suscríbase ahora ({{ $subscribeNow->name }})</h2>
+        <h2>Suscríbase ahora ({{ $subscribeNow[0]->name }})</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ url('dashboard') }}">Sistema administrativo</a>
@@ -12,7 +12,7 @@
                 <a href="{{ url('suscribase_ahora') }}">Mensajes de suscríbase ahora</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong> Mensaje de {{ $subscribeNow->name }}</strong>
+                <strong> Mensaje de {{ $subscribeNow[0]->name }}</strong>
             </li>
         </ol>
     </div>
@@ -24,10 +24,10 @@
     <div class="col-lg-7">
       <div class="ibox ">
         <div class="ibox-title">
-          <h5>Detalle de mensaje / {{ strtolower ($subscribeNow->category) }} </h5>
+          <h5>Detalle de mensaje / {{ strtolower ($subscribeNow[0]->category) }} </h5>
         </div>
         <div class="ibox-content">
-          <form method="get" action="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow->id)}}" >
+          <form method="get" action="{{action('SubscribeNowsController@editSubscribeNow', $subscribeNow[0]->id)}}" >
             {{csrf_field()}}
             <div class="form-group row">
               <div class="col-lg-12">
@@ -42,19 +42,19 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Categoría</label>
               <div class="col-lg-9">
-                <input type="text" name="title" class="form-control"  value=" {{ $subscribeNow->category }}" disabled>
+                <input type="text" name="title" class="form-control"  value=" {{ $subscribeNow[0]->category }}" disabled>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Mensaje</label>
               <div class="col-lg-9">
-                <textarea name="description" rows="6" cols="25" class="form-control" disabled>{{ $subscribeNow->description }}</textarea>
+                <textarea name="description" rows="6" cols="25" class="form-control" disabled>{{ $subscribeNow[0]->description }}</textarea>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label">Estatus</label>
               <div class="col-lg-9">
-                <input type="text" name="title" class="form-control"  value=" {{ $subscribeNow->status }}" disabled>
+                <input type="text" name="title" class="form-control"  value=" {{ $subscribeNow[0]->status }}" disabled>
               </div>
             </div>
 

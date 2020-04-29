@@ -59,6 +59,7 @@ class SubscribersController extends Controller
           ->join('status','status.id', '=', 'users.status_id')
           ->join('paises','paises.id', '=', 'subscribers.country_id')
           ->where('subscribers.subscription_types_id', '=', $type)
+          ->where('users.status_id', '=', 1)
           //->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types', 'subscribers.created_at')
           ->orderBy('subscribers.name','asc')
@@ -69,6 +70,7 @@ class SubscribersController extends Controller
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->join('status','status.id', '=', 'users.status_id')
           ->join('paises','paises.id', '=', 'subscribers.country_id')
+          ->where('users.status_id', '=', 1)
           //->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types','subscribers.created_at')
           ->orderBy('subscribers.name','asc')
@@ -247,8 +249,9 @@ class SubscribersController extends Controller
       $typeSubscribers = $type;
       $startDate = $startdate;
       $closeDate = $closedate;
-
-      $subscriberAccount = DB::table ('subscribers')
+      
+      if($subscriber->subscription_types_id==2){
+        $subscriberAccount = DB::table ('subscribers')
         ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
         ->join('users', 'users.id', '=', 'subscribers.user_id')
         ->join('status', 'status.id', '=', 'users.status_id')
@@ -261,7 +264,25 @@ class SubscribersController extends Controller
         'payment_account_statements.closedate','payment_account_statements.amount','paises.country')
         ->orderBy('payment_account_statements.closedate','desc')
         ->take(1)
-        ->get(); 
+        ->get();
+      }else{
+        $subscriberAccount = DB::table ('subscribers')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+        ->join('users', 'users.id', '=', 'subscribers.user_id')
+        ->join('status', 'status.id', '=', 'users.status_id')
+        //->join('payment_account_statements', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
+        //->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+        ->join('paises', 'paises.id', '=', 'subscribers.country_id')
+        ->where('subscribers.id', '=', $subscriber->id)
+        ->select('status.name as status', 
+        'subscription_types.name','paises.country')
+        ->take(1)
+        ->get();
+      }
+      
+
+        //dd( $subscriber->id);
+        //dd(" - hola -",$subscriberAccount,$subscriber->id);
 
       return view ('editsubscribers', compact('subscriber', 'subscriberAccount', 'account', 
       'typeSubscribers', 'startDate', 'closeDate'));

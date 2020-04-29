@@ -26,7 +26,12 @@ class SubscribeNowsController extends Controller
     *This method show a index page with message config list
     */
     public function indexSubscribeNow(){
-      $subscribeNows = SubscribeNow::orderBy('id','category')->paginate(30);
+      //$subscribeNows = SubscribeNow::orderBy('id','category')->paginate(30);
+      $subscribeNows = DB::table('subscribe_nows')
+        ->join('status','status.id','=','subscribe_nows.status')
+        ->select('subscribe_nows.id','subscribe_nows.name','subscribe_nows.category','status.name as status')
+        ->orderBy('subscribe_nows.id','subscribe_nows.category')->paginate(30);
+
       return view('subscribenow',compact('subscribeNows'));
     }
 
@@ -35,12 +40,17 @@ class SubscribeNowsController extends Controller
     */
     public function showSubscribeNow($id){
       $url = null;
-      $subscribeNow = SubscribeNow::find($id);
+      //$subscribeNow = SubscribeNow::find($id);
+      $subscribeNow = DB::table('subscribe_nows')
+        ->join('status','status.id','=','subscribe_nows.status')
+        ->select('subscribe_nows.id','subscribe_nows.name','subscribe_nows.category',
+        'status.name as status','subscribe_nows.pathimage','subscribe_nows.description')
+        ->get();
 
-      if ($subscribeNow->pathimage != null){
+      if ($subscribeNow[0]->pathimage != null){
         $public_path = public_path();
         //$url = $public_path.'/imageSubscribeMessage/'.$subscribeNow->pathimage;
-        $url = '/imageSubscribeMessage/'.$subscribeNow->pathimage;
+        $url = '/imageSubscribeMessage/'.$subscribeNow[0]->pathimage;
       }
       //dd($subscribeNow->name);
       return  view('showsubscribenow',compact('subscribeNow', 'url'));

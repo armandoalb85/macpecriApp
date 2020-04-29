@@ -106,6 +106,7 @@ class ReportsController extends Controller
               //->whereNull('subscriber_subscription_type.closedate')
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
+              ->where('users.status_id', '=', 1)
               ->select('subscribers.name as name', 'subscribers.lastname as lastname', 'users.username as username', 'users.email as email', 'subscribers.created_at as suscripcion', 'subscription_types.name as typeSuscrupcion', 'subscription_types.type')
               ->orderBy('subscribers.name','asc')
               ->get();
@@ -117,6 +118,7 @@ class ReportsController extends Controller
               ->join('users', 'users.id', '=', 'subscribers.user_id')
               //->whereNull('subscriber_subscription_type.closedate')
               //->where('subscription_types.name', '=', $request->type )
+              ->where('users.status_id', '=', 1)
               ->where('subscription_types.id', '=', $request->type )
               ->where('subscribers.created_at', '>=', $request->startdate)
               ->where('subscribers.created_at', '<=', $request->closedate)
