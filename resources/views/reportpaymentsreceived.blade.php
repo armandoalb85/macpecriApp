@@ -113,14 +113,14 @@
                 @foreach($queryResults as $queryResult)
                   <tr>
                     <td>{{$queryResult->name}}</td>
-                    <td>{{$queryResult->amount}} USD</td>
+                    <td>{{ number_format($queryResult->amount, 2 , ',' , '.') }} USD</td>
                     @PHP($total=$queryResult->amount)
                   </tr>
                 @endforeach
                   <tr>
                     <td><strong>Total:</strong></td>
                     <td>
-                    {{$total}} USD
+                    {{ number_format($total->amount, 2 , ',' , '.') }} USD
                     </td>
                   </tr>
               @else

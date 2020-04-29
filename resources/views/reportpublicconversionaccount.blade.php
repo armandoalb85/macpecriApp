@@ -133,12 +133,10 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td><strong>Total cuentas gratuitas</strong></td>
                                 <td>@if($totalFree != null){{$totalFree}} @else 0 @endif</td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

@@ -51,9 +51,9 @@ Route::get('suscriptor/edicion_pw/{id}/{type}/{startdate}/{closedate}', 'Subscri
 Route::post('suscriptor/edicion_pw/{id}', 'SubscribersController@updatePasswordSubscriber');
 
 Route::get('pagos_realizados', 'SubscribersController@checkPaymentsBySubscribers');
-Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');
-
 Route::post('pagos_realizados', 'SubscribersController@listPaymentBySubscribers');
+
+Route::get('pagos_pendientes', 'SubscribersController@checkSubscribersWithDebts');
 Route::post('pagos_pendientes', 'SubscribersController@listDebtsBySubscribers');
 
 //Config routes

@@ -103,15 +103,16 @@
             <tr>
                 <th>Canal de pago</th>
                 <th>Pagos</th>
+                <th>Monto</th>
             </tr>
             </thead>
             <tbody>
               @if ($queryResults != null)
-                @php($i = 0)
                 @foreach($queryResults as $queryResult)
                   <tr>
                     <td>{{$queryResult->name}}</td>
-                    <td>{{$listUses[$i]}} @php($i++) </td>
+                    <td>{{$queryResult->counting}}</td>
+                    <td>{{ number_format($queryResult->amount, 2 , ',' , '.') }} USD</td>
                   </tr>
                 @endforeach
               @else
@@ -119,7 +120,7 @@
                   <td colspan="8">No se encontraron registros</td>
                 </tr>
               @endif
-            </tfoot>
+            </tbody>
         </table>
       </div>
       </div>

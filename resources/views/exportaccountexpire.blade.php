@@ -1,34 +1,31 @@
 <table>
     <thead>
-      <tr>
-          <th>Suscriptor</th>
-          <th>Usuario</th>
-          <th>Correo</th>
-          <th>Tipo de cuenta</th>
-          <th>Fecha de pago</th>
-          <th>Días para pagar</th>
-          <th>Monto a pagar</th>
-      </tr>
+        <tr>
+            <th>Suscriptor</th>
+            <th>Correo</th>
+            <th>Fecha de pago</th>
+            <th>Días para pagar</th>
+            <th>Monto a pagar</th>
+        </tr>
     </thead>
     <tbody>
-      @if ($queryResults != null)
+        @if ($queryResults != null)
         @foreach($queryResults as $queryResult)
-          <tr>
-            <td>{{ $queryResult->name." ".$queryResult->lastname}}</td>
-            <td>{{ $queryResult->user}}</td>
-            <td>{{ $queryResult->email}}</td>
-            <td>{{ $queryResult->type}}</td>
-            <td>
-              @php($data = explode('-',$queryResult->startdate))
-              {{ $data[2].'/'.$data[1].'/'.$data[0]}}
-            </td>
-            <td>{{ $queryResult->daysforpaying}}</td>
-            <td>{{ $queryResult->amount}}</td>
-          </tr>
-        @endforeach
-      @else
         <tr>
-          <td colspan="8">No se encontraron registros</td>
+            <td class="text-center">{{ $queryResult->name." ".$queryResult->lastname}}</td>
+            <td class="text-center">{{ $queryResult->email}}</td>
+            <td class="text-center">
+                {{ date('d/m/Y',strtotime($queryResult->closedate)) }}
+            </td>
+            <td class="text-center">{{ $queryResult->days_for_expire}}</td>
+            <td class="text-center">{{ number_format($queryResult->amount, 2 , ',' , '.') }} USD
+            </td>
         </tr>
-      @endif
+        @endforeach
+        @else
+        <tr>
+            <td colspan="8">No se encontraron registros</td>
+        </tr>
+        @endif
+    </tbody>
 </table>

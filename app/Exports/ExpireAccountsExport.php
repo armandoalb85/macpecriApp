@@ -40,30 +40,22 @@ class ExpireAccountsExport implements FromView, ShouldAutoSize, WithEvents
     public function view(): View
     {
         $queryResults = null;
-        /*$queryResults = DB::table('subscription_types')
-              ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
-              ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-              ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-              ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
-              ->where('subscription_types.type', '=', 'Pago')
-              ->where('payment_account_statements.startdate', '>=', $this->startdate)
-              ->whereNull('payment_account_statements.closedate')
-              ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount')
-              ->get();*/
 
-       $queryResults = DB::table('subscription_types')
-             ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
-             ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-             ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-             ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
-             ->join('users', 'users.id', '=', 'subscribers.user_id')
-             ->where('subscription_types.type', '=', 'Pago')
-             ->where('payment_account_statements.startdate', '>=', $this->startdate)
-             ->where('payment_account_statements.startdate', '<=', $this->closedate)
-             ->whereNull('payment_account_statements.closedate')
-             ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount', 'users.email', 'users.name as user')
-             ->get();
-
+        $queryResults = DB::table('payment_account_statements')
+        ->join('subscribers', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
+        ->join('users', 'users.id', '=', 'subscribers.user_id')
+        ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+        ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+        ->where('payment_account_statements.closedate', '>=', $this->startdate)
+        ->where('payment_account_statements.closedate', '<=', $this->closedate)
+        ->where('users.status_id', '=', 1)
+        ->where('subscription_types.id', '=', 2)
+        ->select('subscribers.name', 'subscribers.lastname', 'users.email', 
+        'subscribers.created_at', 'payment_account_statements.closedate', 
+        'payment_methods.name as method','payment_account_statements.amount','subscription_types.daysforpaying',
+        DB::raw('TIMESTAMPDIFF(DAY, NOW(), payment_account_statements.closedate) AS days_for_expire'))
+        ->havingRaw('TIMESTAMPDIFF(DAY, NOW(), payment_account_statements.closedate) <= subscription_types.daysforpaying')
+        ->get();
 
         return view('exportaccountexpire', [
             'queryResults' => $queryResults

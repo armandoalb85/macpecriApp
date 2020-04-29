@@ -39,28 +39,17 @@ class PaymentUsesExport implements FromView, ShouldAutoSize, WithEvents
     public function view(): View
     {
 
-      $listUses[] = array();
-      $i=0;
-
-      $queryResults = DB::table('payment_methods')
-        ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-        ->where('payment_method_records.startdate', '>=',  $this->startdate)
-        ->where('payment_method_records.startdate', '<=',  $this->closedate)
-        ->select('payment_methods.name')->distinct()->get();
-
-      foreach ($queryResults as $queryResult) {
-
-        $totalPay = DB::table('payment_methods')
-              ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-              ->where('payment_methods.name', '=', $queryResult->name )
-              ->count('payment_method_records.id');
-        $listUses[$i] = $totalPay;
-        $i ++;
-      }
+        $queryResults = DB::table('payment_methods')
+        ->join('payment_account_statements', 'payment_methods.id','=','payment_account_statements.paymentmethod_id')
+        ->where('payment_account_statements.startdate', '>=', $this->startdate)
+        ->where('payment_account_statements.startdate', '<=', $this->closedate)
+        ->select('payment_methods.name',DB::raw('SUM(payment_account_statements.amount) AS amount'),
+            DB::raw('COUNT(payment_account_statements.amount) AS counting'))
+        ->groupBy('payment_account_statements.paymentmethod_id')
+        ->get();
 
         return view('exportpaymentuses', [
-            'queryResults' => $queryResults,
-            'listUses' => $listUses
+            'queryResults' => $queryResults
         ]);
 
     }

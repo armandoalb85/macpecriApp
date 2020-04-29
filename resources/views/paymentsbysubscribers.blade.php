@@ -107,7 +107,7 @@
                           <td class="text-center">
                             {{date("d/m/Y", strtotime($payment->payclosedate))}}
                           </td>
-                          <td class="text-center">{{$payment->amount}}</td>
+                          <td class="text-center">{{ number_format($payment->amount, 2 , ',' , '.') }} USD</td>
                           <td class="text-center">{{$payment->method}}</td>
                         </tr>
                       @endforeach

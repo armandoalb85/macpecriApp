@@ -39,36 +39,21 @@ class ReceivePaymentsExport implements FromView, ShouldAutoSize, WithEvents
 
     public function view(): View
     {
-        $listPayments = null;
-        $listTotal[] = array();
-        $i=0;
 
-        $queryResults = DB::table('payment_account_statements')
-            ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
-            ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
+        $queryResults =DB::table('payment_account_statements')
+            ->join('payment_methods', 'payment_methods.id','=','payment_account_statements.paymentmethod_id')
             ->whereNotNull('payment_account_statements.closedate')
             ->where('payment_account_statements.startdate', '>=', $this->startdate)
             ->where('payment_account_statements.startdate', '<=', $this->closedate)
-            ->select('payment_methods.name as method')->distinct()->get();
-
-        foreach ($queryResults as $queryResult) {
-
-          $totalPayment = DB::table('payment_account_statements')
-              ->join('payment_method_records', 'payment_method_records.id','=','payment_account_statements.paymentmethod_id')
-              ->join('payment_methods', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-              ->whereNotNull('payment_account_statements.closedate')
-              ->where('payment_methods.name','=',$queryResult->method)
-              ->where('payment_account_statements.startdate', '>=', $this->startdate)
-              ->where('payment_account_statements.startdate', '<=', $this->closedate)
-              ->sum('payment_account_statements.amount');
-
-          $listTotal[$i] = $totalPayment;
-          $i++;
-        }
+            ->where('payment_methods.status', '=', 1)
+            ->where('payment_account_statements.subscriber_id', '>', 0)
+            ->select('payment_methods.name',DB::raw('SUM(payment_account_statements.amount) AS amount'))
+            ->groupBy('payment_account_statements.paymentmethod_id')
+            //->toSql();
+            ->get();
 
         return view('exportPaymentsReceived', [
-            'queryResults' => $queryResults,
-            'listTotal' => $listTotal
+            'queryResults' => $queryResults
         ]);
     }
 }

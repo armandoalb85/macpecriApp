@@ -71,7 +71,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-md-12">
-        <div class="ibox">
+            <div class="ibox">
                 <div class="ibox-title">
                     <div class="row">
                         <div class="col-10">
@@ -103,9 +103,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Suscriptor</th>
-                                <th class="text-center">Usuario</th>
                                 <th class="text-center">Correo</th>
-                                <th class="text-center">Tipo de cuenta</th>
                                 <th class="text-center">Fecha de pago</th>
                                 <th class="text-center">Días para pagar</th>
                                 <th class="text-center">Monto a pagar</th>
@@ -115,16 +113,14 @@
                             @if ($queryResults != null)
                             @foreach($queryResults as $queryResult)
                             <tr>
-                                <td>{{ $queryResult->name." ".$queryResult->lastname}}</td>
-                                <td>{{ $queryResult->user}}</td>
-                                <td>{{ $queryResult->email}}</td>
-                                <td>{{ $queryResult->type}}</td>
-                                <td>
-                                    @php($data = explode('-',$queryResult->startdate))
-                                    {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                                <td class="text-center">{{ $queryResult->name." ".$queryResult->lastname}}</td>
+                                <td class="text-center">{{ $queryResult->email}}</td>
+                                <td class="text-center">
+                                    {{ date('d/m/Y',strtotime($queryResult->closedate)) }}
                                 </td>
-                                <td>{{ $queryResult->daysforpaying}}</td>
-                                <td>{{ $queryResult->amount}}</td>
+                                <td class="text-center">{{ $queryResult->days_for_expire}}</td>
+                                <td class="text-center">{{ number_format($queryResult->amount, 2 , ',' , '.') }} USD
+                                </td>
                             </tr>
                             @endforeach
                             @else
@@ -132,7 +128,7 @@
                                 <td colspan="8">No se encontraron registros</td>
                             </tr>
                             @endif
-                            </tfoot>
+                        </tbody>
                     </table>
                 </div>
             </div>

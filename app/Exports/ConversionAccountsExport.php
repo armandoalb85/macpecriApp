@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
+use App\Http\Controllers\SubscribersController;
 use DB;
 
 class ConversionAccountsExport implements FromView, ShouldAutoSize, WithEvents/*FromView, WithHeadings, ShouldAutoSize, WithEvents*/
@@ -40,46 +41,23 @@ class ConversionAccountsExport implements FromView, ShouldAutoSize, WithEvents/*
 
     public function view(): View
     {
+        $sc = new SubscribersController();
 
-      $totalPay = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->count('subscriber_subscription_type.id');
-      $totalFree = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
-            ->whereNull('subscriber_subscription_type.closedate')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->count('subscriber_subscription_type.id');
-
-      $subQueryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->whereNotNull('subscriber_subscription_type.closedate')
-            ->select('subscribers.id')
-            ->get();
-
-      $values = array();
-      $i=0;
-      foreach ($subQueryResults as $subQueryResult){
-        $values[$i] = $subQueryResult->id;
-        $i++;
-      }
-
-      $queryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
+        $totalPay = $sc->countSubscribers(2);
+        $totalFree = $sc->countSubscribers(1);
+        
+        $queryResults = DB::table('convertion_accounts')
+            ->join('subscribers', 'subscribers.id', '=', 'convertion_accounts.subscriber_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-            ->join('payment_methods', 'payment_methods.id', '=', 'payment_method_records.paymentmethod_id')
-            ->where('subscription_types.type', '=', 'Pago')
-            ->whereIn('subscriber_subscription_type.subscriber_id', $values )
-            ->where('subscriber_subscription_type.startdate', '>=', $this->startdate)
-            ->where('subscriber_subscription_type.startdate', '<=', $this->closedate)
-            ->select('subscription_types.name as type', 'subscriber_subscription_type.startdate', 'subscribers.created_at', 'subscribers.name', 'subscribers.lastname', 'users.email', 'payment_methods.name as method')
+            ->join('payment_methods', 'payment_methods.id', '=', 'convertion_accounts.paymentmethod_id')
+            ->where('convertion_accounts.startdate', '>=', $this->startdate)
+            ->where('convertion_accounts.startdate', '<=', $this->closedate)
+            ->where('users.status_id', '=', 1)
+            ->select('subscribers.name', 'subscribers.lastname', 'users.email', 
+            'subscribers.created_at', 'convertion_accounts.startdate', 
+            'payment_methods.name as method')
             ->get();
-
+  
         return view('exportpublicconversionaccount', [
             'queryResults' => $queryResults,
             'totalPay' => $totalPay,

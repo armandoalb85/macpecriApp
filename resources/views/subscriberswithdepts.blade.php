@@ -87,33 +87,22 @@
                     <th class="text-center">Correo</th>
                     <th class="text-center">Suscripción de cuenta</th>
                     <th class="text-center">Fecha de cobro</th>
-                    <th class="text-center">Días para pagar</th>
-                    <!--<th>Fecha actual</th>-->
                     <th class="text-center">Pago</th>
-                    <th class="text-center">Método de pago</th>
                   </tr>
                   </thead>
                   <tbody>
                     @if ($payments->count())
                       @foreach($payments as $payment)
                         <tr>
-                          <td>{{$payment->subsname." ".$payment->subslastname}}</td>
-                          <td>{{$payment->subsname." ".$payment->email}}</td>
-                          <td>
-                            @php($data = explode('-', $payment->suscripcion))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          <td class="text-center">{{$payment->name." ".$payment->lastname}}</td>
+                          <td class="text-center">{{$payment->name." ".$payment->email}}</td>
+                          <td class="text-center">
+                          {{ date('d/m/Y', strtotime($payment->subscriptiondate)) }}
                           </td>
-                          <td>
-                            @php($data = explode('-', $payment->paymentdate))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
+                          <td class="text-center">
+                          {{ date('d/m/Y', strtotime($payment->closedate)) }}
                           </td>
-                          <td>{{$payment->daysforpaying}}</td>
-                          <!--<td>
-                            @php($data = explode('-',date('Y-m-d')))
-                            {{ $data[2].'/'.$data[1].'/'.$data[0]}}
-                          </td>-->
-                          <td>{{$payment->amount}}</td>
-                          <td>{{$payment->method}}</td>
+                          <td class="text-center">{{ number_format($payment->cost, 2 , ',' , '.') }} USD</td>
                         </tr>
                       @endforeach
                     @else

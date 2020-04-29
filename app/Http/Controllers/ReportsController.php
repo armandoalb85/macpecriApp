@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SubscriptionType;
+use SubscriberController;
 use DB;
 
 class ReportsController extends Controller
@@ -35,6 +36,8 @@ class ReportsController extends Controller
     */
     public function reportPublicConversionAccount(Request $request){
 
+      $sc = new SubscribersController();
+
       $queryResults = null;
       $totalPay = null;
       $totalFree = null;
@@ -43,38 +46,21 @@ class ReportsController extends Controller
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
 
-      $subQueryResults = DB::table('subscribers')
-            ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
-            ->where('subscription_types.type', '=', 'Gratuita')
-            ->whereNotNull('subscriber_subscription_type.closedate')
-            ->select('subscribers.id')
-            ->get();
-
-      $values = array();
-      $i=0;
-      foreach ($subQueryResults as $subQueryResult){
-        $values[$i] = $subQueryResult->id;
-        $i++;
-      }
-
-      $queryResults = DB::table('subscriber_subscription_type')
-            ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            //->join('subscription_types', 'subscriber_subscription_type.subscription_id', '=', 'subscription_types.id')
+      $queryResults = DB::table('convertion_accounts')
+            ->join('subscribers', 'subscribers.id', '=', 'convertion_accounts.subscriber_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
-            ->join('payment_account_statements', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
-            ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
-            ->where('subscriber_subscription_type.subscription_id', '=', 2)
-            ->where('subscriber_subscription_type.startdate', '>=', $request->startdate)
-            ->where('subscriber_subscription_type.startdate', '<=', $request->closedate)
+            ->join('payment_methods', 'payment_methods.id', '=', 'convertion_accounts.paymentmethod_id')
+            ->where('convertion_accounts.startdate', '>=', $request->startdate)
+            ->where('convertion_accounts.startdate', '<=', $request->closedate)
+            ->where('users.status_id', '=', 1)
             ->select('subscribers.name', 'subscribers.lastname', 'users.email', 
-            'subscribers.created_at', 'subscriber_subscription_type.startdate', 
+            'subscribers.created_at', 'convertion_accounts.startdate', 
             'payment_methods.name as method')
             ->get();
 
       if ($queryResults != null){
-        $totalPay = $this->totalPayAccount();
-        $totalFree = $this->totalFreeAccount();
+        $totalPay = $sc->countSubscribers(2);
+        $totalFree = $sc->countSubscribers(1);
       }
 
       return view ('reportpublicconversionaccount', compact('queryResults', 'totalPay', 'totalFree', 'dateIni','dateFin'));
@@ -164,8 +150,6 @@ class ReportsController extends Controller
     */
     public function reportPaymentUses(Request $request){
 
-      $listUses[] = array();
-      $i=0;
       $data = $this->dataValidator();
 
       /*$dateIni = $this->dateFormat($request->startdate);
@@ -174,25 +158,15 @@ class ReportsController extends Controller
       $dateFin = $request->closedate;
 
       $queryResults = DB::table('payment_methods')
-        ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-        //->where('payment_method_records.startdate', '>=', $this->dateFormat($request->startdate))
-        //->where('payment_method_records.startdate', '<=', $this->dateFormat($request->closedate))
-        ->where('payment_method_records.startdate', '>=', $request->startdate)
-        ->where('payment_method_records.startdate', '<=', $request->closedate)
-        ->select('payment_methods.name')->distinct()->get();
+        ->join('payment_account_statements', 'payment_methods.id','=','payment_account_statements.paymentmethod_id')
+        ->where('payment_account_statements.startdate', '>=', $request->startdate)
+        ->where('payment_account_statements.startdate', '<=', $request->closedate)
+        ->select('payment_methods.name',DB::raw('SUM(payment_account_statements.amount) AS amount'),
+            DB::raw('COUNT(payment_account_statements.amount) AS counting'))
+        ->groupBy('payment_account_statements.paymentmethod_id')
+        ->get();
 
-      foreach ($queryResults as $queryResult) {
-
-        $totalPay = DB::table('payment_methods')
-              ->join('payment_method_records', 'payment_methods.id','=','payment_method_records.paymentmethod_id')
-              ->where('payment_methods.name', '=', $queryResult->name )
-              ->count('payment_method_records.id');
-        $listUses[$i] = $totalPay;
-        $i ++;
-
-      }
-
-      return view ('reportpaymentuses', compact('queryResults','listUses', 'dateIni', 'dateFin'));
+      return view ('reportpaymentuses', compact('queryResults', 'dateIni', 'dateFin'));
 
     }
 
@@ -228,7 +202,9 @@ class ReportsController extends Controller
       ->where('payment_account_statements.subscriber_id', '>', 0)
       ->select('payment_methods.name',DB::raw('SUM(payment_account_statements.amount) AS amount'))
       ->groupBy('payment_account_statements.paymentmethod_id')
+      //->toSql();
       ->get();
+      //dd($queryResults);
 
       return view ('reportpaymentsreceived', compact('queryResults', 'listTotal', 'dateIni', 'dateFin'));
     }
@@ -255,18 +231,20 @@ class ReportsController extends Controller
       $dateIni = $request->startdate;
       $dateFin = $request->closedate;
 
-      $data = $this->dataValidator();
-      $queryResults = DB::table('subscription_types')
-            ->join('subscriber_subscription_type', 'subscription_types.id', '=', 'subscriber_subscription_type.Subscription_id')
-            ->join('subscribers', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-            ->join('payment_method_records', 'subscribers.id', '=', 'payment_method_records.subscriber_id')
-            ->join('payment_account_statements', 'payment_method_records.id', '=', 'payment_account_statements.paymentmethod_id')
+      $queryResults = DB::table('payment_account_statements')
+            ->join('subscribers', 'subscribers.id', '=', 'payment_account_statements.subscriber_id')
             ->join('users', 'users.id', '=', 'subscribers.user_id')
+            ->join('payment_methods', 'payment_methods.id', '=', 'payment_account_statements.paymentmethod_id')
+            ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
+            ->where('payment_account_statements.closedate', '>=', $request->startdate)
+            ->where('payment_account_statements.closedate', '<=', $request->closedate)
+            ->where('users.status_id', '=', 1)
             ->where('subscription_types.id', '=', 2)
-            ->where('payment_account_statements.startdate', '>=', $request->startdate)
-            ->where('payment_account_statements.startdate', '<=', $request->closedate)
-            ->whereNull('payment_account_statements.closedate')
-            ->select('subscription_types.name as type', 'subscription_types.cost', 'subscription_types.daysforpaying', 'subscribers.name', 'subscribers.lastname', 'payment_account_statements.startdate', 'payment_account_statements.closedate', 'payment_account_statements.amount', 'users.email', 'users.name as user')
+            ->select('subscribers.name', 'subscribers.lastname', 'users.email', 
+            'subscribers.created_at', 'payment_account_statements.closedate', 
+            'payment_methods.name as method','payment_account_statements.amount','subscription_types.daysforpaying',
+            DB::raw('TIMESTAMPDIFF(DAY, NOW(), payment_account_statements.closedate) AS days_for_expire'))
+            ->havingRaw('TIMESTAMPDIFF(DAY, NOW(), payment_account_statements.closedate) <= subscription_types.daysforpaying')
             ->get();
 
       return view ('reportaccountexpire', compact('queryResults', 'dateIni', 'dateFin'));
