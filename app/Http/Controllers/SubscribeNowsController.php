@@ -43,6 +43,7 @@ class SubscribeNowsController extends Controller
       //$subscribeNow = SubscribeNow::find($id);
       $subscribeNow = DB::table('subscribe_nows')
         ->join('status','status.id','=','subscribe_nows.status')
+        ->where('subscribe_nows.id','=',$id)
         ->select('subscribe_nows.id','subscribe_nows.name','subscribe_nows.category',
         'status.name as status','subscribe_nows.pathimage','subscribe_nows.description')
         ->get();
