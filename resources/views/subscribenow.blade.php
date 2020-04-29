@@ -48,9 +48,9 @@
                 @if($subscribeNows->count())
                   @foreach($subscribeNows as $subscribeNow)
                   <tr>
-                    <td>{{$subscribeNow->name}}</td>
-                    <td>{{$subscribeNow->status}}</td>
-                    <td>{{$subscribeNow->category}}</td>
+                    <td class="text-center">{{$subscribeNow->name}}</td>
+                    <td class="text-center">{{$subscribeNow->status}}</td>
+                    <td class="text-center">{{$subscribeNow->category}}</td>
                     <td>
                       <center>
                       <div class="btn-group" role="group">
