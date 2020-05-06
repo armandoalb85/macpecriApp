@@ -128,7 +128,10 @@ class SubscribeNowsController extends Controller
     }
 
     /**
-     * 
+     * función que busca la ruta donde se encuentra la imagen
+     *
+     * @param integer $id
+     * @return string
      */
     private function searchPathSubscriberNowImage($id){
       

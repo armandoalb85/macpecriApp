@@ -97,7 +97,6 @@ class SubscribersController extends Controller
         $typeSubscribers=SubscriptionType::find($request->subscriptionType);
 
         $queryResults = DB::table('subscribers')
-          //->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
           ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
           ->join('status','status.id', '=', 'users.status_id')
@@ -105,18 +104,17 @@ class SubscribersController extends Controller
           ->where('subscribers.created_at','>=', $request->startdate)
           ->where('subscribers.created_at','<=', $request->closedate)
           ->where('subscription_types.id', '=', $request->subscriptionType)
-          //->whereNull('subscriber_subscription_type.closedate')
           ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types', 'subscribers.created_at')
           ->get();
       }else{
         $queryResults = DB::table('subscribers')
-          ->join('subscriber_subscription_type', 'subscribers.id', '=', 'subscriber_subscription_type.subscriber_id')
-          ->join('subscription_types', 'subscription_types.id', '=', 'subscriber_subscription_type.subscription_id')
+          ->join('subscription_types', 'subscription_types.id', '=', 'subscribers.subscription_types_id')
           ->join('users','users.id', '=', 'subscribers.user_id')
-          ->where('subscriber_subscription_type.startdate','>=', $request->startdate)
-          ->where('subscriber_subscription_type.startdate','<=', $request->closedate)
-          ->whereNull('subscriber_subscription_type.closedate')
-          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email', 'subscriber_subscription_type.status', 'subscription_types.type', 'subscriber_subscription_type.startdate')
+          ->join('status','status.id', '=', 'users.status_id')
+          ->join('paises','paises.id', '=', 'subscribers.country_id')
+          ->where('subscribers.created_at','>=', $request->startdate)
+          ->where('subscribers.created_at','<=', $request->closedate)
+          ->select('subscribers.id','subscribers.name', 'subscribers.lastname', 'users.email','paises.country', 'status.name as status', 'subscription_types.name as types', 'subscribers.created_at')
           ->get();
       }
 
